@@ -1,0 +1,476 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\FileScanners">
+      <UniqueIdentifier>{d8c9908d-255b-4ba1-a4c3-b9ed5264cc75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\OtherScanners">
+      <UniqueIdentifier>{ee5e4063-6eec-4b05-bc4f-a8215184654f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\RegistryScanners">
+      <UniqueIdentifier>{2b3ab8c3-fa79-475f-b293-e185ce76892f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Header Files\FileScanners">
+      <UniqueIdentifier>{fdf930c3-1cdb-45b6-b1ef-1359043f4684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\OtherScanners">
+      <UniqueIdentifier>{6f7792bf-50e3-47a8-a262-e16d9a3adf98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\RegistryScanners">
+      <UniqueIdentifier>{1baf4009-9483-434b-9fe2-4dfcbc74efa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIB">
+      <UniqueIdentifier>{9c3649f0-b238-43bd-ba10-7d09df3a3858}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIB\_Debug">
+      <UniqueIdentifier>{81c58764-360e-4163-aaf9-d48364933962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIB\_Release">
+      <UniqueIdentifier>{556adf66-8792-443c-8c28-d29e0b595fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIB\_Include">
+      <UniqueIdentifier>{c2b16a52-5db3-4e18-97fa-4311398831b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIB\_DebugDC">
+      <UniqueIdentifier>{ff6d220d-afed-4538-baf5-49d19b278552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIB\_DebugCE">
+      <UniqueIdentifier>{ffb88339-c698-440d-aafe-80995cfac5de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIB\_ReleaseDC">
+      <UniqueIdentifier>{58e1de4b-50a8-4094-b42f-dd74800a5be7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LIB\_ReleaseCE">
+      <UniqueIdentifier>{5d591fc2-d319-468f-94c8-ced43fe6e71e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CleanEngine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CleanScanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CookieAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Defragger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EmtyKeysRScanner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FileTools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IETools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="IndexDatFile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeNotifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Profile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegistryTools.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Report.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ReportChecker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Runnable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RunnableStateMngr.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ScannerFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scanners.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\BrokenShCutsFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\CustomTempFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\DownloadFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\GeneralTempFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\IECookiesFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\PrefetchStuffFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\RecentDocFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\TempICQFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\TempIEFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\FileScanners\TempWUpdateFScanner.cpp">
+      <Filter>Source Files\FileScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\AppScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\ClipboardScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\CustomFilesScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\IEAutoFillScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\IEHistoryFScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\IEScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\MessengerScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\MozillaBrowsersScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\OperaScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\RecycleBinFScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\OtherScanners\TempFilesScanner.cpp">
+      <Filter>Source Files\OtherScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\ApplicationsRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\AppPathRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\BandRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\BhoRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\ClientsRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\ComObjectRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\ControlPanelRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\DistUnitsRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\FileAssocRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\HelpRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\IComServerChecker.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\MenuHndRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\MissPathRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\MruRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\SharedDllRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\ShellExtRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\StartMenuRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+    <ClCompile Include="Scanners\RegistryScanners\UninstallRScanner.cpp">
+      <Filter>Source Files\RegistryScanners</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtlFileFind.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CookieAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Defragger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EmtyKeysRScanner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FileTools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IETools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IndexDatFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IniFile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="msiehost.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeNotifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="noncopyable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Profile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RegistryTools.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ReportChecker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\BrokenShCutsFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\CustomTempFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\DownloadFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\GeneralTempFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\IECookiesFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\PrefetchStuffFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\RecentDocFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\TempICQFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\TempIEFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\FileScanners\TempWUpdateFScanner.h">
+      <Filter>Header Files\FileScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\AppScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\ClipboardScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\CustomFilesScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\IEAutoFillScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\IEHistoryFScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\IEScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\MessengerScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\MozillaBrowsersScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\OperaScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\RecycleBinFScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\TempFilesScanner.h">
+      <Filter>Header Files\OtherScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\ApplicationsRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\AppPathRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\BandRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\BhoRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\ClientsRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\ComObjectRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\ControlPanelRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\DistUnitsRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\FileAssocRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\HelpRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\IComServerChecker.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\MenuHndRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\MissPathRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\MruRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\SharedDllRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\ShellExtRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\StartMenuRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\RegistryScanners\UninstallRScanner.h">
+      <Filter>Header Files\RegistryScanners</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\CETypes.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\CleanEngine.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\CleanScanner.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\countable.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\DCTypes.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\Exception.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\functional.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\functor.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Scanners\OtherScanners\PStoreWrapper.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\Report.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\Runnable.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\RunnableStateMngr.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\ScannerFactory.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\scanners.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\scopeguard.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\Stera.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\_Include\WhiteList.h">
+      <Filter>LIB\_Include</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
