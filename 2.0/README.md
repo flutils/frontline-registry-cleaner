@@ -1,20 +1,12 @@
-# Frontline Registry Cleaner 2.0
-
-![FLCleaner 3.0][flcleaner]
-
-Source code for FLCleaner 2.0 - mostly outdated.
+![FLCleaner 2.0][flcleaner]
 
 ---
 
-# Contributions
+# License
 
-If you want to contribute, there are several conditions:
+Due to the legacy nature of this product, we felt it best to release as open source.
 
-1. This repository is solely for the *free* edition of [FLCleaner 3.0][flcleaner.com]
-2. Any contributions made - and used - on FLCleaner 3.0 become the property of [Frontline Utilities LTD][flutils], who reserve the right to distribute them as part of the any commercial system
-3. You can submit any contributions you wish by forking the project and submitting a pull request
-4. The software requires a free account at [FLCleaner.com][flcleaner.com]
-5. You are welcome to use the software to create your own solutions, etc
+We hold the right to withdraw this software.
 
 ---
 
@@ -26,7 +18,7 @@ If you want to contribute, there are several conditions:
 <!-- ################################### -->
 
 <!-- Images -->
-[fl]:        readme/fl.jpg
+[fl]:        ../3.0/readme/fl.jpg
 [flcleaner]: readme/main.jpg
 
 <!-- Links -->

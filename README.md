@@ -2,7 +2,11 @@
 
 ![FLCleaner 3.0][flcleaner]
 
-Source code for FLCleaner 3.0 free version.
+Stack management
+
+<p align="center">
+  <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a>
+</p>
 
 ---
 
