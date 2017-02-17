@@ -1,12 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CleanEngine_2010", "CleanEngine\CleanEngine_2005.vcproj", "{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26014.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CleanEngine_2010", "CleanEngine\CleanEngine_2005.vcxproj", "{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MCleanEngine", "ManagedCleanEngine\MCleanEngine\MCleanEngine.vcproj", "{8D456998-F4A5-4DB9-8398-A2382098351A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E} = {8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MCleanEngine", "ManagedCleanEngine\MCleanEngine\MCleanEngine.vcxproj", "{8D456998-F4A5-4DB9-8398-A2382098351A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontLineGUI", "FrontLineGUI\FrontLineGUI.csproj", "{057AA2AF-BEE1-4F61-9379-E442AB8279E7}"
 EndProject
