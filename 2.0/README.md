@@ -18,8 +18,8 @@ We hold the right to withdraw this software.
 <!-- ################################### -->
 
 <!-- Images -->
-[fl]:        ../3.0/readme/fl.jpg
-[flcleaner]: readme/main.jpg
+[fl]:        ../../3.0/readme/fl.jpg
+[flcleaner]: ../3.0/readme/main.jpg
 
 <!-- Links -->
 [flutils]:        http://www.frontlineutilities.co.uk
