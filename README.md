@@ -5,7 +5,8 @@
 Stack management
 
 <p align="center">
-  <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a>
+  <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> - <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/frontlineutils/flcleaner.svg?branch=master" /></a> - <a href='https://coveralls.io/github/frontlineutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/frontlineutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
+
 </p>
 
 ---
