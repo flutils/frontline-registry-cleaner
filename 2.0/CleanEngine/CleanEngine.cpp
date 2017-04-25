@@ -14,6 +14,14 @@
 #pragma warning( push )
 #pragma warning( disable : 4290 )
 
+// Disable warning for...
+// error C4996: 'GetVersionExA': was declared deprecated
+#pragma warning( disable: 4996 )
+
+// Disable warning for...
+// warning C4172: returning address of local variable or temporary: v
+#pragma warning( disable: 4172 )
+
 /*************************************************************************
 * CWhiteListProxy
 *************************************************************************/

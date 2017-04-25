@@ -16,6 +16,10 @@
 #pragma warning( push )
 #pragma warning( disable : 4290 )
 
+// disable warning warning C4172
+// returning address of local variable or temporary: v
+#pragma warning( disable : 4172 )
+
 // Used for control of recursive function calling depth.
 //
 const ULONG MaxRecurseLevel = 20;

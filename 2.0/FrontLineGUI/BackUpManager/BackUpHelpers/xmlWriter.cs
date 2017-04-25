@@ -65,7 +65,7 @@ namespace Cll
 					_sw = File.CreateText(_strFilename);
 					_bFileOpen = true;
 				}
-				catch (Exception e) 
+				catch (Exception) 
 				{
 					//MessageBox.Show (e.ToString(), "Office Recovery Manager", 
 					//	MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

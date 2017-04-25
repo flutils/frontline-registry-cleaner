@@ -9,10 +9,13 @@
 #define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
 #define VC_EXTRALEAN		// Exclude rarely-used stuff from Windows headers
 
-#define WINVER 0x0500		// Change this to the appropriate value to target Windows 98 and Windows 2000 or later.
-#define _WIN32_WINNT 0x0601		// Change this to the appropriate value to target Windows 98 and Windows 2000 or later.
-#define _WIN32_WINDOWS 0x0410 // Change this to the appropriate value to target Windows Me or later.
-#define _WIN32_IE 0x0500	// Change this to the appropriate value to target IE 5.0 or later.
+
+// Windows Version Targeting
+// We only want to target Windows 10 onwards
+// https://msdn.microsoft.com/en-us/library/6sehtctf.aspx?f=255&MSPPError=-2147217396
+#define WINVER 0x0A00  
+#define _WIN32_WINNT 0x0A00  
+
 
 #define _ATL_ALL_WARNINGS
 #define _ATL_NO_HOSTING

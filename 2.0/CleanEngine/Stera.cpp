@@ -1,6 +1,9 @@
 #include "StdAfx.h"
-#include ".\stera.h"
+#include "stera.h"
 #include <shlobj.h>
+
+///////////////////////////////////////////
+///////////////////////////////////////////
 
 const wchar_t g_wszPrefix[]   = L"\\??\\";
 const wchar_t g_wszStera[]	  = L"daila";
@@ -11,11 +14,17 @@ const wchar_t g_wszRegSessionManager[] = L"SYSTEM\\CurrentControlSet\\Control\\S
 const wchar_t g_wszBootStera[] = L"BootDaila";
 const wchar_t g_wszBootExecute[] = L"BootExecute";
 
-//global
-Stera g_csStera;
+///////////////////////////////////////////
 
-//shark [11/11/06]: требование не показывать среди найденого то, что помечено как CleanOnReboot
+// Disable warning for...
+// error C4996: 'GetVersionExA': was declared deprecated
+#pragma warning( disable: 4996 )
+
+Stera g_csStera;
 std::set<CString> g_setCleanOnReboot;
+
+///////////////////////////////////////////
+///////////////////////////////////////////
 
 Stera::Stera(void)
 : m_nInitializeStatus(0)

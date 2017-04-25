@@ -1,9 +1,15 @@
-﻿using System;
+﻿// RPECK 25/04/2017
+// http://stackoverflow.com/questions/619104/how-to-get-the-namespace-alias-operator-to-work-under-c
+extern alias MCleanEngine;
+
+// External Calls
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MCleanEngine;
 
+// Class
 namespace FrontLineGUI
 {
     public class CleanEngineClient

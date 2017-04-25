@@ -6,50 +6,50 @@
       <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Source Files\FileScanners">
-      <UniqueIdentifier>{d8c9908d-255b-4ba1-a4c3-b9ed5264cc75}</UniqueIdentifier>
+      <UniqueIdentifier>{d670f570-f903-4952-afc0-f92c5b0f7227}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\OtherScanners">
-      <UniqueIdentifier>{ee5e4063-6eec-4b05-bc4f-a8215184654f}</UniqueIdentifier>
+      <UniqueIdentifier>{eabf9d00-c633-42e6-94e7-a8be9a41e311}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\RegistryScanners">
-      <UniqueIdentifier>{2b3ab8c3-fa79-475f-b293-e185ce76892f}</UniqueIdentifier>
+      <UniqueIdentifier>{39390bcc-ccec-4c83-a6b7-ccc61389b658}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
     <Filter Include="Header Files\FileScanners">
-      <UniqueIdentifier>{fdf930c3-1cdb-45b6-b1ef-1359043f4684}</UniqueIdentifier>
+      <UniqueIdentifier>{246f2dfa-6cc2-44ea-9e55-e993c4b1a4af}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\OtherScanners">
-      <UniqueIdentifier>{6f7792bf-50e3-47a8-a262-e16d9a3adf98}</UniqueIdentifier>
+      <UniqueIdentifier>{ea1098d2-efbf-4d17-ae85-5b84fcc2e710}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\RegistryScanners">
-      <UniqueIdentifier>{1baf4009-9483-434b-9fe2-4dfcbc74efa1}</UniqueIdentifier>
+      <UniqueIdentifier>{169ddbc2-1062-436e-88ec-f0ed4101517a}</UniqueIdentifier>
     </Filter>
     <Filter Include="LIB">
-      <UniqueIdentifier>{9c3649f0-b238-43bd-ba10-7d09df3a3858}</UniqueIdentifier>
+      <UniqueIdentifier>{0a4c0738-3b0e-45ea-b393-2d6d5f5e1bf1}</UniqueIdentifier>
     </Filter>
     <Filter Include="LIB\_Debug">
-      <UniqueIdentifier>{81c58764-360e-4163-aaf9-d48364933962}</UniqueIdentifier>
+      <UniqueIdentifier>{24e38faa-a58d-4baa-9f0b-706445318be0}</UniqueIdentifier>
     </Filter>
     <Filter Include="LIB\_Release">
-      <UniqueIdentifier>{556adf66-8792-443c-8c28-d29e0b595fec}</UniqueIdentifier>
+      <UniqueIdentifier>{29fa8c61-1d5b-467e-b7ce-8e7a5d89986f}</UniqueIdentifier>
     </Filter>
     <Filter Include="LIB\_Include">
-      <UniqueIdentifier>{c2b16a52-5db3-4e18-97fa-4311398831b0}</UniqueIdentifier>
+      <UniqueIdentifier>{eb53cdac-d02f-4abc-b316-efbb2d3c02d9}</UniqueIdentifier>
     </Filter>
     <Filter Include="LIB\_DebugDC">
-      <UniqueIdentifier>{ff6d220d-afed-4538-baf5-49d19b278552}</UniqueIdentifier>
+      <UniqueIdentifier>{64707b60-a25e-4287-97ed-9336774128fd}</UniqueIdentifier>
     </Filter>
     <Filter Include="LIB\_DebugCE">
-      <UniqueIdentifier>{ffb88339-c698-440d-aafe-80995cfac5de}</UniqueIdentifier>
+      <UniqueIdentifier>{eeba78d0-4371-4ea8-8c33-2b706c900deb}</UniqueIdentifier>
     </Filter>
     <Filter Include="LIB\_ReleaseDC">
-      <UniqueIdentifier>{58e1de4b-50a8-4094-b42f-dd74800a5be7}</UniqueIdentifier>
+      <UniqueIdentifier>{d4199e16-a4a9-4ef2-af11-11733f8d9ad9}</UniqueIdentifier>
     </Filter>
     <Filter Include="LIB\_ReleaseCE">
-      <UniqueIdentifier>{5d591fc2-d319-468f-94c8-ced43fe6e71e}</UniqueIdentifier>
+      <UniqueIdentifier>{db18a373-3f8a-4fc9-a202-a75cd6644350}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

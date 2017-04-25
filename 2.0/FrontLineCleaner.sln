@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26014.0
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CleanEngine_2010", "CleanEngine\CleanEngine_2005.vcxproj", "{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}"
 EndProject
@@ -61,6 +61,7 @@ Global
 		{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}.Release_DC_Only|Win32.Build.0 = Release_DC_Only|Win32
 		{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}.Release|Any CPU.ActiveCfg = Release|Win32
 		{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}.Release|Win32.ActiveCfg = Release|Win32
 		{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}.Release|Win32.Build.0 = Release|Win32
 		{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}.ReleaseTest|Any CPU.ActiveCfg = ReleaseTest|Win32
@@ -95,6 +96,7 @@ Global
 		{8D456998-F4A5-4DB9-8398-A2382098351A}.Release_DC_Only|Win32.Build.0 = Release|Win32
 		{8D456998-F4A5-4DB9-8398-A2382098351A}.Release|Any CPU.ActiveCfg = Release|Win32
 		{8D456998-F4A5-4DB9-8398-A2382098351A}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{8D456998-F4A5-4DB9-8398-A2382098351A}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{8D456998-F4A5-4DB9-8398-A2382098351A}.Release|Win32.ActiveCfg = Release|Win32
 		{8D456998-F4A5-4DB9-8398-A2382098351A}.Release|Win32.Build.0 = Release|Win32
 		{8D456998-F4A5-4DB9-8398-A2382098351A}.ReleaseTest|Any CPU.ActiveCfg = ReleaseTest|Win32

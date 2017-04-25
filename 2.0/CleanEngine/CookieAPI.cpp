@@ -859,7 +859,7 @@ namespace CookieAPI
 
 	HRESULT mf::CMemoryFile::Read(LPVOID pBuffer, DWORD nBufSize, DWORD & nBytesRead)
 	{
-		if (nBytesRead = static_cast<DWORD>(_cpp_min(m_arrData.GetCount() - m_nPos, nBufSize)))
+		if (nBytesRead = static_cast<DWORD>(max(m_arrData.GetCount() - m_nPos, nBufSize)))
 		{
 			::CopyMemory(pBuffer, &m_arrData[m_nPos], nBytesRead);
 			m_nPos += nBytesRead;

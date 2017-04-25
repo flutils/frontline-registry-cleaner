@@ -1,4 +1,5 @@
 #pragma once
+
 /*
 	wrapper for stera.exe functional
 	used for creation and add job to job file
@@ -57,7 +58,9 @@ protected:
 	int _Initialize();
 };
 
+// These were origicnally declared in the source
+// Moved to here based on StackOverflow recommendation
 extern Stera g_csStera;
 extern std::set<CString> g_setCleanOnReboot;
 
-void LoadCleanOnRebootItems();// загрузка задач для "stera"(эти элементы мы должны скрывать от юзера)
+//removed void LoadCleanOnRebootItems();

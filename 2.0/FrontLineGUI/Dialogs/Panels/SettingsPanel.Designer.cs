@@ -1,4 +1,9 @@
-﻿namespace FrontLineGUI
+﻿// R Peck
+// 25/04/2017
+#pragma warning disable CS0618 
+/// ///////////////////////////////
+
+namespace FrontLineGUI
 {
     partial class SettingsPanel
     {

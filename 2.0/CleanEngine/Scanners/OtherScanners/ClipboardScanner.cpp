@@ -80,7 +80,7 @@ void CClipboardScanner::algoStep1()
 			break;
 		}
 
-		ultoa( uiFormat, szBuf, 10 );
+		_ultoa( uiFormat, szBuf, 10 );
 
 		m_pEngine->AddItem(
 			countable<IReportItem>(

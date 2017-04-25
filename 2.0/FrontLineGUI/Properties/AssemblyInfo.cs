@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("FrontLineGUI")]
 [assembly: AssemblyDescription("Registry cleaner")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Bilberry")]
+[assembly: AssemblyCompany("Frontline Utilities LTD")]
 [assembly: AssemblyProduct("FrontLineGUI")]
-[assembly: AssemblyCopyright("Copyright ©  2010")]
+[assembly: AssemblyCopyright("Copyright © 2010")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -34,3 +34,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+
+// Reference

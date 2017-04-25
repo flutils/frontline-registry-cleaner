@@ -7,6 +7,9 @@
 #pragma warning( push )
 #pragma warning( disable : 4290 )
 
+// Disable warning 4297
+#pragma warning( disable : 4297 )
+
 /*************************************************************************
 * Function Name:            CRunnable::CRunnable()
 * Function Description:     Constructor

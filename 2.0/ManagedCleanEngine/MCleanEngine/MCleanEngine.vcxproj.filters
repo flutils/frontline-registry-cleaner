@@ -14,7 +14,7 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
     <Filter Include="CEHeaders">
-      <UniqueIdentifier>{2e8e299f-40ac-4245-858e-1ae0323c170e}</UniqueIdentifier>
+      <UniqueIdentifier>{33d14460-f115-4762-8b7e-4d9e7d8b54a4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

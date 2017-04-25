@@ -12,6 +12,10 @@
 #pragma warning( push )
 #pragma warning( disable : 4290 )
 
+// Disable 
+// warning C4172: returning address of local variable or temporary: v
+#pragma warning( disable : 4172 )
+
 /**
 * Class Name: IPreAction
 *

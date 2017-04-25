@@ -4,6 +4,10 @@
 #include "FileTools.h"
 #include <AtlPath.h>
 
+// Cease warnings for 
+// warning C4996: 'GetVersionExA'
+#pragma warning( disable: 4996 )
+
 class CFileScanner : virtual public CCleanScanner, virtual public CFileTools
 {
 
