@@ -43,8 +43,6 @@ namespace FrontLineGUI
             this.ImageListIgnoredKeys = new System.Windows.Forms.ImageList(this.components);
             this.ButtonGeneralOptions = new FrontLineGUI.CustomFrontLineButton();
             this.ImageListGenoptions = new System.Windows.Forms.ImageList(this.components);
-            this.ButtonUpdateSettings = new FrontLineGUI.CustomFrontLineButton();
-            this.ImageListUpdateSettings = new System.Windows.Forms.ImageList(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -74,8 +72,9 @@ namespace FrontLineGUI
             this.checkBoxAutomaticallyRepair = new System.Windows.Forms.CheckBox();
             this.checkBoxSetRestore = new System.Windows.Forms.CheckBox();
             this.checkBoxOnStartUp = new System.Windows.Forms.CheckBox();
+            this.ImageListUpdateSettings = new System.Windows.Forms.ImageList(this.components);
             this.listViewIgnoreKeys = new System.Windows.Forms.ListView();
-            this.IgnoredKeys = new System.Windows.Forms.ColumnHeader();
+            this.IgnoredKeys = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panelSettings.SuspendLayout();
             this._PanelSheduling.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._MinutesUpDown)).BeginInit();
@@ -92,7 +91,6 @@ namespace FrontLineGUI
             this.panelSettings.Controls.Add(this.ButtonSheduling);
             this.panelSettings.Controls.Add(this.ButtonIgnoredKeys);
             this.panelSettings.Controls.Add(this.ButtonGeneralOptions);
-            this.panelSettings.Controls.Add(this.ButtonUpdateSettings);
             this.panelSettings.Controls.Add(this.label8);
             this.panelSettings.Controls.Add(this.label9);
             this.panelSettings.Controls.Add(this.label10);
@@ -202,33 +200,6 @@ namespace FrontLineGUI
             this.ImageListGenoptions.TransparentColor = System.Drawing.Color.White;
             this.ImageListGenoptions.Images.SetKeyName(0, "GeneralOptions_button.png");
             this.ImageListGenoptions.Images.SetKeyName(1, "GeneralOptionsHover_button.png");
-            // 
-            // ButtonUpdateSettings
-            // 
-            this.ButtonUpdateSettings.BackColor = System.Drawing.Color.White;
-            this.ButtonUpdateSettings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonUpdateSettings.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.ButtonUpdateSettings.FlatAppearance.BorderSize = 0;
-            this.ButtonUpdateSettings.FlatAppearance.CheckedBackColor = System.Drawing.Color.White;
-            this.ButtonUpdateSettings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.ButtonUpdateSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.ButtonUpdateSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonUpdateSettings.ForeColor = System.Drawing.Color.White;
-            this.ButtonUpdateSettings.ImageIndex = 0;
-            this.ButtonUpdateSettings.ImageList = this.ImageListUpdateSettings;
-            this.ButtonUpdateSettings.Location = new System.Drawing.Point(176, 278);
-            this.ButtonUpdateSettings.Name = "ButtonUpdateSettings";
-            this.ButtonUpdateSettings.Size = new System.Drawing.Size(123, 41);
-            this.ButtonUpdateSettings.TabIndex = 43;
-            this.ButtonUpdateSettings.UseVisualStyleBackColor = false;
-            this.ButtonUpdateSettings.Click += new System.EventHandler(this.ButtonUpdateSettings_Click);
-            // 
-            // ImageListUpdateSettings
-            // 
-            this.ImageListUpdateSettings.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageListUpdateSettings.ImageStream")));
-            this.ImageListUpdateSettings.TransparentColor = System.Drawing.Color.White;
-            this.ImageListUpdateSettings.Images.SetKeyName(0, "UpdateBig_button.png");
-            this.ImageListUpdateSettings.Images.SetKeyName(1, "UpdateBigHover_button.png");
             // 
             // label8
             // 
@@ -587,6 +558,13 @@ namespace FrontLineGUI
             this.checkBoxOnStartUp.UseVisualStyleBackColor = true;
             this.checkBoxOnStartUp.CheckedChanged += new System.EventHandler(this.checkBoxOnStartUp_CheckedChanged);
             // 
+            // ImageListUpdateSettings
+            // 
+            this.ImageListUpdateSettings.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImageListUpdateSettings.ImageStream")));
+            this.ImageListUpdateSettings.TransparentColor = System.Drawing.Color.White;
+            this.ImageListUpdateSettings.Images.SetKeyName(0, "UpdateBig_button.png");
+            this.ImageListUpdateSettings.Images.SetKeyName(1, "UpdateBigHover_button.png");
+            // 
             // listViewIgnoreKeys
             // 
             this.listViewIgnoreKeys.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -631,7 +609,6 @@ namespace FrontLineGUI
         private CustomFrontLineButton ButtonSheduling;
         private CustomFrontLineButton ButtonIgnoredKeys;
         private CustomFrontLineButton ButtonGeneralOptions;
-        private CustomFrontLineButton ButtonUpdateSettings;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;

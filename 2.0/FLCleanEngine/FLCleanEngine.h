@@ -1,4 +1,4 @@
-// MCleanEngine.h
+// FLCleanEngine.h
 
 #pragma once
 #using <System.dll>
@@ -11,7 +11,7 @@ using namespace System;
 using namespace System;
 using namespace System::ComponentModel;
 
-namespace MCleanEngine {
+namespace FLCleanEngine {
 
 	public delegate void CENotificationItemFound(String^, int itemID, int scannerID);
 	public delegate void CEScannerFinished(int scannerID);

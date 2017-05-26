@@ -11,11 +11,11 @@ using namespace System::Security::Permissions;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly:AssemblyTitleAttribute("MCleanEngine")];
+[assembly:AssemblyTitleAttribute("FLCleanEngine")];
 [assembly:AssemblyDescriptionAttribute("")];
 [assembly:AssemblyConfigurationAttribute("")];
 [assembly:AssemblyCompanyAttribute("")];
-[assembly:AssemblyProductAttribute("MCleanEngine")];
+[assembly:AssemblyProductAttribute("FLCleanEngine")];
 [assembly:AssemblyCopyrightAttribute("Copyright (c)  2010")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];

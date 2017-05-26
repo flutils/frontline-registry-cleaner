@@ -168,13 +168,6 @@ namespace FrontLineGUI
             Wizzard.SelectedIndex = 6;
         }
 
-        private void ButtonUpdateSettings_Click(object sender, EventArgs e)
-        {
-            MainWindow mainWnd = (MainWindow)Wizzard.Tag;
-            if (mainWnd != null)
-                mainWnd.ShowUpdateScreen(mainWnd);
-        }
-
         private void ButtonGeneralOptions_Click(object sender, EventArgs e)
         {
             _PanelGeneralOptions.Visible = true;
@@ -226,7 +219,7 @@ namespace FrontLineGUI
                         if (startup_key != null)
                             startup_key.SetValue(reg_entry, executing_name);
                     }
-                    catch (Exception ex) { /*MessageBox.Show(ex.Message);*/ }
+                    catch (Exception) { /*MessageBox.Show(ex.Message);*/ }
                 }
             }
             else

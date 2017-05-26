@@ -25,8 +25,8 @@ namespace FrontLineGUI
             InitializeComponent();
             
             Wizzard = iWizzard;
-            MCleanEngine.ManagedCleanEngine.CEScanStart += new MCleanEngine.CEScannerStarted(ScannerStartedProcessing);
-            MCleanEngine.ManagedCleanEngine.CENotifierItemFound += new MCleanEngine.CENotificationItemFound(ScannerItemFound);
+            FLCleanEngine.ManagedCleanEngine.CEScanStart += new FLCleanEngine.CEScannerStarted(ScannerStartedProcessing);
+            FLCleanEngine.ManagedCleanEngine.CENotifierItemFound += new FLCleanEngine.CENotificationItemFound(ScannerItemFound);
             var items = this.ListViewStats.Items;
             foreach (var item in items)
             {

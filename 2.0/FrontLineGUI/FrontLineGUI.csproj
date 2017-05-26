@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FrontLineGUI</RootNamespace>
-    <AssemblyName>FrontLine2</AssemblyName>
+    <AssemblyName>FrontLineRegistryCleaner2.0</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>216.ico</ApplicationIcon>
@@ -76,8 +76,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Scheduler\Microsoft.Win32.TaskScheduler.dll</HintPath>
     </Reference>
-    <ReferencePath Include="..\Release\MCleanEngine.dll">
-      <Aliases>MCleanEngine</Aliases>
+    <ReferencePath Include="..\Release\FLCleanEngine.dll">
+      <Aliases>FLCleanEngine</Aliases>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ReferencePath>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -106,12 +107,6 @@
     <Compile Include="BackUpManager\BackUpHelpers\xmlWriter.cs" />
     <Compile Include="CleanEngineClient.cs" />
     <Compile Include="CustomScanner.cs" />
-    <Compile Include="Dialogs\BlackTransparentWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\BlackTransparentWindow.Designer.cs">
-      <DependentUpon>BlackTransparentWindow.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\CustomControls\AntiDoubleClickTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -181,10 +176,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Dialogs\BlackTransparentWindow.resx">
-      <DependentUpon>BlackTransparentWindow.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Panels\BackUpPanel.resx">
       <DependentUpon>BackUpPanel.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -224,10 +215,6 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\RegisterWindow.resx">
-      <DependentUpon>RegisterWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\Panels\SettingsPanel.resx">
@@ -270,12 +257,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Dialogs\RegisterWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dialogs\RegisterWindow.Designer.cs">
-      <DependentUpon>RegisterWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\Panels\SettingsPanel.cs">
       <SubType>UserControl</SubType>
@@ -436,14 +417,9 @@
     <None Include="Bitmaps\DownloadUpdateHover_button.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ManagedCleanEngine\MCleanEngine\MCleanEngine.vcxproj">
-      <Project>{8D456998-F4A5-4DB9-8398-A2382098351A}</Project>
-      <Name>MCleanEngine</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="216.ico" />
     <None Include="Bitmaps\BackgroundFixing.png" />
+    <None Include="Bitmaps\free.png" />
     <Content Include="Bitmaps\minus.png" />
     <None Include="Bitmaps\Splash.png" />
     <None Include="Bitmaps\cross123.png" />
@@ -474,6 +450,12 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FLCleanEngine\FLCleanEngine.vcxproj">
+      <Project>{8d456998-f4a5-4db9-8398-a2382098351a}</Project>
+      <Name>FLCleanEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

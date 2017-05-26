@@ -16,9 +16,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8D456998-F4A5-4DB9-8398-A2382098351A}</ProjectGuid>
-    <RootNamespace>MCleanEngine</RootNamespace>
+    <RootNamespace>FLCleanEngine</RootNamespace>
     <Keyword>ManagedCProj</Keyword>
     <WindowsTargetPlatformVersion>10.0.14393.0</WindowsTargetPlatformVersion>
+    <ProjectName>FLCleanEngine</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'" Label="Configuration">
@@ -145,7 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
-    <ClCompile Include="MCleanEngine.cpp" />
+    <ClCompile Include="FLCleanEngine.cpp" />
     <ClCompile Include="MINotifier.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -172,7 +173,7 @@
     <ClInclude Include="..\..\CleanEngine\Lib\_Include\scopeguard.h" />
     <ClInclude Include="..\..\CleanEngine\Lib\_Include\Stera.h" />
     <ClInclude Include="..\..\CleanEngine\Lib\_Include\WhiteList.h" />
-    <ClInclude Include="MCleanEngine.h" />
+    <ClInclude Include="FLCleanEngine.h" />
     <ClInclude Include="MINotifier.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Stdafx.h" />
@@ -187,9 +188,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CleanEngine\CleanEngine_2005.vcxproj">
+    <ProjectReference Include="..\CleanEngine\CleanEngine_2005.vcxproj">
       <Project>{8c12d387-2cb2-4bd7-9b4a-ad25e375eb9e}</Project>
-      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

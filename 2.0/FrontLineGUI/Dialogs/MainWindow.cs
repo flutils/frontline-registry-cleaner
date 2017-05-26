@@ -48,28 +48,8 @@ namespace FrontLineGUI
             _LeftMenuGroup.Add(ButtonStatistics);
 
             RegistryKey key = Registry.CurrentUser.OpenSubKey(Program.ApplicationOptions + @"\lkey",false);
-            if (key != null)
-            {
-                var license = key.GetValue("Lkey").ToString();
-                if (!String.IsNullOrEmpty(license))
-                {
-                    LicenseManager license_manager = new LicenseManager();
-                    var response = license_manager.CheckLicense(license);
-                    if (response == LicenseStatus.eLicenseBlock)
-                    {
-                        ApplicationSettings.IsPaid = false;
-                    }
-                }
-            }
-            TransformAppToPaid(ApplicationSettings.IsPaid);
             
             ButtonScan_Click(ButtonScan, null);
-            if (ApplicationSettings.AutoUpdate)
-            {
-                tmAutoUpd.Interval = 60 * 1000;
-                tmAutoUpd.Tick += new EventHandler(tmAutoUpd_Tick);
-                tmAutoUpd.Start();
-            }
         }
 
         void tmAutoUpd_Tick(object sender, EventArgs e)
@@ -84,13 +64,6 @@ namespace FrontLineGUI
                     upd_man.ApplyUpdate(response.DownloadUrl);
                 }
             }
-        }
-
-        public void TransformAppToPaid(bool bPaid)
-        {
-            ButtonRegistration.Visible = !bPaid;
-            ButtonNeedHelp.Visible = !bPaid;
-            NeedHelp2Button.Visible = bPaid;
         }
 
         void MainWindow_Load(object sender, EventArgs e)
@@ -182,11 +155,6 @@ namespace FrontLineGUI
             _EnableAllExceptPressed(sender);
         }
 
-        private void ButtonRegistration_Click(object sender, EventArgs e)
-        {
-            ShowRegisterScreen(this);
-        }
-
         private void ButtonSettings_MouseClick(object sender, EventArgs e)
         {
             wizControl.SelectedIndex = 5;
@@ -222,32 +190,6 @@ namespace FrontLineGUI
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
         }
 
-        public void ShowUpdateScreen(Form parent)
-        {
-            ShowBlackAlfaScreen();
-            var UpdWnd = new UpdateWindow();
-            UpdWnd.ShowDialog(parent);
-            bkDlg.Hide();
-            this.TopMost = true;
-            this.TopMost = false;
-        }
-
-        public void ShowRegisterScreen(Form parent)
-        {
-            ShowBlackAlfaScreen();
-            var regWnd = new RegisterWindow();
-            regWnd.MainWindow = this;
-            regWnd.ShowDialog(parent);
-            bkDlg.Hide();
-            this.TopMost = true;
-            this.TopMost = false;
-        }
-
-        private void ButtonUpdate_Click(object sender, EventArgs e)
-        {
-            ShowUpdateScreen(this);
-        }
-
         private void ButtonBackUp_Click(object sender, EventArgs e)
         {
             wizControl.SelectedIndex = 7;
@@ -256,41 +198,24 @@ namespace FrontLineGUI
 
         private void ButtonPCUtils_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.frontlinepcutilities.com");
+            Process.Start("https://www.frontlineutilities.co.uk");
         }
 
         private void ButtonSettings_Click(object sender, EventArgs e)
         {
             wizControl.SelectedIndex = 5;
         }
-        
-        private void ButtonNeedHelp_Click(object sender, EventArgs e)
-        {
-            ShowRegisterScreen(this);
-        }
 
         private void ButtonHelp_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.frontlinepcutilities.com/support/");
+            Process.Start("https://www.flcleaner.com/support");
         }
         
         #endregion
 
-        private BlackTransparentWindow bkDlg = new BlackTransparentWindow();
-        private Panel blackPanel = new Panel();
-        WizzardControl wzTmp = new WizzardControl();
-        public void ShowBlackAlfaScreen()
-        {
-            var location = this.Location;
-            bkDlg.Location = location;
-
-            bkDlg.Owner = this;
-            bkDlg.Show(this);
-        }
-
         private void NeedHelp2Button_Click(object sender, EventArgs e)
         {
-            Process.Start("http://www.frontlinepcutilities.com/support/");
+            Process.Start("https://www.flcleaner.com/support/");
         }
 
      

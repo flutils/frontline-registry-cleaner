@@ -253,16 +253,6 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap design_2010_09_22 {
-            get {
-                object obj = ResourceManager.GetObject("design_2010-09-22", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap DownloadUpdate_button {
             get {
                 object obj = ResourceManager.GetObject("DownloadUpdate_button", resourceCulture);
@@ -296,6 +286,16 @@ namespace FrontLineGUI.Properties {
         internal static System.Drawing.Bitmap Extras_button {
             get {
                 object obj = ResourceManager.GetObject("Extras_button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap free {
+            get {
+                object obj = ResourceManager.GetObject("free", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -1,28 +1,28 @@
 ﻿// RPECK 25/04/2017
 // http://stackoverflow.com/questions/619104/how-to-get-the-namespace-alias-operator-to-work-under-c
-extern alias MCleanEngine;
+extern alias FLCleanEngine;
 
 // External Calls
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MCleanEngine;
+using FLCleanEngine;
 
 // Class
 namespace FrontLineGUI
 {
     public class CleanEngineClient
     {
-        private MCleanEngine.ManagedCleanEngine _engine = null;
+        private FLCleanEngine.ManagedCleanEngine _engine = null;
         private static CleanEngineClient _This = null;
         public delegate void StartScan();
 
         private List<CEScannerID> _ActualScanners = new List<CEScannerID>();
 
+        public ManagedCleanEngine Engine { get => _engine; set => _engine = value; }
+
         private CleanEngineClient()
         {
-            _engine = new MCleanEngine.ManagedCleanEngine();
+            Engine = new FLCleanEngine.ManagedCleanEngine();
         }
 
         public static CleanEngineClient Instance()
@@ -70,7 +70,7 @@ namespace FrontLineGUI
             }
             else
                 _ActualScanners.Clear();
-            _engine.EnableAllScanners(enable);
+            Engine.EnableAllScanners(enable);
         }
 
         public void EnableScanner(CEScannerID id, bool enable)
@@ -85,31 +85,31 @@ namespace FrontLineGUI
                 else
                     _ActualScanners.Remove(id);
             }
-            _engine.EnableScanner((int)id, enable);
+            Engine.EnableScanner((int)id, enable);
         }
 
         public void PauseEngine(bool val)
         {
-            _engine.Pause(val == true? 1:0 );
+            Engine.Pause(val == true? 1:0 );
         }
 
-        public MCleanEngine.CENotificationItemFound OnItemFound()
+        /*public FLCleanEngine.CENotificationItemFound OnItemFound()
         {
-            return ManagedCleanEngine.CENotifierItemFound;
+            return FLCleanEngine.CENotifierItemFound;
         }
 
-        public MCleanEngine.CEScannerFinished OnScannerFinished()
+        public FLCleanEngine.CEScannerFinished OnScannerFinished()
         {
-            return ManagedCleanEngine.CEScanFinished;
-        }
+            return FLCleanEngine.CEScanFinished;
+        }*/
 
         public void SetScannerList(IEnumerable<CEScannerID> scanners_queue)
         {
-            _engine.EnableAllScanners(false);
+            Engine.EnableAllScanners(false);
             _ActualScanners.Clear();
             foreach (var scanner in scanners_queue)
             {
-                _engine.EnableScanner((int)scanner, true);
+                Engine.EnableScanner((int)scanner, true);
                 _ActualScanners.Add(scanner);
             }
         }
@@ -119,45 +119,45 @@ namespace FrontLineGUI
         {
             if (ScanningPerfomed != null)
                 ScanningPerfomed();
-            return _engine.Start();
+            return Engine.Start();
         }
 
         public void StopEngine()
         {
-            _engine.Stop();
+            Engine.Stop();
         }
 
         public bool IsBusy()
         {
-            return _engine.IsBusy();
+            return Engine.IsBusy();
         }
 
         public bool LoadHivesInfo(String path)
         {
-            return _engine.LoadHivesInfo(path);
+            return Engine.LoadHivesInfo(path);
         }
 
         public bool AnalizeHives()
         {
-            return _engine.AnalizeHives();
+            return Engine.AnalizeHives();
         }
 
 		public void CompactHives()
         {
-            _engine.CompactHives();
+            Engine.CompactHives();
         }
 
         public void FixAll()
         {
             #if !TEST
-            _engine.FixAllItems();
+            Engine.FixAllItems();
             #endif
         }
 
         public bool FixItem(int id)
         {
             #if !TEST
-            return _engine.FixItem(id);
+            return Engine.FixItem(id);
             #else
             return true;
             #endif

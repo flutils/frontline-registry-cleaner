@@ -50,7 +50,7 @@ namespace FrontLineGUI
                 MessageBox.Show("Incorrect license!");
                 return LicenseStatus.eLicenseInvalid;
             }
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://license.frontlinecleaner.com/auth/");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://license.flcleaner.com/auth/");
             request.Method = "POST";
             request.ContentType = "application/x-www-form-urlencoded";
             string parameters = "license="+license;

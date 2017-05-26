@@ -52,9 +52,9 @@ namespace FrontLineGUI
 
             CleanEngineClient.Instance().EnableAllScanners(true);
             CleanEngineClient.Instance().ScanningPerfomed += new CleanEngineClient.StartScan(ScanningPanel_ScanningPerfomed);
-            MCleanEngine.ManagedCleanEngine.CEScanFinished += new MCleanEngine.CEScannerFinished(ScannerFinishedProcessing);
-            MCleanEngine.ManagedCleanEngine.CENotifierItemFound += new MCleanEngine.CENotificationItemFound(ScannerItemFound);
-            MCleanEngine.ManagedCleanEngine.CEScanStart += new MCleanEngine.CEScannerStarted(ScannerStartedProcessing);
+            FLCleanEngine.ManagedCleanEngine.CEScanFinished += new FLCleanEngine.CEScannerFinished(ScannerFinishedProcessing);
+            FLCleanEngine.ManagedCleanEngine.CENotifierItemFound += new FLCleanEngine.CENotificationItemFound(ScannerItemFound);
+            FLCleanEngine.ManagedCleanEngine.CEScanStart += new FLCleanEngine.CEScannerStarted(ScannerStartedProcessing);
         }
 
         void ScanningPanel_ScanningPerfomed()
@@ -176,43 +176,33 @@ namespace FrontLineGUI
         void tmFixingApplied_Tick(object sender, EventArgs e)
         {
             tmFixingApplied.Stop();
-            if (ApplicationSettings.IsPaid)
-            {
-                var bkp_panel = (BackUpPanel)Wizzard.TabPages["BackUpPage"].Controls[0];
-                if (bkp_panel != null)
-                    bkp_panel.CreateBackUp();
-                var settings_panel = (SettingsPanel)Wizzard.TabPages["SettingsPage"].Controls[0];
 
-                Dictionary<String, int> errors_fixed = new Dictionary<String, int>();
-                var stat_panel = (StatisticsPanel)Wizzard.TabPages["StatisticsPage"].Controls[0];
-                if (stat_panel != null)
-                {
-                    foreach (var el in CustomScannerItems)
-                    {
-                        errors_fixed.Add(el.IDs, 0);
-                        foreach(var threat_id in el.FoundItems.Keys)
-                        {
-                           if (settings_panel != null && !settings_panel.GetIgnores().Contains(threat_id.Description))
-                               {
-                                   if (CleanEngineClient.Instance().FixItem(threat_id.ID))
-                                   {
-                                       errors_fixed[el.IDs] += 1;
-                                   }
-                               }
-                        
-                        }
-                    }
-                    stat_panel.FixItems(errors_fixed);
-                    Wizzard.SelectedTab = Wizzard.TabPages["StatisticsPage"];
-                }
-            }
-            else
+            var bkp_panel = (BackUpPanel)Wizzard.TabPages["BackUpPage"].Controls[0];
+            if (bkp_panel != null)
+                bkp_panel.CreateBackUp();
+            var settings_panel = (SettingsPanel)Wizzard.TabPages["SettingsPage"].Controls[0];
+
+            Dictionary<String, int> errors_fixed = new Dictionary<String, int>();
+            var stat_panel = (StatisticsPanel)Wizzard.TabPages["StatisticsPage"].Controls[0];
+            if (stat_panel != null)
             {
-                MainWindow main_window = (MainWindow)Wizzard.Tag;
-                if (main_window != null)
+                foreach (var el in CustomScannerItems)
                 {
-                    main_window.ShowRegisterScreen(main_window);
+                    errors_fixed.Add(el.IDs, 0);
+                    foreach(var threat_id in el.FoundItems.Keys)
+                    {
+                        if (settings_panel != null && !settings_panel.GetIgnores().Contains(threat_id.Description))
+                            {
+                                if (CleanEngineClient.Instance().FixItem(threat_id.ID))
+                                {
+                                    errors_fixed[el.IDs] += 1;
+                                }
+                            }
+                        
+                    }
                 }
+                stat_panel.FixItems(errors_fixed);
+                Wizzard.SelectedTab = Wizzard.TabPages["StatisticsPage"];
             }
         }
 

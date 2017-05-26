@@ -41,51 +41,40 @@ namespace FrontLineGUI
         
         private void FixItems()
         {
-            if (ApplicationSettings.IsPaid)
-            {
-                var bkp_panel = (BackUpPanel)Wizzard.TabPages["BackUpPage"].Controls[0];
-                if (bkp_panel != null)
-                    bkp_panel.CreateBackUp();
+            var bkp_panel = (BackUpPanel)Wizzard.TabPages["BackUpPage"].Controls[0];
+            if (bkp_panel != null)
+                bkp_panel.CreateBackUp();
                 
-                var settings_panel = (SettingsPanel)Wizzard.TabPages["SettingsPage"].Controls[0];
-                Dictionary<String, int> errors_fixed = new Dictionary<String, int>();
-                if (settings_panel != null)
-                {
+            var settings_panel = (SettingsPanel)Wizzard.TabPages["SettingsPage"].Controls[0];
+            Dictionary<String, int> errors_fixed = new Dictionary<String, int>();
+            if (settings_panel != null)
+            {
                    
-                    foreach (TreeNode node in TreeViewErrors.Nodes)
+                foreach (TreeNode node in TreeViewErrors.Nodes)
+                {
+                    if (node.Nodes.Count > 0)
                     {
-                        if (node.Nodes.Count > 0)
-                        {
-                            if (!node.Checked)
-                                continue;
-                            errors_fixed.Add((String)node.Tag, 0);
-                            foreach (TreeNode item in node.Nodes)
-                                if (item.Checked == true && !settings_panel.GetIgnores().Contains(item.Text))
+                        if (!node.Checked)
+                            continue;
+                        errors_fixed.Add((String)node.Tag, 0);
+                        foreach (TreeNode item in node.Nodes)
+                            if (item.Checked == true && !settings_panel.GetIgnores().Contains(item.Text))
+                            {
+                                var tag = (KeyValuePair<IDToDescript, long>)item.Tag;
+                                if (CleanEngineClient.Instance().FixItem(tag.Key.ID))
                                 {
-                                    var tag = (KeyValuePair<IDToDescript, long>)item.Tag;
-                                    if (CleanEngineClient.Instance().FixItem(tag.Key.ID))
-                                    {
-                                        errors_fixed[(String)node.Tag] += 1;
-                                    }
+                                    errors_fixed[(String)node.Tag] += 1;
                                 }
-                        }
+                            }
                     }
                 }
-                var stat_panel = (StatisticsPanel)Wizzard.TabPages["StatisticsPage"].Controls[0];
-                if (stat_panel != null)
-                {
-                    stat_panel.FixItems(errors_fixed);
-                    Program.CurrentState = ApplicationState.eNone;
-                    Wizzard.SelectedTab = Wizzard.TabPages["StatisticsPage"];
-                }
             }
-            else
+            var stat_panel = (StatisticsPanel)Wizzard.TabPages["StatisticsPage"].Controls[0];
+            if (stat_panel != null)
             {
-                MainWindow main_window = (MainWindow)Wizzard.Tag;
-                if (main_window != null)
-                {
-                    main_window.ShowRegisterScreen(main_window);
-                }
+                stat_panel.FixItems(errors_fixed);
+                Program.CurrentState = ApplicationState.eNone;
+                Wizzard.SelectedTab = Wizzard.TabPages["StatisticsPage"];
             }
         }
 

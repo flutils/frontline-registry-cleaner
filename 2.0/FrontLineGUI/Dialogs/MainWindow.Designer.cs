@@ -39,8 +39,6 @@ namespace FrontLineGUI
             this.BackUpImageList = new System.Windows.Forms.ImageList(this.components);
             this.MinImageList = new System.Windows.Forms.ImageList(this.components);
             this.CloseImageList = new System.Windows.Forms.ImageList(this.components);
-            this.NeedHelpImageList = new System.Windows.Forms.ImageList(this.components);
-            this.RegistrationImageList = new System.Windows.Forms.ImageList(this.components);
             this.StartScanImageList = new System.Windows.Forms.ImageList(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,11 +56,11 @@ namespace FrontLineGUI
             this.StartupPage = new System.Windows.Forms.TabPage();
             this.BackUpPage = new System.Windows.Forms.TabPage();
             this.ScanningPage = new System.Windows.Forms.TabPage();
+            this.FixingPage = new System.Windows.Forms.TabPage();
             this.ButtonHelp = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonUpdate = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonSettings = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonPCUtils = new FrontLineGUI.CustomFrontLineButton();
-            this.ButtonRegistration = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonNeedHelp = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonClose = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonMinimize = new FrontLineGUI.CustomFrontLineButton();
@@ -72,8 +70,9 @@ namespace FrontLineGUI
             this.ButtonScan = new FrontLineGUI.CustomFrontLineButton();
             this.NeedHelp2ImageList = new System.Windows.Forms.ImageList(this.components);
             this.NeedHelp2Button = new FrontLineGUI.CustomFrontLineButton();
-            this.FixingPage = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.wizControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ScanButtonImageList
@@ -121,20 +120,6 @@ namespace FrontLineGUI
             this.CloseImageList.TransparentColor = System.Drawing.Color.Magenta;
             this.CloseImageList.Images.SetKeyName(0, "Close_button.png");
             this.CloseImageList.Images.SetKeyName(1, "CloseHover_button.png");
-            // 
-            // NeedHelpImageList
-            // 
-            this.NeedHelpImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("NeedHelpImageList.ImageStream")));
-            this.NeedHelpImageList.TransparentColor = System.Drawing.Color.White;
-            this.NeedHelpImageList.Images.SetKeyName(0, "NeedHelp_button.png");
-            this.NeedHelpImageList.Images.SetKeyName(1, "NeedHelpHover_button.png");
-            // 
-            // RegistrationImageList
-            // 
-            this.RegistrationImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("RegistrationImageList.ImageStream")));
-            this.RegistrationImageList.TransparentColor = System.Drawing.Color.DarkViolet;
-            this.RegistrationImageList.Images.SetKeyName(0, "Registration_button.png");
-            this.RegistrationImageList.Images.SetKeyName(1, "RegistrationHover_button.png");
             // 
             // StartScanImageList
             // 
@@ -302,6 +287,15 @@ namespace FrontLineGUI
             this.ScanningPage.Text = "ScanningPage";
             this.ScanningPage.UseVisualStyleBackColor = true;
             // 
+            // FixingPage
+            // 
+            this.FixingPage.Location = new System.Drawing.Point(4, 24);
+            this.FixingPage.Name = "FixingPage";
+            this.FixingPage.Size = new System.Drawing.Size(468, 416);
+            this.FixingPage.TabIndex = 10;
+            this.FixingPage.Text = "FixingPage";
+            this.FixingPage.UseVisualStyleBackColor = true;
+            // 
             // ButtonHelp
             // 
             this.ButtonHelp.BackColor = System.Drawing.Color.Transparent;
@@ -342,7 +336,6 @@ namespace FrontLineGUI
             this.ButtonUpdate.Size = new System.Drawing.Size(44, 14);
             this.ButtonUpdate.TabIndex = 36;
             this.ButtonUpdate.UseVisualStyleBackColor = false;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // ButtonSettings
             // 
@@ -378,32 +371,12 @@ namespace FrontLineGUI
             this.ButtonPCUtils.ForeColor = System.Drawing.Color.Transparent;
             this.ButtonPCUtils.ImageIndex = 0;
             this.ButtonPCUtils.ImageList = this.PCUtilsImageList;
-            this.ButtonPCUtils.Location = new System.Drawing.Point(35, 442);
+            this.ButtonPCUtils.Location = new System.Drawing.Point(32, 453);
             this.ButtonPCUtils.Name = "ButtonPCUtils";
-            this.ButtonPCUtils.Size = new System.Drawing.Size(147, 31);
+            this.ButtonPCUtils.Size = new System.Drawing.Size(147, 16);
             this.ButtonPCUtils.TabIndex = 29;
             this.ButtonPCUtils.UseVisualStyleBackColor = false;
             this.ButtonPCUtils.Click += new System.EventHandler(this.ButtonPCUtils_Click);
-            // 
-            // ButtonRegistration
-            // 
-            this.ButtonRegistration.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonRegistration.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ButtonRegistration.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonRegistration.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ButtonRegistration.FlatAppearance.BorderSize = 0;
-            this.ButtonRegistration.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.ButtonRegistration.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.ButtonRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonRegistration.ForeColor = System.Drawing.Color.White;
-            this.ButtonRegistration.ImageIndex = 0;
-            this.ButtonRegistration.ImageList = this.RegistrationImageList;
-            this.ButtonRegistration.Location = new System.Drawing.Point(480, 14);
-            this.ButtonRegistration.Name = "ButtonRegistration";
-            this.ButtonRegistration.Size = new System.Drawing.Size(140, 20);
-            this.ButtonRegistration.TabIndex = 26;
-            this.ButtonRegistration.UseVisualStyleBackColor = false;
-            this.ButtonRegistration.Click += new System.EventHandler(this.ButtonRegistration_Click);
             // 
             // ButtonNeedHelp
             // 
@@ -415,13 +388,11 @@ namespace FrontLineGUI
             this.ButtonNeedHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonNeedHelp.ForeColor = System.Drawing.Color.Transparent;
             this.ButtonNeedHelp.ImageIndex = 0;
-            this.ButtonNeedHelp.ImageList = this.NeedHelpImageList;
             this.ButtonNeedHelp.Location = new System.Drawing.Point(12, 473);
             this.ButtonNeedHelp.Name = "ButtonNeedHelp";
             this.ButtonNeedHelp.Size = new System.Drawing.Size(188, 46);
             this.ButtonNeedHelp.TabIndex = 25;
             this.ButtonNeedHelp.UseVisualStyleBackColor = false;
-            this.ButtonNeedHelp.Click += new System.EventHandler(this.ButtonNeedHelp_Click);
             // 
             // ButtonClose
             // 
@@ -578,17 +549,21 @@ namespace FrontLineGUI
             this.NeedHelp2Button.Size = new System.Drawing.Size(188, 46);
             this.NeedHelp2Button.TabIndex = 41;
             this.NeedHelp2Button.UseVisualStyleBackColor = false;
-            this.NeedHelp2Button.Visible = false;
+            this.NeedHelp2Button.Visible = true;
             this.NeedHelp2Button.Click += new System.EventHandler(this.NeedHelp2Button_Click);
             // 
-            // FixingPage
+            // pictureBox1
             // 
-            this.FixingPage.Location = new System.Drawing.Point(4, 24);
-            this.FixingPage.Name = "FixingPage";
-            this.FixingPage.Size = new System.Drawing.Size(468, 416);
-            this.FixingPage.TabIndex = 10;
-            this.FixingPage.Text = "FixingPage";
-            this.FixingPage.UseVisualStyleBackColor = true;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pictureBox1.Enabled = false;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(545, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(79, 8);
+            this.pictureBox1.TabIndex = 42;
+            this.pictureBox1.TabStop = false;
             // 
             // MainWindow
             // 
@@ -598,6 +573,7 @@ namespace FrontLineGUI
             this.BackgroundImage = global::FrontLineGUI.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(686, 534);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.NeedHelp2Button);
             this.Controls.Add(this.wizControl);
             this.Controls.Add(this.ButtonHelp);
@@ -606,7 +582,6 @@ namespace FrontLineGUI
             this.Controls.Add(this.ButtonPCUtils);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.ButtonRegistration);
             this.Controls.Add(this.ButtonNeedHelp);
             this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.ButtonMinimize);
@@ -621,13 +596,14 @@ namespace FrontLineGUI
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(686, 534);
             this.Name = "MainWindow";
-            this.Opacity = 0.03;
+            this.Opacity = 0.03D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrontlineRegistryCleaner";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Magenta;
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.wizControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -646,9 +622,6 @@ namespace FrontLineGUI
         private System.Windows.Forms.ImageList ExtrasImageList;
         private System.Windows.Forms.ImageList BackUpImageList;
         private System.Windows.Forms.ImageList StatisticsImageList;
-        private System.Windows.Forms.ImageList NeedHelpImageList;
-        private CustomFrontLineButton ButtonRegistration;
-        private System.Windows.Forms.ImageList RegistrationImageList;
         private System.Windows.Forms.ImageList StartScanImageList;
         private System.Windows.Forms.ImageList MinImageList;
         private System.Windows.Forms.ImageList CloseImageList;
@@ -675,6 +648,7 @@ namespace FrontLineGUI
         private ImageList NeedHelp2ImageList;
         private CustomFrontLineButton NeedHelp2Button;
         private TabPage FixingPage;
+        private PictureBox pictureBox1;
     }
 }
 

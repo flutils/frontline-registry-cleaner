@@ -33,15 +33,6 @@ namespace FrontLineGUI
 
         private void ButtonStartAnalysesStep1_Click(object sender, EventArgs e)
         {
-            if (!ApplicationSettings.IsPaid)
-            {
-                MainWindow main_window = (MainWindow)Wizzard.Tag;
-                if (main_window != null)
-                {
-                    main_window.ShowRegisterScreen(main_window);
-                }
-                return;
-            }
             var def_dir = Path.Combine(Environment.CurrentDirectory,"DefragFiles");
             try
             {

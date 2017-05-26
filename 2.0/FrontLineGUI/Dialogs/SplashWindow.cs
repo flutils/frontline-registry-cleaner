@@ -15,5 +15,10 @@ namespace FrontLineGUI.Dialogs
         {
             InitializeComponent();
         }
+
+        private void SplashWindow_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

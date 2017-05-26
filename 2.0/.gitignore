@@ -22,6 +22,20 @@ bld/
 [Oo]bj/
 [Ll]og/
 
+# CUSTOM 
+CD_ROM
+Debug_CE_Only
+Debug_DC_Only
+DVD-5
+DVD-9
+DVD-10
+DVD-18
+Release_CE_Only
+Release_DC_Only
+ReleaseTest
+SingleImage
+WebDeployment
+
 # Visual Studio 2015 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot

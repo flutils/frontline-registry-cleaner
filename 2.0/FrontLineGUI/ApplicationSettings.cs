@@ -71,12 +71,6 @@ namespace FrontLineGUI
             }
         }
 
-        public static bool IsPaid
-        {
-            get { return _ReadValue("IsPaid") == "1" ? true : false; }
-            set { _SetValue("IsPaid", (value == true) ? "1" : "0"); }
-        }
-
         public static bool NeedScan
         {
             get;
