@@ -49,7 +49,7 @@
 ; Settings
 !define MUI_ABORTWARNING
 !define MUI_ICON   "Assets\install.ico"
-!define MUI_UNICON "Assets\1495306664_basket_trash.ico"
+!define MUI_UNICON "Assets\uninstall.ico"
 
 ; Pages
 !insertmacro MUI_PAGE_WELCOME
