@@ -31,8 +31,8 @@ If you want to contribute, there are several conditions:
 <!-- ################################### -->
 
 <!-- Images -->
-[fl]:        readme/fl.jpg
-[flcleaner]: readme/main.jpg
+[fl]:        3.0/readme/fl.jpg
+[flcleaner]: 3.0/readme/main.jpg
 
 <!-- Links -->
 [flutils]:        http://www.frontlineutilities.co.uk
