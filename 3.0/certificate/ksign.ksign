@@ -1,0 +1,11 @@
+[Settings]
+256_pfx_pass=
+256_pfx_file=433A5C4465765C417070735C666C636C65616E65725C322E305C63657274696669636174655C323031372E706678
+256_Description=46726F6E746C696E6520526567697374727920436C65616E657220322E302028467265652045646974696F6E29
+256_DescriptionURL=68747470733A2F2F7777772E666C636C65616E65722E636F6D
+1_pfx_pass=
+1_pfx_file=
+1_Description=
+1_DescriptionURL=
+files_to_sign=C:\Dev\Apps\flcleaner\2.0\Installer\FLSetup.exe|C:\Dev\Apps\flcleaner\2.0\Release\FLCleanEngine.dll|C:\Dev\Apps\flcleaner\2.0\Release\FrontLineRegistryCleaner2.0.exe|C:\Dev\Apps\flcleaner\2.0\Release\Microsoft.Win32.TaskScheduler.dll
+

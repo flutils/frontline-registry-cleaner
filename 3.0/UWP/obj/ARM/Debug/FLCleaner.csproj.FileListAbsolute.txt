@@ -1,0 +1,11 @@
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\App.g.i.cs
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\App.g.cs
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\App.xaml
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\MainPage.xaml
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\App.xbf
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\MainPage.xbf
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\FLCleaner.csprojResolveAssemblyReference.cache
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\MainPage.g.i.cs
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\MainPage.g.cs
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\XamlTypeInfo.g.cs
+C:\Dev\Apps\flcleaner\3.0\UWP\obj\ARM\Debug\XamlSaveStateFile.xml
