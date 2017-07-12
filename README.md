@@ -3,35 +3,71 @@
 ![FLCleaner 3.0][flcleaner]
 
 <p align="center">
-  <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> - <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/frontlineutils/flcleaner.svg?branch=master" /></a> - <a href='https://coveralls.io/github/frontlineutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/frontlineutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
+  <a href="https://github.com/flutils/flcleaner/blob/master/LICENSE" title="Covered By GPL License"><img src="https://img.shields.io/github/license/flutils/flcleaner.svg?style=flat-square" /></a>
+  <a href="https://github.com/flutils/flcleaner/releases"><img src="https://img.shields.io/github/downloads/flutils/flcleaner/total.svg?style=flat-square" /></a>
 </p>
 
-[FLCleaner 3.0][flcleaner.com] is **stack manager** software - designed to optimize computing systems.
+---
 
-Whilst working similarly to other PC optimization tools, it has a distinct difference in that it works on the *platform* level, rather than the system. Its purpose is to help system administrators manage their [solution stack](https://en.wikipedia.org/wiki/Solution_stack) in real time ↴
+## PC Optimization For The 21st Century ##
+
+**[FLCleaner 3.0][flcleaner.com]** is **stack manager** software (designed to optimize computing systems).
+
+Whilst working similarly to other PC optimization tools, it has a distinct difference in that it works on the *platform* level, rather than system. Its purpose is to help system administrators manage the [solution stack](https://en.wikipedia.org/wiki/Solution_stack) in real time ↴
 
 ![FLCleaner 3.0][flcleaner]
 
 -- <br />
-The tool works by __________
+Calling the product a "stack manager" doesn't mean it works differently.
 
-The point is to not just provide users with optimization & performance upgrades across the modern compliment of digital platforms (Win/Linux/Mac Android/iOS), but to also create an immersive solution for maintaining an optimal solution stack.
+The product works inasmuch the same way as other PC Optimization tools - checking your system for pre-defined criteria & prompting you to "fix" the inconsistencies. The difference lies in *how* it does this.
 
-It is designed for **creative agencies** and **software development houses**, both of whom rely on high performance systems and ___ applications. Whilst FLCleaner cannot change these tools, it can
+
+---
+
+## Open Source ##
+
+**But WAIT!** <br />
+Is this a **SCAM?** Why are you *giving away* the source?
+
+Committing to open source was a major decision for us.
+
+Whilst it would have been beneficial to keep the product secret, we felt the benefits outweighed the pitfalls. Specifically, the loss of revenue and increased competition  could be justified with the community value add of a vibrant open source offering:
+
+1. **Boxed Software** <br/> We're entering a new era of computing where accessibility is no longer the biggest challenge. Boxed software, remaining important, will do so for different reasons.
+
+2. **PC Speedup Software** <br /> There are about 25 top class PC Optimization tools sold online, some better than others. The biggest problem with these tools is that *most* are unable to actually do what they promise, causing all sorts of problems.
+
+3. **Digital Artists** <br />
+Our primary goal with this product was to become equated with the digital art community.
+
+-- <br />
+Whilst open sourcing the project would obviously create a large number of challenges, it would also provide an incredible opportunity to develop a vibrant community.
+
 
 With [FLCleaner 3.0][flcleaner], you're now able to monitor, manage and optimize these resources from a single location.
 
 ---
 
-## Contributions
+## 💼 Code 💼
 
-- [x] This repository is solely for the *free* edition of [FLCleaner 3.0][flcleaner.com]
-- [x] Contributions made on [FLCleaner 3.0][flcleaner.com] become the property of [Frontline Utilities LTD][flutils], who reserve the right to distribute them as part of any commercial offering
-- [x] You can submit any contributions you wish by forking the project and submitting a pull request
-- [x] The software requires a free account at [FLCleaner.com][flcleaner.com]
-- [x] You are welcome to use the software to create your own solutions etc but you must *not* sell or redistribute parts of it without citing [Frontline Utilities LTD][flutils]
+### Setup
 
-Of course, you're welcome to [create an issue][issues] requesting clarification on any point.
+### Installer
+
+### Compilation
+
+---
+
+## 👽 Contributions 👽
+
+- [x] This repository is solely for the *free* edition of [FLCleaner 3.0][flcleaner.com].
+- [x] You can submit contributions by forking the project and submitting a [pull request](/pulls).
+- [x] Requires a free account at [FLCleaner.com][flcleaner.com].
+- [x] Contributions made on [FLCleaner 3.0][flcleaner.com] become property of [Frontline Utilities LTD][flutils], who reserve the right to distribute them as part of any commercial offering.
+- [x] You are welcome to use the software to create your own solutions but you must *not* redistribute parts without citing [Frontline Utilities LTD][flutils].
+
+You're welcome to [create an issue][issues] requesting clarification if needed.
 
 ---
 
