@@ -22,17 +22,21 @@ Calling the product a "stack manager" doesn't mean it works differently.
 
 The product works inasmuch the same way as other PC Optimization tools - checking your system for pre-defined criteria & prompting you to "fix" the inconsistencies. The difference lies in *how* it does this.
 
+Current PC Optimization software has a major drawback, in that it *only* works on the system level. This means that it is pre-programmed to identify *specific* elements of the OS
+
+
+With [FLCleaner 3.0][flcleaner.com], you're now able to monitor, manage and optimize these resources from a single location.
 
 ---
 
-## Open Source ##
+## 👓 Open Source 👓 ##
 
 **But WAIT!** <br />
 Is this a **SCAM?** Why are you *giving away* the source?
 
-Committing to open source was a major decision for us.
+Committing to open source was a major decision.
 
-Whilst it would have been beneficial to keep the product secret, we felt the benefits outweighed the pitfalls. Specifically, the loss of revenue and increased competition  could be justified with the community value add of a vibrant open source offering:
+Whilst it would have been logical to keep the product secret, we felt the benefits outweighed the pitfalls. Any loss of revenue and increased competition  could be justified with the community value add of a vibrant open source offering:
 
 1. **Boxed Software** <br/> We're entering a new era of computing where accessibility is no longer the biggest challenge. Boxed software, remaining important, will do so for different reasons.
 
@@ -44,30 +48,30 @@ Our primary goal with this product was to become equated with the digital art co
 -- <br />
 Whilst open sourcing the project would obviously create a large number of challenges, it would also provide an incredible opportunity to develop a vibrant community.
 
-
-With [FLCleaner 3.0][flcleaner], you're now able to monitor, manage and optimize these resources from a single location.
-
 ---
 
 ## 💼 Code 💼
 
-### Setup
+#### Setup
 
-### Installer
+#### Installer
 
-### Compilation
+#### Compilation
 
 ---
 
 ## 👽 Contributions 👽
 
-- [x] This repository is solely for the *free* edition of [FLCleaner 3.0][flcleaner.com].
-- [x] You can submit contributions by forking the project and submitting a [pull request](/pulls).
 - [x] Requires a free account at [FLCleaner.com][flcleaner.com].
+- [x] This repository is solely for the **free** edition of [FLCleaner 3.0][flcleaner.com].
+- [x] You can submit contributions by forking the project and submitting a [pull request][pulls].
 - [x] Contributions made on [FLCleaner 3.0][flcleaner.com] become property of [Frontline Utilities LTD][flutils], who reserve the right to distribute them as part of any commercial offering.
-- [x] You are welcome to use the software to create your own solutions but you must *not* redistribute parts without citing [Frontline Utilities LTD][flutils].
+- [x] You are welcome to use the software to create your own solutions but you must *not* redistribute code without citing [Frontline Utilities LTD][flutils].
 
-You're welcome to [create an issue][issues] requesting clarification if needed.
+You're welcome to [create an issue][issues] & request clarification if required.
+
+-- <br />
+Indeed, the *main* reason we open sourced this was to give the *community* an opportunity to actually be a part of its development. If you want to suggest a change, you have all the source code available.
 
 ---
 
@@ -85,7 +89,10 @@ You're welcome to [create an issue][issues] requesting clarification if needed.
 <!-- Links -->
 [flutils]:        http://www.frontlineutilities.co.uk
 [flcleaner.com]:  https://www.flcleaner.com
-[issues]:         /issues
+
+<!-- Repo -->
+[issues]:         https://www.github.com/flutils/flcleaner/issues
+[pulls]:          https://www.github.com/flutils/flcleaner/pulls
 
 <!-- ################################### -->
 <!-- ################################### -->
