@@ -16,34 +16,34 @@ Whilst working similarly to other **PC optimization tools**, it has a distinct d
 ![FLCleaner 3.0][flcleaner]
 
 -- <br />
-All other system optimization software is out of date.
-
 **FLCleaner 3.0** works similarly to PC Optimization tools → checking your system for pre-defined criteria & prompting you to "fix" the problems. The difference lies in *how* it does this.
 
-Current PC Optimization software has a *major* drawback - they *only* work on the system level. This means that they are *all* pre-programmed to identify *specific* elements of the OS, and maybe some higher-level solutions for applications.
+Current PC Optimization software has a **major** drawback - they *only* work on the SYSTEM level. This means that they are *all* pre-programmed to identify *specific* elements of the OS, and maybe some higher-level solutions for applications.
 
+With [FLCleaner 3.0][flcleaner.com], you're now able to monitor, manage and optimize these resources from a single endpoint. Whilst the front-end is completely free, the real benefit lies in the online service, allowing you to manage, upgrade and optimize your system across the full spectrum of modern platforms.
 
-With [FLCleaner 3.0][flcleaner.com], you're now able to monitor, manage and optimize these resources from a single location.
+There are a number of features:
+
+1. x
+2. y
+3. z
 
 ---
 
 ## 👓 Open Source 👓 ##
 
-**Why are you *giving away* the source?**
 
-We're not.
+Whilst it would have been logical to keep the source proprietary, we felt the benefits of open source outweighed the extra competition:
 
-Whilst it would have been logical to kesetreep the source proprietary, we felt the benefits of open source were pronounced.
+1. **Boxed Software** <br/> We're entering a new era of computing where accessibility is no longer the biggest challenge. Boxed software, remaining important, will do so for different reasons. Whilst nothing beats having a nice box, it won't be the *sole* way people engage with software.
 
-1. **Boxed Software** <br/> We're entering a new era of computing where accessibility is no longer the biggest challenge. Boxed software, remaining important, will do so for different reasons.
-
-2. **PC Speedup Software** <br /> There are about 25 top class PC Optimization tools sold online, some better than others. The biggest problem with these tools is that *most* are unable to actually do what they promise, causing all sorts of problems.
+2. **PC Speedup Software** <br /> There are about 20 top class PC Optimization tools sold online, some better than others. The biggest problem with these tools is that *most* are unable to actually do what they promise, causing all sorts of problems. A handful work well, the rest are garbage.
 
 3. **Digital Artists** <br />
-Our primary goal with this product was to become equated with the digital art community.
+Our primary goal with this product was to become equated with the digital art community. Thus, the product is freely available to help younger artists.
 
 -- <br />
-Whilst open sourcing the project would obviously create a large number of challenges, it would also provide an incredible opportunity to develop a vibrant community.
+Obviously, open sourcing the project will create a large number of challenges. However, it would also provide an incredible opportunity to invest into a vibrant community.
 
 ---
 

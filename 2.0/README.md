@@ -54,7 +54,7 @@ You're welcome to [create an issue][issues] & request clarification if required.
 
 <!-- Images -->
 [fl]:   ../3.0/readme/fl.jpg
-[main]: Readme/main.jpg
+[main]: Readme/main.jpeg
 
 <!-- Links -->
 [flutils]:              http://www.frontlineutilities.co.uk
