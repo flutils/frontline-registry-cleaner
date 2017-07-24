@@ -44,7 +44,7 @@ There are also several other reasons:
 Our primary goal with this product was to become equated with the digital art community. Thus, the product is freely available to help younger artists.
 
 -- <br />
-Obviously, open sourcing the project will create a large number of challenges. However, it would also provide an incredible opportunity to invest into a vibrant community.
+Obviously, open sourcing the project will create a large number of challenges. However, it would also provide an incredible opportunity to develop a vibrant community.
 
 ---
 
