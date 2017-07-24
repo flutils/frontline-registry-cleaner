@@ -1,5 +1,3 @@
-# FLCleaner 3.0
-
 ![FLCleaner 3.0][flcleaner]
 
 <p align="center">
@@ -11,18 +9,18 @@
 
 ## PC Optimization For The 21st Century ##
 
-**[FLCleaner 3.0][flcleaner.com]** is **stack manager** software (designed to optimize computing systems).
+**[FLCleaner 3.0][flcleaner.com]** is a **stack manager** (designed to optimize computing systems).
 
-Whilst working similarly to other PC optimization tools, it has a distinct difference in that it works on the *platform* level, rather than system. Its purpose is to help system administrators manage the [solution stack](https://en.wikipedia.org/wiki/Solution_stack) in real time ↴
+Whilst working similarly to other **PC optimization tools**, it has a distinct difference in that it works on the *platform* level, rather than the *system*. Its purpose is to help system administrators manage the [solution stack](https://en.wikipedia.org/wiki/Solution_stack) in real time ↴
 
 ![FLCleaner 3.0][flcleaner]
 
 -- <br />
-Calling the product a "stack manager" doesn't mean it works differently.
+All other system optimization software is out of date.
 
-The product works inasmuch the same way as other PC Optimization tools - checking your system for pre-defined criteria & prompting you to "fix" the inconsistencies. The difference lies in *how* it does this.
+**FLCleaner 3.0** works similarly to PC Optimization tools → checking your system for pre-defined criteria & prompting you to "fix" the problems. The difference lies in *how* it does this.
 
-Current PC Optimization software has a major drawback, in that it *only* works on the system level. This means that it is pre-programmed to identify *specific* elements of the OS
+Current PC Optimization software has a *major* drawback - they *only* work on the system level. This means that they are *all* pre-programmed to identify *specific* elements of the OS, and maybe some higher-level solutions for applications.
 
 
 With [FLCleaner 3.0][flcleaner.com], you're now able to monitor, manage and optimize these resources from a single location.
@@ -31,12 +29,11 @@ With [FLCleaner 3.0][flcleaner.com], you're now able to monitor, manage and opti
 
 ## 👓 Open Source 👓 ##
 
-**But WAIT!** <br />
-Is this a **SCAM?** Why are you *giving away* the source?
+**Why are you *giving away* the source?**
 
-Committing to open source was a major decision.
+We're not.
 
-Whilst it would have been logical to keep the product secret, we felt the benefits outweighed the pitfalls. Any loss of revenue and increased competition  could be justified with the community value add of a vibrant open source offering:
+Whilst it would have been logical to kesetreep the source proprietary, we felt the benefits of open source were pronounced.
 
 1. **Boxed Software** <br/> We're entering a new era of computing where accessibility is no longer the biggest challenge. Boxed software, remaining important, will do so for different reasons.
 
@@ -69,9 +66,6 @@ Whilst open sourcing the project would obviously create a large number of challe
 - [x] You are welcome to use the software to create your own solutions but you must *not* redistribute code without citing [Frontline Utilities LTD][flutils].
 
 You're welcome to [create an issue][issues] & request clarification if required.
-
--- <br />
-Indeed, the *main* reason we open sourced this was to give the *community* an opportunity to actually be a part of its development. If you want to suggest a change, you have all the source code available.
 
 ---
 
