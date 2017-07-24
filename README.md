@@ -22,18 +22,19 @@ Current PC Optimization software has a **major** drawback - they *only* work on 
 
 With [FLCleaner 3.0][flcleaner.com], you're now able to monitor, manage and optimize these resources from a single endpoint. Whilst the front-end is completely free, the real benefit lies in the online service, allowing you to manage, upgrade and optimize your system across the full spectrum of modern platforms.
 
-There are a number of features:
-
-1. x
-2. y
-3. z
+[[ Features ]]
 
 ---
 
 ## 👓 Open Source 👓 ##
 
+There are two reasons why we open sourced the product.
 
-Whilst it would have been logical to keep the source proprietary, we felt the benefits of open source outweighed the extra competition:
+Firstly, *marketing* a product like this requires people to care. Starting from scratch means you need to do everything within your power to cultivate a community. Open sourcing gives people ownership, and thus would hopefully attract a community.
+
+Secondly, this space is littered with many "faux" products which don't work. We don't really care about making money from this (we have plenty of work), so felt it better to make it open source - providing transparency.
+
+There are also several other reasons:
 
 1. **Boxed Software** <br/> We're entering a new era of computing where accessibility is no longer the biggest challenge. Boxed software, remaining important, will do so for different reasons. Whilst nothing beats having a nice box, it won't be the *sole* way people engage with software.
 
@@ -59,11 +60,11 @@ Obviously, open sourcing the project will create a large number of challenges. H
 
 ## 👽 Contributions 👽
 
-- [x] Requires a free account at [FLCleaner.com][flcleaner.com].
-- [x] This repository is solely for the **free** edition of [FLCleaner 3.0][flcleaner.com].
-- [x] You can submit contributions by forking the project and submitting a [pull request][pulls].
-- [x] Contributions made on [FLCleaner 3.0][flcleaner.com] become property of [Frontline Utilities LTD][flutils], who reserve the right to distribute them as part of any commercial offering.
-- [x] You are welcome to use the software to create your own solutions but you must *not* redistribute code without citing [Frontline Utilities LTD][flutils].
+- [x] Requires a free account at [FLCleaner.com][flcleaner.com]
+- [x] This repository is solely for the **free** edition of [FLCleaner 3.0][flcleaner.com]
+- [x] You can submit contributions by forking the project and submitting a [pull request][pulls]
+- [x] Contributions made on [FLCleaner 3.0][flcleaner.com] become property of [Frontline Utilities LTD][flutils], who reserve the right to distribute them as part of any commercial offering
+- [x] You are welcome to use the software to create your own solutions but you must *not* redistribute code without citing [Frontline Utilities LTD][flutils]
 
 You're welcome to [create an issue][issues] & request clarification if required.
 
