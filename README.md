@@ -24,6 +24,41 @@ With [FLCleaner 3.0][flcleaner.com], you're now able to monitor, manage and opti
 
 [[ Features ]]
 
+The system is completely object orientated, meaning that it should be relatively simple to use & maintain.
+
+Each time the system loads, it will build the following set of objects:
+
+```
+computer:  {
+  name:            System.name,
+  time:            System.time,
+  status:          System.status,
+  architecture:    System.architecture,
+  manufacturer:    System.manufacturer,
+  model:           System.model,
+  language:        System.language,
+  os: {
+    name:          System.os,
+    build:         System.os.build,
+    version:       System.os.version,
+    architecture:  System.os.architecture
+  },
+  hardware: {
+    cpu:         {},
+    ram:         {},
+    hdd:         {},
+    gpu:         {},
+    motherboard: {},
+    display:     {
+      1: {},
+      2: {}
+    }
+  },
+  software: {},
+  event:    {}
+}
+```
+
 ---
 
 ## 👓 Open Source 👓 ##
