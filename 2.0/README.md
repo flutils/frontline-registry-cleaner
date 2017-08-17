@@ -2,15 +2,15 @@
 
 ![Frontline Registry Cleaner 2.0][main]
 
-Source for [Frontline Registry Cleaner 2.0 (Free Edizione)][frontlinecleaner.com] ↴
-
 <p align="center">
   <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> - <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/frontlineutils/flcleaner.svg?branch=master" /></a> - <a href='https://coveralls.io/github/frontlineutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/frontlineutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 
 ---
 
-[**Frontline Registry Cleaner 2.0**][frontlinecleaner.com] was a huge success, with over 3,000 people buying the product.
+[**Frontline Registry Cleaner 2.0**][frontlinecleaner.com] was released in 2011 and 
+
+was a huge success, with over 3,000 people buying the product.
 
 It was also stocked by a large electronics retailer in the UK:
 
