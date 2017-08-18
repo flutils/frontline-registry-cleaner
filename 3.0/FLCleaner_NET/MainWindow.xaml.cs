@@ -42,26 +42,30 @@ namespace FLCleaner_NET
         // App //
         public MainWindow()
         {
+
+            // Init app
             InitializeComponent();
+
+            // Events
+            //this.MouseDown += new MouseButtonEventHandler(MainWindow_Drag); // Window Drag
 
             // Border Radius 
             // https://stackoverflow.com/a/18822204/1143732
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            //this.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Convert.ToInt32(Width), Convert.ToInt32(Height), 20, 20));
 
+        }
+
+    ///////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+
+        private void MainWindow_Paint(object sender, PaintEventArgs e)
+        {
+            //e.Graphics.DrawRectangle(new Pen(Black, 1), this.DisplayRectangle);
         }
 
     ///////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////
     // Extras //
-    ///////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////
-
-        // Hover Cursor
-        public void MainWindow_Click(object sender, System.EventArgs e)
-        {
-            System.Windows.MessageBox.Show("Dot Net Perls is awesome");
-        }
-
     ///////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////
 
@@ -76,7 +80,7 @@ namespace FLCleaner_NET
         public static extern bool ReleaseCapture();
 
         // Mousedown Event
-        private void MainWindow_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        private void MainWindow_Drag(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {

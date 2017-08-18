@@ -61,6 +61,15 @@ namespace FLCleaner_NET.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Frontline Utilities LTD.
+        /// </summary>
+        internal static string Company {
+            get {
+                return ResourceManager.GetString("Company", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap cursor {
@@ -71,21 +80,21 @@ namespace FLCleaner_NET.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FLCleaner.
-        /// </summary>
-        internal static string Name {
-            get {
-                return ResourceManager.GetString("Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap pointer {
             get {
                 object obj = ResourceManager.GetObject("pointer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://www.fl.co.uk.
+        /// </summary>
+        internal static string URL {
+            get {
+                return ResourceManager.GetString("URL", resourceCulture);
             }
         }
     }

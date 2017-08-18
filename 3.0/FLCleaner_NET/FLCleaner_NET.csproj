@@ -7,7 +7,7 @@
     <ProjectGuid>{7AFA55C6-93B6-499B-B4E8-29881CE8AEA6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FLCleaner_NET</RootNamespace>
-    <AssemblyName>FLCleaner</AssemblyName>
+    <AssemblyName>FLCleaner3.0</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -60,6 +60,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>2017.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestTimestampUrl>http://timestamp.verisign.com/scripts/timstamp.dll</ManifestTimestampUrl>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -135,10 +138,10 @@
     <Folder Include="Modals\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\cursor.png" />
+    <None Include="Resources\Cursors\cursor.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\pointer.png" />
+    <None Include="Resources\Cursors\pointer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
