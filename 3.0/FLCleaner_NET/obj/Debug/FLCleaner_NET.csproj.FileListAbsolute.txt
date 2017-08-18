@@ -21,3 +21,4 @@ C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Debug\FLCleaner_MarkupCompile.lref
 C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Debug\FLCleaner.g.resources
 C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Debug\FLCleaner.exe
 C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Debug\FLCleaner.pdb
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Debug\FLCleaner_NET.csprojResolveAssemblyReference.cache
