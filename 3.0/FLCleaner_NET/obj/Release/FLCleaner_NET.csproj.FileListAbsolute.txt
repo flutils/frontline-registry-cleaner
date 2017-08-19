@@ -1,0 +1,14 @@
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\bin\Release\FLCleaner3.0.exe.config
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\bin\Release\FLCleaner3.0.exe
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\bin\Release\FLCleaner3.0.pdb
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\MainWindow.g.cs
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\App.g.cs
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\FLCleaner3.0_MarkupCompile.cache
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\FLCleaner3.0_MarkupCompile.lref
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\MainWindow.baml
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\FLCleaner3.0.g.resources
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\FLCleaner_NET.Properties.Resources.resources
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\FLCleaner_NET.csproj.GenerateResource.Cache
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\FLCleaner_NET.csproj.CoreCompileInputs.cache
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\FLCleaner3.0.exe
+C:\Dev\Apps\flcleaner\3.0\FLCleaner_NET\obj\Release\FLCleaner3.0.pdb

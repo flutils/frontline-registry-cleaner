@@ -106,15 +106,15 @@ You're welcome to [create an issue][issues] & request clarification if required.
 ---
 
 <div align="left">
-  :copyright: <a href="https://www.frontlineutilities.co.uk" align="absmiddle"><img src="3.0/readme/fl.jpg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://stackoverflow.com/users/1143732/richard-peck?tab=profile" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R S Peck" /></a>
+  :copyright: <a href="https://www.frontlineutilities.co.uk" align="absmiddle"><img src="3.0/Private/Readme/fl.jpg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://stackoverflow.com/users/1143732/richard-peck?tab=profile" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R S Peck" /></a>
 </div>
 
 <!-- ################################### -->
 <!-- ################################### -->
 
 <!-- Images -->
-[fl]:        3.0/readme/fl.jpg
-[flcleaner]: 3.0/readme/main.jpg
+[fl]:        3.0/Private/Readme/fl.jpg
+[flcleaner]: 3.0/Private/Readme/main.jpg
 
 <!-- Links -->
 [flutils]:        http://www.frontlineutilities.co.uk
