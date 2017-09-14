@@ -273,3 +273,6 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+# UWP
+2.0/UWP/win32

@@ -109,7 +109,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies>wininet.lib;shfolder.lib;CleanEngine.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)\CleanEngine\Lib\_Release\2005;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Dev\Apps\flcleaner\2.0\Release\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
