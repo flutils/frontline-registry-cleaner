@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities" IgnorableNamespaces="uap mp rescap">
-  <Identity Name="FrontlineUtilitiesLTD.FrontlineRegistryCleaner2.0" Version="1.1.18.0" Publisher="CN=BBE68697-87BD-4A51-8F9B-6F1D10FAFCFB" />
+  <Identity Name="FrontlineUtilitiesLTD.FrontlineRegistryCleaner2.0" Version="1.1.19.0" Publisher="CN=BBE68697-87BD-4A51-8F9B-6F1D10FAFCFB" />
   <mp:PhoneIdentity PhoneProductId="cd8eb9cf-3760-4852-a5a2-83e8b927acbe" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Frontline Registry Cleaner 2.0</DisplayName>
@@ -16,7 +16,7 @@
   <Applications>
     <Application Id="App" Executable="win32\FrontLineRegistryCleaner2.0.exe" EntryPoint="Windows.FullTrustApplication">
       <uap:VisualElements DisplayName="Frontline Registry Cleaner 2.0" Description="Registry Cleaner &amp; Junk File Remover" BackgroundColor="transparent" Square150x150Logo="images\Square150x150Logo.png" Square44x44Logo="images\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="images\Wide310x150Logo.png">
+        <uap:DefaultTile Wide310x150Logo="images\Wide310x150Logo.png" Square310x310Logo="images\LargeTile.png" Square71x71Logo="images\SmallTile.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="images\splashscreen.png" />
         <uap:InitialRotationPreference>
