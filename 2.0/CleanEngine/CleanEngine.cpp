@@ -268,12 +268,12 @@ void CCleanEngine::Pause( BOOL bSuspend )
 	if( bSuspend )
 	{
 		CRunnableStateMngr::Instance().PauseThemAll();
-		SetStatus( ST_SLEEPING );
+		//SetStatus( ST_SLEEPING );
 	}
 	else
 	{
 		CRunnableStateMngr::Instance().ResumeThemAll();
-		SetStatus( ST_RUNNING );
+		//SetStatus( ST_RUNNING );
 	}
 }
 
@@ -286,8 +286,8 @@ void CCleanEngine::Pause( BOOL bSuspend )
 *************************************************************************/
 void CCleanEngine::Stop()
 {
-	if(CRunnableStateMngr::Instance().StopThemAll() != S_FALSE)
-		SetStatus( ST_STOPPED );
+	//if(CRunnableStateMngr::Instance().StopThemAll() != S_FALSE)
+		//SetStatus( ST_STOPPED );
 }
 
 /*************************************************************************

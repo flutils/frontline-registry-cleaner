@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FrontLineGUI</RootNamespace>
-    <AssemblyName>FrontLineRegistryCleaner2.0</AssemblyName>
+    <AssemblyName>FLCleaner2.0</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>216.ico</ApplicationIcon>
@@ -70,6 +70,9 @@
   <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>FrontLineGUI.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.5.3951.23515, Culture=neutral, processorArchitecture=MSIL">
@@ -170,7 +173,6 @@
     <Compile Include="Dialogs\SplashWindow.Designer.cs">
       <DependentUpon>SplashWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="LicenseManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Dialogs\CustomControls\ProgressBar.cs">
       <SubType>Component</SubType>

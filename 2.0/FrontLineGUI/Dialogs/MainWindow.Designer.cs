@@ -46,6 +46,8 @@ namespace FrontLineGUI
             this.SettingsLinkImageList = new System.Windows.Forms.ImageList(this.components);
             this.UpdateImageList = new System.Windows.Forms.ImageList(this.components);
             this.HelpImageList = new System.Windows.Forms.ImageList(this.components);
+            this.NeedHelp2ImageList = new System.Windows.Forms.ImageList(this.components);
+            this.NeedHelp2Button = new FrontLineGUI.CustomFrontLineButton();
             this.wizControl = new FrontLineGUI.WizzardControl();
             this.ScanPage = new System.Windows.Forms.TabPage();
             this.StatisticsPage = new System.Windows.Forms.TabPage();
@@ -68,8 +70,6 @@ namespace FrontLineGUI
             this.ButtonBackUp = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonExtras = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonScan = new FrontLineGUI.CustomFrontLineButton();
-            this.NeedHelp2ImageList = new System.Windows.Forms.ImageList(this.components);
-            this.NeedHelp2Button = new FrontLineGUI.CustomFrontLineButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.wizControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -180,6 +180,31 @@ namespace FrontLineGUI
             this.HelpImageList.Images.SetKeyName(0, "Help_button.png");
             this.HelpImageList.Images.SetKeyName(1, "HelpHover_button.png");
             // 
+            // NeedHelp2ImageList
+            // 
+            this.NeedHelp2ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("NeedHelp2ImageList.ImageStream")));
+            this.NeedHelp2ImageList.TransparentColor = System.Drawing.Color.White;
+            this.NeedHelp2ImageList.Images.SetKeyName(0, "NeedHelp2_button.png");
+            this.NeedHelp2ImageList.Images.SetKeyName(1, "NeedHelp2Hover_button.png");
+            // 
+            // NeedHelp2Button
+            // 
+            this.NeedHelp2Button.BackColor = System.Drawing.Color.Transparent;
+            this.NeedHelp2Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.NeedHelp2Button.FlatAppearance.BorderSize = 0;
+            this.NeedHelp2Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.NeedHelp2Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.NeedHelp2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NeedHelp2Button.ForeColor = System.Drawing.Color.Transparent;
+            this.NeedHelp2Button.ImageIndex = 0;
+            this.NeedHelp2Button.ImageList = this.NeedHelp2ImageList;
+            this.NeedHelp2Button.Location = new System.Drawing.Point(14, 475);
+            this.NeedHelp2Button.Name = "NeedHelp2Button";
+            this.NeedHelp2Button.Size = new System.Drawing.Size(188, 46);
+            this.NeedHelp2Button.TabIndex = 41;
+            this.NeedHelp2Button.UseVisualStyleBackColor = false;
+            this.NeedHelp2Button.Click += new System.EventHandler(this.NeedHelp2Button_Click);
+            // 
             // wizControl
             // 
             this.wizControl.Appearance = System.Windows.Forms.TabAppearance.Buttons;
@@ -205,6 +230,7 @@ namespace FrontLineGUI
             // 
             // ScanPage
             // 
+            this.ScanPage.Cursor = System.Windows.Forms.Cursors.Default;
             this.ScanPage.Location = new System.Drawing.Point(4, 24);
             this.ScanPage.Name = "ScanPage";
             this.ScanPage.Padding = new System.Windows.Forms.Padding(3);
@@ -526,32 +552,6 @@ namespace FrontLineGUI
             this.ButtonScan.UseVisualStyleBackColor = false;
             this.ButtonScan.Click += new System.EventHandler(this.ButtonScan_Click);
             // 
-            // NeedHelp2ImageList
-            // 
-            this.NeedHelp2ImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("NeedHelp2ImageList.ImageStream")));
-            this.NeedHelp2ImageList.TransparentColor = System.Drawing.Color.White;
-            this.NeedHelp2ImageList.Images.SetKeyName(0, "NeedHelp2_button.png");
-            this.NeedHelp2ImageList.Images.SetKeyName(1, "NeedHelp2Hover_button.png");
-            // 
-            // NeedHelp2Button
-            // 
-            this.NeedHelp2Button.BackColor = System.Drawing.Color.Transparent;
-            this.NeedHelp2Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.NeedHelp2Button.FlatAppearance.BorderSize = 0;
-            this.NeedHelp2Button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.NeedHelp2Button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.NeedHelp2Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NeedHelp2Button.ForeColor = System.Drawing.Color.Transparent;
-            this.NeedHelp2Button.ImageIndex = 0;
-            this.NeedHelp2Button.ImageList = this.NeedHelp2ImageList;
-            this.NeedHelp2Button.Location = new System.Drawing.Point(14, 475);
-            this.NeedHelp2Button.Name = "NeedHelp2Button";
-            this.NeedHelp2Button.Size = new System.Drawing.Size(188, 46);
-            this.NeedHelp2Button.TabIndex = 41;
-            this.NeedHelp2Button.UseVisualStyleBackColor = false;
-            this.NeedHelp2Button.Visible = true;
-            this.NeedHelp2Button.Click += new System.EventHandler(this.NeedHelp2Button_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -559,9 +559,9 @@ namespace FrontLineGUI
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.pictureBox1.Enabled = false;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(545, 23);
+            this.pictureBox1.Location = new System.Drawing.Point(541, 23);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 8);
+            this.pictureBox1.Size = new System.Drawing.Size(82, 6);
             this.pictureBox1.TabIndex = 42;
             this.pictureBox1.TabStop = false;
             // 

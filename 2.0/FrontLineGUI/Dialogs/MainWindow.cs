@@ -20,10 +20,8 @@ namespace FrontLineGUI
         private List<CustomFrontLineButton> _LeftMenuGroup = new List<CustomFrontLineButton>();
         Timer tmAutoUpd = new Timer();
 
-        SplashWindow splash = new SplashWindow();
         public MainWindow()
         {
-            splash.Show();
             InitializeComponent();
             this.FormClosing += new FormClosingEventHandler(MainFormClosing);
             this.Load += new EventHandler(MainWindow_Load);
@@ -105,7 +103,6 @@ namespace FrontLineGUI
             this.Opacity += 0.05;
             if (this.Opacity >= 1)
             {
-                splash.Close();
                 this.Opacity = 1;
                 tmOpacity.Stop();
             }

@@ -31,7 +31,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectName>CleanEngine_2010</ProjectName>
+    <ProjectName>CleanEngine</ProjectName>
     <ProjectGuid>{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}</ProjectGuid>
     <RootNamespace>CleanEngine</RootNamespace>
     <Keyword>Win32Proj</Keyword>
@@ -122,8 +122,9 @@
     <IntDir>Debug\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>..\Release\lib\</OutDir>
-    <IntDir>Release\</IntDir>
+    <OutDir>Lib\_Debug\</OutDir>
+    <TargetName>CleanEngine</TargetName>
+    <IntDir>Lib\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_CE_Only|Win32'">
     <OutDir>Lib\_DebugCE\2005\</OutDir>

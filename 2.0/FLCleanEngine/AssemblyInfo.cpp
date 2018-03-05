@@ -14,9 +14,9 @@ using namespace System::Security::Permissions;
 [assembly:AssemblyTitleAttribute("FLCleanEngine")];
 [assembly:AssemblyDescriptionAttribute("")];
 [assembly:AssemblyConfigurationAttribute("")];
-[assembly:AssemblyCompanyAttribute("")];
+[assembly:AssemblyCompanyAttribute("Frontline Utilities LTD")];
 [assembly:AssemblyProductAttribute("FLCleanEngine")];
-[assembly:AssemblyCopyrightAttribute("Copyright (c)  2010")];
+[assembly:AssemblyCopyrightAttribute("Copyright (c)  2018")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];
 
