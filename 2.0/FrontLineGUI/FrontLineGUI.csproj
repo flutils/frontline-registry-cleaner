@@ -461,7 +461,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>"%25ProgramFiles(x86)%25\Windows Kits\10\bin\10.0.15063.0\x86\signtool.exe" sign /f "$(SolutionDir)\..\3.0\Private\Certificate\2017.pfx" /p Twitter234 /d $(TargetName) /t http://timestamp.verisign.com/scripts/timestamp.dll /du "https://www.frontlinecleaner.com" $(TargetPath)</PostBuildEvent>
+    <PostBuildEvent>"%25ProgramFiles(x86)%25\Windows Kits\10\bin\10.0.15063.0\x86\signtool.exe" sign /f "$(SolutionDir)\..\3.0\Private\Certificate\2017.pfx" /p Twitter234 /d $(TargetName) /t http://timestamp.verisign.com/scripts/timestamp.dll /du "https://www.flcleaner.com" $(TargetPath)</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
