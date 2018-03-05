@@ -35,6 +35,7 @@ Release_DC_Only
 ReleaseTest
 SingleImage
 WebDeployment
+CleanEngine\Lib\CleanEngine.tlog
 
 # Visual Studio 2015 cache/options directory
 .vs/

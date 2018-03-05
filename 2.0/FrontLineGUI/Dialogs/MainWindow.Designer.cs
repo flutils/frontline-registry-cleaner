@@ -70,9 +70,7 @@ namespace FrontLineGUI
             this.ButtonBackUp = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonExtras = new FrontLineGUI.CustomFrontLineButton();
             this.ButtonScan = new FrontLineGUI.CustomFrontLineButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.wizControl.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // ScanButtonImageList
@@ -552,19 +550,6 @@ namespace FrontLineGUI
             this.ButtonScan.UseVisualStyleBackColor = false;
             this.ButtonScan.Click += new System.EventHandler(this.ButtonScan_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.pictureBox1.Enabled = false;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(541, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 6);
-            this.pictureBox1.TabIndex = 42;
-            this.pictureBox1.TabStop = false;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,7 +558,6 @@ namespace FrontLineGUI
             this.BackgroundImage = global::FrontLineGUI.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(686, 534);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.NeedHelp2Button);
             this.Controls.Add(this.wizControl);
             this.Controls.Add(this.ButtonHelp);
@@ -603,7 +587,6 @@ namespace FrontLineGUI
             this.TransparencyKey = System.Drawing.Color.Magenta;
             this.Resize += new System.EventHandler(this.MainWindow_Resize);
             this.wizControl.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -648,7 +631,6 @@ namespace FrontLineGUI
         private ImageList NeedHelp2ImageList;
         private CustomFrontLineButton NeedHelp2Button;
         private TabPage FixingPage;
-        private PictureBox pictureBox1;
     }
 }
 
