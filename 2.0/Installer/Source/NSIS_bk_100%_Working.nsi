@@ -25,10 +25,6 @@ Var StartMenuFolder
 !define BACKGROUND FFFFFF
 !define FOREGROUND FFFFFF
 
-; Code Signing
-!define OutFileSignPassword    "Twitter234"
-!define OutFileSignCertificate "2017.pfx"
-
 ; DateTime (for current year)
 ; http://nsis.sourceforge.net/Date_and_time_in_installer_or_application_name
 !define /date YEAR "%Y"
@@ -42,7 +38,7 @@ Var StartMenuFolder
 
 ; Banners (default view)
 ; Needs to be declared after MUI_PAGE_WELCOME - http://forums.winamp.com/showthread.php?t=291471
-!define MUI_WELCOMEFINISHPAGE_BITMAP "Assets\Banners\New\install.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "Assets\Banners\Old\install.bmp"
 !define MUI_HEADERIMAGE_BITMAP       "Assets\Banners\New\header.bmp"
 
 ; Remove Header Background
@@ -94,51 +90,6 @@ RequestExecutionLevel admin
 BrandingText "� ${PRODUCT_PUBLISHER} ${YEAR}"
 
 ; ------------------------------- ;
-;          Uninstaller            ;
-; ------------------------------- ;
-
-!ifdef INNER
-  !echo "Inner invocation"                  ; just to see what's going on
-  OutFile "$%TEMP%\tempinstaller.exe"       ; not really important where this is
-  SetCompress off                           ; for speed
-!else
-  !echo "Outer invocation"
-
-  ; Call makensis again against current file, defining INNER.  This writes an installer for us which, when
-  ; it is invoked, will just write the uninstaller to some location, and then exit.
-
-  !makensis '/DINNER "${__FILE__}"' = 0
-
-  ; So now run that installer we just created as %TEMP%\tempinstaller.exe.  Since it
-  ; calls quit the return value isn't zero.
-
-  !system "$%TEMP%\tempinstaller.exe" = 2
-
-  ; That will have written an uninstaller binary for us.  Now we sign it with your
-  ; favorite code signing tool.
-
-  !system '"%ProgramFiles(x86)%\Windows Kits\10\bin\10.0.15063.0\x86\signtool.exe" sign /f "..\..\..\3.0\Private\Certificate\2017.pfx" /p "${OutFileSignPassword}" "$%TEMP%\uninst.exe"' = 0
-
-  ; Good.  Now we can carry on writing the real installer.
-
-  OutFile "my_real_installer.exe"
-  SetCompressor /SOLID lzma
-!endif
-
-Function .onInit
-  !ifdef INNER
-
-    ; If INNER is defined, then we aren't supposed to do anything except write out
-    ; the installer.  This is better than processing a command line option as it means
-    ; this entire code path is not present in the final (real) installer.
-
-    WriteUninstaller "$%TEMP%\uninst.exe"
-    Quit  ; just bail out quickly when running the "inner" installer
-  !endif
-; ...[the rest of your normal .onInit]...
-FunctionEnd
-
-; ------------------------------- ;
 ;            Sections             ;
 ; ------------------------------- ;
 
@@ -187,13 +138,7 @@ SectionEnd
 
 ; After
 Section -Post
-  ;WriteUninstaller "$INSTDIR\uninst.exe"
-
-  !ifndef INNER
-    SetOutPath $INSTDIR
-    File $%TEMP%\uninst.exe
-  !endif
-
+  WriteUninstaller "$INSTDIR\uninst.exe"
   WriteRegStr HKLM "${PRODUCT_DIR_REGKEY}" "" "$INSTDIR\${PRODUCT_EXECUTABLE}"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "DisplayName" "$(^Name)"
   WriteRegStr ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "UninstallString" "$INSTDIR\uninst.exe"
@@ -209,21 +154,19 @@ SectionEnd
 ; ------------------------------- ;
 
 ; Uninstall
-!ifdef INNER
-  Section Uninstall
-    Delete "$DESKTOP\${PRODUCT_NAME}${PRODUCT_VERSION}.lnk"
+Section Uninstall
+  Delete "$DESKTOP\${PRODUCT_NAME} ${PRODUCT_VERSION}.lnk"
 
-    ReadRegStr $0 ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "StartMenu"
-    RMDir /r "$SMPROGRAMS\$0"
+  ReadRegStr $0 ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}" "StartMenu"
+  RMDir /r "$SMPROGRAMS\$0"
 
-    RMDir /r "$INSTDIR"
-    RMDir "$PROGRAMFILES\${PRODUCT_PUBLISHER}"
+  RMDir /r "$INSTDIR"
+  RMDir "$PROGRAMFILES\${PRODUCT_PUBLISHER}"
 
-    DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
-    DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
-    SetAutoClose true
-  SectionEnd
-!endif
+  DeleteRegKey ${PRODUCT_UNINST_ROOT_KEY} "${PRODUCT_UNINST_KEY}"
+  DeleteRegKey HKLM "${PRODUCT_DIR_REGKEY}"
+  SetAutoClose true
+SectionEnd
 
 ; Extras
 Function un.onUninstSuccess
@@ -241,4 +184,8 @@ FunctionEnd
 
 ; Code Signing ;
 ; http://forums.winamp.com/showthread.php?t=395644 ;
+
+!define OutFileSignPassword    "Twitter234"
+!define OutFileSignCertificate "2017.pfx"
+
 !finalize '"%ProgramFiles(x86)%\Windows Kits\10\bin\10.0.15063.0\x86\signtool.exe" sign /f "..\..\..\3.0\Private\Certificate\2017.pfx" /p "${OutFileSignPassword}" /d "FLSetup.exe" /t http://timestamp.verisign.com/scripts/timestamp.dll /du "https://www.flcleaner.com" "%1"'
