@@ -1,18 +1,20 @@
-# Frontline Registry Cleaner 2.0 (Free Edition)
-
 ![Frontline Registry Cleaner 2.0][main]
 
-<p align="center">
-  <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> - <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/frontlineutils/flcleaner.svg?branch=master" /></a> - <a href='https://coveralls.io/github/frontlineutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/frontlineutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
-</p>
+<center>
+  <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> - <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/flutils/flcleaner.svg?branch=master" /></a> - <a href='https://coveralls.io/github/flutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/flutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
+</center>
 
 ---
 
-[**Frontline Registry Cleaner 2.0**][frontlinecleaner.com] was released in 2011 and 
+[**Frontline Registry Cleaner 2.0**][frontlinecleaner.com] was released in 2011 and quickly became popular thanks to its market-leading scanning engine. 
 
-was a huge success, with over 3,000 people buying the product.
+Since moved into more challenging work, we decided to publish the FLCleaner 2.0 code publicly in 2013 - and have supported its use, development and evolution ever since.
 
-It was also stocked by a large electronics retailer in the UK:
+Whilst this works well for the ***current*** system, it doesn't give much by way of focus for the ***next*** generation of PC optimization tools. To this end, we have been working on developing a new wave of digital infrastructure management services for home and business.
+
+The code in this repository is made of two submodules - **FLCleaner 3.0** and **FLCleaner 2.0**. This submodule is for FLCleaner 2.0, and is no longer being actively developed. You're obviously able to fork the repository and do what you want with it (all licensing has been removed from the system). 
+
+The following information explains how the system works, what to look for in the code, and how to change/extend it...
 
 ---
 
