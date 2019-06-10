@@ -5,6 +5,8 @@
   <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/flutils/flcleaner.svg?branch=master" /></a> <a href='https://coveralls.io/github/flutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/flutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 
+---
+
 [**Frontline Registry Cleaner 2.0**][frontlinecleaner.com] was released in **2011** and quickly became popular thanks to its ***market-leading*** scanning engine. It was able to identify and resolve more errors than any other PC optimization tool on the market.
 
 Since having moved into more challenging work, Frontline decided to publish the FLCleaner 2.0 code publicly in 2013 - and have supported its use, development and evolution ever since.
@@ -54,7 +56,7 @@ You're welcome to [create an issue][issues] & request clarification if required.
 <!-- ################################### -->
 
 <!-- Images -->
-[fl]:   ../3.0/readme/fl.jpg
+[fl]:   https://github.com/flutils/flcleaner/edit/master/3.0/Private/Readme/fl.jpg
 [main]: Readme/main.jpeg
 
 <!-- Links -->
