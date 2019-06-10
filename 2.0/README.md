@@ -1,8 +1,14 @@
 <p align="center">
   <img src="Readme/main.jpeg" alt="Frontline Registry Cleaner 2.0">
 </p>
+
 <p align="center">
-  <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/flutils/flcleaner.svg?branch=master" /></a> <a href='https://coveralls.io/github/flutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/flutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
+  <a href="https://raw.githubusercontent.com/Eugeny/terminus/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/eugeny/terminus.svg?label=License&style=flat-square"></a> <a href="https://travis-ci.org/Eugeny/terminus"><img alt="Travis (.org)" src="https://img.shields.io/travis/Eugeny/terminus.svg?label=CI&logo=travis&logoColor=white&style=flat-square"></a>
+  <a href="https://ci.appveyor.com/project/Eugeny/terminus"><img alt="AppVeyor" src="https://img.shields.io/appveyor/ci/eugeny/terminus.svg?label=CI&logo=appveyor&logoColor=white&style=flat-square"></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Eugeny/terminus/releases/latest"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/eugeny/terminus/total.svg?label=DOWNLOAD&logo=github&style=for-the-badge"></a> <a href="https://ci.appveyor.com/project/Eugeny/terminus/build/artifacts"><img src="https://img.shields.io/badge/download-nightly%20build-magenta.svg?logo=appveyor&style=for-the-badge"/></a> <a href="https://gitter.im/terminus-terminal/community"><img alt="Gitter" src="https://img.shields.io/gitter/room/terminus/community.svg?color=blue&logo=gitter&style=for-the-badge"></a>
 </p>
 
 ---
