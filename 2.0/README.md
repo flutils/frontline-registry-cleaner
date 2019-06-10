@@ -1,7 +1,7 @@
-![Frontline Registry Cleaner 2.0][main]
-
 <center>
-  <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> - <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/flutils/flcleaner.svg?branch=master" /></a> - <a href='https://coveralls.io/github/flutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/flutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
+  <img src="Readme/main.jpeg" alt="Frontline Registry Cleaner 2.0">
+
+  <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/flutils/flcleaner.svg?branch=master" /></a> <a href='https://coveralls.io/github/flutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/flutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
 </center>
 
 ---
