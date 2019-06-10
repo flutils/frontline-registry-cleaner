@@ -1,16 +1,17 @@
 <p align="center">
   <img src="Readme/main.jpeg" alt="Frontline Registry Cleaner 2.0">
-
+</p>
+<p align="center">
   <a href="https://ci.appveyor.com/project/richard-peck/flcleaner"><img src="https://ci.appveyor.com/api/projects/status/k1r7yel3c7nojhhq?svg=true" /></a> <a href="https://travis-ci.org/frontlineutils/flcleaner"><img src="https://travis-ci.org/flutils/flcleaner.svg?branch=master" /></a> <a href='https://coveralls.io/github/flutils/flcleaner?branch=master'><img src='https://coveralls.io/repos/github/flutils/flcleaner/badge.svg?branch=master' alt='Coverage Status' /></a>
 </p>
 
 ---
 
-[**Frontline Registry Cleaner 2.0**][frontlinecleaner.com] was released in 2011 and quickly became popular thanks to its market-leading scanning engine. 
+[**Frontline Registry Cleaner 2.0**][frontlinecleaner.com] was released in 2011 and quickly became popular thanks to its *market-leading* scanning engine. It was able to identify and resolve more errors than any other PC optimization tool on the market.
 
-Since moved into more challenging work, we decided to publish the FLCleaner 2.0 code publicly in 2013 - and have supported its use, development and evolution ever since.
+Since having moved into more challenging work, Frontline decided to publish the FLCleaner 2.0 code publicly in 2013 - and have supported its use, development and evolution ever since.
 
-Whilst this works well for the ***current*** system, it doesn't give much by way of focus for the ***next*** generation of PC optimization tools. To this end, we have been working on developing a new wave of digital infrastructure management services for home and business.
+Whilst this works well, it doesn't give much by way of focus for the ***next*** wave of PC optimization tools. To this end, we started development on a next generation of digital infrastructure management service for home and business in 2019.
 
 The code in this repository is made of two submodules - **FLCleaner 3.0** and **FLCleaner 2.0**. This submodule is for FLCleaner 2.0, and is no longer being actively developed. You're obviously able to fork the repository and do what you want with it (all licensing has been removed from the system). 
 
