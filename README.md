@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Readme/main.jpeg" alt="Frontline Registry Cleaner 2.0">
+  <img src="https://i.imgur.com/ZYRCbps.jpg" alt="Frontline Registry Cleaner 2.0">
 </p>
 
 <p align="center">
@@ -20,30 +20,6 @@ We bought the code from a company in Ukraine, promoted it through the Internet a
 The distribution version requires a licensing server to permit users to log in, which we've now taken down. To compensate, we've removed the registration module, allowing people to use the product for free (if they wish). Since it is not targeted at Windows 10, we do not recommend using it on recent versions of Windows.
 
 If you are interested in this type of product, we have built an [RMM (Remote Monitoring & Management)](https://en.wikipedia.org/wiki/Remote_monitoring_and_management) tool ([FLCleaner 3.0](https://www.flcleaner.com)), which supersedes its predecessor by a significant margin. The new product is built around our experience with web centric applications ("cloud"), permitting extensibility.
-
----
-#### Code
-
-The product is developed in .NET framework and uses a custom scanning engine, compiled as a DLL (C++).
-
-The system invokes the DLL when it needs to scan - for the rest of the time, it uses .NET and WinForms for the GUI.
-
-Because the scanning engine targets core Windows processes, it needs to invoke the Windows SDK, which is currently targeted at Windows 10 (for development purposes).
-
--
-
-###### Requirements / Dependencies
-
-- .NET Framework 4.7+
-- Visual Studio 2019+
-- Windows 10 SDK
-
----
-
-#### Structure
-
-
-
 
 ---
 
@@ -82,7 +58,7 @@ If you notice any of our products used in an illegal way, you should send an ale
 
 ---
 
-:copyright: <a href="http://www.frontlineutilities.co.uk" align="absmiddle"><img src="https://raw.githubusercontent.com/flutils/flcleaner/master/3.0/Private/Readme/fl.jpg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://stackoverflow.com/users/1143732/richard-peck?tab=profile" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R S Peck" /></a>
+:copyright: <a href="http://www.frontlineutilities.co.uk" align="absmiddle"><img src="https://i.imgur.com/xwejn02.jpg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://stackoverflow.com/users/1143732/richard-peck?tab=profile" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R S Peck" /></a>
 
 
 
