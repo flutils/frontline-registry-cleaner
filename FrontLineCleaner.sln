@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CleanEngine_2010", "CleanEngine\CleanEngine_2005.vcxproj", "{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CleanEngine", "CleanEngine\CleanEngine_2005.vcxproj", "{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FLCleanEngine", "FLCleanEngine\FLCleanEngine.vcxproj", "{8D456998-F4A5-4DB9-8398-A2382098351A}"
 EndProject
