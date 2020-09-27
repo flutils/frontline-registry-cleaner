@@ -11,7 +11,7 @@
   <a href="https://github.com/Eugeny/terminus/releases/latest"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/eugeny/terminus/total.svg?label=DOWNLOAD&logo=github&style=for-the-badge"></a> <a href="https://ci.appveyor.com/project/Eugeny/terminus/build/artifacts"><img src="https://img.shields.io/badge/download-nightly%20build-magenta.svg?logo=appveyor&style=for-the-badge"/></a> <a href="https://gitter.im/terminus-terminal/community"><img alt="Gitter" src="https://img.shields.io/gitter/room/terminus/community.svg?color=blue&logo=gitter&style=for-the-badge"></a>
 </p>
 
----
+<center>--</center>
 
 [**Frontline Register Cleaner 2.0**](https://www.frontlinecleaner.com) (released in 2011) was distributed by several retailers in the UK.
 
@@ -23,7 +23,7 @@ If you are interested in this type of product, we have built an [RMM (Remote Mon
 
 ---
 
-#### Changelog
+#### 🗓️ Changelog
 
 - [x] (27/09/2020) Changed .NET target to 4.7, VS Studio 2019, Windows SDK
 - [x] (01/01/2019) Removed registration engine
@@ -31,7 +31,7 @@ If you are interested in this type of product, we have built an [RMM (Remote Mon
 
 ---
 
-#### Contributions
+#### ✔️ Contributions
 
 To contribute, please follow the steps below:
 
@@ -46,7 +46,7 @@ As the product has been discontinued for some time, we are no longer actively de
 
 ---
 
-#### Copyrights, License etc
+#### ⚖️ Copyrights, License etc
 
 We own all copyrights to the user interface and product design.
 
