@@ -1,7 +1,0 @@
-C:\Dev\Apps\flcleaner\3.0\FLCleaner_Engine\bin\Debug\Engine.dll
-C:\Dev\Apps\flcleaner\3.0\FLCleaner_Engine\bin\Debug\Engine.pdb
-C:\Dev\Apps\flcleaner\3.0\FLCleaner_Engine\obj\Debug\FLCleaner_Engine.csproj.CoreCompileInputs.cache
-C:\Dev\Apps\flcleaner\3.0\Release\Engine.dll
-C:\Dev\Apps\flcleaner\3.0\Release\Engine.pdb
-C:\Dev\Apps\flcleaner\3.0\FLCleaner_Engine\obj\Debug\Engine.dll
-C:\Dev\Apps\flcleaner\3.0\FLCleaner_Engine\obj\Debug\Engine.pdb
