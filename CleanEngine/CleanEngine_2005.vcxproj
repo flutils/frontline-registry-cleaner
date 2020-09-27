@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug_CE_Only|Win32">
+      <Configuration>Debug_CE_Only</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug_DC_Only|Win32">
+      <Configuration>Debug_DC_Only</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleaseTest|Win32">
+      <Configuration>ReleaseTest</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_CE_Only|Win32">
+      <Configuration>Release_CE_Only</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release_DC_Only|Win32">
+      <Configuration>Release_DC_Only</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>CleanEngine</ProjectName>
+    <ProjectGuid>{8C12D387-2CB2-4BD7-9B4A-AD25E375EB9E}</ProjectGuid>
+    <RootNamespace>CleanEngine</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DC_Only|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_CE_Only|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DC_Only|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_CE_Only|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <UseOfAtl>false</UseOfAtl>
+    <CharacterSet>MultiByte</CharacterSet>
+    <CLRSupport>false</CLRSupport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_DC_Only|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_CE_Only|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DC_Only|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_CE_Only|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC71.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.26228.10</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>Lib\_Debug\2005\</OutDir>
+    <IntDir>Debug\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>Lib\_Debug\</OutDir>
+    <TargetName>CleanEngine</TargetName>
+    <IntDir>Lib\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_CE_Only|Win32'">
+    <OutDir>Lib\_DebugCE\2005\</OutDir>
+    <IntDir>DebugCE\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DC_Only|Win32'">
+    <OutDir>Lib\_DebugDC\2005\</OutDir>
+    <IntDir>DebugDC\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_CE_Only|Win32'">
+    <OutDir>Lib\_ReleaseCE\2005\</OutDir>
+    <IntDir>ReleaseCE\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_DC_Only|Win32'">
+    <OutDir>Lib\_ReleaseDC\2005\</OutDir>
+    <IntDir>ReleaseDC\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'">
+    <OutDir>$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>Lib\_Include; $(SolutionDir)\CleanEngine; Scanners;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;USE_CE;USE_DC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <SDLCheck>false</SDLCheck>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)CleanEngine.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Lib\_Include; $(SolutionDir)\CleanEngine; Scanners;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;USE_CE;USE_DC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)CleanEngine.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_CE_Only|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>Lib\_Include; $(SolutionDir)\CleanEngine; Scanners;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;USE_CE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>false</MinimalRebuild>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)CleanEngine.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_DC_Only|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>Lib\_Include; $(SolutionDir)\CleanEngine; Scanners;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;USE_DC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)CleanEngine.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_CE_Only|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Lib\_Include; $(SolutionDir)\CleanEngine; Scanners;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;USE_CE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)CleanEngine.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release_DC_Only|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Lib\_Include; $(SolutionDir)\CleanEngine; Scanners;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;USE_DC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)CleanEngine.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>Lib\_Include; $(SolutionDir)\CleanEngine; Scanners;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;USE_CE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Lib>
+      <OutputFile>$(OutDir)CleanEngine.lib</OutputFile>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="AppBase.cpp" />
+    <ClCompile Include="CleanEngine.cpp" />
+    <ClCompile Include="CleanScanner.cpp" />
+    <ClCompile Include="CookieAPI.cpp" />
+    <ClCompile Include="Defragger.cpp" />
+    <ClCompile Include="EmtyKeysRScanner.cpp" />
+    <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="FileTools.cpp" />
+    <ClCompile Include="IETools.cpp" />
+    <ClCompile Include="IndexDatFile.cpp" />
+    <ClCompile Include="NativeNotifier.cpp" />
+    <ClCompile Include="Profile.cpp" />
+    <ClCompile Include="RegistryTools.cpp" />
+    <ClCompile Include="Report.cpp" />
+    <ClCompile Include="ReportChecker.cpp" />
+    <ClCompile Include="Runnable.cpp" />
+    <ClCompile Include="RunnableStateMngr.cpp" />
+    <ClCompile Include="ScannerFactory.cpp" />
+    <ClCompile Include="scanners.cpp" />
+    <ClCompile Include="Scanners\FileScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\BrokenShCutsFScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\CustomTempFScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\DownloadFScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\GeneralTempFScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\IECookiesFScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\PrefetchStuffFScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\RecentDocFScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\TempICQFScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\TempIEFScanner.cpp" />
+    <ClCompile Include="Scanners\FileScanners\TempWUpdateFScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\AppScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\ClipboardScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\CustomFilesScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\IEAutoFillScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\IEHistoryFScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\IEScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\MessengerScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\MozillaBrowsersScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\OperaScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\RecycleBinFScanner.cpp" />
+    <ClCompile Include="Scanners\OtherScanners\TempFilesScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\ApplicationsRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\AppPathRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\BandRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\BhoRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\ClientsRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\ComObjectRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\ControlPanelRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\DistUnitsRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\FileAssocRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\HelpRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\IComServerChecker.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\MenuHndRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\MissPathRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\MruRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\SharedDllRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\ShellExtRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\StartMenuRScanner.cpp" />
+    <ClCompile Include="Scanners\RegistryScanners\UninstallRScanner.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_CE_Only|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_DC_Only|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_CE_Only|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_DC_Only|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Stera.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppBase.h" />
+    <ClInclude Include="AtlFileFind.h" />
+    <ClInclude Include="CookieAPI.h" />
+    <ClInclude Include="Defragger.h" />
+    <ClInclude Include="EmtyKeysRScanner.h" />
+    <ClInclude Include="FileTools.h" />
+    <ClInclude Include="Helpers.h" />
+    <ClInclude Include="IETools.h" />
+    <ClInclude Include="IndexDatFile.h" />
+    <ClInclude Include="IniFile.h" />
+    <ClInclude Include="Lib\_Include\CETypes.h" />
+    <ClInclude Include="Lib\_Include\CleanEngine.h" />
+    <ClInclude Include="Lib\_Include\CleanScanner.h" />
+    <ClInclude Include="Lib\_Include\countable.h" />
+    <ClInclude Include="Lib\_Include\DCTypes.h" />
+    <ClInclude Include="Lib\_Include\Exception.h" />
+    <ClInclude Include="Lib\_Include\functional.h" />
+    <ClInclude Include="Lib\_Include\functor.h" />
+    <ClInclude Include="Lib\_Include\Report.h" />
+    <ClInclude Include="Lib\_Include\Runnable.h" />
+    <ClInclude Include="Lib\_Include\RunnableStateMngr.h" />
+    <ClInclude Include="Lib\_Include\ScannerFactory.h" />
+    <ClInclude Include="Lib\_Include\scanners.h" />
+    <ClInclude Include="Lib\_Include\scopeguard.h" />
+    <ClInclude Include="Lib\_Include\Stera.h" />
+    <ClInclude Include="Lib\_Include\WhiteList.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="msiehost.h" />
+    <ClInclude Include="NativeNotifier.h" />
+    <ClInclude Include="noncopyable.h" />
+    <ClInclude Include="Profile.h" />
+    <ClInclude Include="RegistryTools.h" />
+    <ClInclude Include="ReportChecker.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="Scanners\FileScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\BrokenShCutsFScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\CustomTempFScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\DownloadFScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\GeneralTempFScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\IECookiesFScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\PrefetchStuffFScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\RecentDocFScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\TempICQFScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\TempIEFScanner.h" />
+    <ClInclude Include="Scanners\FileScanners\TempWUpdateFScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\AppScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\ClipboardScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\CustomFilesScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\IEAutoFillScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\IEHistoryFScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\IEScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\MessengerScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\MozillaBrowsersScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\OperaScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\PStoreWrapper.h" />
+    <ClInclude Include="Scanners\OtherScanners\RecycleBinFScanner.h" />
+    <ClInclude Include="Scanners\OtherScanners\TempFilesScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\ApplicationsRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\AppPathRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\BandRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\BhoRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\ClientsRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\ComObjectRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\ControlPanelRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\DistUnitsRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\FileAssocRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\HelpRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\IComServerChecker.h" />
+    <ClInclude Include="Scanners\RegistryScanners\MenuHndRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\MissPathRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\MruRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\SharedDllRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\ShellExtRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\StartMenuRScanner.h" />
+    <ClInclude Include="Scanners\RegistryScanners\UninstallRScanner.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties DevPartner_IsInstrumented="0" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
