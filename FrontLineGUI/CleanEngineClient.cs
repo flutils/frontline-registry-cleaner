@@ -1,8 +1,4 @@
-﻿// RPECK 25/04/2017
-// http://stackoverflow.com/questions/619104/how-to-get-the-namespace-alias-operator-to-work-under-c
-extern alias FLCleanEngine;
-
-// External Calls
+﻿// External Calls
 using System;
 using System.Collections.Generic;
 using FLCleanEngine;
