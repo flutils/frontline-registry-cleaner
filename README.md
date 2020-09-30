@@ -23,6 +23,15 @@ If you are interested in this type of product, we have built an [RMM (Remote Mon
 
 ---
 
+#### ⚠️ Requirements
+
+1. [VC++ Redistributable (x86)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
+2. [.NET Framework 4.8+](https://dotnet.microsoft.com/download/dotnet-framework/net48)
+
+When running the app on a client machine, you will need to an `x86` version of VC++ redistributable. It does not seem to matter which version of VC++ you use, as long as it is `x86` compatible. We found that without it, the app will fail citing `FLCleanEngine.dll` being unavailable.
+
+---
+
 #### 🗓️ Changelog
 
 - [x] (27/09/2020) Changed .NET target to 4.7, VS Studio 2019, Windows SDK
