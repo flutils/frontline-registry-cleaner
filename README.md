@@ -28,7 +28,7 @@ If you are interested in this type of product, we have built an [RMM (Remote Mon
 1. [VC++ Redistributable (x86)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
 2. [.NET Framework 4.8+](https://dotnet.microsoft.com/download/dotnet-framework/net48)
 
-When running the app on a client machine, you will need to an `x86` version of VC++ redistributable.
+When running the app, you will need to an `x86` version of VC++ redistributable.
 
 It does not seem to matter which version you use, as long as it is `x86` compatible. We found that without it, the app will fail citing `FLCleanEngine.dll` being unavailable.
 
@@ -69,7 +69,7 @@ If you notice any of our products used in an illegal way, you should send an ale
 
 ---
 
-:copyright: <a href="http://www.frontlineutilities.co.uk" align="absmiddle"><img src="https://i.imgur.com/xwejn02.jpg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://stackoverflow.com/users/1143732/richard-peck?tab=profile" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R S Peck" /></a>
+:copyright: <a href="http://www.frontlineutilities.co.uk" align="absmiddle"><img src="https://i.imgur.com/xwejn02.jpg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://github.com/richpeck" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R Peck" /></a>
 
 
 
