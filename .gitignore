@@ -22,6 +22,8 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Pp]ublish/
+[Ss]etup/[Dd]ebug 
+[Ss]etup/[Rr]elease
 
 # CUSTOM 
 CD_ROM
