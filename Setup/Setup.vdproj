@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_1607F60785484DDD8761C9E23F811AA0"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_193175F79A4CB2D5968B7324A519265A"
         "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
         "MsmSig" = "8:_UNDEFINED"
@@ -45,6 +51,30 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_51ECD706F5B741B2973C8DB2D0F97F28"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5F144BF093914B92A8F75DD9A81F515D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_60C85AE34E8E4D2485851569BE1010C7"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_63DA020376A645DBA1F776CF85FECCC3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_6B9A5EDAB3FC7C1E43C7A465BBE75306"
         "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
         "MsmSig" = "8:_UNDEFINED"
@@ -53,6 +83,12 @@
         {
         "MsmKey" = "8:_6EB9E82D5902D9983F19062215AB1597"
         "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_754B775A07CB4739AA76CA73B909E791"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -93,6 +129,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A7DDA3BE9F3E40FE865E69C48D612A55"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AA66567C4B16B6D6084530F000936C0D"
         "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
         "MsmSig" = "8:_UNDEFINED"
@@ -111,12 +153,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_BB09494465A39B4ACC8AA94DE57BA1EA"
-        "OwnerKey" = "8:_2AADB5AF1E49469CAAA96DAA841504A8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_BD1A6618192BB30064BD17016E27E58E"
         "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
         "MsmSig" = "8:_UNDEFINED"
@@ -129,8 +165,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C04A74530CEC275CD775045DA9ED2432"
+        "OwnerKey" = "8:_2AADB5AF1E49469CAAA96DAA841504A8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C1D66E577B2CB78213F6E2B102D72F6F"
         "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DE807F00D8324CF7B11F05F51B3E7676"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -154,19 +202,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_BB09494465A39B4ACC8AA94DE57BA1EA"
+        "OwnerKey" = "8:_2AADB5AF1E49469CAAA96DAA841504A8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2AADB5AF1E49469CAAA96DAA841504A8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -193,6 +235,12 @@
         "OwnerKey" = "8:_BF0DAB341441901E40C1C7D27272C571"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_C04A74530CEC275CD775045DA9ED2432"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -211,6 +259,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -227,6 +291,27 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Visual.C++.14.0.x86"
+                    {
+                    "Name" = "8:Visual C++ \"14\" Runtime Libraries (x86)"
+                    "ProductCode" = "8:Microsoft.Visual.C++.14.0.x86"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -256,6 +341,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1607F60785484DDD8761C9E23F811AA0"
+            {
+            "SourcePath" = "8:C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.30.30704\\x86\\Microsoft.VC143.CRT\\msvcp140_2.dll"
+            "TargetName" = "8:msvcp140_2.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_193175F79A4CB2D5968B7324A519265A"
             {
             "SourcePath" = "8:WININET.dll"
@@ -319,7 +424,87 @@
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4C415BA6B8B44E2DA99533E009F3DAD3"
             {
             "SourcePath" = "8:..\\FrontLineGUI\\216.ico"
-            "TargetName" = "8:flcleaner.ico"
+            "TargetName" = "8:icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_51ECD706F5B741B2973C8DB2D0F97F28"
+            {
+            "SourcePath" = "8:C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.30.30704\\x86\\Microsoft.VC143.CRT\\msvcp140_atomic_wait.dll"
+            "TargetName" = "8:msvcp140_atomic_wait.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5F144BF093914B92A8F75DD9A81F515D"
+            {
+            "SourcePath" = "8:C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.30.30704\\x86\\Microsoft.VC143.CRT\\msvcp140_codecvt_ids.dll"
+            "TargetName" = "8:msvcp140_codecvt_ids.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_60C85AE34E8E4D2485851569BE1010C7"
+            {
+            "SourcePath" = "8:C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.30.30704\\x86\\Microsoft.VC143.CRT\\msvcp140.dll"
+            "TargetName" = "8:msvcp140.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_63DA020376A645DBA1F776CF85FECCC3"
+            {
+            "SourcePath" = "8:C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.30.30704\\x86\\Microsoft.VC143.CRT\\vccorlib140.dll"
+            "TargetName" = "8:vccorlib140.dll"
             "Tag" = "8:"
             "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
             "Condition" = "8:"
@@ -374,6 +559,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_754B775A07CB4739AA76CA73B909E791"
+            {
+            "SourcePath" = "8:C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.30.30704\\x86\\Microsoft.VC143.CRT\\msvcp140_1.dll"
+            "TargetName" = "8:msvcp140_1.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_893604CE5CED9538B561C0E09B9D0B8E"
@@ -498,6 +703,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A7DDA3BE9F3E40FE865E69C48D612A55"
+            {
+            "SourcePath" = "8:C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.30.30704\\x86\\Microsoft.VC143.CRT\\vcruntime140.dll"
+            "TargetName" = "8:vcruntime140.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AA66567C4B16B6D6084530F000936C0D"
             {
             "SourcePath" = "8:api-ms-win-crt-convert-l1-1-0.dll"
@@ -542,37 +767,6 @@
             {
             "SourcePath" = "8:MSVCP140.dll"
             "TargetName" = "8:MSVCP140.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BB09494465A39B4ACC8AA94DE57BA1EA"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FLCleanEngine, Version=1.0.8052.15348, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_BB09494465A39B4ACC8AA94DE57BA1EA"
-                    {
-                    "Name" = "8:FLCleanEngine.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:FLCleanEngine.dll"
-            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
             "Condition" = "8:"
@@ -640,6 +834,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C04A74530CEC275CD775045DA9ED2432"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:FLCleanEngine, Version=1.0.8052.26852, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_C04A74530CEC275CD775045DA9ED2432"
+                    {
+                    "Name" = "8:FLCleanEngine.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:FLCleanEngine.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C1D66E577B2CB78213F6E2B102D72F6F"
             {
             "SourcePath" = "8:api-ms-win-crt-heap-l1-1-0.dll"
@@ -658,6 +883,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DE807F00D8324CF7B11F05F51B3E7676"
+            {
+            "SourcePath" = "8:C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Redist\\MSVC\\14.30.30704\\x86\\Microsoft.VC143.CRT\\concrt140.dll"
+            "TargetName" = "8:concrt140.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F2ACA571B963494977402A16AE2EE322"
@@ -758,15 +1003,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:FLCleaner 2.0"
-        "ProductCode" = "8:{5CF1AAF1-E904-49D1-899B-38933ACF4335}"
-        "PackageCode" = "8:{4A3FC377-D9DE-4422-A91B-0DB72BF30396}"
+        "ProductCode" = "8:{4209B215-9239-4627-A2E3-A0949ACE5C2C}"
+        "PackageCode" = "8:{56133743-FAE1-43DC-BA01-8FDF86AE0C2D}"
         "UpgradeCode" = "8:{C1B84A72-53C9-4CB4-AA51-6420A715152B}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.0.01"
+        "InstallAllUsers" = "11:TRUE"
+        "ProductVersion" = "8:2.0.02"
         "Manufacturer" = "8:Frontline Utilities LTD"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://www.flcleaner.com"
@@ -1308,7 +1553,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2AADB5AF1E49469CAAA96DAA841504A8"
             {
-            "SourcePath" = "8:..\\FrontLineGUI\\obj\\Release\\FLCleaner2.0.exe"
+            "SourcePath" = "8:..\\FrontLineGUI\\obj\\x86\\Release\\FLCleaner2.0.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
