@@ -18,3 +18,11 @@ description: C#/.NET Junk File & Registry Cleaner for Windows 7/8/10/11
 # https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins 
 plugins:
   - "jekyll-github-metadata" # required to change the header area
+  
+# Owner
+# General details about the owner/publisher of the Github site
+owner:
+  name: Frontline Utilities LTD
+  bio: "UK Software Design & Development Company"
+  email: support@frontlineutilities.co.uk
+  github: flutils
