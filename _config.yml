@@ -14,6 +14,10 @@ theme: jekyll-theme-cayman
 title: Frontline Registry Cleaner 2.0 (Archived Repository)
 description: C#/.NET Junk File & Registry Cleaner for Windows 7/8/10/11
 
+# Analytics/Tracking
+# Used for various systems to integrate with Google Analytics and other monitoring services
+google_analytics: G-Z3GJ8DS8JL
+
 # Plugins
 # https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins 
 plugins:
