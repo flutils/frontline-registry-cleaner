@@ -1,1 +1,7 @@
 theme: jekyll-theme-cayman
+
+plugins:
+  - "jekyll-github-metadata"
+  
+title: Frontline Registry Cleaner 2.0 (Archived Respository)
+description: C#/.NET Junk File & Registry Cleaner for Windows 7/8/10/11
