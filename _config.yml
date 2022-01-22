@@ -1,7 +1,20 @@
+# FLC2.0 Github Pages
+# This is used to provide a hosted environment through which to download the most recent version of Frontline Registry Cleaner 2.0
+
+# Tutorial here: 
+# https://biodata-club.github.io/githubPagesTutorial
+
+# System
+# Overall options for the entire site
+locale: en_US
 theme: jekyll-theme-cayman
 
-plugins:
-  - "jekyll-github-metadata"
-  
+# General
+# Give us the ability to manage the overall structuer of the site etc
 title: Frontline Registry Cleaner 2.0 (Archived Respository)
 description: C#/.NET Junk File & Registry Cleaner for Windows 7/8/10/11
+
+# Plugins
+# https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins 
+plugins:
+  - "jekyll-github-metadata" # required to change the header area
