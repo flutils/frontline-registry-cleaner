@@ -11,8 +11,17 @@ theme: jekyll-theme-cayman
 
 # General
 # Give us the ability to manage the overall structuer of the site etc
-title: Frontline Registry Cleaner 2.0 (Archived Repository)
+title: Frontline Registry Cleaner 2.0
 description: C#/.NET Junk File & Registry Cleaner for Windows 7/8/10/11
+
+# Logo
+# Used by themes to provide us with the ability to add different visual elements
+logo: "https://camo.githubusercontent.com/e9f5913ac04b6ab7d003e617f784fca201abba1b219bb245b8ef42129c4d6fb9/68747470733a2f2f692e696d6775722e636f6d2f5a5952436270732e6a7067"
+
+# URLs
+# Used for the Favicon and other linking methods
+baseurl: "/test-ghpages"
+url: "https://richpeck.github.io"
 
 # Analytics/Tracking
 # Used for various systems to integrate with Google Analytics and other monitoring services
@@ -22,11 +31,9 @@ google_analytics: G-Z3GJ8DS8JL
 # https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/about-github-pages-and-jekyll#plugins 
 plugins:
   - "jekyll-github-metadata" # required to change the header area
+  - "jekyll-seo-tag" # allows us to edit the various meta tags for each page
   
-# Owner
-# General details about the owner/publisher of the Github site
-owner:
-  name: Frontline Utilities LTD
-  bio: "UK Software Design & Development Company"
-  email: support@frontlineutilities.co.uk
-  github: flutils
+# Github
+github:
+  repository_url: https://www.github.com/flutils/flcleaner
+  is_project_page: false

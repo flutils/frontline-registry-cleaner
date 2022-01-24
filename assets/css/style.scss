@@ -1,0 +1,72 @@
+---
+---
+
+// Vars
+$body-link-color: #3498eb;
+
+// Imports
+// Required by https://github.com/pages-themes/cayman#stylesheet
+@import "{{ site.theme }}";
+
+// HTML
+// Page height etc
+html {
+  min-height: 100%;
+  background: rgb(19,19,19);
+  background: linear-gradient(180deg, rgba(19,19,19,1) 0%, rgba(43,40,41,1) 100%);
+}
+
+// Body
+body {
+  color: white;
+}
+
+// Links
+a {
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;  
+  }
+}
+
+// Header
+.page-header { background-color: unset; background-image: unset; padding-bottom: 0; }
+
+// Main Content
+.main-content { padding-top: 0; }
+
+// Action Buttons
+.action_button {
+  $code: grey;
+  $download: blue;
+  
+  display: inline-block;
+  color: white;
+  padding: 10px;
+  transition: background 0.15s ease;
+  
+  &.code { background: $code; }
+  &.download { background: $download; }
+  
+  &:hover,
+  &:active {
+    &.code { background: darken($code, 10%); }
+    &.download { background: darken($download, 10%); }
+  }
+  
+  &:focus {
+    &.code { background: darken($code, 15%); }
+    &.download { background: darken($download, 15%); }   
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .action_button {
+    display: block;
+    &~ .action_button { margin-top: 5px; }
+  }
+}
+
+// Footer
+.site-footer { display: none; }

@@ -1,37 +1,17 @@
-## Welcome to GitHub Pages
+<div align="center">
+  <a href="https://github.com/flutils/flcleaner/releases/download/2.0.0.1/Setup.msi"><img src="{{ '/assets/images/ui.png' | relative_url }}" /></a>
+  <p>
+    <a href="https://github.com/flutils/flcleaner/releases/download/2.0.0.1/Setup.msi" class="action_button download">💾 Download Installer (2.0.0.1)</a>
+     <a href="https://www.github.com/flutils/flcleaner" class="action_button code">⚙️ View Code</a>
+  </p>
+  <p>
+    <sub><i>Last Release: <u>21/01/2022</u></i></sub>
+  </p>
+</div>
 
-You can use the [editor on GitHub](https://github.com/flutils/flcleaner/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+---
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/flutils/flcleaner/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+<div align="center">
+  ©️ 2009-2022 <a href="https://www.frontlineutilities.co.uk" target="_blank">Frontline Utilities LTD</a>. All rights reserved.
+  <br /><sub>You'e welcome <a href="https://www.github.com/flutils/flcleaner#%EF%B8%8F-contributions">contribute to the code</a> as you want.</sub>
+</div>
