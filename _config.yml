@@ -20,8 +20,8 @@ logo: "https://camo.githubusercontent.com/e9f5913ac04b6ab7d003e617f784fca201abba
 
 # URLs
 # Used for the Favicon and other linking methods
-baseurl: "/test-ghpages"
-url: "https://richpeck.github.io"
+baseurl: "/"
+url: "https://www.frontlinecleaner.com"
 
 # Analytics/Tracking
 # Used for various systems to integrate with Google Analytics and other monitoring services
