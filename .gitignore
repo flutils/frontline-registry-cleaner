@@ -279,3 +279,7 @@ __pycache__/
 
 # UWP
 2.0/UWP/win32
+
+CleanEngine/Lib/CleanEngine.tlog
+CleanEngine/Lib/_Debug/*
+CleanEngine.lib.recipe
