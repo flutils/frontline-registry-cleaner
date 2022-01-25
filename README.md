@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.imgur.com/ZYRCbps.jpg" alt="Frontline Registry Cleaner 2.0">
+  <img src="https://i.imgur.com/KI1ny7K.jpg" alt="Frontline Registry Cleaner 2.0">
 </p>
 
 <p align="center">
@@ -36,6 +36,8 @@ It does not seem to matter which version you use, as long as it is `x86` compati
 
 #### 🗓️ Changelog
 
+- [x] (25/01/2022) Upgraded UI to HD
+- [x] (24/01/2022) Added Setup project to deploy Win32 binaries, added MSIX package manager for Microsoft Store submission
 - [x] (27/09/2020) Changed .NET target to 4.7, VS Studio 2019, Windows SDK
 - [x] (01/01/2019) Removed registration engine
 - [x] (17/02/2011) Major release (production)
