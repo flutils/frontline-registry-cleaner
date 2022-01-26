@@ -17,7 +17,7 @@
 
 We bought the code from a company in Ukraine, promoted it through the Internet and rarely updated it. It was a proprietary engine based on "RegCure" (popular product at the time).
 
-The distribution version requires a licensing server to permit users to log in, which we've now taken down. To compensate, we've removed the registration module, allowing people to use the product for free (if they wish). The tool supports Windows 7, 8, 10 & 11.
+The distribution version requires a licensing server to permit users to log in, which we've now taken down. To compensate, we've removed the registration module, allowing people to use the product for free (if they wish).
 
 If you are interested in this type of product, we have built an [RMM (Remote Monitoring & Management)](https://en.wikipedia.org/wiki/Remote_monitoring_and_management) tool ([FLCleaner 3.0](https://www.flcleaner.com)), which supersedes its predecessor by a significant margin. The new product is built around our experience with web centric applications ("cloud"), permitting extensibility.
 
