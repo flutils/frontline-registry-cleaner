@@ -1,6 +1,8 @@
-<p align="center">
-  <img src="https://i.imgur.com/KZheVNQ.png" alt="Frontline Registry Cleaner 2.0">
-</p>
+<div align="center">
+  <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.0">
+  <h1 align="center">🔟th Anniversary Edition</h1>
+  <p align="center">To celebrate the product's original release, and to fix several underlying issues for better use on larger screens, we enhanced the UI to make it HD in early 2022. The functionality remains the same. It's still free to use and modify.<br />-</p>
+</div>
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/Eugeny/terminus/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/eugeny/terminus.svg?label=License&style=flat-square"></a> <a href="https://travis-ci.org/Eugeny/terminus"><img alt="Travis (.org)" src="https://img.shields.io/travis/Eugeny/terminus.svg?label=CI&logo=travis&logoColor=white&style=flat-square"></a>
