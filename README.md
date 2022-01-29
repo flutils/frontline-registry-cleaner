@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="hhttps://i.imgur.com/KZheVNQ.png" alt="Frontline Registry Cleaner 2.0">
+  <img src="https://i.imgur.com/KZheVNQ.png" alt="Frontline Registry Cleaner 2.0">
 </p>
 
 <p align="center">
