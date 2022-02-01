@@ -1,24 +1,49 @@
 ---
 ---
 
-// Vars
-$body-link-color: #3498eb;
-
 // Imports
 // Required by https://github.com/pages-themes/cayman#stylesheet
 @import "{{ site.theme }}";
+
+// Fonts 
+// Selection of fonts imported from Google
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@900&display=swap');
+
+// CSS Vars 
+// This is how CSS vars should be used (SCSS vars are not as versatile)
+// Color HSL darken code: https://stackoverflow.com/questions/55329996/how-to-create-color-shades-using-css-variables-similar-to-darken-of-sass
+:root { 
+  --body-bg-color: #333;
+  --body-link-color: #fff;
+  --body-link-hover: #ccc;
+}
 
 // HTML
 // Page height etc
 html {
   min-height: 100%;
-  background: rgb(19,19,19);
-  background: linear-gradient(180deg, rgba(19,19,19,1) 0%, rgba(43,40,41,1) 100%);
 }
 
 // Body
 body {
   color: white;
+  background: {
+    color: var(--bg-color);
+    image: linear-gradient(180deg, var(--body-bg-color) 0%, #000 100%);
+    attachment: fixed;
+  }
+  
+  // Links 
+  a {
+    transition: color 0.1s ease;
+    text-decoration: underline;
+    color: var(--body-link-color);
+    &:hover,
+    &:active {
+      color: var(--body-link-hover);
+      text-decoration: underline;
+    }
+  }
 }
 
 // Links
@@ -31,26 +56,115 @@ a {
 }
 
 // Header
-.page-header { background-color: unset; background-image: unset; padding-bottom: 0; }
+.page-header {
+  background-color: unset;
+  background-image: unset;
+  padding-bottom: 0;
+  
+  .project-name {
+    font-size: 44px;
+    font-family: 'Spartan', sans-serif;
+    text-transform: uppercase;
+    
+    @media screen and (max-width: 767px) {
+      font-size: 28px;
+    }
+  }
+  
+  .project-tagline {
+    font-size: 1.7rem;
+    margin-top: 0;
+    
+    @media screen and (max-width: 767px) {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+  }
+}
 
 // Main Content
-.main-content { padding-top: 0; }
+.main-content {
+  padding-top: 0;
+  
+  // Headings
+  h1, h2, h3, h4, h5, h6 {
+    color: white;
+    font-weight: bold;
+  }
+  
+  // Sub 
+  .sub { font-size: 11px; }
+  
+  // Current Version
+  .latest {
+    display: inline-block;
+    margin: auto;
+    background: #EFF0F4;
+    font-size: 12px;
+    padding: 1px 3px;
+    border-radius: 4px;
+    font-weight: 700;
+    color: #313D3E;
+    a { 
+      color: var(--body-bg-color);
+      text-decoration: none;
+      &:hover,
+      &:active { text-decoration: none; }
+      &:before {
+        content: "Current Version";
+        color: white;
+        background-color: var(--body-bg-color);
+        border-radius: 4px;
+        font-weight: 300;
+        font-size: 10px;
+        padding: 0 4px;
+        margin-right: 3px;
+      }
+    }
+  }
+  
+  // Specific Headings
+  // Used because including emoji's in the text would ruin the anchor
+  h2 { 
+    &:before { margin-right: 10px; }
+    
+    &#speed-up-windows-pcs {
+      &:before { content: "⚡"; }  
+    }
+    &#features {
+      &:before { content: "✔️"; }  
+    }
+    &#boxed-edition {
+      &:before { content: "📦"; }  
+    }
+    &#contribution {
+      &:before { content: "🟢"; }  
+    }
+    &#support {
+      &:before { content: "🆘"; }
+    }
+  }
+}
 
 // Action Buttons
 .action_button {
   $code: grey;
   $download: blue;
+  $text: white;
   
   display: inline-block;
-  color: white;
+  color: $text;
   padding: 10px;
   transition: background 0.15s ease;
+  text-decoration: none;
   
   &.code { background: $code; }
   &.download { background: $download; }
   
   &:hover,
   &:active {
+    color: $text;
+    text-decoration: none;
     &.code { background: darken($code, 10%); }
     &.download { background: darken($download, 10%); }
   }
@@ -68,5 +182,11 @@ a {
   }
 }
 
+// Figure
+figure {
+  margin: 0;  
+}
+
 // Footer
 .site-footer { display: none; }
+.footer-logo { display: block; margin-top: 10px; }

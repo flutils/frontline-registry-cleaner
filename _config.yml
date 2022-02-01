@@ -4,10 +4,15 @@
 # Tutorial here: 
 # https://biodata-club.github.io/githubPagesTutorial
 
+# Error Fixes
+# Github Metadata plugin requires API key https://github.com/github/pages-gem/issues/399#issuecomment-361091215
+repository: richpeck/test-ghpages # Required for Netlify
+
 # System
 # Overall options for the entire site
-locale: en_US
-theme: jekyll-theme-cayman
+locale:   en_GB
+theme:    jekyll-theme-cayman
+timezone: Europe/London
 
 # General
 # Give us the ability to manage the overall structuer of the site etc
@@ -18,11 +23,6 @@ description: C#/.NET Junk File & Registry Cleaner for Windows 7/8/10/11
 # Used by themes to provide us with the ability to add different visual elements
 logo: "https://camo.githubusercontent.com/e9f5913ac04b6ab7d003e617f784fca201abba1b219bb245b8ef42129c4d6fb9/68747470733a2f2f692e696d6775722e636f6d2f5a5952436270732e6a7067"
 
-# URLs
-# Used for the Favicon and other linking methods
-baseurl: "/"
-url: "https://www.frontlinecleaner.com"
-
 # Analytics/Tracking
 # Used for various systems to integrate with Google Analytics and other monitoring services
 google_analytics: G-Z3GJ8DS8JL
@@ -32,8 +32,8 @@ google_analytics: G-Z3GJ8DS8JL
 plugins:
   - "jekyll-github-metadata" # required to change the header area
   - "jekyll-seo-tag" # allows us to edit the various meta tags for each page
+  - "jekyll-sitemap" # Used to provide robots.txt etc
   
 # Github
 github:
-  repository_url: https://www.github.com/flutils/flcleaner
   is_project_page: false
