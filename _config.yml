@@ -6,7 +6,7 @@
 
 # Error Fixes
 # Github Metadata plugin requires API key https://github.com/github/pages-gem/issues/399#issuecomment-361091215
-repository: richpeck/test-ghpages # Required for Netlify
+repository: flutils/flcleaner # Required for Netlify
 
 # System
 # Overall options for the entire site
