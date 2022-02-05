@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.0">
-  <h1 align="center">🔟th Anniversary Edition</h1>
-  <p align="center">To celebrate the product's original release, and to fix several underlying issues for better use on larger screens, we enhanced the UI to make it HD in early 2022. The functionality remains the same. It's still free to use and modify.<br />-</p>
+  <h1 align="center">⚡ Speed Up Windows PC's ⚡</h1>
+  <p align="center">Keep Windows PC's running smoothly by cleaning out junk files and registry errors. Whilst retired, the product is still one of the most potent of its type - you're welcome to use it for free or edit the code.<br />-</p>
 </div>
 
 <p align="center">
