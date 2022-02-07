@@ -1,7 +1,20 @@
 <div align="center">
   <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.0">
   <h1 align="center">⚡ Speed Up Windows PC's ⚡</h1>
-  <p align="center">Keep Windows PC's running smoothly by cleaning out junk files and registry errors. Whilst retired, the product is still one of the most potent of its type - you're welcome to use it for free or edit the code.<br />-</p>
+  <p align="center">Keep Windows PC's running smoothly by cleaning out junk files and registry errors. Whilst retired, the product is still one of the most potent of its type - you're welcome to use it or edit the code.</p>
+  <p align="center">
+    <table>
+      <tr>
+        <th colspan="3" align="center">Features</th>
+      </tr>
+      <tr>
+        <td align="center" width="33%"><img src="https://i.imgur.com/Zw9rI32.png" /><br /><strong>⌚ Scan</strong></td>
+        <td align="center" width="33%"><img src="https://i.imgur.com/goKnV6t.png" /><br /><strong>💾 Backup</strong></td>
+        <td align="center" width="33%"><img src="https://i.imgur.com/PwDH5B4.png" /><br /><strong>📊 Maintain</strong></td>
+      </tr>
+    </table>
+  </p>
+  <p align="center">-</p>
 </div>
 
 <p align="center">
