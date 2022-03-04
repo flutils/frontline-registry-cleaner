@@ -18,6 +18,7 @@ timezone: Europe/London
 # Give us the ability to manage the overall structuer of the site etc
 title: Frontline Registry Cleaner 2.0
 description: C#/.NET Junk File & Registry Cleaner for Windows 7/8/10/11
+url: https://www.frontlinecleaner.com
 
 # Logo
 # Used by themes to provide us with the ability to add different visual elements
@@ -33,6 +34,28 @@ plugins:
   - "jekyll-github-metadata" # required to change the header area
   - "jekyll-seo-tag" # allows us to edit the various meta tags for each page
   - "jekyll-sitemap" # Used to provide robots.txt etc
+  
+# Includes
+# Allows us to include the various other blocks of content we may use on the site
+include:
+  - _pages
+
+# Exclude
+# Exclude these files from the build.
+exclude:
+  - .github
+  - .editorconfig
+  - .gitignore
+  - _config.yml
+  - CHANGELOG.md
+  - CODE_OF_CONDUCT.md
+  - config.ru
+  - CONTRIBUTING.md
+  - LICENSE
+  - Procfile
+  - Rakefile
+  - README.md
+  - static.json
   
 # Github
 github:
