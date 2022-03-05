@@ -49,6 +49,27 @@ It does not seem to matter which version you use, as long as it is `x86` compati
 
 ---
 
+#### ⚙️ Code Signing
+
+3 of the projects inside the solution have "post-build" events to sign the code.
+
+These call the signtool commands required to process the signature. They can be removed if you don't have a certificate - we are not going to distribute our certificate publicly: -
+
+- FLCleanEngine
+- FrontLineGUI
+- Setup
+
+**FLCleanEngine** signs the DLL which is created to serve the GUI: -
+`"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a $(BuiltOuputPath)`
+
+**FrontLineGUI** signs the `FLCleaner2.0.exe` file that's created by VS in the `obj` subdirectory of its project folder. The reason for doing this is to ensure that the EXE is signed when it's added to the setup MSI.
+`"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
+
+**Setup**, finally, is signed to provide a secure version of the installation software. This is signed with the following post-build event (changeable from the "Properties" menu of the Setup project: -
+`"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a $(TargetPath)`
+
+---
+
 #### 🗓️ Changelog
 
 - [x] (25/01/2022) Upgraded UI to HD
