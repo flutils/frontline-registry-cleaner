@@ -9,7 +9,7 @@
       </tr>
       <tr>
         <td align="center" width="33%"><img src="https://i.imgur.com/Zw9rI32.png" /><br /><strong>⌚ Scan<br />Perform a scan of your system with 18 different options.</strong></td>
-        <td align="center" width="33%"><img src="https://i.imgur.com/goKnV6t.png" /><br /><strong>💾 Backup<br />Backup your registry and files to protect against potential problems.</strong></td>
+        <td align="center" width="33%"><img src="https://i.imgur.com/goKnV6t.png" /><br /><strong>💾 Backup<br />Backup your registry and files to protect against problems.</strong></td>
         <td align="center" width="33%"><img src="https://i.imgur.com/PwDH5B4.png" /><br /><strong>📊 Maintain<br />Keep your system in check with regular updates.</strong></td>
       </tr>
     </table>
