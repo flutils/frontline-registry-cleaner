@@ -8,9 +8,9 @@
         <th colspan="3" align="center">Features</th>
       </tr>
       <tr>
-        <td align="center" width="33%"><img src="https://i.imgur.com/Zw9rI32.png" /><br /><strong>⌚ Scan</strong></td>
-        <td align="center" width="33%"><img src="https://i.imgur.com/goKnV6t.png" /><br /><strong>💾 Backup</strong></td>
-        <td align="center" width="33%"><img src="https://i.imgur.com/PwDH5B4.png" /><br /><strong>📊 Maintain</strong></td>
+        <td align="center" width="33%"><img src="https://i.imgur.com/Zw9rI32.png" /><br /><strong>⌚ Scan<br />Perform a scan of your system with 18 different options.</strong></td>
+        <td align="center" width="33%"><img src="https://i.imgur.com/goKnV6t.png" /><br /><strong>💾 Backup<br />Backup your registry and files to protect against potential problems.</strong></td>
+        <td align="center" width="33%"><img src="https://i.imgur.com/PwDH5B4.png" /><br /><strong>📊 Maintain<br />Keep your system in check with regular updates.</strong></td>
       </tr>
     </table>
   </p>
@@ -55,18 +55,26 @@ It does not seem to matter which version you use, as long as it is `x86` compati
 
 These call the signtool commands required to process the signature. They can be removed if you don't have a certificate - we are not going to distribute our certificate publicly: -
 
-- FLCleanEngine
-- FrontLineGUI
-- Setup
+- **1️⃣ FLCleanEngine**<br />
+  Signs the DLL which is created to serve the GUI: -
+  
+  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a $(BuiltOuputPath)`
+  
+  <img src="https://i.imgur.com/7rurg3t.jpg" width="600" title="FLCleanEngine Post Build Command" />
+   
+- **2️⃣ FrontLineGUI**<br />
+  Signs the `FLCleaner2.0.exe` file that's created by VS in the `obj` subdirectory of its project folder. The reason for doing this is to ensure that the EXE is signed when it's added to the setup MSI: -
+  
+  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
+  
+  <img src="https://i.imgur.com/Tk1BfOY.jpg" width="450" title="FrontlineGUI Post Build Command" />
 
-**FLCleanEngine** signs the DLL which is created to serve the GUI: -
-`"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a $(BuiltOuputPath)`
-
-**FrontLineGUI** signs the `FLCleaner2.0.exe` file that's created by VS in the `obj` subdirectory of its project folder. The reason for doing this is to ensure that the EXE is signed when it's added to the setup MSI.
-`"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
-
-**Setup**, finally, is signed to provide a secure version of the installation software. This is signed with the following post-build event (changeable from the "Properties" menu of the Setup project: -
-`"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a $(TargetPath)`
+- **3️⃣ Setup**<br />
+  Signed to provide a secure version of the installation software. This is signed with the following post-build event (changeable from the "Properties" menu of the Setup project
+  
+  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a $(TargetPath)`
+  
+    <img src="https://i.imgur.com/MsyHRVq.jpg" width="600" title="Setup Post-Build Command" />
 
 ---
 
