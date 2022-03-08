@@ -39,6 +39,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2493D68A5DF8038531EE946EBD642C96"
+        "OwnerKey" = "8:_6F1CB0983E014081A949C0A980B96895"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2AADB5AF1E49469CAAA96DAA841504A8"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -46,6 +52,12 @@
         "Entry"
         {
         "MsmKey" = "8:_4C415BA6B8B44E2DA99533E009F3DAD3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6F1CB0983E014081A949C0A980B96895"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -107,6 +119,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6F1CB0983E014081A949C0A980B96895"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_2493D68A5DF8038531EE946EBD642C96"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -216,6 +240,20 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_5618C7D6FDC34AC8867E721A9BF16EF3"
+            {
+            "Name" = "8:RemoveFiles"
+            "Condition" = "8:"
+            "Object" = "8:_6F1CB0983E014081A949C0A980B96895"
+            "FileType" = "3:1"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_8C1FAA46_41D7_4BAF_82E6_55F84C4D2C58"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:/path=\"[TARGETDIR]\\\""
+            }
         }
         "DefaultFeature"
         {
@@ -243,7 +281,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FLCleanEngine, Version=1.0.8102.20589, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:FLCleanEngine, Version=1.0.8102.21216, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_0EFAC698B473416D5E8213804B72F03F"
@@ -314,6 +352,37 @@
             {
             "SourcePath" = "8:VCRUNTIME140D.dll"
             "TargetName" = "8:VCRUNTIME140D.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2493D68A5DF8038531EE946EBD642C96"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_2493D68A5DF8038531EE946EBD642C96"
+                    {
+                    "Name" = "8:System.Net.Http.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Net.Http.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
             "Condition" = "8:"
@@ -562,7 +631,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:FLCleaner 2.0"
         "ProductCode" = "8:{C91DA3C9-246C-4DBD-BADA-DB5655F29211}"
-        "PackageCode" = "8:{D5BC964B-B171-4A25-87AC-993DB876B44C}"
+        "PackageCode" = "8:{91233982-D632-4B6B-8E52-D20B663CF7DE}"
         "UpgradeCode" = "8:{334F24C7-746A-456F-902C-83293A69B21C}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
@@ -1132,6 +1201,34 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{057AA2AF-BEE1-4F61-9379-E442AB8279E7}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6F1CB0983E014081A949C0A980B96895"
+            {
+            "SourcePath" = "8:..\\SetupActions\\obj\\Debug\\SetupActions.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{01D4C846-0BEA-4D37-8FFF-2619F1932229}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

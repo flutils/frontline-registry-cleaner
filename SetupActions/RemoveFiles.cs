@@ -16,7 +16,7 @@ namespace SetupActions
         protected override void OnBeforeUninstall(IDictionary savedState)
         {
             var path = System.IO.Path.Combine(Context.Parameters["path"], "Backup");
-            System.IO.Directory.Delete(path, true);
+            if (System.IO.Directory.Exists(path)) System.IO.Directory.Delete(path, true);
         }
     }
 }
