@@ -1,0 +1,28 @@
+﻿<Window x:Class="FrontLineGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:properties="clr-namespace:FrontLineGUI.Properties"
+        xmlns:local="clr-namespace:FrontLineGUI"
+        mc:Ignorable="d"
+        Title="Frontline Registry Cleaner 2.0"
+        Height="934"
+        Width="1200"
+        ResizeMode="CanResizeWithGrip"
+        Topmost="False"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        MouseDown="Window_MouseDown"
+    >
+
+    <Window.Resources>
+        <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
+    </Window.Resources>
+
+    <Border BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="10,10,0,0" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}">
+        <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" SnapsToDevicePixels="True" MinWidth="50" MinHeight="50" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+    </Border>
+</Window>
