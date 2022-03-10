@@ -15,24 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_190A6C44F8E28B6A0A6FE800DFAEEC67"
-        "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_193175F79A4CB2D5968B7324A519265A"
-        "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_1EDA36AC258050822472E5492F220D76"
-        "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2493D68A5DF8038531EE946EBD642C96"
         "OwnerKey" = "8:_6F1CB0983E014081A949C0A980B96895"
         "MsmSig" = "8:_UNDEFINED"
@@ -81,12 +63,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A6DB018413176C80C5455701B7967334"
-        "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_BF0DAB341441901E40C1C7D27272C571"
         "OwnerKey" = "8:_2AADB5AF1E49469CAAA96DAA841504A8"
         "MsmSig" = "8:_UNDEFINED"
@@ -113,12 +89,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_2AADB5AF1E49469CAAA96DAA841504A8"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E815AF16B21D4B70B71DD6B4DFA2390C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -277,66 +247,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_190A6C44F8E28B6A0A6FE800DFAEEC67"
-            {
-            "SourcePath" = "8:MSVCP140D.dll"
-            "TargetName" = "8:MSVCP140D.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_193175F79A4CB2D5968B7324A519265A"
-            {
-            "SourcePath" = "8:WININET.dll"
-            "TargetName" = "8:WININET.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1EDA36AC258050822472E5492F220D76"
-            {
-            "SourcePath" = "8:VCRUNTIME140D.dll"
-            "TargetName" = "8:VCRUNTIME140D.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2493D68A5DF8038531EE946EBD642C96"
             {
             "AssemblyRegister" = "3:1"
@@ -392,7 +302,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:FLCleanEngine, Version=1.0.8104.14868, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:FLCleanEngine, Version=1.0.8104.31939, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
                     "_5209B68A7BF4983D441D7AC3254D575E"
@@ -465,26 +375,6 @@
                 }
             "SourcePath" = "8:System.IO.Compression.dll"
             "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A6DB018413176C80C5455701B7967334"
-            {
-            "SourcePath" = "8:ucrtbased.dll"
-            "TargetName" = "8:ucrtbased.dll"
             "Tag" = "8:"
             "Folder" = "8:_A383A3B374FC48DE8666857B7F53A38E"
             "Condition" = "8:"
@@ -630,15 +520,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:FLCleaner 2.0"
-        "ProductCode" = "8:{C91DA3C9-246C-4DBD-BADA-DB5655F29211}"
-        "PackageCode" = "8:{91233982-D632-4B6B-8E52-D20B663CF7DE}"
-        "UpgradeCode" = "8:{334F24C7-746A-456F-902C-83293A69B21C}"
+        "ProductCode" = "8:{39D4553B-9478-4C49-B652-70C37E62AD43}"
+        "PackageCode" = "8:{DF093176-553B-4ADF-BC71-C403930CFF22}"
+        "UpgradeCode" = "8:{A420F07F-AD15-4DDC-90BE-41638A371848}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:2.0.01"
+        "ProductVersion" = "8:2.0.03"
         "Manufacturer" = "8:Frontline Utilities LTD"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://www.flcleaner.com"
