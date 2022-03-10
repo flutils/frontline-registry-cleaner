@@ -23,6 +23,20 @@
     </Window.Resources>
 
     <Border BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="10,10,0,0" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}">
-        <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" SnapsToDevicePixels="True" MinWidth="50" MinHeight="50" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
+        <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" SnapsToDevicePixels="True" MinWidth="50" MinHeight="50" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70px"  />
+                <RowDefinition Height="10*" />
+            </Grid.RowDefinitions>
+            <Button Name="CloseButton" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" Grid.Column="0" Height="46" Width="46" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+                <Image Source="/Resources/close_normal.png" Stretch="None"></Image>
+            </Button>
+            <Button Name="MinimizeButton" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0,0,60,0" VerticalAlignment="Center" Grid.Column="0" Height="46" Width="46" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0,0,0,0" >
+                <Image Source="/Resources/minimize_normal.png" Stretch="None"></Image>
+            </Button>
+        </Grid>
     </Border>
 </Window>

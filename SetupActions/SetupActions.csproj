@@ -49,7 +49,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f c:/users/Richard/Downloads/FL.pfx /p Twitter234! /fd SHA256 /t http://timestamp.digicert.com /a "$(TargetPath)"</PostBuildEvent>
   </PropertyGroup>
 </Project>

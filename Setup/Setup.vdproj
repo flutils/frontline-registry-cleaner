@@ -654,7 +654,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:"
+        "PostBuildEvent" = "8:\"C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.22000.0\\x64\\signtool.exe\" sign /f c:/users/Richard/Downloads/FL.pfx /p Twitter234! /fd SHA256 /t http://timestamp.digicert.com /a $(BuiltOuputPath)"
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"
