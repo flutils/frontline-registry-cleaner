@@ -58,21 +58,21 @@ These call the signtool commands required to process the signature. They can be 
 - **1️⃣ FLCleanEngine**<br />
   Signs the DLL which is created to serve the GUI: -
   
-  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a $(BuiltOuputPath)`
+  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a $(BuiltOuputPath)`
   
   <img src="https://i.imgur.com/7rurg3t.jpg" width="600" title="FLCleanEngine Post Build Command" />
    
 - **2️⃣ FrontLineGUI**<br />
   Signs the `FLCleaner2.0.exe` file that's created by VS in the `obj` subdirectory of its project folder. The reason for doing this is to ensure that the EXE is signed when it's added to the setup MSI: -
   
-  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
+  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
   
   <img src="https://i.imgur.com/Tk1BfOY.jpg" width="450" title="FrontlineGUI Post Build Command" />
 
 - **3️⃣ Setup**<br />
   Signed to provide a secure version of the installation software. This is signed with the following post-build event (changeable from the "Properties" menu of the Setup project
   
-  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.19041.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /t http://timestamp.digicert.com /a $(TargetPath)`
+  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a $(TargetPath)`
   
     <img src="https://i.imgur.com/MsyHRVq.jpg" width="600" title="Setup Post-Build Command" />
 
