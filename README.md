@@ -75,6 +75,13 @@ These call the signtool commands required to process the signature. They can be 
   `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a $(TargetPath)`
   
     <img src="https://i.imgur.com/MsyHRVq.jpg" width="600" title="Setup Post-Build Command" />
+    
+ - **4️⃣ SetupActions**<br />
+  Signed to ensure the new SetupActions.dll file (used to provide extra functionality to the MSI setup project) is protected at the code level: -
+  
+  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
+  
+   <img src="https://i.imgur.com/ot0t1MX.jpg" width="450" title="Setup Post-Build Command" />
 
 ---
 
