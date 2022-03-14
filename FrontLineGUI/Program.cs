@@ -29,7 +29,6 @@ namespace FrontLineGUI
             try
             {
                 CurrentState = ApplicationState.eNone;
-                //throw new NullReferenceException("Student object is null.");
 
                 if (null == Registry.CurrentUser.OpenSubKey(Program.ApplicationOptions))
                     Registry.CurrentUser.CreateSubKey(Program.ApplicationOptions);
@@ -47,7 +46,7 @@ namespace FrontLineGUI
             {
                 // Log 
                 // Dump exception to a log (txt)
-                string strPath = @"Log.txt";
+                string strPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Frontline Utilities LTD", "FLCleaner 2.0", "Log.txt");
                 if (!File.Exists(strPath))
                 {
                     File.Create(strPath).Dispose();

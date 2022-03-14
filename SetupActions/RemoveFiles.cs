@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.ComponentModel;
 using System.Configuration.Install;
 
@@ -15,13 +16,34 @@ namespace SetupActions
     {
         protected override void OnBeforeUninstall(IDictionary savedState)
         {
+            // Vars
+            var application_path = Context.Parameters["path"];
+            var app_data_path    = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Frontline Utilities LTD", "FLCleaner 2.0");
 
-            if (Context.Parameters["path"] != null && System.IO.Directory.Exists(Context.Parameters["path"]))
+            // If there are any files/folders in the Program Files location
+            if (application_path != null && System.IO.Directory.Exists(application_path))
             {
-                foreach (var subDir in new System.IO.DirectoryInfo(Context.Parameters["path"]).GetDirectories())
+
+                // Remove Subdirectories
+                // Incase the app puts directories in the program files directory
+                foreach (var subDir in new System.IO.DirectoryInfo(application_path).GetDirectories())
                 {
                     subDir.Delete(true);
                 }
+
+                // Remove Files 
+                // Seems that some redundant files may be left, so remove them
+                foreach (var file in new System.IO.DirectoryInfo(application_path).GetFiles("*.txt"))
+                {
+                    file.Delete();
+                }
+
+            }
+
+            // Remove the AppData directory
+            if(System.IO.Directory.Exists(app_data_path))
+            {
+                System.IO.Directory.Delete(app_data_path, true);
             }
 
         }

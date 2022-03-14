@@ -76,7 +76,7 @@ namespace FrontLineGUI
             // ScanButtonImageList
             // 
             this.ScanButtonImageList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ScanButtonImageList.ImageStream")));
-            this.ScanButtonImageList.TransparentColor = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+            this.ScanButtonImageList.TransparentColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ScanButtonImageList.Images.SetKeyName(0, "Scan_button.png");
             this.ScanButtonImageList.Images.SetKeyName(1, "ScanHover_button.png");
             this.ScanButtonImageList.Images.SetKeyName(2, "ScanDisabled_button.png");
@@ -132,9 +132,10 @@ namespace FrontLineGUI
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(587, 56);
+            this.label2.Location = new System.Drawing.Point(783, 69);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 14);
+            this.label2.Size = new System.Drawing.Size(15, 18);
             this.label2.TabIndex = 27;
             this.label2.Text = "|";
             // 
@@ -144,9 +145,10 @@ namespace FrontLineGUI
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(637, 56);
+            this.label3.Location = new System.Drawing.Point(849, 69);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(13, 14);
+            this.label3.Size = new System.Drawing.Size(15, 18);
             this.label3.TabIndex = 28;
             this.label3.Text = "|";
             // 
@@ -196,9 +198,10 @@ namespace FrontLineGUI
             this.NeedHelp2Button.ForeColor = System.Drawing.Color.Transparent;
             this.NeedHelp2Button.ImageIndex = 0;
             this.NeedHelp2Button.ImageList = this.NeedHelp2ImageList;
-            this.NeedHelp2Button.Location = new System.Drawing.Point(14, 475);
+            this.NeedHelp2Button.Location = new System.Drawing.Point(19, 585);
+            this.NeedHelp2Button.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.NeedHelp2Button.Name = "NeedHelp2Button";
-            this.NeedHelp2Button.Size = new System.Drawing.Size(188, 46);
+            this.NeedHelp2Button.Size = new System.Drawing.Size(251, 57);
             this.NeedHelp2Button.TabIndex = 41;
             this.NeedHelp2Button.UseVisualStyleBackColor = false;
             this.NeedHelp2Button.Click += new System.EventHandler(this.NeedHelp2Button_Click);
@@ -217,12 +220,12 @@ namespace FrontLineGUI
             this.wizControl.Controls.Add(this.ScanningPage);
             this.wizControl.Controls.Add(this.FixingPage);
             this.wizControl.ItemSize = new System.Drawing.Size(44, 20);
-            this.wizControl.Location = new System.Drawing.Point(204, 76);
-            this.wizControl.Margin = new System.Windows.Forms.Padding(45);
+            this.wizControl.Location = new System.Drawing.Point(272, 94);
+            this.wizControl.Margin = new System.Windows.Forms.Padding(60, 55, 60, 55);
             this.wizControl.Name = "wizControl";
             this.wizControl.Padding = new System.Drawing.Point(14, 1);
             this.wizControl.SelectedIndex = 0;
-            this.wizControl.Size = new System.Drawing.Size(476, 444);
+            this.wizControl.Size = new System.Drawing.Size(635, 546);
             this.wizControl.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.wizControl.TabIndex = 40;
             // 
@@ -230,9 +233,10 @@ namespace FrontLineGUI
             // 
             this.ScanPage.Cursor = System.Windows.Forms.Cursors.Default;
             this.ScanPage.Location = new System.Drawing.Point(4, 24);
+            this.ScanPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ScanPage.Name = "ScanPage";
-            this.ScanPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ScanPage.Size = new System.Drawing.Size(468, 416);
+            this.ScanPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ScanPage.Size = new System.Drawing.Size(627, 518);
             this.ScanPage.TabIndex = 0;
             this.ScanPage.Text = "ScanPage";
             this.ScanPage.UseVisualStyleBackColor = true;
@@ -240,9 +244,10 @@ namespace FrontLineGUI
             // StatisticsPage
             // 
             this.StatisticsPage.Location = new System.Drawing.Point(4, 24);
+            this.StatisticsPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StatisticsPage.Name = "StatisticsPage";
-            this.StatisticsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.StatisticsPage.Size = new System.Drawing.Size(468, 416);
+            this.StatisticsPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.StatisticsPage.Size = new System.Drawing.Size(627, 518);
             this.StatisticsPage.TabIndex = 1;
             this.StatisticsPage.Text = "StatisticsPage";
             this.StatisticsPage.UseVisualStyleBackColor = true;
@@ -250,8 +255,9 @@ namespace FrontLineGUI
             // ExtrasPage
             // 
             this.ExtrasPage.Location = new System.Drawing.Point(4, 24);
+            this.ExtrasPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ExtrasPage.Name = "ExtrasPage";
-            this.ExtrasPage.Size = new System.Drawing.Size(468, 416);
+            this.ExtrasPage.Size = new System.Drawing.Size(627, 518);
             this.ExtrasPage.TabIndex = 2;
             this.ExtrasPage.Text = "ExtrasPage";
             this.ExtrasPage.UseVisualStyleBackColor = true;
@@ -259,8 +265,9 @@ namespace FrontLineGUI
             // DefragStep1
             // 
             this.DefragStep1.Location = new System.Drawing.Point(4, 24);
+            this.DefragStep1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DefragStep1.Name = "DefragStep1";
-            this.DefragStep1.Size = new System.Drawing.Size(468, 416);
+            this.DefragStep1.Size = new System.Drawing.Size(627, 518);
             this.DefragStep1.TabIndex = 3;
             this.DefragStep1.Text = "DefragStep1";
             this.DefragStep1.UseVisualStyleBackColor = true;
@@ -268,8 +275,9 @@ namespace FrontLineGUI
             // DefragStep2
             // 
             this.DefragStep2.Location = new System.Drawing.Point(4, 24);
+            this.DefragStep2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.DefragStep2.Name = "DefragStep2";
-            this.DefragStep2.Size = new System.Drawing.Size(468, 416);
+            this.DefragStep2.Size = new System.Drawing.Size(627, 518);
             this.DefragStep2.TabIndex = 4;
             this.DefragStep2.Text = "DefragStep2";
             this.DefragStep2.UseVisualStyleBackColor = true;
@@ -277,8 +285,9 @@ namespace FrontLineGUI
             // SettingsPage
             // 
             this.SettingsPage.Location = new System.Drawing.Point(4, 24);
+            this.SettingsPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.SettingsPage.Name = "SettingsPage";
-            this.SettingsPage.Size = new System.Drawing.Size(468, 416);
+            this.SettingsPage.Size = new System.Drawing.Size(627, 518);
             this.SettingsPage.TabIndex = 6;
             this.SettingsPage.Text = "SettingsPage";
             this.SettingsPage.UseVisualStyleBackColor = true;
@@ -286,8 +295,9 @@ namespace FrontLineGUI
             // StartupPage
             // 
             this.StartupPage.Location = new System.Drawing.Point(4, 24);
+            this.StartupPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.StartupPage.Name = "StartupPage";
-            this.StartupPage.Size = new System.Drawing.Size(468, 416);
+            this.StartupPage.Size = new System.Drawing.Size(627, 518);
             this.StartupPage.TabIndex = 7;
             this.StartupPage.Text = "StartupPage";
             this.StartupPage.UseVisualStyleBackColor = true;
@@ -295,9 +305,10 @@ namespace FrontLineGUI
             // BackUpPage
             // 
             this.BackUpPage.Location = new System.Drawing.Point(4, 24);
+            this.BackUpPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.BackUpPage.Name = "BackUpPage";
-            this.BackUpPage.Padding = new System.Windows.Forms.Padding(3);
-            this.BackUpPage.Size = new System.Drawing.Size(468, 416);
+            this.BackUpPage.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BackUpPage.Size = new System.Drawing.Size(627, 518);
             this.BackUpPage.TabIndex = 8;
             this.BackUpPage.Text = "BackUpPage";
             this.BackUpPage.UseVisualStyleBackColor = true;
@@ -305,8 +316,9 @@ namespace FrontLineGUI
             // ScanningPage
             // 
             this.ScanningPage.Location = new System.Drawing.Point(4, 24);
+            this.ScanningPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ScanningPage.Name = "ScanningPage";
-            this.ScanningPage.Size = new System.Drawing.Size(468, 416);
+            this.ScanningPage.Size = new System.Drawing.Size(627, 518);
             this.ScanningPage.TabIndex = 9;
             this.ScanningPage.Text = "ScanningPage";
             this.ScanningPage.UseVisualStyleBackColor = true;
@@ -314,8 +326,9 @@ namespace FrontLineGUI
             // FixingPage
             // 
             this.FixingPage.Location = new System.Drawing.Point(4, 24);
+            this.FixingPage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.FixingPage.Name = "FixingPage";
-            this.FixingPage.Size = new System.Drawing.Size(468, 416);
+            this.FixingPage.Size = new System.Drawing.Size(627, 518);
             this.FixingPage.TabIndex = 10;
             this.FixingPage.Text = "FixingPage";
             this.FixingPage.UseVisualStyleBackColor = true;
@@ -333,10 +346,11 @@ namespace FrontLineGUI
             this.ButtonHelp.ForeColor = System.Drawing.Color.Black;
             this.ButtonHelp.ImageIndex = 0;
             this.ButtonHelp.ImageList = this.HelpImageList;
-            this.ButtonHelp.Location = new System.Drawing.Point(649, 57);
+            this.ButtonHelp.Location = new System.Drawing.Point(865, 70);
+            this.ButtonHelp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonHelp.Name = "ButtonHelp";
             this.ButtonHelp.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ButtonHelp.Size = new System.Drawing.Size(25, 14);
+            this.ButtonHelp.Size = new System.Drawing.Size(33, 17);
             this.ButtonHelp.TabIndex = 37;
             this.ButtonHelp.UseVisualStyleBackColor = false;
             this.ButtonHelp.Click += new System.EventHandler(this.ButtonHelp_Click);
@@ -354,10 +368,11 @@ namespace FrontLineGUI
             this.ButtonUpdate.ForeColor = System.Drawing.Color.Black;
             this.ButtonUpdate.ImageIndex = 0;
             this.ButtonUpdate.ImageList = this.UpdateImageList;
-            this.ButtonUpdate.Location = new System.Drawing.Point(596, 57);
+            this.ButtonUpdate.Location = new System.Drawing.Point(795, 70);
+            this.ButtonUpdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonUpdate.Name = "ButtonUpdate";
             this.ButtonUpdate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ButtonUpdate.Size = new System.Drawing.Size(44, 14);
+            this.ButtonUpdate.Size = new System.Drawing.Size(59, 17);
             this.ButtonUpdate.TabIndex = 36;
             this.ButtonUpdate.UseVisualStyleBackColor = false;
             // 
@@ -374,10 +389,11 @@ namespace FrontLineGUI
             this.ButtonSettings.ForeColor = System.Drawing.Color.Black;
             this.ButtonSettings.ImageIndex = 0;
             this.ButtonSettings.ImageList = this.SettingsLinkImageList;
-            this.ButtonSettings.Location = new System.Drawing.Point(544, 57);
+            this.ButtonSettings.Location = new System.Drawing.Point(725, 70);
+            this.ButtonSettings.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonSettings.Name = "ButtonSettings";
             this.ButtonSettings.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ButtonSettings.Size = new System.Drawing.Size(44, 14);
+            this.ButtonSettings.Size = new System.Drawing.Size(59, 17);
             this.ButtonSettings.TabIndex = 35;
             this.ButtonSettings.UseVisualStyleBackColor = false;
             this.ButtonSettings.Click += new System.EventHandler(this.ButtonSettings_Click);
@@ -395,9 +411,10 @@ namespace FrontLineGUI
             this.ButtonPCUtils.ForeColor = System.Drawing.Color.Transparent;
             this.ButtonPCUtils.ImageIndex = 0;
             this.ButtonPCUtils.ImageList = this.PCUtilsImageList;
-            this.ButtonPCUtils.Location = new System.Drawing.Point(32, 453);
+            this.ButtonPCUtils.Location = new System.Drawing.Point(43, 558);
+            this.ButtonPCUtils.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonPCUtils.Name = "ButtonPCUtils";
-            this.ButtonPCUtils.Size = new System.Drawing.Size(147, 16);
+            this.ButtonPCUtils.Size = new System.Drawing.Size(196, 20);
             this.ButtonPCUtils.TabIndex = 29;
             this.ButtonPCUtils.UseVisualStyleBackColor = false;
             this.ButtonPCUtils.Click += new System.EventHandler(this.ButtonPCUtils_Click);
@@ -412,9 +429,10 @@ namespace FrontLineGUI
             this.ButtonNeedHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ButtonNeedHelp.ForeColor = System.Drawing.Color.Transparent;
             this.ButtonNeedHelp.ImageIndex = 0;
-            this.ButtonNeedHelp.Location = new System.Drawing.Point(12, 473);
+            this.ButtonNeedHelp.Location = new System.Drawing.Point(16, 582);
+            this.ButtonNeedHelp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonNeedHelp.Name = "ButtonNeedHelp";
-            this.ButtonNeedHelp.Size = new System.Drawing.Size(188, 46);
+            this.ButtonNeedHelp.Size = new System.Drawing.Size(251, 57);
             this.ButtonNeedHelp.TabIndex = 25;
             this.ButtonNeedHelp.UseVisualStyleBackColor = false;
             // 
@@ -431,9 +449,10 @@ namespace FrontLineGUI
             this.ButtonClose.ForeColor = System.Drawing.Color.Black;
             this.ButtonClose.ImageIndex = 0;
             this.ButtonClose.ImageList = this.CloseImageList;
-            this.ButtonClose.Location = new System.Drawing.Point(655, 15);
+            this.ButtonClose.Location = new System.Drawing.Point(873, 18);
+            this.ButtonClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonClose.Name = "ButtonClose";
-            this.ButtonClose.Size = new System.Drawing.Size(21, 21);
+            this.ButtonClose.Size = new System.Drawing.Size(28, 26);
             this.ButtonClose.TabIndex = 9;
             this.ButtonClose.UseVisualStyleBackColor = true;
             this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
@@ -451,9 +470,10 @@ namespace FrontLineGUI
             this.ButtonMinimize.ForeColor = System.Drawing.Color.White;
             this.ButtonMinimize.ImageIndex = 0;
             this.ButtonMinimize.ImageList = this.MinImageList;
-            this.ButtonMinimize.Location = new System.Drawing.Point(631, 15);
+            this.ButtonMinimize.Location = new System.Drawing.Point(841, 18);
+            this.ButtonMinimize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonMinimize.Name = "ButtonMinimize";
-            this.ButtonMinimize.Size = new System.Drawing.Size(21, 21);
+            this.ButtonMinimize.Size = new System.Drawing.Size(28, 26);
             this.ButtonMinimize.TabIndex = 8;
             this.ButtonMinimize.UseVisualStyleBackColor = false;
             this.ButtonMinimize.Click += new System.EventHandler(this.ButtonMinimize_Click);
@@ -472,9 +492,10 @@ namespace FrontLineGUI
             this.ButtonStatistics.ForeColor = System.Drawing.Color.Transparent;
             this.ButtonStatistics.ImageIndex = 0;
             this.ButtonStatistics.ImageList = this.StatisticsImageList;
-            this.ButtonStatistics.Location = new System.Drawing.Point(7, 230);
+            this.ButtonStatistics.Location = new System.Drawing.Point(9, 283);
+            this.ButtonStatistics.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonStatistics.Name = "ButtonStatistics";
-            this.ButtonStatistics.Size = new System.Drawing.Size(144, 51);
+            this.ButtonStatistics.Size = new System.Drawing.Size(192, 63);
             this.ButtonStatistics.TabIndex = 3;
             this.ButtonStatistics.UseVisualStyleBackColor = false;
             this.ButtonStatistics.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonStatistics_MouseClick);
@@ -494,9 +515,10 @@ namespace FrontLineGUI
             this.ButtonBackUp.ForeColor = System.Drawing.Color.Transparent;
             this.ButtonBackUp.ImageIndex = 0;
             this.ButtonBackUp.ImageList = this.BackUpImageList;
-            this.ButtonBackUp.Location = new System.Drawing.Point(8, 183);
+            this.ButtonBackUp.Location = new System.Drawing.Point(11, 225);
+            this.ButtonBackUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonBackUp.Name = "ButtonBackUp";
-            this.ButtonBackUp.Size = new System.Drawing.Size(144, 51);
+            this.ButtonBackUp.Size = new System.Drawing.Size(192, 63);
             this.ButtonBackUp.TabIndex = 2;
             this.ButtonBackUp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ButtonBackUp.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -518,9 +540,10 @@ namespace FrontLineGUI
             this.ButtonExtras.ForeColor = System.Drawing.Color.Transparent;
             this.ButtonExtras.ImageIndex = 0;
             this.ButtonExtras.ImageList = this.ExtrasImageList;
-            this.ButtonExtras.Location = new System.Drawing.Point(7, 131);
+            this.ButtonExtras.Location = new System.Drawing.Point(9, 161);
+            this.ButtonExtras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ButtonExtras.Name = "ButtonExtras";
-            this.ButtonExtras.Size = new System.Drawing.Size(144, 51);
+            this.ButtonExtras.Size = new System.Drawing.Size(192, 63);
             this.ButtonExtras.TabIndex = 1;
             this.ButtonExtras.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ButtonExtras.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -540,10 +563,10 @@ namespace FrontLineGUI
             this.ButtonScan.ForeColor = System.Drawing.Color.Transparent;
             this.ButtonScan.ImageIndex = 0;
             this.ButtonScan.ImageList = this.ScanButtonImageList;
-            this.ButtonScan.Location = new System.Drawing.Point(7, 80);
+            this.ButtonScan.Location = new System.Drawing.Point(9, 98);
             this.ButtonScan.Margin = new System.Windows.Forms.Padding(0);
             this.ButtonScan.Name = "ButtonScan";
-            this.ButtonScan.Size = new System.Drawing.Size(144, 51);
+            this.ButtonScan.Size = new System.Drawing.Size(192, 63);
             this.ButtonScan.TabIndex = 0;
             this.ButtonScan.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ButtonScan.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -552,12 +575,12 @@ namespace FrontLineGUI
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Magenta;
             this.BackgroundImage = global::FrontLineGUI.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(686, 534);
+            this.ClientSize = new System.Drawing.Size(915, 657);
             this.Controls.Add(this.NeedHelp2Button);
             this.Controls.Add(this.wizControl);
             this.Controls.Add(this.ButtonHelp);
@@ -577,8 +600,9 @@ namespace FrontLineGUI
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(686, 534);
+            this.MaximumSize = new System.Drawing.Size(915, 657);
             this.Name = "MainWindow";
             this.Opacity = 0.03D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

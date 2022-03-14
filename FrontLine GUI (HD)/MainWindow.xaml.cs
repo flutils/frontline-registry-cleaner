@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Diagnostics; // for Process.Start
 
 namespace FrontLineGUI
 {
@@ -20,11 +10,33 @@ namespace FrontLineGUI
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        // Main Ingression Point
+        // This is where the app loads
         public MainWindow()
         {
             // Init
             InitializeComponent();
 
+            // DataContext (for the version button)
+            this.DataContext = this;
+
+        }
+
+        // Version
+        // Used to show the version number on the left menu area 
+        // https://stackoverflow.com/a/15873711/1143732
+        public string Version
+        {
+            get { return $"v {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()}"; }
+        }
+
+        // Load
+        // Makes the form default to the top of the Window stack
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Topmost = true;
+            this.Topmost = false;
         }
 
         // MouseDown
@@ -48,70 +60,55 @@ namespace FrontLineGUI
         {
             this.WindowState = WindowState.Minimized; // https://stackoverflow.com/a/2841278/1143732
         }
-    }
 
-    // Colour / Brush Converter
-    // This is used to conver the Settings.MainBackground colour to a brush object
-    // Whilst unnecessary, it's a good way to standardize the system
-    // https://docs.microsoft.com/en-us/dotnet/desktop/wpf/data/how-to-convert-bound-data?view=netframeworkdesktop-4.8
-    // https://gist.github.com/bingelp/10011323
-    [ValueConversion(typeof(System.Drawing.Color), typeof(SolidColorBrush))]
-    public class SystemColorToSolidBrushConverter : IValueConverter
-    {
-
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        // FL Button
+        // This loads up the Frontline web interface. The URL may change, so it's stored as a Setting (accessed via "Properties" of the WPF project
+        private void FrontlineButton_Click(object sender, RoutedEventArgs e)
         {
-            System.Drawing.Color color = (System.Drawing.Color)value;
-            System.Windows.Media.Color converted = Color.FromArgb(color.A, color.R, color.G, color.B);
-            return new SolidColorBrush(converted);
+            Process.Start(Properties.Settings.Default.FLWeb);
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        // Version Button
+        // Takes the user to the GIT repo
+        private void VersionButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Process.Start(Properties.Settings.Default.Repo);
         }
 
-        public static System.Drawing.Color RGBToColor(string rgb)
+        // Help Button
+        // Takes to the FrontlineCleaner.com website
+        private void HelpButton_Click(object sender, RoutedEventArgs e)
         {
-
-            //Trim to RRGGBB
-            if (rgb.Length > 6)
-            {
-                rgb = rgb.Substring(rgb.Length - 6);
-            }
-
-            if (rgb.Length != 6)
-                throw new ArgumentException("Invalid rgb value given");
-
-            int red = 0;
-            int green = 0;
-            int blue = 0;
-
-            red = System.Convert.ToInt32(rgb.Substring(0, 2), 16);
-            green = System.Convert.ToInt32(rgb.Substring(2, 2), 16);
-            blue = System.Convert.ToInt32(rgb.Substring(4, 2), 16);
-
-
-            return System.Drawing.Color.FromArgb(red, green, blue);
+            Process.Start(Properties.Settings.Default.WebSite);
         }
 
-        public static string ColorToRGB(System.Drawing.Color color)
+        // Scan Page
+        // Shows the scan page (including results)
+        private void ScanButton_Click(object sender, RoutedEventArgs e)
         {
-            string red = color.R.ToString("X2");
-            string green = color.G.ToString("X2");
-            string blue = color.B.ToString("X2");
-            return String.Format("{0}{1}{2}", red, green, blue);
+            ContentFrame.Navigate(new Uri("Pages/Scan.xaml", UriKind.Relative));
         }
 
-        public static System.Windows.Media.Color ColorToColor(System.Drawing.Color color)
+        // Extras Page
+        // Shows the extras features
+        private void ExtrasButton_Click(object sender, RoutedEventArgs e)
         {
-            return Color.FromArgb(color.A, color.R, color.G, color.B);
+            ContentFrame.Navigate(new Uri("Pages/Extras.xaml", UriKind.Relative));
         }
 
-        public static System.Drawing.Color ColorToColor(System.Windows.Media.Color color)
+        // Backup Page
+        // Shows the extras features
+        private void BackupButton_Click(object sender, RoutedEventArgs e)
         {
-            return System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
+            ContentFrame.Navigate(new Uri("Pages/Backup.xaml", UriKind.Relative));
+        }
+
+        // Statistics Page
+        // Shows scan results etc
+
+        private void StatisticsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(new Uri("Pages/Statistics.xaml", UriKind.Relative));
         }
     }
-
 }

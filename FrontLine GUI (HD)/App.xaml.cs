@@ -8,6 +8,7 @@ using System.Windows;
 
 namespace FrontLineGUI
 {
+
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>

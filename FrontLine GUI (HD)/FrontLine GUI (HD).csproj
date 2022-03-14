@@ -34,9 +34,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationIcon>Resources\216.ico</ApplicationIcon>
   </PropertyGroup>
@@ -44,6 +42,7 @@
     <StartupObject>FrontLineGUI.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -58,13 +57,22 @@
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extras\SystemColorToSolidBrushConverter.cs" />
+    <Compile Include="Pages\Backup.xaml.cs">
+      <DependentUpon>Backup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Extras.xaml.cs">
+      <DependentUpon>Extras.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Scan.xaml.cs">
+      <DependentUpon>Scan.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,8 +85,27 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\Backup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Extras.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Scan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Statistics.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Statistics.xaml.cs">
+      <DependentUpon>Statistics.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -113,6 +140,51 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\close_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hd_edition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FLCleanEngine\FLCleanEngine.vcxproj">
+      <Project>{8d456998-f4a5-4db9-8398-a2382098351a}</Project>
+      <Name>FLCleanEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\subtitle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\anniversary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\menu_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\company_url.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\scan_title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\statistics_title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\backup_title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\extras_title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\need_help_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\need_help_normal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

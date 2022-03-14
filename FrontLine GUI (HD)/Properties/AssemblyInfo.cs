@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyDescription("Registry & Junk File Cleaner")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Frontline Utilities LTD")]
-[assembly: AssemblyProduct("Frontline Registry Cleaner 2.0 (HD Version)")]
+[assembly: AssemblyProduct("Frontline Registry Cleaner 2.0 (HD Version) (Windows 10+)")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("Frontline Utilities LTD")]
 [assembly: AssemblyCulture("")]

@@ -121,10 +121,49 @@
   <data name="216" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\216.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="anniversary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\anniversary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="backup_title" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backup_title.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="close_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="company_url" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\company_url.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="extras_title" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\extras_title.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="hd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hd_edition.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menu_bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu_bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="minimize_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimize_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="need_help_hover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\need_help_hover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="need_help_normal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\need_help_normal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="scan_title" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\scan_title.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="statistics_title" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\statistics_title.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="subtitle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\subtitle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="title" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\title.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

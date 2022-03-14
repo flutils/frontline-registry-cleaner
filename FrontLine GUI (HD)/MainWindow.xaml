@@ -15,28 +15,273 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        MouseDown="Window_MouseDown"
+        MouseDown="Window_MouseDown" Foreground="{x:Null}"
+        Loaded="Window_Loaded"
     >
 
+    <!-- Resources for this window only -->
     <Window.Resources>
+        
+        <!-- Brush Converter -->
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
+
+        <!-- Button Styling (removes background on hover) -->
+        <!-- https://askto.pro/question/how-do-i-change-the-background-of-a-button-in-wpf-on-mouse-hover -->
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{x:Null}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Action Buttons Background -->
+        <!-- Used to determine the context of what's provided -->
+        <!-- https://parallelcodes.com/wpf-button-style-with-rounded-corners-and-hover-effects/  -->
+        <Style TargetType="Button" x:Key="btnBlue" BasedOn="{StaticResource {x:Type Button}}">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{x:Null}">                  
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="{x:Null}"></ImageBrush>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Window.Resources>
 
-    <Border BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="10,10,0,0" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}">
-        <Grid Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" SnapsToDevicePixels="True" MinWidth="50" MinHeight="50" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+    <!-- Window -->
+    <Border x:Name="MainBorder" BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="20,20,0,0" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}">
+
+        <!-- Content -->
+        <Grid x:Name="MainGrid" Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" SnapsToDevicePixels="True" MinWidth="50" MinHeight="50" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+
+            <!-- Grid Definition -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="70px"  />
+                <RowDefinition Height="80"  />
                 <RowDefinition Height="10*" />
             </Grid.RowDefinitions>
-            <Button Name="CloseButton" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0,0,10,0" VerticalAlignment="Center" Grid.Column="0" Height="46" Width="46" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" >
-                <Image Source="/Resources/close_normal.png" Stretch="None"></Image>
-            </Button>
-            <Button Name="MinimizeButton" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0,0,60,0" VerticalAlignment="Center" Grid.Column="0" Height="46" Width="46" Cursor="Hand" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" BorderThickness="0,0,0,0" >
-                <Image Source="/Resources/minimize_normal.png" Stretch="None"></Image>
-            </Button>
+
+            <!-- Rounded Corners -->
+            <Grid.OpacityMask>
+                <VisualBrush Visual="{Binding ElementName=MainClipping}" Stretch="None" AlignmentY="Top" />
+            </Grid.OpacityMask>
+
+            <!-- Rounded Corners -->
+            <Border x:Name="MainClipping" Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" CornerRadius="20,20,0,0" Grid.RowSpan="2" ClipToBounds="True" BorderThickness="0,0,0,0" Margin="-1,-1,-1,-1"/>
+
+            <!-- Header Area  -->
+            <Border Grid.Row="0" >
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#00000000" Offset="1"/>
+                        <GradientStop Color="#72FFFFFF" Offset="0"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+            </Border>
+
+            <!-- Action Buttons -->
+            <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,10,0" Grid.Column="0" Grid.Row="0">
+
+                <!-- HD -->
+                <Image Source="/Resources/hd_edition.png" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+
+                <!-- Minimize -->
+                <Button Name="MinimizeButton" Style="{StaticResource btnBlue}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="46" Width="46" BorderBrush="{x:Null}" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/minimize_normal.png" Stretch="None"/>
+                    </Button.Background>
+                </Button>
+
+                <!-- Close -->
+                <Button Name="CloseButton" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="46" Width="46" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" >
+                    <Image Source="/Resources/close_normal.png" Stretch="Uniform"></Image>
+                </Button>
+
+            </StackPanel>
+
+            <!-- Logo -->
+            <Image x:Name="Logo" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Source="/Resources/title.png" Stretch="Uniform" VerticalAlignment="Stretch"/>
+
+            <!-- Bottom Area Grid (Under Header) -->
+            <Grid Grid.Row="1">
+
+                <!-- Grid Definitions -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="53px" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <!-- Top Border -->
+                <Border Grid.Row="0" >
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF3EB42" Offset="1"/>
+                            <GradientStop Color="#FFBB8F24" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+
+                <!-- Inner Border Area -->
+                <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="#bb8f24" >
+                    <Grid x:Name="SubTitle" Margin="2,2,2,2">
+
+                        <!-- Background -->
+                        <Grid.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFAD771C"/>
+                                <GradientStop Color="#FFF5EE41" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Grid.Background>
+
+                        <!-- Grid Definitions -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Subtitle -->
+                        <Image x:Name="Subtitle" Source="/Resources/subtitle.png" StretchDirection="Both" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,0,0" Grid.Column="0"/>
+
+                        <!-- Buttons -->
+                        <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal">
+
+                            <!-- Settings -->
+                            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <Image Source="/Resources/settings.png" Stretch="None" Cursor="Hand" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                            </Button>
+
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
+
+                <!-- Main Content Border -->
+                <Border Grid.Row="1">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FFF2F2F2"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
+
+                <!-- Main Area -->
+                <Grid Grid.Row="1">
+
+                    <!-- Grid Definitions -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="350px" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Left Menu BG FadeOut -->
+                    <!-- This is required to achieve the "fade" effect on the left menu background -->
+                    <!-- Source: https://stackoverflow.com/a/5505174/1143732 -->
+                    <Grid.Resources>
+                        <Image x:Key="LeftBackground" Source="/Resources/menu_bg.png">
+                            <Image.OpacityMask>
+                                <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
+                                    <GradientStop Offset="0.209" Color="#00000000" />
+                                    <GradientStop Offset="1" Color="#FF000000" />
+                                </LinearGradientBrush>
+                            </Image.OpacityMask>
+                        </Image>
+                        <VisualBrush x:Key="LeftMenuBrush"  Visual="{StaticResource LeftBackground}"/>
+                    </Grid.Resources>
+
+                    <!-- Left Menu BG -->
+                    <Border Grid.Column="0" VerticalAlignment="Stretch" Background="{StaticResource LeftMenuBrush}" />
+
+                    <!-- Left Menu Content -->
+                    <Grid Grid.Row="2" Margin="10,0,15,0">
+
+                        <!-- Grid Definitions -->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <!-- Buttons -->
+                        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0" Grid.Row="0">
+
+                            <!-- Scan -->
+                            <Button Name="ScanButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="ScanButton_Click">
+                                Scan
+                            </Button>
+
+                            <!-- Extras -->
+                            <Button Name="ExtrasButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="ExtrasButton_Click">
+                                Extras
+                            </Button>
+
+                            <!-- Backup -->
+                            <Button Name="BackupButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="BackupButton_Click">
+                                Backup
+                            </Button>
+
+                            <!-- Statistics -->
+                            <Button Name="StatisticsButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="StatisticsButton_Click">
+                                Statistics
+                            </Button>
+
+                        </StackPanel>
+
+                        <!-- Footer -->
+                        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Row="1">
+
+                            <!-- Anniversary -->
+                            <Image Source="/Resources/anniversary.png" Stretch="UniformToFill" Margin="0,0,0,10" />
+
+                            <!-- FL -->
+                            <Button Name="FrontlineButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" Click="FrontlineButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}">
+                                <Image Source="/Resources/company_url.png" Stretch="Uniform"></Image>
+                            </Button>
+
+                            <!-- Version -->
+                            <Button Name="VersionButton" Click="VersionButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,5,30,5" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}">
+                                <TextBlock>
+                                    <Run Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" />
+                                    <Run Text="(January 1st 2022)" />
+                                </TextBlock>
+                            </Button>
+
+                            <!-- Need Help? -->
+                            <Button Name="HelpButton" Click="HelpButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}" Height="65">
+                                <Image Source="/Resources/need_help_normal.png" Stretch="Uniform" />
+                            </Button>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <!-- Right Area -->
+                    <!-- This houses all of the panels (grids), which means that we're able to hide them as needed -->
+                    <!-- I have split the panels into separate CS files for the sake of brevity -->
+                    <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Margin="10" Grid.Row="2" Grid.Column="1" Source="/Pages/Scan.xaml" />
+
+                </Grid>
+            </Grid>
+
         </Grid>
     </Border>
 </Window>

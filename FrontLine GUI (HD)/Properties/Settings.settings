@@ -5,5 +5,17 @@
     <Setting Name="MainBackground" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">8, 15, 23</Value>
     </Setting>
+    <Setting Name="FLWeb" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.frontlineutilities.co.uk</Value>
+    </Setting>
+    <Setting Name="WebSite" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.frontlinecleaner.com</Value>
+    </Setting>
+    <Setting Name="Repo" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.github.com/flutils/flcleaner</Value>
+    </Setting>
+    <Setting Name="AppDataDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">%APPDATA%\Frontline Utilities LTD</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

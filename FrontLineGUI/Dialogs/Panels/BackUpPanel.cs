@@ -62,7 +62,7 @@ namespace FrontLineGUI
         public void CreateBackUp()
         {
            
-            var backup_dir = Path.Combine(Environment.CurrentDirectory, "Backup");
+            var backup_dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Frontline Utilities LTD", "FLCleaner 2.0", "Backup");
             try
             {
 
