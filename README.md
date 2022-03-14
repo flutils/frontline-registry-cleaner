@@ -61,6 +61,33 @@ These call the signtool commands required to process the signature. They can be 
   `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a $(BuiltOuputPath)`
   
   <img src="https://i.imgur.com/7rurg3t.jpg" width="600" title="FLCleanEngine Post Build Command" />
+
+  **Update 14/03/2022**
+  
+  If you open [`FLCleanEngine.vcxproj`](https://github.com/flutils/flcleaner/blob/master/FLCleanEngine/FLCleanEngine.vcxproj) in a text editor and scroll to the bottom, you'll see the certificate `PropertyGroup`. 
+  
+  Add your path to SignTool.exe in the `<SignToolPath>` macro, as well as populating the `<CertificatePath>` and `<CertificatePassword>` macros, the command should fire.
+  
+  This is how it should look at the end of the file: -
+  
+  ```
+  <PropertyGroup>
+    <CertificatePath>" --- your certificate path --- "</CertificatePath>
+    <CertificatePassword>" --- your certificate password --- "</CertificatePassword>
+    <SignToolPath>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe"</SignToolPath>
+    <PostBuildEvent>if not $(SignToolPath) == "" (
+       $(SignToolPath) sign /f $(CertificatePath) /p $(CertificatePassword) /fd SHA256 /t http://timestamp.digicert.com /a "$(TargetPath)"
+     )
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="AfterBuild">
+    <Message Text="The Project File (with Notepad) Manages The Change PostBuild Event (http://pinter.org/archives/1348)." Importance="high" />
+  </Target>
+  ```
+  
+  If you use this method, you do not need to change the `PostBuild` command. 
+  
+  --
    
 - **2️⃣ FrontLineGUI**<br />
   Signs the `FLCleaner2.0.exe` file that's created by VS in the `obj` subdirectory of its project folder. The reason for doing this is to ensure that the EXE is signed when it's added to the setup MSI: -
@@ -68,20 +95,76 @@ These call the signtool commands required to process the signature. They can be 
   `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
   
   <img src="https://i.imgur.com/Tk1BfOY.jpg" width="450" title="FrontlineGUI Post Build Command" />
+  
+  **Update 14/03/2022**
+  
+  If you open [`FrontlineGUI.csproj`](https://github.com/flutils/flcleaner/blob/master/FrontLineGUI/FrontLineGUI.csproj) in a text editor and scroll to the bottom, you'll see the certificate `PropertyGroup`. 
+  
+  Add your path to SignTool.exe in the `<SignToolPath>` macro, as well as populating the `<CertificatePath>` and `<CertificatePassword>` macros, the command should fire.
+  
+  This is how it should look at the end of the file: -
+  
+  ```
+  <PropertyGroup>
+    <CertificatePath>" --- your certificate path --- "</CertificatePath>
+    <CertificatePassword>" --- your certificate password --- "</CertificatePassword>
+    <SignToolPath>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe"</SignToolPath>
+    <PostBuildEvent>if not $(SignToolPath) == "" (
+        $(SignToolPath) sign /f $(CertificatePath) /p $(CertificatePassword) /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
+      )
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="AfterBuild">
+    <Message Text="The Project File (with Notepad) Manages The Change PostBuild Event (http://pinter.org/archives/1348)." Importance="high" />
+  </Target>
+  ```
+  
+    If you use this method, you do not need to change the `PostBuild` command. 
 
+  --
+  
 - **3️⃣ Setup**<br />
   Signed to provide a secure version of the installation software. This is signed with the following post-build event (changeable from the "Properties" menu of the Setup project
   
   `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a $(TargetPath)`
   
-    <img src="https://i.imgur.com/MsyHRVq.jpg" width="600" title="Setup Post-Build Command" />
+  <img src="https://i.imgur.com/MsyHRVq.jpg" width="600" title="Setup Post-Build Command" />
+  
+  As mentioned, because this does not support custom macros, you have to apply the above PostBuild command manually.
     
+  --
+      
  - **4️⃣ SetupActions**<br />
   Signed to ensure the new SetupActions.dll file (used to provide extra functionality to the MSI setup project) is protected at the code level: -
   
-  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
+   `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
   
    <img src="https://i.imgur.com/ot0t1MX.jpg" width="450" title="Setup Post-Build Command" />
+  
+   **Update 14/03/2022**
+  
+   If you open [SetupActions.csproj](https://github.com/flutils/flcleaner/blob/master/SetupActions/SetupActions.csproj) in a text editor and scroll to the bottom, you'll see the certificate `PropertyGroup`. 
+  
+   Add your path to SignTool.exe in the `<SignToolPath>` macro, as well as populating the `<CertificatePath>` and `<CertificatePassword>` macros, the command should fire.
+  
+   This is how it should look at the end of the file: -
+  
+   ```
+   <PropertyGroup>
+     <CertificatePath>" --- your certificate path --- "</CertificatePath>
+     <CertificatePassword>" --- your certificate password --- "</CertificatePassword>
+     <SignToolPath>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe"</SignToolPath>
+     <PostBuildEvent>if not $(SignToolPath) == "" (
+        $(SignToolPath) sign /f $(CertificatePath) /p $(CertificatePassword) /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
+      )
+     </PostBuildEvent>
+   </PropertyGroup>
+   <Target Name="AfterBuild">
+     <Message Text="The Project File (with Notepad) Manages The Change PostBuild Event (http://pinter.org/archives/1348)." Importance="high" />
+   </Target>
+   ```
+  
+   If you use this method, you do not need to change the `PostBuild` command. 
 
 ---
 
