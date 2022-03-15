@@ -102,8 +102,9 @@ These call the signtool commands required to process the signature. They can be 
     <CertificatePath> --- Your Certificate Path --- </CertificatePath>
     <CertificatePassword> --- Your Certificate Pass --- </CertificatePassword>
     <SignToolPath>C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe</SignToolPath>
-    <PostBuildEvent>if not "$(SignToolPath)" == "" (
-  "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
+    <PostBuildEvent>
+      if not "$(SignToolPath)" == "" (
+        "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
       ) 
     </PostBuildEvent>
   </PropertyGroup>
@@ -140,15 +141,16 @@ These call the signtool commands required to process the signature. They can be 
    This is how it should look at the end of the file: -
   
    ```
-  <PropertyGroup>
-    <CertificatePath> --- Your Certificate Path --- </CertificatePath>
-    <CertificatePassword> --- Your Certificate Pass --- </CertificatePassword>
-    <SignToolPath>C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe</SignToolPath>
-    <PostBuildEvent>if not "$(SignToolPath)" == "" (
-  "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
+   <PropertyGroup>
+     <CertificatePath> --- Your Certificate Path --- </CertificatePath>
+     <CertificatePassword> --- Your Certificate Pass --- </CertificatePassword>
+     <SignToolPath>C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe</SignToolPath>
+     <PostBuildEvent>
+       if not "$(SignToolPath)" == "" (
+         "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
       )
-    </PostBuildEvent>
-  </PropertyGroup>
+     </PostBuildEvent>
+   </PropertyGroup>
    ```
   
    If you use this method, you do not need to change the `PostBuild` command. 
