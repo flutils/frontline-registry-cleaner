@@ -49,7 +49,11 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <CertificatePath></CertificatePath>
+    <CertificatePassword></CertificatePassword>
+    <!-- <SignToolPath>C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe</SignToolPath> -->
+    <PostBuildEvent>if not "$(SignToolPath)" == "" (
+  "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
+)</PostBuildEvent>
   </PropertyGroup>
 </Project>

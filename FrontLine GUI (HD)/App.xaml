@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:FrontLineGUI"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
+        <!-- RPECK 15/03/2022 -->
+        <!-- https://www.c-sharpcorner.com/article/customize-wpf-application-using-template-and-styles/ -->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Extras/Styles/GeneralStyling.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

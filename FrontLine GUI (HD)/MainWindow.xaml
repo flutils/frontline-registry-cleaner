@@ -21,36 +21,9 @@
 
     <!-- Resources for this window only -->
     <Window.Resources>
-        
-        <!-- Brush Converter -->
-        <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
 
-        <!-- Button Styling (removes background on hover) -->
-        <!-- https://askto.pro/question/how-do-i-change-the-background-of-a-button-in-wpf-on-mouse-hover -->
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Cursor" Value="Hand"/>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{x:Null}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-        
-        <!-- Action Buttons Background -->
-        <!-- Used to determine the context of what's provided -->
-        <!-- https://parallelcodes.com/wpf-button-style-with-rounded-corners-and-hover-effects/  -->
-        <Style TargetType="Button" x:Key="btnBlue" BasedOn="{StaticResource {x:Type Button}}">
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{x:Null}">                  
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <ImageBrush ImageSource="{x:Null}"></ImageBrush>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
+        <!-- Converters -->
+        <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
 
     </Window.Resources>
 
@@ -94,16 +67,10 @@
                 <Image Source="/Resources/hd_edition.png" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
 
                 <!-- Minimize -->
-                <Button Name="MinimizeButton" Style="{StaticResource btnBlue}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="46" Width="46" BorderBrush="{x:Null}" >
-                    <Button.Background>
-                        <ImageBrush ImageSource="/Resources/minimize_normal.png" Stretch="None"/>
-                    </Button.Background>
-                </Button>
+                <Button Name="MinimizeButton" Style="{StaticResource MainActionButton}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="46" Width="46" Background="#0e76f6" />
 
                 <!-- Close -->
-                <Button Name="CloseButton" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="46" Width="46" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" >
-                    <Image Source="/Resources/close_normal.png" Stretch="Uniform"></Image>
-                </Button>
+                <Button Name="CloseButton" Style="{StaticResource MainActionButton}" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="1,0,0,0" VerticalAlignment="Center" Height="46" Width="46" Background="#e30c0c" />
 
             </StackPanel>
 
@@ -254,7 +221,7 @@
 
                             <!-- FL -->
                             <Button Name="FrontlineButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" Click="FrontlineButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}">
-                                <Image Source="/Resources/company_url.png" Stretch="Uniform"></Image>
+                                <Image Source="/Resources/company_url.png" Stretch="Uniform" />
                             </Button>
 
                             <!-- Version -->

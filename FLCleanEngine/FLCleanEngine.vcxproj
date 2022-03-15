@@ -102,9 +102,14 @@
       <Culture>0x0809</Culture>
     </ResourceCompile>
     <PostBuildEvent>
+      <Command>if not "$(SignToolPath)" == "" (
+  "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(TargetPath)"
+)</Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
       <Command>
       </Command>
-    </PostBuildEvent>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -124,9 +129,14 @@
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
     <PostBuildEvent>
+      <Command>if not "$(SignToolPath)" == "" (
+  "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(TargetPath)"
+)</Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
       <Command>
       </Command>
-    </PostBuildEvent>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'">
     <ClCompile>
@@ -144,9 +154,14 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
+      <Command>if not "$(SignToolPath)" == "" (
+  "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(TargetPath)"
+)</Command>
+    </PostBuildEvent>
+    <PreLinkEvent>
       <Command>
       </Command>
-    </PostBuildEvent>
+    </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Reference Include="System">
@@ -213,4 +228,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <PropertyGroup>
+    <CertificatePath></CertificatePath>
+    <CertificatePassword></CertificatePassword>
+    <!-- <SignToolPath>C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe</SignToolPath> -->
+  </PropertyGroup>
 </Project>
