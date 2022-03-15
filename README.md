@@ -72,17 +72,10 @@ These call the signtool commands required to process the signature. They can be 
   
   ```
   <PropertyGroup>
-    <CertificatePath>" --- your certificate path --- "</CertificatePath>
-    <CertificatePassword>" --- your certificate password --- "</CertificatePassword>
-    <SignToolPath>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe"</SignToolPath>
-    <PostBuildEvent>if not $(SignToolPath) == "" (
-       $(SignToolPath) sign /f $(CertificatePath) /p $(CertificatePassword) /fd SHA256 /t http://timestamp.digicert.com /a "$(TargetPath)"
-     )
-    </PostBuildEvent>
+    <CertificatePath> --- Your Certificate Path --- </CertificatePath>
+    <CertificatePassword> --- Your Certificate Pass --- </CertificatePassword>
+    <SignToolPath>C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe</SignToolPath>
   </PropertyGroup>
-  <Target Name="AfterBuild">
-    <Message Text="The Project File (with Notepad) Manages The Change PostBuild Event (http://pinter.org/archives/1348)." Importance="high" />
-  </Target>
   ```
   
   If you use this method, you do not need to change the `PostBuild` command. 
@@ -106,17 +99,14 @@ These call the signtool commands required to process the signature. They can be 
   
   ```
   <PropertyGroup>
-    <CertificatePath>" --- your certificate path --- "</CertificatePath>
-    <CertificatePassword>" --- your certificate password --- "</CertificatePassword>
-    <SignToolPath>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe"</SignToolPath>
-    <PostBuildEvent>if not $(SignToolPath) == "" (
-        $(SignToolPath) sign /f $(CertificatePath) /p $(CertificatePassword) /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
-      )
+    <CertificatePath> --- Your Certificate Path --- </CertificatePath>
+    <CertificatePassword> --- Your Certificate Pass --- </CertificatePassword>
+    <SignToolPath>C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe</SignToolPath>
+    <PostBuildEvent>if not "$(SignToolPath)" == "" (
+  "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
+      ) 
     </PostBuildEvent>
   </PropertyGroup>
-  <Target Name="AfterBuild">
-    <Message Text="The Project File (with Notepad) Manages The Change PostBuild Event (http://pinter.org/archives/1348)." Importance="high" />
-  </Target>
   ```
   
     If you use this method, you do not need to change the `PostBuild` command. 
@@ -150,18 +140,15 @@ These call the signtool commands required to process the signature. They can be 
    This is how it should look at the end of the file: -
   
    ```
-   <PropertyGroup>
-     <CertificatePath>" --- your certificate path --- "</CertificatePath>
-     <CertificatePassword>" --- your certificate password --- "</CertificatePassword>
-     <SignToolPath>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe"</SignToolPath>
-     <PostBuildEvent>if not $(SignToolPath) == "" (
-        $(SignToolPath) sign /f $(CertificatePath) /p $(CertificatePassword) /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
+  <PropertyGroup>
+    <CertificatePath> --- Your Certificate Path --- </CertificatePath>
+    <CertificatePassword> --- Your Certificate Pass --- </CertificatePassword>
+    <SignToolPath>C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe</SignToolPath>
+    <PostBuildEvent>if not "$(SignToolPath)" == "" (
+  "$(SignToolPath)" sign /f "$(CertificatePath)" /p "$(CertificatePassword)" /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
       )
-     </PostBuildEvent>
-   </PropertyGroup>
-   <Target Name="AfterBuild">
-     <Message Text="The Project File (with Notepad) Manages The Change PostBuild Event (http://pinter.org/archives/1348)." Importance="high" />
-   </Target>
+    </PostBuildEvent>
+  </PropertyGroup>
    ```
   
    If you use this method, you do not need to change the `PostBuild` command. 
