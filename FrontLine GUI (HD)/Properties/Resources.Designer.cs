@@ -22,7 +22,7 @@ namespace FrontLineGUI.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace FrontLineGUI.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FrontLineGUI.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace FrontLineGUI.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon _216 {
+        public static System.Drawing.Icon _216 {
             get {
                 object obj = ResourceManager.GetObject("216", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
@@ -73,7 +73,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap anniversary {
+        public static System.Drawing.Bitmap anniversary {
             get {
                 object obj = ResourceManager.GetObject("anniversary", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap backup_title {
+        public static System.Drawing.Bitmap backup_title {
             get {
                 object obj = ResourceManager.GetObject("backup_title", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -91,29 +91,27 @@ namespace FrontLineGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to M9.53,12.01L5.982,8.462l-3.53,3.53L0.009,9.549l3.53-3.53L-0.01,2.47,2.433,0.027,5.982,3.576,9.549,0.009l2.443,2.443L8.425,6.019l3.548,3.548Z.
         /// </summary>
-        internal static System.Drawing.Bitmap close_normal {
+        public static string CloseButtonPathData {
             get {
-                object obj = ResourceManager.GetObject("close_normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("CloseButtonPathData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M0.343,30.913a24.97,24.97,0,1,0,49.94,0,25.177,25.177,0,0,0-25-25.2A25.117,25.117,0,0,0,.343,30.913Zm5.418,0a19.518,19.518,0,1,1,19.517,19.67A19.566,19.566,0,0,1,5.761,30.913Zm7.154,0.14A13.064,13.064,0,0,0,25.9,44.143a11.4,11.4,0,0,0,7.918-2.94,1.427,1.427,0,0,0,.069-1.96l-2.5-2.8a1.274,1.274,0,0,0-1.736-.14,6.494,6.494,0,0,1-3.681,1.12,6.346,6.346,0,0,1-6.39-6.58,6.43,6.43,0,0,1,6.39-6.58,6.2,6.2,0,0,1,3.751,1.12,1.273,1.273,0,0,0,1.736-.14l2.362-2.66a1.389,1.389,0,0,0-.139-2.03,12.339,12.339,0,0,0-7.779- [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string CompanyURLButtonPathData {
+            get {
+                return ResourceManager.GetString("CompanyURLButtonPathData", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap company_url {
-            get {
-                object obj = ResourceManager.GetObject("company_url", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap extras_title {
+        public static System.Drawing.Bitmap extras_title {
             get {
                 object obj = ResourceManager.GetObject("extras_title", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +121,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hd {
+        public static System.Drawing.Bitmap hd {
             get {
                 object obj = ResourceManager.GetObject("hd", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +131,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap menu_bg {
+        public static System.Drawing.Bitmap menu_bg {
             get {
                 object obj = ResourceManager.GetObject("menu_bg", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -141,19 +139,18 @@ namespace FrontLineGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to M10.625,1.3A1.525,1.525,0,0,0,10.458.755,0.709,0.709,0,0,0,10.173.467,0.885,0.885,0,0,0,9.77.383H1.59a0.747,0.747,0,0,0-.708.39A2.962,2.962,0,0,0,.666,2.11,3.072,3.072,0,0,0,.883,3.473a0.744,0.744,0,0,0,.708.4H9.77a0.73,0.73,0,0,0,.688-0.39,3.071,3.071,0,0,0,.216-1.372A5.807,5.807,0,0,0,10.625,1.3Z.
         /// </summary>
-        internal static System.Drawing.Bitmap minimize_normal {
+        public static string MinimizeButtonPathData {
             get {
-                object obj = ResourceManager.GetObject("minimize_normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("MinimizeButtonPathData", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap need_help_hover {
+        public static System.Drawing.Bitmap need_help_hover {
             get {
                 object obj = ResourceManager.GetObject("need_help_hover", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +160,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap need_help_normal {
+        public static System.Drawing.Bitmap need_help_normal {
             get {
                 object obj = ResourceManager.GetObject("need_help_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,7 +170,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap scan_title {
+        public static System.Drawing.Bitmap scan_title {
             get {
                 object obj = ResourceManager.GetObject("scan_title", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -183,7 +180,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap settings {
+        public static System.Drawing.Bitmap settings {
             get {
                 object obj = ResourceManager.GetObject("settings", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -193,7 +190,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap statistics_title {
+        public static System.Drawing.Bitmap statistics_title {
             get {
                 object obj = ResourceManager.GetObject("statistics_title", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -203,7 +200,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap subtitle {
+        public static System.Drawing.Bitmap subtitle {
             get {
                 object obj = ResourceManager.GetObject("subtitle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -213,7 +210,7 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap title {
+        public static System.Drawing.Bitmap title {
             get {
                 object obj = ResourceManager.GetObject("title", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

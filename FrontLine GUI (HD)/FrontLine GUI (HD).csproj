@@ -64,7 +64,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Extras\Converters\ButtonColourConverter.cs" />
-    <Compile Include="Extras\Converters\ButtonHoverConverter.cs" />
     <Compile Include="Extras\Converters\SystemColorToSolidBrushConverter.cs" />
     <Compile Include="Pages\Backup.xaml.cs">
       <DependentUpon>Backup.xaml</DependentUpon>
@@ -126,7 +125,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
@@ -140,12 +139,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\216.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\minimize_normal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\close_normal.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\hd_edition.png" />
@@ -167,9 +160,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\menu_bg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\company_url.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\scan_title.png" />
