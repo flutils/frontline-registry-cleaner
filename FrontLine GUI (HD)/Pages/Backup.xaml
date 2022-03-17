@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
 
             <!-- Title -->
-            <Image Source="/Resources/backup_title.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" />
+            <TextBlock Text="Registry Backup" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="28" Foreground="#FF282828" />
 
         </Grid>
 

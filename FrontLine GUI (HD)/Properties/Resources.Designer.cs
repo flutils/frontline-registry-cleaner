@@ -109,32 +109,20 @@ namespace FrontLineGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to M2059,1c70.64-1.771,131.9,19.719,188,37,142.76,43.978,268.92,96.524,385,166,59.84,35.815,136.85,62.613,156,139,6.3,25.124,2.11,57.066-6,77-30.13,74.049-135.42,280.316-33,356,83.49,61.694,236.47-1.36,306-32,30.92-13.627,66.35-36.272,114-23,67.13,18.7,91.9,82.294,124,136,73.93,123.684,133.3,257.89,180,410,16.06,52.31,49.33,158.17,26,215-25.91,63.1-84.71,71.27-147,98-50.13,21.51-90.69,50.42-130,82-24.85,19.96-70.48,70.25-59,121,20.19,89.26,135.96,143.39,217,175,50.78,19.81,99.94,25.17,129,66,42.76,60.07,13.35, [rest of string was truncated]&quot;;.
         /// </summary>
-        public static System.Drawing.Bitmap extras_title {
+        public static string LogoIconPathData {
             get {
-                object obj = ResourceManager.GetObject("extras_title", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("LogoIconPathData", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to M51.4,19.661V4.68H0.985V86.818h19.3V52.16H49.879V37.434H20.289V19.661H51.4Zm52.3,8.76A38.844,38.844,0,0,0,92.4,26.9c-5.842,0-10.668,6.474-12.7,9.9l-2.54-8H61.032c0.381,2.92,1.651,7.236,1.651,12.949V86.818h17.4v-34.4c1.27-3.3,4.191-12.314,10.541-12.314,2.921,0,5.08.508,7.239,2.412Zm64.244,29.072c0-16.884-8.128-30.6-30.1-30.6-21.59,0-30.226,14.472-30.226,30.6,0,16.758,8.509,31.23,30.226,31.23C159.438,88.722,167.947,74.123,167.947,57.492Zm-17.779,0c0,14.092-5.588,18.027-12.319,18.027-7.874,0-12.446-5.332-12.44 [rest of string was truncated]&quot;;.
         /// </summary>
-        public static System.Drawing.Bitmap hd {
+        public static string LogoTextPathData {
             get {
-                object obj = ResourceManager.GetObject("hd", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap menu_bg {
-            get {
-                object obj = ResourceManager.GetObject("menu_bg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("LogoTextPathData", resourceCulture);
             }
         }
         
@@ -163,56 +151,6 @@ namespace FrontLineGUI.Properties {
         public static System.Drawing.Bitmap need_help_normal {
             get {
                 object obj = ResourceManager.GetObject("need_help_normal", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap scan_title {
-            get {
-                object obj = ResourceManager.GetObject("scan_title", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap settings {
-            get {
-                object obj = ResourceManager.GetObject("settings", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap statistics_title {
-            get {
-                object obj = ResourceManager.GetObject("statistics_title", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap subtitle {
-            get {
-                object obj = ResourceManager.GetObject("subtitle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap title {
-            get {
-                object obj = ResourceManager.GetObject("title", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

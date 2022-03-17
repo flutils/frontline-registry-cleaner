@@ -25,7 +25,7 @@
             </Grid.RowDefinitions>
 
             <!-- Title -->
-            <Image Source="/Resources/scan_title.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Uniform" Width="350"/>
+            <TextBlock Text="Start Your Registry Scan Below:" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="28" Foreground="#FF282828" />
 
         </Grid>
 

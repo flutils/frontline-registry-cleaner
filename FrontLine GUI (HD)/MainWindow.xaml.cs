@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 using System.Diagnostics; // for Process.Start
+using System.Windows.Controls; // for MainButton_Click (referencing button)
 
 namespace FrontLineGUI
 {
@@ -82,33 +83,14 @@ namespace FrontLineGUI
             Process.Start(Properties.Settings.Default.WebSite);
         }
 
-        // Scan Page
-        // Shows the scan page (including results)
-        private void ScanButton_Click(object sender, RoutedEventArgs e)
+        // Main Buttons (Left Hand Menu)
+        // Loads different pages depending on which radiobutton was checked
+        private void MainButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Navigate(new Uri("Pages/Scan.xaml", UriKind.Relative));
+            RadioButton srcButton = e.Source as RadioButton;
+            string tag = srcButton.Tag.ToString();
+            if(!String.IsNullOrEmpty(tag)) ContentFrame.Navigate(new Uri($"Pages/{tag}.xaml", UriKind.Relative));
         }
 
-        // Extras Page
-        // Shows the extras features
-        private void ExtrasButton_Click(object sender, RoutedEventArgs e)
-        {
-            ContentFrame.Navigate(new Uri("Pages/Extras.xaml", UriKind.Relative));
-        }
-
-        // Backup Page
-        // Shows the extras features
-        private void BackupButton_Click(object sender, RoutedEventArgs e)
-        {
-            ContentFrame.Navigate(new Uri("Pages/Backup.xaml", UriKind.Relative));
-        }
-
-        // Statistics Page
-        // Shows scan results etc
-
-        private void StatisticsButton_Click(object sender, RoutedEventArgs e)
-        {
-            ContentFrame.Navigate(new Uri("Pages/Statistics.xaml", UriKind.Relative));
-        }
     }
 }

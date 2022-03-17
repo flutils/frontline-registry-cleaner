@@ -24,8 +24,8 @@
             </Grid.RowDefinitions>
 
             <!-- Title -->
-            <Image Source="/Resources/extras_title.png" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="None" />
-
+            <TextBlock Text="Scanning Extras" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="28" Foreground="#FF282828" />
+        
         </Grid>
 
     </Border>

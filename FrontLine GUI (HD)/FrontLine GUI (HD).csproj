@@ -141,40 +141,16 @@
     <Resource Include="Resources\216.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\hd_edition.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\title.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\FLCleanEngine\FLCleanEngine.vcxproj">
       <Project>{8d456998-f4a5-4db9-8398-a2382098351a}</Project>
       <Name>FLCleanEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\subtitle.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\anniversary.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\menu_bg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\scan_title.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\statistics_title.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\backup_title.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\extras_title.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\need_help_hover.png" />

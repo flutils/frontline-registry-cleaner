@@ -24,7 +24,87 @@
 
         <!-- Converters -->
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
-        
+
+        <!-- Left Menu Radio Buttons -->
+        <Style TargetType="{x:Type RadioButton}" x:Key="MainHelp" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="10" BorderThickness="2" BorderBrush="#d8d8d8">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFDBDBDB" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.5" ShadowDepth="2" BlurRadius="3" Direction="270" />
+                            </Border.Effect>
+                            <Grid>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+
+                        <!-- https://stackoverflow.com/a/42448084/1143732 -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Need Help -->
+        <!-- Button styling for the "Need Help?" button -->
+        <Style TargetType="{x:Type Button}" x:Key="NeedHelp" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="10" BorderThickness="2" BorderBrush="#d8d8d8">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFDBDBDB" Offset="1"/>
+                                    <GradientStop Color="White" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Opacity="0.5" ShadowDepth="2" BlurRadius="3" Direction="270" />
+                            </Border.Effect>
+                            <Grid>
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </Border>
+
+                        <!-- https://stackoverflow.com/a/42448084/1143732 -->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{x:Null}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Settings -->
+        <!-- Add a decorator to the text -->
+        <Style TargetType="{x:Type Button}" x:Key="SettingsLink" BasedOn="{StaticResource {x:Type Button}}">
+            <!-- https://stackoverflow.com/a/13858357/1143732 -->
+            <Style.Resources>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="TextDecorations" Value="Underline" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.Resources>
+        </Style>
+
         <!-- FL Button (SVG Path) -->
         <!-- https://stackoverflow.com/a/4078275/1143732 -->
         <Style TargetType="{x:Type Button}" x:Key="CompanyButton" BasedOn="{StaticResource {x:Type Button}}">
@@ -41,7 +121,6 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="{x:Null}"/>
-
                             </Trigger>
                         </ControlTemplate.Triggers>
 
@@ -49,7 +128,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
     </Window.Resources>
 
     <!-- Window -->
@@ -89,33 +168,80 @@
             <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,10,0" Grid.Column="0" Grid.Row="0">
 
                 <!-- HD -->
-                <Image Source="/Resources/hd_edition.png" Stretch="None" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <Border x:Name="HDBorder" Margin="0,10,5,10" BorderBrush="Black" Background="White" BorderThickness="1" CornerRadius="10">
+                    <Border x:Name="HDBorderInner" Background="White" BorderThickness="2" CornerRadius="10">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="35px" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <Border Background="Black" CornerRadius="8,0,0,8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <TextBlock Foreground="White" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" FontWeight="Bold" Margin="1,0,0,0">HD</TextBlock>
+
+                            <TextBlock Foreground="Black" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0">Edition</TextBlock>
+                        </Grid>
+                    </Border>
+                </Border>
+
 
                 <!-- Minimize -->
-                <Button Name="MinimizeButton" Style="{StaticResource MainActionButton}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="46" Width="46" Background="#0e76f6">
+                <Button Name="MinimizeButton" Style="{StaticResource MainActionButton}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
                     <Path Data="{Binding Source={x:Static properties:Resources.MinimizeButtonPathData}, Mode=OneTime}" Fill="White"/>
                 </Button>
 
                 <!-- Close -->
-                <Button Name="CloseButton" Style="{StaticResource MainActionButton}" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="1,0,0,0" VerticalAlignment="Center" Height="46" Width="46" Background="#e30c0c">
+                <Button Name="CloseButton" Style="{StaticResource MainActionButton}" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="1,0,0,0" VerticalAlignment="Center" Height="35" Width="35" Background="#e30c0c">
                     <Path Data="{Binding Source={x:Static properties:Resources.CloseButtonPathData}, Mode=OneTime}" Fill="White"/>
                 </Button>
 
             </StackPanel>
 
             <!-- Logo -->
-            <Image x:Name="Logo" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Source="/Resources/title.png" Stretch="Uniform" VerticalAlignment="Stretch"/>
+            <StackPanel Orientation="Horizontal">
+                <Viewbox Margin="15,15,0,15" HorizontalAlignment="Left" Stretch="UniformToFill">
+                    <Viewbox.Effect>
+                        <DropShadowEffect Color="#FFFFD99A" BlurRadius="15" ShadowDepth="0" Opacity="1" />
+                    </Viewbox.Effect>
+                    <Path Data="{Binding Source={x:Static properties:Resources.LogoIconPathData}, Mode=OneTime}" Fill="White" />
+                </Viewbox>
+                <Viewbox Margin="14,22,0,21" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
+                    <Viewbox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform Y="2"/>
+                        </TransformGroup>
+                    </Viewbox.RenderTransform>
+                    <Path x:Name="LogoPath" Data="{Binding Source={x:Static properties:Resources.LogoTextPathData}, Mode=OneTime}">
+                        <Path.Fill>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFFAFAFA" Offset="1"/>
+                                <GradientStop Color="#FFADADAD" Offset="0.554"/>
+                            </LinearGradientBrush>
+                            
+                        </Path.Fill>
+                        <Path.Effect>
+                            <DropShadowEffect Color="Black" BlurRadius="0" ShadowDepth="5" Opacity="1" Direction="115" />
+                        </Path.Effect>
+                    </Path>
+                </Viewbox>
+            </StackPanel>
 
             <!-- Bottom Area Grid (Under Header) -->
             <Grid Grid.Row="1">
 
                 <!-- Grid Definitions -->
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="53px" />
-                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
                 <!-- Top Border -->
@@ -135,7 +261,7 @@
                         <!-- Background -->
                         <Grid.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FFA87113"/>
+                                <GradientStop Color="#FFAB771B"/>
                                 <GradientStop Color="#FFF5EE41" Offset="1"/>
                             </LinearGradientBrush>
                         </Grid.Background>
@@ -150,14 +276,24 @@
                         </Grid.RowDefinitions>
 
                         <!-- Subtitle -->
-                        <Image x:Name="Subtitle" Source="/Resources/subtitle.png" StretchDirection="Both" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,5,0,0" Grid.Column="0"/>
+                        <TextBlock Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
+                            Scan, Optimize &amp; Boost PC Performance!
+                            <TextBlock.Effect>
+                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="1" BlurRadius="0" />
+                            </TextBlock.Effect>
+                        </TextBlock>
 
                         <!-- Buttons -->
                         <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal">
 
                             <!-- Settings -->
-                            <Button Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <Image Source="/Resources/settings.png" Stretch="None" Cursor="Hand" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                            <Button Style="{StaticResource SettingsLink}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <TextBlock Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
+                                    Settings
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="1" BlurRadius="0" />
+                                    </TextBlock.Effect>
+                                </TextBlock>
                             </Button>
 
                         </StackPanel>
@@ -180,92 +316,125 @@
 
                     <!-- Grid Definitions -->
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="350px" />
+                        <ColumnDefinition Width="340px" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
+                    <!-- Border -->
+                    <Border BorderThickness="0,0,0,0" Grid.ColumnSpan="2" Grid.RowSpan="1" Panel.ZIndex="10" Height="5" VerticalAlignment="Top" Opacity="0.3">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <Border.OpacityMask>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
+                                <GradientStop Offset="0.15" Color="#00000000" />
+                                <GradientStop Offset="1" Color="#FF000000" />
+                            </LinearGradientBrush>
+                        </Border.OpacityMask>
+                    </Border>
+
                     <!-- Left Menu BG -->
                     <!-- This is required to achieve the "fade" effect on the left menu background -->
                     <!-- Source: https://stackoverflow.com/a/5505174/1143732 -->
-                    <Border BorderThickness="0,0,2,0" BorderBrush="White" Grid.Column="0">
+                    <Border BorderThickness="0,0,1,0" BorderBrush="#FFA7A7A7" Grid.Column="0">
                         <Border.Background>
                             <LinearGradientBrush EndPoint="0,0" StartPoint="1,0">
                                 <GradientStop Color="#FFDFDFDF"/>
                                 <GradientStop Color="White" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
+                        <Border.OpacityMask>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
+                                <GradientStop Offset="0.15" Color="#00000000" />
+                                <GradientStop Offset="1" Color="#FF000000" />
+                            </LinearGradientBrush>
+                        </Border.OpacityMask>
                     </Border>
 
                     <!-- Left Menu Content -->
-                    <Grid Grid.Row="2" Grid.Column="0" Margin="5,0">
+                    <Border BorderThickness="0,0,2,0" BorderBrush="White" Grid.Column="0" Margin="0,0,1,0">
+                        <Grid Grid.Row="2" Grid.Column="0" Margin="5,0">
 
-                        <!-- Grid Definitions -->
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+                            <!-- Grid Definitions -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
 
-                        <!-- Buttons -->
-                        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0" Grid.Row="0">
+                            <!-- Buttons -->
+                            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0" Grid.Row="0">
 
-                            <!-- Scan -->
-                            <Button Name="ScanButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="ScanButton_Click">
-                                Scan
-                            </Button>
+                                <!-- Scan -->
+                                <RadioButton Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Scan" IsChecked="True">
+                                    Scan
+                                </RadioButton>
 
-                            <!-- Extras -->
-                            <Button Name="ExtrasButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="ExtrasButton_Click">
-                                Extras
-                            </Button>
+                                <!-- Extras -->
+                                <RadioButton Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Extras">
+                                    Extras
+                                </RadioButton>
 
-                            <!-- Backup -->
-                            <Button Name="BackupButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="BackupButton_Click">
-                                Backup
-                            </Button>
+                                <!-- Backup -->
+                                <RadioButton Name="BackupButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Backup">
+                                    Backup
+                                </RadioButton>
 
-                            <!-- Statistics -->
-                            <Button Name="StatisticsButton" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="StatisticsButton_Click">
-                                Statistics
-                            </Button>
+                                <!-- Statistics -->
+                                <RadioButton Name="StatisticsButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Statistics">
+                                    Statistics
+                                </RadioButton>
 
-                        </StackPanel>
+                            </StackPanel>
 
-                        <!-- Footer -->
-                        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Row="1">
+                            <!-- Footer -->
+                            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Row="1">
 
-                            <!-- Anniversary -->
-                            <Image Source="/Resources/anniversary.png" Stretch="UniformToFill" Margin="0,0,0,10" />
+                                <!-- Anniversary -->
+                                <Image Source="/Resources/anniversary.png" Stretch="UniformToFill" Margin="0,0,0,10" />
 
-                            <!-- FL -->
-                            <Button Name="FrontlineButton" Style="{StaticResource CompanyButton}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" Click="FrontlineButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}">
-                                <Path Data="{Binding Source={x:Static properties:Resources.CompanyURLButtonPathData}, Mode=OneTime}" Fill="#4b4a4a"/>
-                            </Button>
+                                <!-- FL -->
+                                <Button Name="FrontlineButton" Style="{StaticResource CompanyButton}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" Click="FrontlineButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}">
+                                    <Path Data="{Binding Source={x:Static properties:Resources.CompanyURLButtonPathData}, Mode=OneTime}" Fill="#4b4a4a"/>
+                                </Button>
 
-                            <!-- Version -->
-                            <Button Name="VersionButton" Click="VersionButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,5,30,5" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}">
-                                <TextBlock>
+                                <!-- Version -->
+                                <Button Name="VersionButton" Click="VersionButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,5,30,5" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}">
+                                    <TextBlock>
                                         <Run Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" />
                                         <Run Text="(January 1st 2022)" />
-                                </TextBlock>
-                            </Button>
+                                    </TextBlock>
+                                </Button>
 
-                            <!-- Need Help? -->
-                            <Button Name="HelpButton" Click="HelpButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}" Height="65">
-                                <Image Source="/Resources/need_help_normal.png" Stretch="Uniform" />
-                            </Button>
+                                <!-- Need Help? -->
+                                <Button Name="HelpButton" Style="{StaticResource NeedHelp}" Click="HelpButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,5,30,5" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}" Height="65">
+                                    Need Help?
+                                </Button>
 
-                        </StackPanel>
+                            </StackPanel>
 
-                    </Grid>
+                        </Grid>
+                    </Border>
 
-                    <!-- Right Area BG -->
-                    <Border BorderThickness="1,0,0,0" BorderBrush="#bababa" Grid.Column="1" />
+                    <!-- Right Area (Left Menu Shadow) -->
+                    <!-- This is required to achieve the "fade" effect on the left menu background -->
+                    <!-- Source: https://stackoverflow.com/a/5505174/1143732 -->
+                    <Border BorderThickness="1,0,0,0" Grid.Column="1" BorderBrush="#FFD9D9D9">
+                        <Border.OpacityMask>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
+                                <GradientStop Offset="0.15" Color="#00000000" />
+                                <GradientStop Offset="1" Color="#FF000000" />
+                            </LinearGradientBrush>
+                        </Border.OpacityMask>
+                    </Border>
 
                     <!-- Right Area -->
                     <!-- This houses all of the panels (grids), which means that we're able to hide them as needed -->
