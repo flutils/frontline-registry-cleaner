@@ -83,9 +83,9 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap backup_title {
+        public static System.Drawing.Bitmap backup_icon {
             get {
-                object obj = ResourceManager.GetObject("backup_title", resourceCulture);
+                object obj = ResourceManager.GetObject("backup_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,6 +105,16 @@ namespace FrontLineGUI.Properties {
         public static string CompanyURLButtonPathData {
             get {
                 return ResourceManager.GetString("CompanyURLButtonPathData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap extras_icon {
+            get {
+                object obj = ResourceManager.GetObject("extras_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -138,9 +148,9 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap need_help_hover {
+        public static System.Drawing.Bitmap scan_icon {
             get {
-                object obj = ResourceManager.GetObject("need_help_hover", resourceCulture);
+                object obj = ResourceManager.GetObject("scan_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -148,9 +158,9 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap need_help_normal {
+        public static System.Drawing.Bitmap statistics_icon {
             get {
-                object obj = ResourceManager.GetObject("need_help_normal", resourceCulture);
+                object obj = ResourceManager.GetObject("statistics_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

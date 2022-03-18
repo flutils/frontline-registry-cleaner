@@ -92,5 +92,11 @@ namespace FrontLineGUI
             if(!String.IsNullOrEmpty(tag)) ContentFrame.Navigate(new Uri($"Pages/{tag}.xaml", UriKind.Relative));
         }
 
+        // Settings Button
+        // Loads the "settings" page
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(new Uri("Pages/Settings.xaml", UriKind.Relative));
+        }
     }
 }

@@ -102,12 +102,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Statistics.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
     </Compile>
@@ -150,13 +157,16 @@
     <Resource Include="Resources\anniversary.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\backup_title.png" />
+    <Resource Include="Resources\scan_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\need_help_hover.png" />
+    <Resource Include="Resources\backup_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\need_help_normal.png" />
+    <Resource Include="Resources\statistics_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\extras_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -26,31 +26,36 @@
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
 
         <!-- Left Menu Radio Buttons -->
-        <Style TargetType="{x:Type RadioButton}" x:Key="MainHelp" BasedOn="{StaticResource {x:Type Button}}">
+        <Style TargetType="{x:Type RadioButton}" x:Key="MainButtons">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="FontSize" Value="27px" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="#898686" />
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="10" BorderThickness="2" BorderBrush="#d8d8d8">
-                            <Border.Background>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FFDBDBDB" Offset="1"/>
-                                    <GradientStop Color="White" Offset="0"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                            <Border.Effect>
-                                <DropShadowEffect Color="Black" Opacity="0.5" ShadowDepth="2" BlurRadius="3" Direction="270" />
-                            </Border.Effect>
-                            <Grid>
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </Grid>
-                        </Border>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
 
-                        <!-- https://stackoverflow.com/a/42448084/1143732 -->
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{x:Null}"/>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Foreground" Value="#4e4e4e"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
+
+                        <!-- https://stackoverflow.com/a/7543830/1143732 -->
+                        <Border Background="Transparent">
+                            <Grid Height="85" Width="300px" HorizontalAlignment="Left">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="90px" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Image x:Name="IconImage" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{TemplateBinding Property=Tag}" Margin="0,5" />
+                                <ContentPresenter  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
 
                     </ControlTemplate>
                 </Setter.Value>
@@ -60,6 +65,9 @@
         <!-- Need Help -->
         <!-- Button styling for the "Need Help?" button -->
         <Style TargetType="{x:Type Button}" x:Key="NeedHelp" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="FontSize" Value="24px" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#5c5c5c" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -91,15 +99,19 @@
         </Style>
 
         <!-- Settings -->
-        <!-- Add a decorator to the text -->
+        <!-- Add a decorator to the text on hover, mousedown and navigation -->
+        <!-- https://stackoverflow.com/a/13858357/1143732 -->
         <Style TargetType="{x:Type Button}" x:Key="SettingsLink" BasedOn="{StaticResource {x:Type Button}}">
-            <!-- https://stackoverflow.com/a/13858357/1143732 -->
             <Style.Resources>
                 <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Text" Value="Settings" />
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver" Value="true">
                             <Setter Property="TextDecorations" Value="Underline" />
                         </Trigger>
+                        <DataTrigger Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Settings.xaml">
+                            <Setter Property="TextDecorations" Value="Underline" />
+                        </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </Style.Resources>
@@ -111,19 +123,22 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Viewbox>
-                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            </Viewbox>
-                        </Grid>
 
                         <!-- https://stackoverflow.com/a/42448084/1143732 -->
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{x:Null}"/>
+                               
                             </Trigger>
                         </ControlTemplate.Triggers>
 
+                        <Border Background="Transparent">
+                            <Grid>
+                                <Viewbox>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+                        
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -165,7 +180,7 @@
             </Border>
 
             <!-- Action Buttons -->
-            <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,10,0" Grid.Column="0" Grid.Row="0">
+            <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Margin="0,0,10,0" Grid.Column="0" Grid.Row="0" Panel.ZIndex="10">
 
                 <!-- HD -->
                 <Border x:Name="HDBorder" Margin="0,10,5,10" BorderBrush="Black" Background="White" BorderThickness="1" CornerRadius="10">
@@ -186,7 +201,6 @@
                         </Grid>
                     </Border>
                 </Border>
-
 
                 <!-- Minimize -->
                 <Button Name="MinimizeButton" Style="{StaticResource MainActionButton}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
@@ -211,24 +225,30 @@
                 <Viewbox Margin="14,22,0,21" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
                     <Viewbox.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
                             <TranslateTransform Y="2"/>
                         </TransformGroup>
                     </Viewbox.RenderTransform>
-                    <Path x:Name="LogoPath" Data="{Binding Source={x:Static properties:Resources.LogoTextPathData}, Mode=OneTime}">
-                        <Path.Fill>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FFFAFAFA" Offset="1"/>
-                                <GradientStop Color="#FFADADAD" Offset="0.554"/>
-                            </LinearGradientBrush>
-                            
-                        </Path.Fill>
-                        <Path.Effect>
-                            <DropShadowEffect Color="Black" BlurRadius="0" ShadowDepth="5" Opacity="1" Direction="115" />
-                        </Path.Effect>
-                    </Path>
+                    <Grid>
+                        <Path Name="LogoPath" Data="{Binding Source={x:Static properties:Resources.LogoTextPathData}, Mode=OneTime}" SnapsToDevicePixels="True" Panel.ZIndex="1">
+                            <Path.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFFAFAFA" Offset="1"/>
+                                    <GradientStop Color="#FFADADAD" Offset="0.554"/>
+                                </LinearGradientBrush>
+                            </Path.Fill>
+                            <Path.Effect>
+                                <DropShadowEffect Color="Black" BlurRadius="0" ShadowDepth="5" Opacity="1" Direction="115" />
+                            </Path.Effect>
+                        </Path>
+                        <Rectangle Panel.ZIndex="2" Width="475" HorizontalAlignment="Left" Clip="{Binding Source={x:Static properties:Resources.LogoTextPathData}, Mode=OneTime}" SnapsToDevicePixels="True">
+                            <Rectangle.Fill>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFFFE031" Offset="1" />
+                                    <GradientStop Color="#FFFFC35C" Offset="0.554"/>
+                                </LinearGradientBrush>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Grid>
                 </Viewbox>
             </StackPanel>
 
@@ -287,9 +307,8 @@
                         <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal">
 
                             <!-- Settings -->
-                            <Button Style="{StaticResource SettingsLink}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
-                                    Settings
+                            <Button Name="SettingsButton" Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                <TextBlock Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" FontFamily="Calibri">
                                     <TextBlock.Effect>
                                         <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="1" BlurRadius="0" />
                                     </TextBlock.Effect>
@@ -374,24 +393,16 @@
                             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0" Grid.Row="0">
 
                                 <!-- Scan -->
-                                <RadioButton Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Scan" IsChecked="True">
-                                    Scan
-                                </RadioButton>
+                                <RadioButton Style="{StaticResource MainButtons}" Content="Scan" Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Scan" IsChecked="True" />
 
                                 <!-- Extras -->
-                                <RadioButton Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Extras">
-                                    Extras
-                                </RadioButton>
+                                <RadioButton Style="{StaticResource MainButtons}" Content="Extras" Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Extras" />
 
                                 <!-- Backup -->
-                                <RadioButton Name="BackupButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Backup">
-                                    Backup
-                                </RadioButton>
+                                <RadioButton Style="{StaticResource MainButtons}" Content="Backup" Name="BackupButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Backup" />
 
                                 <!-- Statistics -->
-                                <RadioButton Name="StatisticsButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Statistics">
-                                    Statistics
-                                </RadioButton>
+                                <RadioButton Style="{StaticResource MainButtons}" Content="Statistics" Name="StatisticsButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Statistics" />
 
                             </StackPanel>
 
@@ -403,7 +414,7 @@
 
                                 <!-- FL -->
                                 <Button Name="FrontlineButton" Style="{StaticResource CompanyButton}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" Click="FrontlineButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}">
-                                    <Path Data="{Binding Source={x:Static properties:Resources.CompanyURLButtonPathData}, Mode=OneTime}" Fill="#4b4a4a"/>
+                                    <Path Name="FLPath" Data="{Binding Source={x:Static properties:Resources.CompanyURLButtonPathData}, Mode=OneTime}" Fill="#4b4a4a"/>
                                 </Button>
 
                                 <!-- Version -->
@@ -415,9 +426,7 @@
                                 </Button>
 
                                 <!-- Need Help? -->
-                                <Button Name="HelpButton" Style="{StaticResource NeedHelp}" Click="HelpButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,5,30,5" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}" Height="65">
-                                    Need Help?
-                                </Button>
+                                <Button Name="HelpButton" Content="Need Help?" Style="{StaticResource NeedHelp}" Click="HelpButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="10,5,7,5" BorderBrush="{x:Null}" Background="{x:Null}" Height="65" />
 
                             </StackPanel>
 
@@ -428,6 +437,23 @@
                     <!-- This is required to achieve the "fade" effect on the left menu background -->
                     <!-- Source: https://stackoverflow.com/a/5505174/1143732 -->
                     <Border BorderThickness="1,0,0,0" Grid.Column="1" BorderBrush="#FFD9D9D9">
+                        <Border.OpacityMask>
+                            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
+                                <GradientStop Offset="0.15" Color="#00000000" />
+                                <GradientStop Offset="1" Color="#FF000000" />
+                            </LinearGradientBrush>
+                        </Border.OpacityMask>
+                    </Border>
+
+                    <!-- Border -->
+                    <Border BorderThickness="0,0,0,0" Grid.Column="1" Panel.ZIndex="10" Width="2" HorizontalAlignment="Left" VerticalAlignment="Stretch" Opacity="0.075">
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" >
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="White" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+
                         <Border.OpacityMask>
                             <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
                                 <GradientStop Offset="0.15" Color="#00000000" />
