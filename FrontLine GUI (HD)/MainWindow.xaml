@@ -24,24 +24,39 @@
 
         <!-- Converters -->
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
+        <local:ButtonColourConverter x:Key="ButtonColourConverter" />
 
         <!-- Left Menu Radio Buttons -->
         <Style TargetType="{x:Type RadioButton}" x:Key="MainButtons">
             <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="FontSize" Value="27px" />
+            <Setter Property="FontSize" Value="24px" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Foreground" Value="#898686" />
             <Setter Property="Background" Value="#f3f3f3" />
-            <Setter Property="BorderBrush" Value="#dfdfdf" />
-            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#FFC6C6C6" />
+            <Setter Property="BorderThickness" Value="1" />
             <Setter Property="Margin" Value="0,1,0,0" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RadioButton}">
 
+                        <!-- Text Styling -->
+                        <ControlTemplate.Resources>
+                            <Style TargetType="{x:Type TextBlock}">
+
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <DropShadowEffect BlurRadius="0" ShadowDepth="2" Color="White" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ControlTemplate.Resources>
+
                         <!-- https://stackoverflow.com/a/7543830/1143732 -->
                         <Border Background="Transparent" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" Margin="{TemplateBinding Margin}">
                             <Grid Height="80" >
+                                
+                               <!-- Grid Definitions -->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="90px" />
                                     <ColumnDefinition Width="1*" />
@@ -51,42 +66,79 @@
                                 </Grid.RowDefinitions>
 
                                 <!-- Background -->
-                                <Border Grid.ColumnSpan="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" OpacityMask="#FFF31818"/>
+                                <Border Grid.ColumnSpan="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                                    <Border.OpacityMask>
+                                        <LinearGradientBrush StartPoint="0.5,1" EndPoint="0,0" >
+                                            <GradientStop Offset="0.15" Color="#00000000" />
+                                            <GradientStop Offset="1" Color="#FF000000" />
+                                        </LinearGradientBrush>
+                                    </Border.OpacityMask>
+                                </Border>
 
                                 <!-- Items -->
                                 <Image x:Name="IconImage" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" />
-                                <ContentPresenter  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                                <TextBlock x:Name="ButtonText" Text="{TemplateBinding Content}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,45,0" />
+                                
                             </Grid>
                         </Border>
 
                         <ControlTemplate.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Scan.xaml" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Scan" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.Setters>
+                                    <Setter Property="Foreground" Value="#4e4e4e"/>
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                    <Setter Property="OpacityMask" Value="{x:Null}" />
+                                </MultiDataTrigger.Setters>
+                            </MultiDataTrigger>
 
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Foreground" Value="#4e4e4e"/>
-                                <Setter Property="BorderBrush" Value="Transparent" />
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="Transparent" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="{x:Null}" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                            </Trigger>
+                            <MultiDataTrigger>
+                                
+                                <!-- Active (based on page) - used to have it as IsChecked but unreliable -->
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Extras.xaml" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Extras" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.Setters>
+                                    <Setter Property="Foreground" Value="#4e4e4e"/>
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                    <Setter Property="OpacityMask" Value="{x:Null}" />
+                                </MultiDataTrigger.Setters>
+                            </MultiDataTrigger>
 
-                            <DataTrigger Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Settings.xaml">
-                                <Setter Property="IsChecked" Value="False" />
-                            </DataTrigger>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Backup.xaml" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Backup" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.Setters>
+                                    <Setter Property="Foreground" Value="#4e4e4e"/>
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                    <Setter Property="OpacityMask" Value="{x:Null}" />
+                                </MultiDataTrigger.Setters>
+                            </MultiDataTrigger>
+
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Statistics.xaml" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Statistics" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.Setters>
+                                    <Setter Property="Foreground" Value="#4e4e4e"/>
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderBrush" Value="Transparent" />
+                                    <Setter Property="OpacityMask" Value="{x:Null}" />
+                                </MultiDataTrigger.Setters>
+                            </MultiDataTrigger>
 
                             <!-- General Settings Per Button -->
                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Scan">
-                                <Setter Property="IsChecked" Value="True" />
                                 <Setter Property="FontSize" Value="38px" />
                                 <Setter TargetName="IconImage" Property="Source" Value="/Resources/scan_icon.png" />
                             </DataTrigger>
@@ -193,6 +245,26 @@
                                 </MultiDataTrigger.ExitActions>
                             </MultiDataTrigger>
 
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" Value="False" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.1" To="#a7a7a7" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.EnterActions>
+                                <MultiDataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color" Duration="0:0:0.1" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.ExitActions>
+                            </MultiDataTrigger>
                         </ControlTemplate.Triggers>
 
                     </ControlTemplate>
@@ -573,7 +645,7 @@
                             <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Row="1">
 
                                 <!-- Anniversary -->
-                                <Image Source="/Resources/anniversary.png" Stretch="UniformToFill" Margin="0,0,0,10" />
+                                <Image Source="/Resources/anniversary.png" Stretch="UniformToFill" Margin="10,0,10,10" />
 
                                 <!-- FL -->
                                 <Button Name="FrontlineButton" Style="{StaticResource CompanyButton}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" Click="FrontlineButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}">
