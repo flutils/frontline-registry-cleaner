@@ -31,19 +31,17 @@
             <Setter Property="FontSize" Value="27px" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Foreground" Value="#898686" />
+            <Setter Property="Background" Value="#f3f3f3" />
+            <Setter Property="BorderBrush" Value="#dfdfdf" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Margin" Value="0,1,0,0" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RadioButton}">
 
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Foreground" Value="#4e4e4e"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-
                         <!-- https://stackoverflow.com/a/7543830/1143732 -->
-                        <Border Background="Transparent">
-                            <Grid Height="85" Width="300px" HorizontalAlignment="Left">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="{TemplateBinding Margin}">
+                            <Grid Height="80" Width="300px" HorizontalAlignment="Left">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="90px" />
                                     <ColumnDefinition Width="1*" />
@@ -52,10 +50,146 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
-                                <Image x:Name="IconImage" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Source="{TemplateBinding Property=Tag}" Margin="0,5" />
+                                <Image x:Name="IconImage" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" />
                                 <ContentPresenter  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
                             </Grid>
                         </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Foreground" Value="#4e4e4e"/>
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="Transparent" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            
+                            <DataTrigger Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Settings.xaml">
+                                <Setter Property="IsChecked" Value="False" />
+                            </DataTrigger>
+                            
+                            <!-- General Settings Per Button -->
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Scan">
+                                <Setter Property="IsChecked" Value="True" />
+                                <Setter Property="FontSize" Value="38px" />
+                                <Setter TargetName="IconImage" Property="Source" Value="/Resources/scan_icon.png" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Extras">
+                                <Setter TargetName="IconImage" Property="Source" Value="/Resources/extras_icon.png" />
+                                <Setter TargetName="IconImage" Property="Width" Value="75px" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Backup">
+                                <Setter TargetName="IconImage" Property="Source" Value="/Resources/backup_icon.png" />
+                                <Setter TargetName="IconImage" Property="Width" Value="65px" />
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Statistics">
+                                <Setter TargetName="IconImage" Property="Source" Value="/Resources/statistics_icon.png" />
+                                <Setter TargetName="IconImage" Property="Width" Value="55px" />
+                            </DataTrigger>
+
+                            <!-- Interactivity -->
+                            <!-- https://wpf-tutorial.com/styles/multi-triggers-multitrigger-multidatatrigger/ -->
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Scan" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" Value="False" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.1" To="#4ea4f5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.EnterActions>
+                                <MultiDataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.1" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.ExitActions>
+                            </MultiDataTrigger>
+
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Extras" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" Value="False" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.1" To="#ea4343" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.EnterActions>
+                                <MultiDataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.1" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.ExitActions>
+                            </MultiDataTrigger>
+
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Backup" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" Value="False" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.1" To="#2bbe0e" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.EnterActions>
+                                <MultiDataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.1" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.ExitActions>
+                            </MultiDataTrigger>
+
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Statistics" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked}" Value="False" />
+                                    <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=IsMouseOver}" Value="True" />
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.1" To="#8259a9" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.EnterActions>
+                                <MultiDataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetProperty="Foreground.Color" Duration="0:0:0.1" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.ExitActions>
+                            </MultiDataTrigger>
+
+                        </ControlTemplate.Triggers>
 
                     </ControlTemplate>
                 </Setter.Value>
@@ -101,20 +235,33 @@
         <!-- Settings -->
         <!-- Add a decorator to the text on hover, mousedown and navigation -->
         <!-- https://stackoverflow.com/a/13858357/1143732 -->
+        <!-- https://www.youtube.com/watch?v=aFGDs3z7zpM&ab_channel=tips%27ntricks -->
         <Style TargetType="{x:Type Button}" x:Key="SettingsLink" BasedOn="{StaticResource {x:Type Button}}">
-            <Style.Resources>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Text" Value="Settings" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter Property="TextDecorations" Value="Underline" />
-                        </Trigger>
-                        <DataTrigger Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Settings.xaml">
-                            <Setter Property="TextDecorations" Value="Underline" />
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </Style.Resources>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <TextBlock x:Name="SettingsText" Text="{TemplateBinding Content}" Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" FontFamily="Calibri">
+                            <TextBlock.Effect>
+                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="1" BlurRadius="0" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
+                            </Trigger>
+                            <DataTrigger Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Settings.xaml">
+                                <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <!-- FL Button (SVG Path) -->
@@ -307,13 +454,7 @@
                         <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal">
 
                             <!-- Settings -->
-                            <Button Name="SettingsButton" Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" HorizontalAlignment="Right" VerticalAlignment="Center">
-                                <TextBlock Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" FontFamily="Calibri">
-                                    <TextBlock.Effect>
-                                        <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="1" BlurRadius="0" />
-                                    </TextBlock.Effect>
-                                </TextBlock>
-                            </Button>
+                            <Button Name="SettingsButton" Content="Settings" Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
                         </StackPanel>
 
@@ -393,16 +534,16 @@
                             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0" Grid.Row="0">
 
                                 <!-- Scan -->
-                                <RadioButton Style="{StaticResource MainButtons}" Content="Scan" Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Scan" IsChecked="True" />
+                                <RadioButton Style="{StaticResource MainButtons}" Content="Scan" Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Scan" />
 
                                 <!-- Extras -->
-                                <RadioButton Style="{StaticResource MainButtons}" Content="Extras" Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Extras" />
+                                <RadioButton Style="{StaticResource MainButtons}" Content="Extras" Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Extras" />
 
                                 <!-- Backup -->
-                                <RadioButton Style="{StaticResource MainButtons}" Content="Backup" Name="BackupButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Backup" />
+                                <RadioButton Style="{StaticResource MainButtons}" Content="Backup" Name="BackupButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Backup" />
 
                                 <!-- Statistics -->
-                                <RadioButton Style="{StaticResource MainButtons}" Content="Statistics" Name="StatisticsButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Click="MainButton_Click" Tag="Statistics" />
+                                <RadioButton Style="{StaticResource MainButtons}" Content="Statistics" Name="StatisticsButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Statistics" />
 
                             </StackPanel>
 
