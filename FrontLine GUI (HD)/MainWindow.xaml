@@ -40,8 +40,8 @@
                     <ControlTemplate TargetType="{x:Type RadioButton}">
 
                         <!-- https://stackoverflow.com/a/7543830/1143732 -->
-                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="{TemplateBinding Margin}">
-                            <Grid Height="80" Width="300px" HorizontalAlignment="Left">
+                        <Border Background="Transparent" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" Margin="{TemplateBinding Margin}">
+                            <Grid Height="80" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="90px" />
                                     <ColumnDefinition Width="1*" />
@@ -50,6 +50,10 @@
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
 
+                                <!-- Background -->
+                                <Border Grid.ColumnSpan="2" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" OpacityMask="#FFF31818"/>
+
+                                <!-- Items -->
                                 <Image x:Name="IconImage" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,5" />
                                 <ContentPresenter  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
                             </Grid>
@@ -75,11 +79,11 @@
                                     </BeginStoryboard>
                                 </Trigger.ExitActions>
                             </Trigger>
-                            
+
                             <DataTrigger Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Settings.xaml">
                                 <Setter Property="IsChecked" Value="False" />
                             </DataTrigger>
-                            
+
                             <!-- General Settings Per Button -->
                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Scan">
                                 <Setter Property="IsChecked" Value="True" />
@@ -272,11 +276,29 @@
                     <ControlTemplate TargetType="{x:Type Button}">
 
                         <!-- https://stackoverflow.com/a/42448084/1143732 -->
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                               
-                            </Trigger>
-                        </ControlTemplate.Triggers>
+                        <ControlTemplate.Resources>
+                            <Style TargetType="{x:Type Path}">
+                                <Setter Property="Fill" Value="#4b4a4a" />
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=FrontlineButton, Path=IsMouseOver}" Value="True">
+                                        <DataTrigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0:0:0.1" To="#107afe" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </DataTrigger.EnterActions>
+                                        <DataTrigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)" Duration="0:0:0.1" To="{x:Null}" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </DataTrigger.ExitActions>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ControlTemplate.Resources>
 
                         <Border Background="Transparent">
                             <Grid>
@@ -285,7 +307,7 @@
                                 </Viewbox>
                             </Grid>
                         </Border>
-                        
+
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -555,7 +577,7 @@
 
                                 <!-- FL -->
                                 <Button Name="FrontlineButton" Style="{StaticResource CompanyButton}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" Click="FrontlineButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}">
-                                    <Path Name="FLPath" Data="{Binding Source={x:Static properties:Resources.CompanyURLButtonPathData}, Mode=OneTime}" Fill="#4b4a4a"/>
+                                    <Path Name="FLPath" Data="{Binding Source={x:Static properties:Resources.CompanyURLButtonPathData}, Mode=OneTime}" />
                                 </Button>
 
                                 <!-- Version -->
