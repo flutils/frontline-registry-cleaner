@@ -1,63 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
+using Microsoft.VisualBasic.Devices;
 
 namespace FrontLineGUI
 {
-    /// <summary>
-    /// Interaction logic for Scan.xaml
-    /// </summary>
+    //Scan Logic
     public partial class Scan : Page
     {
         public Scan()
         {
+            // Initialize the form
             InitializeComponent();
+
+            // Required for OSVersion
+            this.DataContext = this;
         }
 
-        // Quick Links
-        // Click handler for each button
-        private void QuickLinksButton_Click(object sender, RoutedEventArgs e)
+        // OS Version
+        // Used to show the Operating System name in the bottom left of the grid
+        // https://stackoverflow.com/a/45045313/1143732
+        public string OSVersion
         {
-            Button srcButton = e.Source as Button;
-            string tag = srcButton.Tag.ToString();
-            string page = "";
-            if (!String.IsNullOrEmpty(tag))
-            {
-                // Behaviour/Pages
-                switch (tag)
-                {
-                    case "Clean":
-                        page = "Scan";
-                        break;
-
-                    case "Junk":
-                        page = "Scan";
-                        break;
-
-                    case "Defragment":
-                        page = "Extras";
-                        break;
-
-                    case "Startup":
-                        page = "Extras";
-                        break;
-                }
-
-                // https://stackoverflow.com/a/26969093/1143732
-                if (!String.IsNullOrEmpty(page)) NavigationService.Navigate(new Uri($"Pages/{page}.xaml", UriKind.Relative));
-
-            }
+            get { return new ComputerInfo().OSFullName.ToString(); }
         }
+
     }
 }

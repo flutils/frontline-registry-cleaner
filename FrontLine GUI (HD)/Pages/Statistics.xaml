@@ -20,21 +20,21 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="80"  />
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
             <!-- Title -->
-            <TextBlock Text="Cleaning Statistics" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="28" Foreground="#FF282828" />
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <TextBlock Text="Cleaning Statistics" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="31" Foreground="#FF282828" Margin="0,35,0,0" />
 
-            <!-- List View -->
-            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF272727" Margin="50,15,50,35">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF272727" Margin="50,15,50,35">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
 
         </Grid>
 

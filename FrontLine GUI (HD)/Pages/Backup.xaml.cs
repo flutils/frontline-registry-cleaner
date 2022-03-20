@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using System.IO;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Path = System.IO.Path;
 
 namespace FrontLineGUI.Pages
 {
@@ -20,9 +10,30 @@ namespace FrontLineGUI.Pages
     /// </summary>
     public partial class Backup : Page
     {
+
+        // Vars 
+
+
         public Backup()
         {
             InitializeComponent();
+
+            // Populates ListView
+            var backup_dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Frontline Utilities LTD", "FLCleaner 2.0", "Backup");
+            try
+            {
+                if (Directory.Exists(backup_dir))
+                {
+                    DirectoryInfo d_info = new DirectoryInfo(backup_dir);
+                    FileInfo[] fls = d_info.GetFiles("*.bkp");
+                    foreach (var fl in fls)
+                    {
+                        var lvitem = ListViewBackups.Items.Add(fl.Name);
+                    }
+                }
+            }
+            catch { }
+
         }
     }
 }

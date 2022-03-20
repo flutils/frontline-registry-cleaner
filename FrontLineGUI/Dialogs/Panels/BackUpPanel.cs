@@ -30,7 +30,7 @@ namespace FrontLineGUI
 
             try
             {
-                var backup_dir = Path.Combine(Environment.CurrentDirectory, "Backup");
+                var backup_dir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Frontline Utilities LTD", "FLCleaner 2.0", "Backup");
                 if (Directory.Exists(backup_dir))
                 {
                     DirectoryInfo d_info = new DirectoryInfo(backup_dir);
