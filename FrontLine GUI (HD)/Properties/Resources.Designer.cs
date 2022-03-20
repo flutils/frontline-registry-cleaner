@@ -91,6 +91,16 @@ namespace FrontLineGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap clean_registry_icon {
+            get {
+                object obj = ResourceManager.GetObject("clean_registry_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to M9.53,12.01L5.982,8.462l-3.53,3.53L0.009,9.549l3.53-3.53L-0.01,2.47,2.433,0.027,5.982,3.576,9.549,0.009l2.443,2.443L8.425,6.019l3.548,3.548Z.
         /// </summary>
         public static string CloseButtonPathData {
@@ -105,6 +115,26 @@ namespace FrontLineGUI.Properties {
         public static string CompanyURLButtonPathData {
             get {
                 return ResourceManager.GetString("CompanyURLButtonPathData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap defragment_registry_icon {
+            get {
+                object obj = ResourceManager.GetObject("defragment_registry_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap edit_startup_icon {
+            get {
+                object obj = ResourceManager.GetObject("edit_startup_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -142,6 +172,16 @@ namespace FrontLineGUI.Properties {
         public static string MinimizeButtonPathData {
             get {
                 return ResourceManager.GetString("MinimizeButtonPathData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap remove_junk_icon {
+            get {
+                object obj = ResourceManager.GetObject("remove_junk_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

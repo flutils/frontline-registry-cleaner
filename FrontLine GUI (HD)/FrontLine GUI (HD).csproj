@@ -168,5 +168,17 @@
   <ItemGroup>
     <Resource Include="Resources\extras_icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\edit_startup_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\defragment_registry_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\remove_junk_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\clean_registry_icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
