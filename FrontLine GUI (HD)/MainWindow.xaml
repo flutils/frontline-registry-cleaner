@@ -43,7 +43,6 @@
                         <!-- Text Styling -->
                         <ControlTemplate.Resources>
                             <Style TargetType="{x:Type TextBlock}">
-
                                 <Setter Property="Effect">
                                     <Setter.Value>
                                         <DropShadowEffect BlurRadius="0" ShadowDepth="2" Color="White" />

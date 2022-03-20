@@ -8,26 +8,163 @@
       d:DesignHeight="820
       " d:DesignWidth="771"
       Title="Scan">
+    
+    <!-- Resources -->
+    <Page.Resources>
 
-    <!-- Border-->
-    <Border x:Name="MainBorder" BorderThickness="2" BorderBrush="#a6b0b5">
+        <!-- Quick Links -->
+        <Style TargetType="{x:Type Button}" x:Key="QuickLinks">
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
 
-        <!-- Main -->
-        <Grid Background="White">
+                        <Border Background="Transparent">
+                            <TextBlock x:Name="ButtonText" Text="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
 
-            <!-- Grid Definition -->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="80"  />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="TextDecorations" TargetName="ButtonText" Value="Underline" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="TextDecorations" TargetName="ButtonText" Value="Underline" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
 
-            <!-- Title -->
-            <TextBlock Text="Start Your Registry Scan Below:" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="28" Foreground="#FF323232" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+    </Page.Resources>
 
-        </Grid>
+    <!-- Main -->
+    <Grid>
 
-    </Border>
+        <!-- Grid Definition -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="575px"  />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <!-- Main Scanning Grid -->
+        <Border x:Name="MainBorder" BorderThickness="2" BorderBrush="#a6b0b5">
+            <Grid Background="White">
+
+                <!-- Grid Definition -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90px"  />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <!-- Title -->
+                <TextBlock Text="Start Your Registry Scan Below:" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="28" Foreground="#FF323232" />
+
+            </Grid>
+        </Border>
+
+        <!-- Quick Links Grid -->
+        <Border Grid.Row="1" BorderThickness="2" Margin="0,10,0,0">
+            <Border.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#c4c4c4" Offset="1"/>
+                    <GradientStop Color="#FF818181" Offset="0"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
+            <Grid Background="White">
+
+                <!-- Grid Definition -->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="55px"  />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <!-- Top Row -->
+                <Border Grid.Row="0" BorderBrush="#707070" BorderThickness="0,0,0,1">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF9E9E9E"/>
+                            <GradientStop Color="#c8c8c8" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border BorderThickness="1" Opacity="0.85">
+                        <Border.BorderBrush>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#BFFFFFFF"/>
+                                <GradientStop Color="#33FFFFFF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.BorderBrush>
+                    </Border>
+                </Border>
+
+                <!-- Top Border Highlight -->
+                <!-- <Border Grid.Row="0" Panel.ZIndex="5" BorderThickness="0,0,0,1" BorderBrush="#A5FFFFFF"/> -->
+
+                <!-- Title -->
+                <TextBlock Text="Quick Links" Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="27" Foreground="White" Margin="15,0,0,0">
+                    <TextBlock.Effect>
+                        <DropShadowEffect ShadowDepth="2" RenderingBias="Performance" Opacity="0.5" BlurRadius="0"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <!-- Bottom Row Shadow -->
+                <Border BorderThickness="0,0,0,0" Grid.Row="1" Panel.ZIndex="10" Height="5" VerticalAlignment="Top" Opacity="0.3">
+                    <Border.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="Black"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Border.OpacityMask>
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
+                            <GradientStop Offset="0.15" Color="#00000000" />
+                            <GradientStop Offset="1" Color="#FF000000" />
+                        </LinearGradientBrush>
+                    </Border.OpacityMask>
+                </Border>
+                
+                <!-- Icon Grid -->
+                <Grid Grid.Row="1">
+
+                    <!-- Grid Definition -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Clean The Registry -->
+                    <Button Style="{ StaticResource QuickLinks }" Click="QuickLinksButton_Click" Content="Clean The Registry" Tag="Clean" Grid.Column="0" />
+
+                    <!-- Remove Junk Files -->
+                    <Button Style="{ StaticResource QuickLinks }" Click="QuickLinksButton_Click" Content="Remove Junk Files" Tag="Junk" Grid.Column="1" />
+
+                    <!-- Defragment The Registry -->
+                    <Button Style="{ StaticResource QuickLinks }" Click="QuickLinksButton_Click" Content="Defragment The Registry" Tag="Defragment" Grid.Column="2" />
+
+                    <!-- Edit Startup -->
+                    <Button Style="{ StaticResource QuickLinks }" Click="QuickLinksButton_Click" Content="Edit Startup" Tag="Startup" Grid.Column="3" />
+
+                </Grid>
+
+            </Grid>
+        </Border>
+
+
+    </Grid>
 </Page>
