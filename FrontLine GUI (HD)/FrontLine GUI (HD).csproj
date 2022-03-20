@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Extras\Components\QuickLinks.xaml.cs">
+      <DependentUpon>QuickLinks.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Extras\Converters\ButtonColourConverter.cs" />
     <Compile Include="Extras\Converters\SystemColorToSolidBrushConverter.cs" />
     <Compile Include="Pages\Backup.xaml.cs">
@@ -74,6 +77,10 @@
     <Compile Include="Pages\Scan.xaml.cs">
       <DependentUpon>Scan.xaml</DependentUpon>
     </Compile>
+    <Page Include="Extras\Components\QuickLinks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Extras\Styles\GeneralStyling.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
