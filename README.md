@@ -75,27 +75,6 @@ The build process will sign all of the files (we keep certificate information in
 
 ---
 
-#### ⚙️ Build Pipeline
-
-If you wish to build the application yourself, there are several things to consider.
-
-Firstly, the project dependencies are as follows: -
-
- - *Setup* depends on *FrontlineGUI*, which depends on *FLCleanEngine*, which depends on *CleanEngine*
- - To compile the solution, you're best either building *setup* or *FrontlineGUI*, as they will build everything else too
- - x86 and x64 use the same code so it's best to just build x86
- 
- Code signing can be done by adding post-build events using `signtool.exe` to the following: -
- 
-  - SetupActions (creates a DLL used by the Setup app)
-  - Setup
-  - FrontlineGUI
-  - FLCleanEngine
- 
- If you need help doing this, please open an issue and we'll provide support.
-
----
-
 #### 🗓️ Changelog
 
 - [x] (25/06/2022) Upgraded UI to HD
