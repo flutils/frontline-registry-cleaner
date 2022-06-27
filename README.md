@@ -81,7 +81,7 @@ If you wish to build the application yourself, there are several things to consi
 
 Firstly, the project dependencies are as follows: -
 
- - **Setup** depends on *FrontlineGUI*, which depends on *FLCleanEngine*, which depends on *CleanEngine*
+ - Setup depends on *FrontlineGUI*, which depends on *FLCleanEngine*, which depends on *CleanEngine*
  - To compile the solution, you're best either building *setup* or *FrontlineGUI*, as they will build everything else too
  - x86 and x64 use the same code so it's best to just build x86
  
