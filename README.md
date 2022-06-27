@@ -51,7 +51,7 @@ It does not seem to matter which version you use, as long as it is `x86` compati
 
 #### 🟢 Github Actions
 
-We've added a new set of build steps with Github Actions (removing the need to sign the binaries).
+We've added a new set of build steps with Github Actions (removing the need to sign the binaries manually).
 
 These are triggered when a `tag` is created and provide two sets of binaries for `x64` and `x86`.
 
@@ -72,6 +72,27 @@ git push origin :refs/tags/v2.0.0.3-alpha1
 ```
 
 The build process will sign all of the files (we keep certificate information inside the repository's secrets).
+
+---
+
+#### ⚙️ Build Pipeline
+
+If you wish to build the application yourself, there are several things to consider.
+
+Firstly, the project dependencies are as follows: -
+
+ - **Setup** depends on *FrontlineGUI*, which depends on *FLCleanEngine*, which depends on *CleanEngine*
+ - To compile the solution, you're best either building *setup* or *FrontlineGUI*, as they will build everything else too
+ - x86 and x64 use the same code so it's best to just build x86
+ 
+ Code signing can be done by adding post-build events using `signtool.exe` to the following: -
+ 
+  - SetupActions (creates a DLL used by the Setup app)
+  - Setup
+  - FrontlineGUI
+  - FLCleanEngine
+ 
+ If you need help doing this, please open an issue and we'll provide support.
 
 ---
 
