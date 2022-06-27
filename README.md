@@ -49,130 +49,37 @@ It does not seem to matter which version you use, as long as it is `x86` compati
 
 ---
 
-#### ⚙️ Code Signing
+#### 🟢 Github Actions
 
-3 of the projects inside the solution have "post-build" events to sign the code.
+We've added a new set of build steps with Github Actions (removing the need to sign the binaries).
 
-These call the signtool commands required to process the signature. They can be removed if you don't have a certificate - we are not going to distribute our certificate publicly: -
+These are triggered when a `tag` is created and provide two sets of binaries for `x64` and `x86`.
 
-- **1️⃣ FLCleanEngine**<br />
-  Signs the DLL which is created to serve the GUI: -
-  
-  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a $(BuiltOuputPath)`
-  
-  <img src="https://i.imgur.com/7rurg3t.jpg" width="600" title="FLCleanEngine Post Build Command" />
+The [release](https://github.com/flutils/flcleaner/releases) provides both binaries' MSI files as well as ZIP files containing the executable and DLL for x86 and x64. 
 
-  **Update 14/03/2022**
-  
-  If you open [`FLCleanEngine.vcxproj`](https://github.com/flutils/flcleaner/blob/master/FLCleanEngine/FLCleanEngine.vcxproj) in a text editor and scroll to the bottom, you'll see the certificate `PropertyGroup`. 
-  
-  Add your path to SignTool.exe in the `<SignToolPath>` macro, as well as populating the `<CertificatePath>` and `<CertificatePassword>` macros, the command should fire.
-  
-  This is how it should look at the end of the file: -
-  
-  ```
-  <PropertyGroup>
-    <CertificatePath>" --- your certificate path --- "</CertificatePath>
-    <CertificatePassword>" --- your certificate password --- "</CertificatePassword>
-    <SignToolPath>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe"</SignToolPath>
-    <PostBuildEvent>if not $(SignToolPath) == "" (
-       $(SignToolPath) sign /f $(CertificatePath) /p $(CertificatePassword) /fd SHA256 /t http://timestamp.digicert.com /a "$(TargetPath)"
-     )
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Target Name="AfterBuild">
-    <Message Text="The Project File (with Notepad) Manages The Change PostBuild Event (http://pinter.org/archives/1348)." Importance="high" />
-  </Target>
-  ```
-  
-  If you use this method, you do not need to change the `PostBuild` command. 
-  
-  --
-   
-- **2️⃣ FrontLineGUI**<br />
-  Signs the `FLCleaner2.0.exe` file that's created by VS in the `obj` subdirectory of its project folder. The reason for doing this is to ensure that the EXE is signed when it's added to the setup MSI: -
-  
-  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
-  
-  <img src="https://i.imgur.com/Tk1BfOY.jpg" width="450" title="FrontlineGUI Post Build Command" />
-  
-  **Update 14/03/2022**
-  
-  If you open [`FrontlineGUI.csproj`](https://github.com/flutils/flcleaner/blob/master/FrontLineGUI/FrontLineGUI.csproj) in a text editor and scroll to the bottom, you'll see the certificate `PropertyGroup`. 
-  
-  Add your path to SignTool.exe in the `<SignToolPath>` macro, as well as populating the `<CertificatePath>` and `<CertificatePassword>` macros, the command should fire.
-  
-  This is how it should look at the end of the file: -
-  
-  ```
-  <PropertyGroup>
-    <CertificatePath>" --- your certificate path --- "</CertificatePath>
-    <CertificatePassword>" --- your certificate password --- "</CertificatePassword>
-    <SignToolPath>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe"</SignToolPath>
-    <PostBuildEvent>if not $(SignToolPath) == "" (
-        $(SignToolPath) sign /f $(CertificatePath) /p $(CertificatePassword) /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
-      )
-    </PostBuildEvent>
-  </PropertyGroup>
-  <Target Name="AfterBuild">
-    <Message Text="The Project File (with Notepad) Manages The Change PostBuild Event (http://pinter.org/archives/1348)." Importance="high" />
-  </Target>
-  ```
-  
-    If you use this method, you do not need to change the `PostBuild` command. 
+To trigger the action, a new tag needs to be pushed: -
 
-  --
-  
-- **3️⃣ Setup**<br />
-  Signed to provide a secure version of the installation software. This is signed with the following post-build event (changeable from the "Properties" menu of the Setup project
-  
-  `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a $(TargetPath)`
-  
-  <img src="https://i.imgur.com/MsyHRVq.jpg" width="600" title="Setup Post-Build Command" />
-  
-  As mentioned, because this does not support custom macros, you have to apply the above PostBuild command manually.
-    
-  --
-      
- - **4️⃣ SetupActions**<br />
-  Signed to ensure the new SetupActions.dll file (used to provide extra functionality to the MSI setup project) is protected at the code level: -
-  
-   `"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe" sign /f [[ certificate ]] /p [[ password ]] /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"`
-  
-   <img src="https://i.imgur.com/ot0t1MX.jpg" width="450" title="Setup Post-Build Command" />
-  
-   **Update 14/03/2022**
-  
-   If you open [SetupActions.csproj](https://github.com/flutils/flcleaner/blob/master/SetupActions/SetupActions.csproj) in a text editor and scroll to the bottom, you'll see the certificate `PropertyGroup`. 
-  
-   Add your path to SignTool.exe in the `<SignToolPath>` macro, as well as populating the `<CertificatePath>` and `<CertificatePassword>` macros, the command should fire.
-  
-   This is how it should look at the end of the file: -
-  
-   ```
-   <PropertyGroup>
-     <CertificatePath>" --- your certificate path --- "</CertificatePath>
-     <CertificatePassword>" --- your certificate password --- "</CertificatePassword>
-     <SignToolPath>"C:\Program Files (x86)\Windows Kits\10\bin\10.0.22000.0\x64\signtool.exe"</SignToolPath>
-     <PostBuildEvent>if not $(SignToolPath) == "" (
-        $(SignToolPath) sign /f $(CertificatePath) /p $(CertificatePassword) /fd SHA256 /t http://timestamp.digicert.com /a "$(ProjectDir)obj\$(ConfigurationName)\$(TargetFileName)"
-      )
-     </PostBuildEvent>
-   </PropertyGroup>
-   <Target Name="AfterBuild">
-     <Message Text="The Project File (with Notepad) Manages The Change PostBuild Event (http://pinter.org/archives/1348)." Importance="high" />
-   </Target>
-   ```
-  
-   If you use this method, you do not need to change the `PostBuild` command. 
+```
+git tag v2.0.0.3-alpha1
+git push origin v2.0.0.3-alpha1
+```
+
+To remove the tag (locally and remote): -
+
+```
+git tag -d v2.0.0.3-alpha1
+git push origin :refs/tags/v2.0.0.3-alpha1
+```
+
+The build process will sign all of the files (we keep certificate information inside the repository's secrets).
 
 ---
 
 #### 🗓️ Changelog
 
-- [x] (25/01/2022) Upgraded UI to HD
+- [x] (25/06/2022) Upgraded UI to HD
 - [x] (24/01/2022) Added Setup project to deploy Win32 binaries, added MSIX for Microsoft Store submission
-- [x] (27/09/2020) Changed .NET target to 4.7, VS Studio 2019, Windows SDK
+- [x] (27/09/2020) Changed .NET target to 4.8, VS Studio 2019, Windows SDK
 - [x] (01/01/2019) Removed registration engine
 - [x] (17/02/2011) Major release (production)
 
