@@ -6,7 +6,7 @@
         xmlns:properties="clr-namespace:FrontLineGUI.Properties"
         xmlns:local="clr-namespace:FrontLineGUI"
         mc:Ignorable="d"
-        Title="Frontline Registry Cleaner 2.0"
+        Title="Frontline Registry Cleaner 2.0 (HD Edition)"
         Height="934"
         Width="1200"
         ResizeMode="CanResizeWithGrip"
@@ -81,6 +81,7 @@
                             </Grid>
                         </Border>
 
+                        <!-- Active (based on page) - used to have it as IsChecked but unreliable -->
                         <ControlTemplate.Triggers>
                             <MultiDataTrigger>
                                 <MultiDataTrigger.Conditions>
@@ -96,8 +97,6 @@
                             </MultiDataTrigger>
 
                             <MultiDataTrigger>
-                                
-                                <!-- Active (based on page) - used to have it as IsChecked but unreliable -->
                                 <MultiDataTrigger.Conditions>
                                     <Condition Binding="{Binding ElementName=ContentFrame, Path=Source}" Value="Pages/Extras.xaml" />
                                     <Condition Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Extras" />
@@ -570,7 +569,7 @@
                     <!-- Grid Definitions -->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="340px" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="850" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -627,7 +626,7 @@
                             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0" Grid.Row="0">
 
                                 <!-- Scan -->
-                                <RadioButton Style="{StaticResource MainButtons}" Content="Scan" Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Scan" />
+                                <RadioButton Style="{StaticResource MainButtons}" Content="Scan" Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Scan" IsChecked="True" />
 
                                 <!-- Extras -->
                                 <RadioButton Style="{StaticResource MainButtons}" Content="Extras" Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Extras" />

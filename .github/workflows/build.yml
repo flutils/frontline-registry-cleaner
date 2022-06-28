@@ -1,0 +1,96 @@
+## Build / Compile ##
+## This is used to provide us with a means to build a release each time the 'master' branch is pushed ##
+name: Build For x86 & x64
+
+#### Use on master ####
+## Triggers when commit us labelled as vx.x.x*
+## Require quotation marks because YAML special character
+## https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+## Tags only work if they were created AFTER the workflow file - https://stackoverflow.com/a/63646054/1143732
+on: 
+  push:
+    tags:
+      - v2.*
+
+# Jobs
+jobs:
+
+  # Build
+  build:
+  
+    # OS
+    runs-on: windows-latest
+    
+    # Versions
+    strategy:
+      matrix:
+        targetplatform: [x86,x64]
+    
+    # Steps
+    steps:
+    
+      # Checkout Repo
+      - uses: actions/checkout@v3
+      
+      # Required to access DevEnv
+      - name: Setup VS Dev Environment
+        uses: seanmiddleditch/gha-setup-vsdevenv@v4
+      
+      # Navigate to the Workspace
+      - name: Navigate to Workspace
+        run: cd $GITHUB_WORKSPACE
+        
+      # Resolves HRESULT = '8000000A' error when building Setup
+      # Source: https://github.com/actions/virtual-environments/issues/5301#issue-1185404179
+      - name: Disable Out of Process Building
+        run: .\DisableOutOfProcBuild.exe
+        working-directory: C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\IDE\CommonExtensions\Microsoft\VSI\DisableOutOfProcBuild
+
+      # Add MsBuild to the PATH: https://github.com/microsoft/setup-msbuild
+      - name: DevEnv
+        run: DevEnv Setup/Setup.vdproj /build "Release|${{ matrix.targetplatform }}" 
+        
+      # Rename Setup.msi & Release Folder
+      - name: Rename Setup.msi & Release Folder
+        run: |
+          Rename-Item -Path "./Setup/Release/Setup.msi" -NewName "Setup-${{ matrix.targetplatform }}.msi"
+          Rename-Item -Path "./Release" -NewName "Release-${{ matrix.targetplatform }}"
+          
+      # Get Tag Version
+      # https://stackoverflow.com/a/64600437/1143732
+      - name: Get tag name
+        id: tag_name
+        shell: bash
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
+          
+      # Add the Setup to the repo's artefacts
+      - uses: actions/upload-artifact@v2
+        with:
+          name: FLCleaner-${{ steps.tag_name.outputs.VERSION }}-${{ matrix.targetplatform }}
+          path: |
+            ./Setup/Release/Setup-${{ matrix.targetplatform }}.msi
+            ./Release-${{ matrix.targetplatform }}/FLCleaner2.0.exe
+            ./Release-${{ matrix.targetplatform }}/FLCleanEngine.dll
+            ./Release-${{ matrix.targetplatform }}/Microsoft.Win32.TaskScheduler.dll
+
+      # Create Zip of FLCleaner files
+      - name: Compile Zip for Release
+        shell: bash
+        run: |
+          7z a FLCleaner-${{ steps.tag_name.outputs.VERSION }}-${{ matrix.targetplatform }}.zip ./Release-${{ matrix.targetplatform }}/FLCleaner2.0.exe
+          7z a FLCleaner-${{ steps.tag_name.outputs.VERSION }}-${{ matrix.targetplatform }}.zip ./Release-${{ matrix.targetplatform }}/FLCleanEngine.dll
+          7z a FLCleaner-${{ steps.tag_name.outputs.VERSION }}-${{ matrix.targetplatform }}.zip ./Release-${{ matrix.targetplatform }}/Microsoft.Win32.TaskScheduler.dll
+        
+      # https://github.com/altbdoor/jekyll-exe-2/blob/master/.github/workflows/base.yml#L55
+      - uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ steps.tag_name.outputs.VERSION }}
+          tag_name: ${{ steps.tag_name.outputs.VERSION }}
+          draft: false
+          prerelease: false
+          generate_release_notes: false
+          body: |
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          files: |
+            ${{ github.workspace }}\Setup\Release\Setup-${{ matrix.targetplatform }}.msi
+            ${{ github.workspace }}\FLCleaner-${{ steps.tag_name.outputs.VERSION }}-${{ matrix.targetplatform }}.zip

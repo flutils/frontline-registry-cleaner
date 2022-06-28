@@ -10,10 +10,6 @@ namespace FrontLineGUI.Pages
     /// </summary>
     public partial class Backup : Page
     {
-
-        // Vars 
-
-
         public Backup()
         {
             InitializeComponent();

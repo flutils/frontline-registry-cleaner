@@ -124,6 +124,9 @@
   <data name="anniversary" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\anniversary.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="application_errors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scan\application_errors.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="backup_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backup_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -141,11 +144,23 @@
   <data name="defragment_registry_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\defragment_registry_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dll_errors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scan\dll_errors.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="edit_startup_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_startup_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="extras_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\extras_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="internet_cache" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scan\internet_cache.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="internet_errors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scan\internet_errors.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="invalid_files" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scan\invalid_files.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LogoIconPathData" xml:space="preserve">
     <value>M2059,1c70.64-1.771,131.9,19.719,188,37,142.76,43.978,268.92,96.524,385,166,59.84,35.815,136.85,62.613,156,139,6.3,25.124,2.11,57.066-6,77-30.13,74.049-135.42,280.316-33,356,83.49,61.694,236.47-1.36,306-32,30.92-13.627,66.35-36.272,114-23,67.13,18.7,91.9,82.294,124,136,73.93,123.684,133.3,257.89,180,410,16.06,52.31,49.33,158.17,26,215-25.91,63.1-84.71,71.27-147,98-50.13,21.51-90.69,50.42-130,82-24.85,19.96-70.48,70.25-59,121,20.19,89.26,135.96,143.39,217,175,50.78,19.81,99.94,25.17,129,66,42.76,60.07,13.35,163.23-7,231-45.7,152.22-103.19,287.77-177,411-21.41,35.74-39.67,73.93-65,106-23.83,30.17-79.73,56.67-134,40l-89-40c-33.83-13.95-70.42-24.45-109-33-63.19-14.01-138.67-4.87-168,33-62.21,80.32-4.94,230.7,26,301,13.15,29.89,39.47,61.21,29,111-16.62,79.01-87.31,104.32-147,140-144.8,86.55-303.47,150.38-490,197l-63,12c-23.59,4.16-47.38-2.93-62-9-70.63-29.35-73.31-87.03-103-155-18.34-41.99-43.41-78.41-70-112-20.48-25.88-71.21-78.64-124-69-87.08,15.9-146.54,119.96-178,194q-13.995,39.495-28,79c-23.2,51.69-83.48,84-160,67-197.21-43.81-363.72-108.66-514-198-59.825-35.57-136.9-62.82-156-139-12.838-51.2,13.519-88,28-121,32.483-74.02,86.771-221.59,23-301-29.217-36.38-110.232-43.41-171-30-37.221,8.21-72.569,18.26-105,32q-42,19.995-84,40c-62.235,20.19-119.507-12.98-145-49l-58-97c-72.649-121.54-129.846-255.2-175-405-20.074-66.6-51.366-168.99-12-231,27.375-43.12,78.2-50.9,128-72,76.015-32.2,181.1-91.07,197-181,7.822-44.23-24.659-74.38-42-96-36.873-45.98-97.207-78.45-155-103-40.167-17.06-83.7-24.63-112-53-17.864-17.91-43.395-55.58-37-95,34.6-213.3,108.311-391.55,201-548,36.608-61.792,64.332-141.277,143-161,52.264-13.1,87.736,15.285,121,30,47.7,21.1,93.515,39.255,151,52,44.282,9.818,101.826,7.838,131-14,39.727-29.737,49.481-109.371,35-175-8.211-37.216-18.252-72.57-32-105l-40-84c-18.335-56.522,8.77-113.923,41-139,38.169-29.7,83.515-51.01,126-76,114.291-67.227,239.74-120.522,381-161,56.69-16.245,163.5-53.411,222-21,52.04,28.835,59.83,77.931,84,135,24.24,57.213,56.52,117.487,102,154,21.95,17.623,52.04,50.938,97,43,86.28-15.234,139.43-116.013,167-192,12.07-33.256,16.43-76.351,34-105a132.753,132.753,0,0,1,63-53Q2043.005,5,2059,1ZM1738,1511l-26,3q-24.495,6.495-49,13c-69.49,27.32-121.66,79.51-149,149-59.16,150.38,39.14,284.13,142,327,27.71,11.55,70.82,27.13,114,20,110.93-18.33,181.51-65.74,220-155,64.67-149.97-29.39-291.46-135-337C1822.18,1516.85,1785.42,1510.78,1738,1511Z</value>
@@ -159,6 +174,12 @@
     <value>M10.625,1.3A1.525,1.525,0,0,0,10.458.755,0.709,0.709,0,0,0,10.173.467,0.885,0.885,0,0,0,9.77.383H1.59a0.747,0.747,0,0,0-.708.39A2.962,2.962,0,0,0,.666,2.11,3.072,3.072,0,0,0,.883,3.473a0.744,0.744,0,0,0,.708.4H9.77a0.73,0.73,0,0,0,.688-0.39,3.071,3.071,0,0,0,.216-1.372A5.807,5.807,0,0,0,10.625,1.3Z</value>
     <comment>Raw SVG path data construct for the minimize button.</comment>
   </data>
+  <data name="recycle_bin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scan\recycle_bin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="registry_errors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scan\registry_errors.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="remove_junk_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\remove_junk_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -167,5 +188,11 @@
   </data>
   <data name="statistics_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\statistics_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="temp_files" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scan\temp_files.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="windows_errors" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Scan\windows_errors.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -26,7 +26,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>..\Release\</OutputPath>
@@ -41,12 +41,19 @@
   <PropertyGroup>
     <StartupObject>FrontLineGUI.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.Win32.TaskScheduler, Version=2.10.1.0, Culture=neutral, PublicKeyToken=e25603a88b3aa7da, processorArchitecture=MSIL">
+      <HintPath>..\packages\TaskScheduler.2.10.1\lib\net452\Microsoft.Win32.TaskScheduler.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -144,6 +151,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -187,6 +195,33 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\clean_registry_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Scan\registry_errors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Scan\internet_errors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Scan\invalid_files.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Scan\recycle_bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Scan\windows_errors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Scan\application_errors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Scan\dll_errors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Scan\temp_files.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Scan\internet_cache.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -58,7 +58,7 @@
                             </DataTrigger>
 
                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Clean">
-                                <Setter TargetName="IconImage" Property="Source" Value="/Resources/clean_registry_icon.png" />
+                                <Setter TargetName="IconImage" Property="Source" Value="/Resources/remove_junk_icon.png" />
                                 <Setter TargetName="IconImage" Property="MaxHeight" Value="60" />
                             </DataTrigger>
                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Junk">
@@ -84,7 +84,7 @@
     </UserControl.Resources>
 
     <!-- Object -->
-    <Border Grid.Row="1" BorderThickness="2" Margin="0,10,0,0">
+    <Border Grid.Row="1" BorderThickness="2" Margin="0,5,0,0">
         <Border.BorderBrush>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                 <GradientStop Color="#c4c4c4" Offset="1"/>

@@ -83,6 +83,16 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap application_errors {
+            get {
+                object obj = ResourceManager.GetObject("application_errors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap backup_icon {
             get {
                 object obj = ResourceManager.GetObject("backup_icon", resourceCulture);
@@ -131,6 +141,16 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap dll_errors {
+            get {
+                object obj = ResourceManager.GetObject("dll_errors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap edit_startup_icon {
             get {
                 object obj = ResourceManager.GetObject("edit_startup_icon", resourceCulture);
@@ -144,6 +164,36 @@ namespace FrontLineGUI.Properties {
         public static System.Drawing.Bitmap extras_icon {
             get {
                 object obj = ResourceManager.GetObject("extras_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap internet_cache {
+            get {
+                object obj = ResourceManager.GetObject("internet_cache", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap internet_errors {
+            get {
+                object obj = ResourceManager.GetObject("internet_errors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap invalid_files {
+            get {
+                object obj = ResourceManager.GetObject("invalid_files", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -178,6 +228,26 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap recycle_bin {
+            get {
+                object obj = ResourceManager.GetObject("recycle_bin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap registry_errors {
+            get {
+                object obj = ResourceManager.GetObject("registry_errors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap remove_junk_icon {
             get {
                 object obj = ResourceManager.GetObject("remove_junk_icon", resourceCulture);
@@ -201,6 +271,26 @@ namespace FrontLineGUI.Properties {
         public static System.Drawing.Bitmap statistics_icon {
             get {
                 object obj = ResourceManager.GetObject("statistics_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap temp_files {
+            get {
+                object obj = ResourceManager.GetObject("temp_files", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap windows_errors {
+            get {
+                object obj = ResourceManager.GetObject("windows_errors", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
