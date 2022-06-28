@@ -62,16 +62,14 @@ git tag v2.0.0.3-alpha1
 git push origin v2.0.0.3-alpha1
 ```
 
-If you wish to remove a tag, you need to use the following: -
+If you wish to remove the tag, you need to use the following: -
 
 ```
 git tag -d v2.0.0.3-alpha1
 git push -d origin v2.0.0.3-alpha1
 ```
 
-Pushing the tag will trigger the build. 
-
-Presently, it's configured to build both x86 and x64 binaries. The code only runs on x86, so you can ignore x64 completely.
+It's configured to build both x86 and x64 binaries. The code only runs on x86, so you can ignore x64.
 
 We're working on adding our code signing certificate when we release the HD version.
 
