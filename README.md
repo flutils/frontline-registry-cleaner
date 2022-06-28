@@ -53,9 +53,7 @@ It does not seem to matter which version you use, as long as it is `x86` compati
 
 We have now moved the build pipeline to Github Actions.
 
-The build script is triggered when a `tag` is pushed to the repository. 
-
-To trigger a build, you need to create a tag locally and push it: -
+The build script is triggered when a `tag` is pushed to the repository: -
 
 ```
 git tag v2.0.0.3-alpha1
@@ -69,9 +67,16 @@ git tag -d v2.0.0.3-alpha1
 git push -d origin v2.0.0.3-alpha1
 ```
 
-It's configured to build both x86 and x64 binaries. The code only runs on x86, so you can ignore x64.
+The build creates a [release](https://github.com/flutils/flcleaner), which contains MSI setup applications for x64 and x86 binaries, as well as zip files with the raw executable & DLL files inside.
 
-We're working on adding our code signing certificate when we release the HD version.
+The code only runs in x86, so you can ignore x64 entirely.
+
+We're working on integrating signing the various components that require it: -
+
+ - Setup
+ - SetupActions (creates a DLL for Setup)
+ - FrontlineGUI (main app)
+ - FLCleanEngine (cleaner engine DLL)
 
 ---
 
