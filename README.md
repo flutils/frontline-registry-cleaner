@@ -67,7 +67,7 @@ git tag -d v2.0.0.3-alpha1
 git push -d origin v2.0.0.3-alpha1
 ```
 
-The build creates a [release](https://github.com/flutils/flcleaner), which contains MSI setup applications for x64 and x86 binaries, as well as zip files with the raw executable & DLL files inside.
+The build creates a [release](https://github.com/flutils/flcleaner/releases), which contains MSI setup applications for x64 and x86 binaries, as well as zip files with the raw executable & DLL files inside.
 
 The code only runs in x86, so you can ignore x64 entirely.
 
