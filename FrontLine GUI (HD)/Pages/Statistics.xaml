@@ -25,7 +25,7 @@
 
             <!-- Title -->
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <TextBlock Text="Cleaning Statistics" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="31" Foreground="#FF282828" Margin="0,35,0,0" />
+                <TextBlock Text="Cleaning Statistics" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF282828" Margin="0,25,0,0" />
 
                 <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF272727" Margin="50,15,50,35">
                     <ListView.View>

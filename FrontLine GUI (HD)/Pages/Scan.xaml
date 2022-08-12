@@ -4,28 +4,28 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FrontLineGUI"
-      xmlns:Components="clr-namespace:FrontLineGUI.Extras.Components" x:Class="FrontLineGUI.Scan"
+      x:Class="FrontLineGUI.Scan"
       mc:Ignorable="d" 
-      d:DesignHeight="820" d:DesignWidth="771"
+      d:DesignHeight="800" d:DesignWidth="771"
       Title="Scan">
-    
+
     <!-- Resources -->
     <Page.Resources>
 
         <Style TargetType="{x:Type CheckBox}" x:Key="MainOptionButtons">
-            
+
             <!-- Cursor -->
             <Setter Property="Cursor" Value="Hand" />
-            
+
             <!-- Template -->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type CheckBox}">
                         <StackPanel Orientation="Horizontal">
                             <Border Padding="0,0,10,0">
-                                <Image x:Name="checkboxImage" Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" Width="64"/>
+                                <Image x:Name="checkboxImage" Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" Width="40"/>
                             </Border>
-                            <ContentPresenter VerticalAlignment="center" TextBlock.FontFamily="Arial" TextBlock.FontSize="20px" TextBlock.Foreground="#858884"/>
+                            <ContentPresenter VerticalAlignment="center" TextBlock.FontFamily="Arial" TextBlock.FontSize="14px" TextBlock.Foreground="#858884"/>
                         </StackPanel>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="False">
@@ -39,7 +39,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            
+
         </Style>
 
 
@@ -53,7 +53,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type CheckBox}">
                         <StackPanel Orientation="Horizontal">
-                            <ContentPresenter VerticalAlignment="center" TextBlock.FontFamily="Arial" TextBlock.FontSize="20px" TextBlock.Foreground="#858884"/>
+                            <ContentPresenter VerticalAlignment="center" TextBlock.FontFamily="Arial" TextBlock.FontSize="12px" TextBlock.Foreground="#858884"/>
                         </StackPanel>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="False">
@@ -71,7 +71,7 @@
         </Style>
 
     </Page.Resources>
-    
+
     <!-- Main -->
     <Grid>
 
@@ -80,12 +80,11 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="575px"  />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
         <!-- Main Scanning Grid -->
-        <Border x:Name="MainBorder" BorderThickness="2" BorderBrush="#a6b0b5">
+        <Border x:Name="MainBorder" BorderThickness="2" BorderBrush="#a6b0b5" Grid.RowSpan="2">
             <Grid Background="White">
 
                 <!-- Grid Definition -->
@@ -99,14 +98,14 @@
 
                 <!-- Title -->
                 <StackPanel HorizontalAlignment="stretch" VerticalAlignment="Top">
-                    <TextBlock Text="Start Your Registry Scan Below:" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="28" Foreground="#FF323232" Margin="0,35,0,0" />
+                    <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF323232" Margin="0,25,0,0" >Start Your Scan Below</TextBlock>
 
                     <!-- Scan Now Button -->
-                    
-                    
+
+
                     <!-- Items Grid -->
-                    <Grid Margin="55,15,55,0" Name="Scan_Checkboxes">
-                        
+                    <Grid Margin="25,15,25,0" Name="Scan_Checkboxes">
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="1*" />
@@ -117,7 +116,7 @@
                             <RowDefinition Height="1*" />
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
-                        
+
                         <!-- Items -->
                         <!-- These are all part of a checkbox group, allowing us to collate them as needed -->
                         <CheckBox Content="Registry Errors"     Grid.Row="0" Grid.Column="0" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/registry_errors.png"    Name="RegistryErrors"      IsChecked="true" />
@@ -131,12 +130,12 @@
                         <CheckBox Content="Internet Cache"      Grid.Row="2" Grid.Column="2" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/internet_cache.png"     Name="InternetCache"       IsChecked="true" />
 
                     </Grid>
-                
+
                 </StackPanel>
-                
+
                 <!-- Bottom Row -->
                 <Border Grid.Row="1" Background="#f9f9f9" BorderBrush="#c5c5c5" BorderThickness="0,1,0,0"/>
-                
+
                 <!-- Bottom Info -->
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -152,17 +151,14 @@
                         <TextBlock Text="Your System:" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0"/>
                         <TextBlock Name="OSInfo" Text="{Binding OSVersion, Mode=OneTime}" Grid.Column="0" VerticalAlignment="Center" />
                     </StackPanel>
-                    
+
                     <!-- Selected -->
                     <CheckBox Content="Select All" Grid.Column="1" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,15,0" IsThreeState="True" Name="AllSelected" IsChecked="true" />
-                    
+
                 </Grid>
 
             </Grid>
         </Border>
-
-        <!-- QuickLinks-->
-        <Components:QuickLinks Grid.Row="1"/>
 
     </Grid>
 </Page>

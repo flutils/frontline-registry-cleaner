@@ -1,11 +1,11 @@
-﻿<Page xmlns:Components="clr-namespace:FrontLineGUI.Extras.Components"  x:Class="FrontLineGUI.Pages.Extras"
+﻿<Page x:Class="FrontLineGUI.Pages.Extras"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FrontLineGUI.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="820" d:DesignWidth="771"
+      d:DesignHeight="800" d:DesignWidth="771"
       Title="Extras">
 
     <Grid>
@@ -15,7 +15,6 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="575px"  />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
@@ -33,14 +32,11 @@
 
                 <!-- Title -->
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-                    <TextBlock Text="Scanning Extras" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="31" Foreground="#FF323232" Margin="0,35,0,0" />
+                    <TextBlock Text="Scanning Extras" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF323232" Margin="0,25,0,0" />
                 </StackPanel>
-                
+
             </Grid>
         </Border>
-
-        <!-- QuickLinks-->
-        <Components:QuickLinks Grid.Row="1"/>
 
     </Grid>
 </Page>

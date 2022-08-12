@@ -33,11 +33,11 @@
 
             <!-- Title -->
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <TextBlock Text="Registry Backup" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="31" Foreground="#FF282828" Margin="0,35,0,0" />
-                <TextBlock Text="Use This Form To Restore Previous Registry Backups Or Create New Ones" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" FontSize="18" Foreground="#949293" />
+                <TextBlock Text="Backup" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF282828" Margin="0,25,0,0" />
+                <TextBlock Text="Use This Form To Restore Previous Backups Or Create New Ones" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" FontSize="14" Foreground="#949293" />
 
                 <!-- List View -->
-                <ListView x:Name="ListViewBackups"  BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF272727" Margin="50,25,50,0" Style="{StaticResource ListViewStyle}">
+                <ListView x:Name="ListViewBackups"  BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF272727" Margin="15,25,15,0" Style="{StaticResource ListViewStyle}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn/>
