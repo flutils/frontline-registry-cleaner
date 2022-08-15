@@ -54,6 +54,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -71,7 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="cpuidsdk.cs" />
+    <Compile Include="monitoring.cs" />
     <Compile Include="Extras\Converters\ButtonColourConverter.cs" />
     <Compile Include="Extras\Converters\SystemColorToSolidBrushConverter.cs" />
     <Compile Include="Pages\Backup.xaml.cs">

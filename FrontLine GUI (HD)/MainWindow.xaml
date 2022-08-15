@@ -9,9 +9,9 @@
         Title="Frontline Registry Cleaner 2.0 (HD Edition)"
         Height="{Binding ElementName=myWindow, Path=MinHeight}"
         Width="{Binding ElementName=myWindow, Path=MinWidth}"
-        MinWidth="800"
+        MinWidth="835"
+        MinHeight="685"
         SizeToContent="WidthAndHeight"
-        MinHeight="675"
         ResizeMode="CanResizeWithGrip"
         Topmost="False"
         WindowStartupLocation="CenterScreen"
@@ -38,7 +38,7 @@
             <Setter Property="Background" Value="#f3f3f3" />
             <Setter Property="BorderBrush" Value="#FFC6C6C6" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="Margin" Value="0,1,0,0" />
+            <Setter Property="Margin" Value="0,0.5,0,0" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type RadioButton}">
@@ -56,7 +56,7 @@
 
                         <!-- https://stackoverflow.com/a/7543830/1143732 -->
                         <Border Background="Transparent" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" Margin="{TemplateBinding Margin}">
-                            <Grid Height="70" >
+                            <Grid MinHeight="70">
 
                                 <!-- Grid Definitions -->
                                 <Grid.ColumnDefinitions>
@@ -141,6 +141,7 @@
                             <!-- General Settings Per Button -->
                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Scan">
                                 <Setter Property="FontSize" Value="35px" />
+                                <Setter Property="Height" Value="85px" />
                                 <Setter TargetName="IconImage" Property="Source" Value="/Resources/scan_icon.png" />
                                 <Setter TargetName="IconImage" Property="Width" Value="60px" />
                             </DataTrigger>
@@ -320,9 +321,9 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
 
-                        <TextBlock x:Name="SettingsText" Text="{TemplateBinding Content}" Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" FontFamily="Calibri">
+                        <TextBlock x:Name="SettingsText" Text="{TemplateBinding Content}" Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" FontFamily="Calibri">
                             <TextBlock.Effect>
-                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="1" BlurRadius="0" />
+                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
                             </TextBlock.Effect>
                         </TextBlock>
 
@@ -391,10 +392,10 @@
     </Window.Resources>
 
     <!-- Window -->
-    <Border x:Name="MainBorder" BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15,15,0,0" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" Margin="-1,-1,-1,-1">
+    <Border x:Name="MainBorder" BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15,15,0,0" SnapsToDevicePixels="True" UseLayoutRounding="True" Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}">
 
         <!-- Content -->
-        <Grid x:Name="MainGrid" Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" SnapsToDevicePixels="True" ScrollViewer.VerticalScrollBarVisibility="Disabled">
+        <Grid x:Name="MainGrid" Margin="-1">
 
             <!-- Grid Definition -->
             <Grid.ColumnDefinitions>
@@ -405,27 +406,25 @@
                 <RowDefinition Height="1*" />
             </Grid.RowDefinitions>
 
-            <!-- Rounded Corners -->
-            <!--<Grid.OpacityMask>
-                <VisualBrush Visual="{Binding ElementName=MainClipping}" Stretch="None" AlignmentY="Top" />
-            </Grid.OpacityMask> -->
-
-            <!-- Rounded Corners -->
-            <!--<Border x:Name="MainClipping" Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" CornerRadius="15,15,0,0" Grid.RowSpan="2" ClipToBounds="True" BorderThickness="0,0,0,0" Grid.ColumnSpan="2"/>-->
-
             <!-- Header Area  -->
-            <Border Grid.Row="0" Grid.ColumnSpan="2" >
+            <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15,15,0,0" BorderThickness="1">
                 <Border.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#00000000" Offset="1"/>
                         <GradientStop Color="#72FFFFFF" Offset="0"/>
                     </LinearGradientBrush>
                 </Border.Background>
+                <Border.BorderBrush>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#99FFFFFF" />
+                        <GradientStop Color="#00000000" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.BorderBrush>
             </Border>
 
             <!-- Logo -->
             <StackPanel Orientation="Horizontal">
-                <Viewbox Margin="10,10,0,10" HorizontalAlignment="Left" Stretch="UniformToFill">
+                <Viewbox Height="40" Margin="10,0,0,0" HorizontalAlignment="Left" Stretch="UniformToFill">
                     <Viewbox.Effect>
                         <DropShadowEffect Color="#FFFFD99A" BlurRadius="15" ShadowDepth="0" Opacity="1" />
                     </Viewbox.Effect>
@@ -465,11 +464,11 @@
             <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,7,0"  Orientation="Horizontal" Grid.Column="1" Panel.ZIndex="10" Height="42">
 
                 <!-- HD -->
-                <Border x:Name="HDBorder" Margin="0,10,5,10" BorderBrush="Black" Background="White" BorderThickness="1" CornerRadius="10">
+                <Border x:Name="HDBorder" Height="20" Margin="0,0,5,0" BorderBrush="Black" Background="White" BorderThickness="1" CornerRadius="10">
                     <Border x:Name="HDBorderInner" Background="White" BorderThickness="2" CornerRadius="10">
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="35px" />
+                                <ColumnDefinition Width="25px" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -540,10 +539,10 @@
                         </Grid.RowDefinitions>
 
                         <!-- Subtitle -->
-                        <TextBlock Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
+                        <TextBlock Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
                             Scan, Optimize &amp; Boost PC Performance!
                             <TextBlock.Effect>
-                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="1" BlurRadius="0" />
+                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
                             </TextBlock.Effect>
                         </TextBlock>
 
