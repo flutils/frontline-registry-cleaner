@@ -26,7 +26,7 @@ namespace FrontLineGUI.Pages
                     FileInfo[] files = d_info.GetFiles("*.bkp");
 
                     // Title
-                    Title.Text += " (" + files.Length + ")";
+                    PageTitle.Text += " (" + files.Length + ")";
 
                     // If 
                     if(files.Length > 0) {

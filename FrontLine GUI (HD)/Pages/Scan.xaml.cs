@@ -1,8 +1,6 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Forms;
-using Microsoft.VisualBasic.Devices;
 using System.Threading;
-using System.Text.RegularExpressions; // Regex
 using System;
 
 namespace FrontLineGUI
@@ -116,7 +114,7 @@ namespace FrontLineGUI
         // https://stackoverflow.com/a/45045313/1143732
         public string OSVersion
         {
-            get { return new ComputerInfo().OSFullName.ToString(); }
+            get { return Environment.OSVersion.Platform.ToString(); }
         }
 
         // OS Icon
