@@ -19,24 +19,22 @@
         </Grid.RowDefinitions>
 
         <!-- Main Scanning Grid -->
-        <Border x:Name="MainBorder" BorderThickness="2" BorderBrush="#a6b0b5">
-            <Grid Background="White">
+        <Grid Background="White">
 
-                <!-- Grid Definition -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
+            <!-- Grid Definition -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
 
-                <!-- Title -->
-                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
-                    <TextBlock Text="Scanning Extras" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF323232" Margin="0,25,0,0" />
-                </StackPanel>
+            <!-- Title -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+                <TextBlock Text="Scanning Extras" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF323232" Margin="0,25,0,0" />
+            </StackPanel>
 
-            </Grid>
-        </Border>
+        </Grid>
 
     </Grid>
 </Page>

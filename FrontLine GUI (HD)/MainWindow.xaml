@@ -6,11 +6,11 @@
         xmlns:properties="clr-namespace:FrontLineGUI.Properties"
         xmlns:local="clr-namespace:FrontLineGUI"
         mc:Ignorable="d"
-        Title="Frontline Registry Cleaner 2.0 (HD Edition)"
+        Title="Frontline Registry Cleaner 2.1 (HD Edition)"
         Height="{Binding ElementName=myWindow, Path=MinHeight}"
         Width="{Binding ElementName=myWindow, Path=MinWidth}"
         MinWidth="835"
-        MinHeight="685"
+        MinHeight="670"
         SizeToContent="WidthAndHeight"
         ResizeMode="CanResizeWithGrip"
         Topmost="False"
@@ -28,6 +28,12 @@
         <!-- Converters -->
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
         <local:ButtonColourConverter            x:Key="ButtonColourConverter" />
+        
+        <!-- Images -->
+        <!-- Used to give us anti aliasing - https://stackoverflow.com/a/14490654/1143732 -->
+        <Style TargetType="{x:Type Image}">
+            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
+        </Style>
 
         <!-- Left Menu Radio Buttons -->
         <Style TargetType="{x:Type RadioButton}" x:Key="MainButtons">
@@ -140,8 +146,8 @@
 
                             <!-- General Settings Per Button -->
                             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Self}, Path=Tag}" Value="Scan">
-                                <Setter Property="FontSize" Value="35px" />
-                                <Setter Property="Height" Value="85px" />
+                                <Setter Property="FontSize" Value="32px" />
+                                <Setter Property="Height" Value="80px" />
                                 <Setter TargetName="IconImage" Property="Source" Value="/Resources/scan_icon.png" />
                                 <Setter TargetName="IconImage" Property="Width" Value="60px" />
                             </DataTrigger>
@@ -488,8 +494,13 @@
                     <Path Data="{Binding Source={x:Static properties:Resources.MinimizeButtonPathData}, Mode=OneTime}" Fill="White"/>
                 </Button>
 
+                <!-- Maximize -->
+                <Button Name="MaximizeButton" Style="{StaticResource MainActionButton}" Click="MaximizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#FF272727">
+                    <Path Data="{Binding Source={x:Static properties:Resources.MaximizeButtonPathData}, Mode=OneTime}" Stretch="Fill" MaxHeight="11" MaxWidth="11" Fill="White"/>
+                </Button>
+
                 <!-- Close -->
-                <Button Name="CloseButton" Style="{StaticResource MainActionButton}" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="1,0,0,0" VerticalAlignment="Center" Height="35" Width="35" Background="#e30c0c">
+                <Button Name="CloseButton" Style="{StaticResource MainActionButton}" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#e30c0c">
                     <Path Data="{Binding Source={x:Static properties:Resources.CloseButtonPathData}, Mode=OneTime}" Fill="White"/>
                 </Button>
 
@@ -580,7 +591,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- Border -->
-                    <Border BorderThickness="0,0,0,0" Grid.ColumnSpan="2" Grid.RowSpan="1" Panel.ZIndex="10" Height="5" VerticalAlignment="Top" Opacity="0.3">
+                    <Border BorderThickness="0,0,0,0" Grid.ColumnSpan="2" Grid.RowSpan="1" Panel.ZIndex="10" Height="5" VerticalAlignment="Top" Opacity="0.25">
                         <Border.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="Black"/>
@@ -658,7 +669,7 @@
                                 <Button Name="VersionButton" Click="VersionButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,5,30,5" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}">
                                     <TextBlock>
                                         <Run Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" />
-                                        <Run Text="(January 1st 2022)" />
+                                        <Run Text="(August 23rd 2022)" />
                                     </TextBlock>
                                 </Button>
 
@@ -702,7 +713,7 @@
                     <!-- Right Area -->
                     <!-- This houses all of the panels (grids), which means that we're able to hide them as needed -->
                     <!-- I have split the panels into separate CS files for the sake of brevity -->
-                    <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Margin="10" Grid.Row="2" Grid.Column="1" Source="/Pages/Scan.xaml" />
+                    <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Margin="10" Grid.Row="2" Grid.Column="1" Source="/Pages/Scan.xaml" BorderBrush="#a6b0b5" BorderThickness="2"/>
 
                 </Grid>
             </Grid>

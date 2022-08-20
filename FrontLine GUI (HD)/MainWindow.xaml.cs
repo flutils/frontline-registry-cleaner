@@ -55,6 +55,19 @@ namespace FrontLineGUI
             this.Close(); // https://www.tech-recipes.com/rx/23742/create-an-exit-button-in-c-visual-studio/
         }
 
+        // Maximize
+        // Maximizes the window to the taskbar
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized) {
+                this.WindowState = WindowState.Normal;
+                this.SizeToContent = SizeToContent.WidthAndHeight;
+            } else {
+                this.SizeToContent = SizeToContent.Manual;
+                this.WindowState   = WindowState.Maximized;
+            }
+        }
+
         // Minimize
         // Minimizes the window to the taskbar
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

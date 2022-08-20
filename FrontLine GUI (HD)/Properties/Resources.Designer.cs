@@ -217,6 +217,15 @@ namespace FrontLineGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to M28,2h-6c-1.104,0-2,0.896-2,2s0.896,2,2,2h1.2l-4.6,4.601C18.28,10.921,18,11.344,18,12c0,1.094,0.859,2,2,2  c0.641,0,1.049-0.248,1.4-0.6L26,8.8V10c0,1.104,0.896,2,2,2s2-0.896,2-2V4C30,2.896,29.104,2,28,2z M12,18  c-0.641,0-1.049,0.248-1.4,0.6L6,23.2V22c0-1.104-0.896-2-2-2s-2,0.896-2,2v6c0,1.104,0.896,2,2,2h6c1.104,0,2-0.896,2-2  s-0.896-2-2-2H8.8l4.6-4.601C13.72,21.079,14,20.656,14,20C14,18.906,13.141,18,12,18z.
+        /// </summary>
+        public static string MaximizeButtonPathData {
+            get {
+                return ResourceManager.GetString("MaximizeButtonPathData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to M10.625,1.3A1.525,1.525,0,0,0,10.458.755,0.709,0.709,0,0,0,10.173.467,0.885,0.885,0,0,0,9.77.383H1.59a0.747,0.747,0,0,0-.708.39A2.962,2.962,0,0,0,.666,2.11,3.072,3.072,0,0,0,.883,3.473a0.744,0.744,0,0,0,.708.4H9.77a0.73,0.73,0,0,0,.688-0.39,3.071,3.071,0,0,0,.216-1.372A5.807,5.807,0,0,0,10.625,1.3Z.
         /// </summary>
         public static string MinimizeButtonPathData {
@@ -268,6 +277,16 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap select_all {
+            get {
+                object obj = ResourceManager.GetObject("select_all", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap statistics_icon {
             get {
                 object obj = ResourceManager.GetObject("statistics_icon", resourceCulture);
@@ -288,9 +307,59 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap windows_10 {
+            get {
+                object obj = ResourceManager.GetObject("windows_10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap windows_11 {
+            get {
+                object obj = ResourceManager.GetObject("windows_11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap windows_8 {
+            get {
+                object obj = ResourceManager.GetObject("windows_8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap windows_95 {
+            get {
+                object obj = ResourceManager.GetObject("windows_95", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap windows_errors {
             get {
                 object obj = ResourceManager.GetObject("windows_errors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap windows_xp {
+            get {
+                object obj = ResourceManager.GetObject("windows_xp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

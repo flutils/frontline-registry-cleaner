@@ -221,5 +221,23 @@
   <ItemGroup>
     <Folder Include="Extras\Components\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\windows-11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\windows-8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\windows-10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\windows-95.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\windows-xp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\select_all.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,35 +8,29 @@
       d:DesignHeight="830" d:DesignWidth="771"
       Title="Statistics">
 
+    <!-- Main -->
+    <Grid Background="White">
 
-    <!-- Border-->
-    <Border x:Name="MainBorder" BorderThickness="2" BorderBrush="#a6b0b5">
+        <!-- Grid Definition -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
-        <!-- Main -->
-        <Grid Background="White">
+        <!-- Title -->
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <TextBlock Text="Cleaning Statistics" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF282828" Margin="0,25,0,0" />
 
-            <!-- Grid Definition -->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
+            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF272727" Margin="50,15,50,35">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
 
-            <!-- Title -->
-            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
-                <TextBlock Text="Cleaning Statistics" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF282828" Margin="0,25,0,0" />
-
-                <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Row="1" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF272727" Margin="50,15,50,35">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-            </StackPanel>
-
-        </Grid>
-
-    </Border>
+    </Grid>
 </Page>
