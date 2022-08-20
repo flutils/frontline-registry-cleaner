@@ -11,7 +11,13 @@
 
     <!-- Resources -->
     <Page.Resources>
+        
+        <!-- OS Version Block -->
+        <Style TargetType="{x:Type StackPanel}" x:Key="OSBlockStyling">
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
 
+        <!-- Main Buttons -->
         <Style TargetType="{x:Type CheckBox}" x:Key="MainOptionButtons">
 
             <!-- Cursor -->
@@ -131,16 +137,16 @@
 
                 </Grid>
 
-                <!-- Performance (CPU/RAM) -->
-                <TextBox Text="Test" />
+                <!-- Selected -->
+                <CheckBox Content="Select All" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource SelectAllButton}"  Margin="0,0,15,0" IsThreeState="True" Name="AllSelected" IsChecked="true" />
 
             </StackPanel>
 
             <!-- Bottom Row -->
-            <Border Grid.Row="1" Background="#f9f9f9" BorderBrush="#c5c5c5" BorderThickness="0,1,0,0"/>
+            <Border Grid.Row="2" Background="#f9f9f9" BorderBrush="#c5c5c5" BorderThickness="0,1,0,0"/>
 
             <!-- Bottom Info -->
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="1*" />
@@ -152,14 +158,16 @@
                 <!-- OS Info -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
                     <TextBlock Text="Your System:" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0"/>
-                    <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Horizontal" Name="OSBlock" Style="{StaticResource OSBlockStyling}" ToolTip="View System Specifications">
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                         <TextBlock Name="OSInfo" Text="{Binding OSVersion, Mode=OneTime}" VerticalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
 
-                <!-- Selected -->
-                <CheckBox Content="Select All" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource SelectAllButton}"  Margin="0,0,15,0" IsThreeState="True" Name="AllSelected" IsChecked="true" />
+                <!-- Performance (CPU/RAM) -->
+                <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock Text="Test" />
+                </StackPanel>
 
             </Grid>
 

@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Diagnostics; // for Process.Start
 using System.Windows.Controls; // for MainButton_Click (referencing button)
+using System.Windows.Media;
 
 namespace FrontLineGUI
 {
@@ -21,7 +22,6 @@ namespace FrontLineGUI
 
             // DataContext (for the version button)
             this.DataContext = this;
-
         }
 
         // Version
@@ -65,6 +65,7 @@ namespace FrontLineGUI
             } else {
                 this.SizeToContent = SizeToContent.Manual;
                 this.WindowState   = WindowState.Maximized;
+                MaximizeButton.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#1fde57");
             }
         }
 

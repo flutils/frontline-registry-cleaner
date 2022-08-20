@@ -490,17 +490,17 @@
                 </Border>
 
                 <!-- Minimize -->
-                <Button Name="MinimizeButton" Style="{StaticResource MainActionButton}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
+                <Button ToolTip="Minimize" Name="MinimizeButton" Style="{StaticResource MainActionButton}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
                     <Path Data="{Binding Source={x:Static properties:Resources.MinimizeButtonPathData}, Mode=OneTime}" Fill="White"/>
                 </Button>
 
                 <!-- Maximize -->
-                <Button Name="MaximizeButton" Style="{StaticResource MainActionButton}" Click="MaximizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#FF272727">
+                <Button ToolTip="Maximize" Name="MaximizeButton" Style="{StaticResource MainActionButton}" Click="MaximizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#FF272727">
                     <Path Data="{Binding Source={x:Static properties:Resources.MaximizeButtonPathData}, Mode=OneTime}" Stretch="Fill" MaxHeight="11" MaxWidth="11" Fill="White"/>
                 </Button>
 
                 <!-- Close -->
-                <Button Name="CloseButton" Style="{StaticResource MainActionButton}" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#e30c0c">
+                <Button ToolTip="Close" Name="CloseButton" Style="{StaticResource MainActionButton}" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#e30c0c">
                     <Path Data="{Binding Source={x:Static properties:Resources.CloseButtonPathData}, Mode=OneTime}" Fill="White"/>
                 </Button>
 
@@ -561,7 +561,7 @@
                         <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal">
 
                             <!-- Settings -->
-                            <Button Name="SettingsButton" Content="Settings" Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Button ToolTip="Manage Settings" Name="SettingsButton" Content="Settings" Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
                         </StackPanel>
 
@@ -641,16 +641,16 @@
                             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0" Grid.Row="0">
 
                                 <!-- Scan -->
-                                <RadioButton Style="{StaticResource MainButtons}" Content="Scan" Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Scan" IsChecked="True" />
+                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="Scan Your System's Registry" Content="Scan" Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Scan" IsChecked="True" />
 
                                 <!-- Extras -->
-                                <RadioButton Style="{StaticResource MainButtons}" Content="Extras" Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Extras" />
+                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="View Other Tools and Metrics" Content="Extras" Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Extras" />
 
                                 <!-- Backup -->
-                                <RadioButton Style="{StaticResource MainButtons}" Content="Backup" Name="BackupButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Backup" />
+                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="Backup Your System's Registry" Content="Backup" Name="BackupButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Backup" />
 
                                 <!-- Statistics -->
-                                <RadioButton Style="{StaticResource MainButtons}" Content="Statistics" Name="StatisticsButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Statistics" />
+                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="View Scanning Statistics" Content="Statistics" Name="StatisticsButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Statistics" />
 
                             </StackPanel>
 
