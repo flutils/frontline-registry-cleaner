@@ -11,7 +11,7 @@ namespace FrontLineGUI
     {
 
         // Vars
-        public static List<String> BackUpKeys = new List<string>();
+        public static List<String> BackUpKeys = new List<string>(); // This is populated when a registry scan is performed
 
         public String ErrorMessage
         {

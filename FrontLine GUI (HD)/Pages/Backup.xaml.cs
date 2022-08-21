@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 using Path = System.IO.Path;
 
@@ -117,9 +119,22 @@ namespace FrontLineGUI.Pages
                 // Create file if one does not exist already
                 if (manager.BackUpList(file_path_and_name))
                 {
+
+                    // Message
+                    TextBlock error_msg = new TextBlock { Text = "Success", HorizontalAlignment = System.Windows.HorizontalAlignment.Center };
+
+                    // Add radio button
+                    Backups.Children.Add(error_msg);
+
                     //var lvi = this.ListViewBackUps.Items.Add(file_name);
                     //lvi.Tag = file_path_and_name;
                 }
+
+
+            } else {
+
+                // Scan required
+                MessageBox.Show("Please Make A System Scan First.");
 
             }
         }

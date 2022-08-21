@@ -114,7 +114,7 @@ namespace FrontLineGUI
         // https://stackoverflow.com/a/45045313/1143732
         public string OSVersion
         {
-            get { return Environment.OSVersion.Platform.ToString(); }
+            get { return Environment.OSVersion.ToString(); }
         }
 
         // OS Icon

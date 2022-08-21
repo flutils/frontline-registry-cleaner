@@ -13,6 +13,9 @@ namespace FrontLineGUI
     public partial class MainWindow : Window
     {
 
+        // Vars
+        private Brush maxbutton_bg;
+
         // Main Ingression Point
         // This is where the app loads
         public MainWindow()
@@ -22,6 +25,9 @@ namespace FrontLineGUI
 
             // DataContext (for the version button)
             this.DataContext = this;
+
+            // Vars
+            this.maxbutton_bg = MaximizeButton.Background;
         }
 
         // Version
@@ -59,13 +65,20 @@ namespace FrontLineGUI
         // Maximizes the window to the taskbar
         private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
+
+            // Maximized
             if (this.WindowState == WindowState.Maximized) {
+
                 this.WindowState = WindowState.Normal;
                 this.SizeToContent = SizeToContent.WidthAndHeight;
+                MaximizeButton.Background = this.maxbutton_bg;
+
             } else {
+
                 this.SizeToContent = SizeToContent.Manual;
                 this.WindowState   = WindowState.Maximized;
                 MaximizeButton.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#1fde57");
+
             }
         }
 
