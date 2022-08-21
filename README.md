@@ -41,7 +41,7 @@ If you are interested in this type of product, we have built an [RMM (Remote Mon
 #### ⚠️ Requirements
 
 1. [VC++ Redistributable (x86)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
-2. [.NET Core 6.0+](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) (Download Windows SDK)
+2. [.NET Core 6.0+](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) (x86 or x64 Windows SDK)
 
 When running the app, you will need to an `x86` version of VC++ redistributable.
 

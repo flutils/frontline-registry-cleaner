@@ -15,18 +15,16 @@
         <Style TargetType="{x:Type Button}" x:Key="BackupButtons">
 
             <!-- General Settings -->
-            <Setter Property="Cursor"                     Value="Hand" />
-            <Setter Property="Margin"                     Value="15" />
-            <Setter Property="MaxWidth"                   Value="80" />
-            
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            
+            <Setter Property="Cursor"              Value="Hand" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment"   Value="Center" />
+
             <!-- ControlTemplate -->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="15" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
-                            <TextBlock Foreground="White" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
+                        <Border CornerRadius="5" Padding="10,0" BorderThickness="2" BorderBrush="Black" Background="{Binding Path=Background, RelativeSource={RelativeSource TemplatedParent}}">
+                            <TextBlock Foreground="Black" Text="{Binding Path=Content, RelativeSource={RelativeSource TemplatedParent}}" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
@@ -49,7 +47,7 @@
         </Grid.RowDefinitions>
 
         <!-- Title -->
-        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
+        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Row="0">
                 
             <!-- Title/Description -->
             <TextBlock Text="Registry Backups" x:Name="PageTitle" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF282828" Margin="0,25,0,0" />
@@ -59,7 +57,7 @@
             <StackPanel Margin="35,0">
                 
                 <!-- Backup Button -->
-                <Button Style="{StaticResource BackupButtons}" Background="Green" Content="Backup Now"/>
+                <Button Style="{StaticResource BackupButtons}" Margin="0,15" Background="#dadada" Click="BackupNow_Click" Content="Backup Now" />
 
                 <!-- ProgressBar -->
                 <ProgressBar Padding="10"/>
@@ -70,9 +68,15 @@
                     <StackPanel x:Name="Backups" />
                 </Border>
 
-                </StackPanel>
-
             </StackPanel>
+
+        </StackPanel>
+        
+        <!-- Buttons -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Style="{StaticResource BackupButtons}" Background="#b5f587" Content="Load Backup" />
+            <Button Style="{StaticResource BackupButtons}" Margin="10,0" Background="#f47e7e" Content="Delete Backup" />
+        </StackPanel>
 
     </Grid>
 
