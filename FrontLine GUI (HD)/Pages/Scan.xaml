@@ -11,28 +11,55 @@
 
     <!-- Resources -->
     <Page.Resources>
-        
+
         <!-- OS Version Block -->
         <Style TargetType="{x:Type StackPanel}" x:Key="OSBlockStyling">
             <Setter Property="Cursor" Value="Hand" />
         </Style>
-        
+
         <!-- Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="MainScanButton">
-            
+
             <!-- General -->
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="Margin" Value="75,25" />
-            <Setter Property="Height" Value="105" />
-            <Setter Property="FontSize" Value="25" />
+            <Setter Property="Margin" Value="75,20,75,10" />
+            <Setter Property="Height" Value="105"/>
 
             <!-- Template -->
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="15" Background="Black">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Border CornerRadius="10" Background="Black" BorderThickness="2" BorderBrush="Black">
+                            <Border CornerRadius="10">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#A5FFFFFF"/>
+                                        <GradientStop Color="Transparent" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#99FFFFFF" />
+                                        <GradientStop Color="#00000000" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.BorderBrush>
+                                <Border.Effect>
+                                    <DropShadowEffect Direction="0" ShadowDepth="0" Color="Black" Opacity="1" BlurRadius="10"/>
+                                </Border.Effect>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="38" FontWeight="Bold" Text="Scan Now" Margin="0">
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
+                                        </TextBlock.Effect>
+                                    </TextBlock>
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Text="(Recommended)" Margin="0">
+                                        <TextBlock.Effect>
+                                            <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
+                                        </TextBlock.Effect>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
@@ -128,7 +155,10 @@
                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF323232" Margin="0,25,0,0" >Start Your Registry Scan Below:</TextBlock>
 
                 <!-- Scan Now Button -->
-                <Button Style="{StaticResource MainScanButton}" Content="Scan Now" />
+                <Button Style="{StaticResource MainScanButton}" Content="Start Scan" />
+                
+                <!-- Last Scan -->
+                <TextBlock Text="Scan Last Performed 01/08/2022" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="12" FontStyle="Italic"/>
 
                 <!-- Items Grid -->
                 <Grid Margin="25,15,25,0" Name="Scan_Checkboxes">
@@ -153,7 +183,7 @@
                     <CheckBox Content="Internet Errors"     Grid.Row="1" Grid.Column="1" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/internet_errors.png"    Name="InternetErrors"      IsChecked="true" />
                     <CheckBox Content="Windows Errors"      Grid.Row="2" Grid.Column="1" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/windows_errors.png"     Name="WindowsErrors"       IsChecked="true" />
                     <CheckBox Content="Temp Files"          Grid.Row="0" Grid.Column="2" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/temp_files.png"         Name="TempFiles"           IsChecked="true" />
-                    <CheckBox Content="Recycle Bin"         Grid.Row="1" Grid.Column="2" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/recycle_bin.png"        Name="RecycleBin"          IsChecked="true" />
+                    <CheckBox Content="Junk Files"          Grid.Row="1" Grid.Column="2" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/recycle_bin.png"        Name="RecycleBin"          IsChecked="true" />
                     <CheckBox Content="Internet Cache"      Grid.Row="2" Grid.Column="2" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/internet_cache.png"     Name="InternetCache"       IsChecked="true" />
 
                 </Grid>
