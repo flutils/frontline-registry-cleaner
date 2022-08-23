@@ -1,7 +1,8 @@
 <div align="center">
-  <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.0">
-  <h1 align="center">⚡ Speed Up Windows PC's ⚡</h1>
-  <p align="center">Keep Windows PC's running smoothly by cleaning out junk files and registry errors. Whilst retired, the product is still one of the most potent of its type - you're welcome to use it or edit the code.</p>
+  <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.1">
+  <h1 align="center">Speed, Security & Performance Optimization For Windows 7, 8, 10 & 11 (macOS coming soon)</h1>
+  <p align="center">Maintain the performance of PC endpoints with junk file removal, application data management and registry cleaner software that fixes errors and ensures smooth operation on all modern versions of Windows.</p>
+  <p align="center">We've decided to distribute the product as open source to showcase our company's development capabilities. We've now also <a href="/">added a boxed version for £24.99 + VAT</a> (VAT is applicable in the UK and EU only).</p>
   <p align="center">
     <table>
       <tr>
@@ -28,13 +29,27 @@
 
 <div align="center">--</div><Br />
 
-[**Frontline Register Cleaner 2.0**](https://www.frontlinecleaner.com) (released in 2011) was distributed by several retailers in the UK.
+[**Frontline Register Cleaner 2.0**](https://www.frontlinecleaner.com) was released in 2011 and was distributed by several retailers in the UK.
 
 We bought the code from a company in Ukraine, promoted it through the Internet and rarely updated it. It was a proprietary engine based on "RegCure" (popular product at the time).
 
-The distribution version requires a licensing server to permit users to log in, which we've now taken down. To compensate, we've removed the registration module, allowing people to use the product for free (if they wish).
+The distribution version requires a licensing server to permit users to log in, which we've now removed. To compensate, we've entirely removed the registration module, allowing people to use the product for free (if they wish).
 
-If you are interested in this type of product, we have built an [RMM (Remote Monitoring & Management)](https://en.wikipedia.org/wiki/Remote_monitoring_and_management) tool ([FLCleaner 3.0](https://www.flcleaner.com)), which supersedes its predecessor by a significant margin. The new product is built around our experience with web centric applications ("cloud"), permitting extensibility.
+In 2022, we revamped the GUI and some of the backend scanning functionality to bring the product up to modern standards. We intend to continue to add to this functionality to embrace cloud endpoints and various other additions.
+
+We are in the process of building an [RMM (Remote Monitoring & Management)](https://en.wikipedia.org/wiki/Remote_monitoring_and_management) tool ([FLCleaner 3.0](https://www.flcleaner.com)), which supersedes this by a significant margin. The new product is built around our experience with web centric infrastructure, permitting intense extensibility.
+
+---
+
+#### ℹ️ How It Works
+
+Every Operating System has files and settings it requires to operate. 
+
+In Windows, most of these are stored inside the "registry" (a database at the heart of the system). Other systems have other methods.
+
+One of the biggest issues for Windows PC users is this database becoming corrupted / damaged, leading to a sluggish system and potential problems & errors.
+
+"Registry Cleaner" tools were designed to clean through the database and fix any of the problems. Over time, the requirements 
 
 ---
 
