@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.1">
-  <h1 align="center">Speed, Security & Performance Optimization For Windows 7, 8, 10 & 11 (macOS coming soon)</h1>
-  <p align="center">Maintain the performance of PC endpoints with junk file removal, application data management and registry cleaner software that fixes errors and ensures smooth operation on all modern versions of Windows.</p>
+  <h1 align="center">Optimization Software for Windows 7, 8, 10 & 11</h1>
+  <h3 align="center">Resolve Errors, Clean Junk Files and Protect Personal Data with a robust and extensible system designed to keep Windows PC's running smoothly & securely.</h3>
   <p align="center">We've decided to distribute the product as open source to showcase our company's development capabilities. We've now also <a href="/">added a boxed version for £24.99 + VAT</a> (VAT is applicable in the UK and EU only).</p>
+  <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.1">
   <p align="center">
     <table>
       <tr>
@@ -33,11 +33,11 @@
 
 We bought the code from a company in Ukraine, promoted it through the Internet and rarely updated it. It was a proprietary engine based on "RegCure" (popular product at the time).
 
-The distribution version requires a licensing server to permit users to log in, which we've now removed. To compensate, we've entirely removed the registration module, allowing people to use the product for free (if they wish).
+The distribution version requires a licensing server to permit users to log in, which we've now removed. 
 
 In 2022, we revamped the GUI and some of the backend scanning functionality to bring the product up to modern standards. We intend to continue to add to this functionality to embrace cloud endpoints and various other additions.
 
-We are in the process of building an [RMM (Remote Monitoring & Management)](https://en.wikipedia.org/wiki/Remote_monitoring_and_management) tool ([FLCleaner 3.0](https://www.flcleaner.com)), which supersedes this by a significant margin. The new product is built around our experience with web centric infrastructure, permitting intense extensibility.
+We are also in the process of building an [**RMM**** (Remote Monitoring & Management)](https://en.wikipedia.org/wiki/Remote_monitoring_and_management) tool ([**FLCleaner 3.0**](https://www.flcleaner.com)), which supersedes this by a significant margin. The new product is built around our experience with web centric infrastructure, permitting intense extensibility.
 
 ---
 
@@ -45,7 +45,7 @@ We are in the process of building an [RMM (Remote Monitoring & Management)](http
 
 Every Operating System has files and settings it requires to operate. 
 
-In Windows, most of these are stored inside the "registry" (a database at the heart of the system). Other systems have other methods.
+In Windows, most of these are stored inside the "registry" (a database at the heart of the system).
 
 One of the biggest issues for Windows PC users is this database becoming corrupted / damaged, leading to a sluggish system and potential problems & errors.
 

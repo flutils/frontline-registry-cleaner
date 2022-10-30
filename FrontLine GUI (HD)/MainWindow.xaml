@@ -443,7 +443,7 @@
                         </TransformGroup>
                     </Viewbox.RenderTransform>
                     <Grid>
-                        <Path Name="LogoPath" Data="{Binding Source={x:Static properties:Resources.LogoTextPathData}, Mode=OneTime}" SnapsToDevicePixels="True" Panel.ZIndex="1">
+                        <Path Name="LogoPath" Data="{Binding Source={x:Static properties:Resources.LogoTextPathData2}, Mode=OneTime}" SnapsToDevicePixels="True" Panel.ZIndex="1">
                             <Path.Fill>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FFFAFAFA" Offset="1"/>
@@ -454,7 +454,7 @@
                                 <DropShadowEffect Color="Black" BlurRadius="0" ShadowDepth="5" Opacity="1" Direction="115" />
                             </Path.Effect>
                         </Path>
-                        <Rectangle Panel.ZIndex="2" Width="475" HorizontalAlignment="Left" Clip="{Binding Source={x:Static properties:Resources.LogoTextPathData}, Mode=OneTime}" SnapsToDevicePixels="True">
+                        <Rectangle Panel.ZIndex="2" Width="380" HorizontalAlignment="Left" Clip="{Binding Source={x:Static properties:Resources.LogoTextPathData2}, Mode=OneTime}" SnapsToDevicePixels="True">
                             <Rectangle.Fill>
                                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                     <GradientStop Color="#FFFFE031" Offset="1" />
