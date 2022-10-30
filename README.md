@@ -1,7 +1,6 @@
 <div align="center">
   <h1 align="center">⚡ Optimization Software for Windows 7, 8, 10 & 11 ⚡</h1>
-  <h3 align="center">✔️ Resolve Errors, 🗑️ Clean Junk Files and 🦜 Protect Personal Data with an extensible system designed to keep Windows PCs running smoothly & securely.</h3>
-  <p align="center">We've now also <a href="/">added a boxed version for £24.99 + VAT</a> (VAT is applicable in the UK and EU only).</p>
+  <h3 align="center">✅ Resolve Errors, 🗑️ Clean Junk Files and 🦜 Protect Personal Data with an extensible system designed to keep Windows PCs running smoothly & securely.</h3>
   <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.1">
   <p align="center">
     <table>
