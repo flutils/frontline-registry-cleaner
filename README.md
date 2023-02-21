@@ -1,7 +1,6 @@
 <h1 align="left">PC Optimization Software</h1>
-<h3 align="left">Resolve errors, clean junk files and protect personal data with a software tool designed to keep Windows PCs running smoothly & securely.</h3>
-<p>-</p>
-<p align="left">Welcome to the redesigned repository for <a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.0</a>. A commercial product released in 2011, we've now released it open source for anybody interested in using it: -</p>
+<p align="left">Welcome to the redesigned repository for <a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.0</a>.</p>
+<p>A commercial product originally released in 2011, we've now repackaged it open source for anybody interested in using it: -</p>
 <img src="readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
 
 <p align="center">
@@ -15,27 +14,21 @@
 
 <div align="center">--</div><Br />
 
-[**Frontline Register Cleaner 2.0**](https://www.frontlinecleaner.com) was released in 2011 and was distributed by several retailers in the UK.
+As mentioned, the product was released in 2011 and distributed by several retailers in the UK.
 
-We procured the code from a company in Ukraine and promoted it through the Internet. It has a proprietary engine based on "RegCure" (popular product at the time).
-
-The distribution version requires a licensing server to permit users to log in, which we've now removed. 
+We procured the code from a company in Ukraine and promoted it through the Internet. It has a proprietary engine.
 
 In 2022, we revamped the GUI and some of the backend scanning functionality to bring the product up to modern standards. We intend to continue to add to this functionality to embrace cloud endpoints and various other additions.
-
-We are also in the process of building an RMM tool, which supersedes this. 
 
 ---
 
 #### ℹ️ How It Works
 
-FLCleaner 2.1 permits "items" to be created.
+The redesigned version now permits "items" to be created.
 
-These come in three types - settings, files and security. 
+These are what the tool scans and come in three types - `settings`, `files` and `security`. 
 
-Settings are OS-level options, such as registry entries. Files are files that you can program the system to find. Security includes things such as cookies and browser cache data.
-
-Users are able to add and manage the "items" they wish to scan. Some are pre-programmed. They can be backed-up to a profile.
+Users are able to add and manage the "items" they wish to scan, allowing for customizability.
 
 In the future, we want to add the means to include "plugins" that permit pre-packaged items to be added. 
 
