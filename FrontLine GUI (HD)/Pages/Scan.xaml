@@ -152,7 +152,7 @@
 
             <!-- Title -->
             <StackPanel HorizontalAlignment="stretch" VerticalAlignment="Top">
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF323232" Margin="0,25,0,0" >Start Your Registry Scan Below:</TextBlock>
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF323232" Margin="0,25,0,0">Start Scanning Below:</TextBlock>
 
                 <!-- Scan Now Button -->
                 <Button Style="{StaticResource MainScanButton}" Content="Start Scan" />

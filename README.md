@@ -1,9 +1,8 @@
-<div align="center">
-  <h1 align="center">⚡PC Optimization Software for Windows 7, 8, 10 & 11⚡</h1>
-  <h3 align="center">✅ Resolve Errors, 🗑️ Clean Junk Files and 🦜 Protect Personal Data with an extensible system designed to keep Windows PCs running smoothly & securely.</h3>
-  <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.1">
-  <p align="center">-</p>
-</div>
+<h1 align="left">PC Optimization Software</h1>
+<h3 align="left">Resolve errors, clean junk files and protect personal data with an extensible system designed to keep Windows PCs running smoothly & securely.</h3>
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.0</a> was released in 2011 and retired the following year. It has now been brought back as an open source solution. We've made some tweaks to the codebase and user interface, which are explained below: -</p>
+<img src="readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
+<p align="center">&nbsp;</p>
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/Eugeny/terminus/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/eugeny/terminus.svg?label=License&style=flat-square"></a> <a href="https://travis-ci.org/Eugeny/terminus"><img alt="Travis (.org)" src="https://img.shields.io/travis/Eugeny/terminus.svg?label=CI&logo=travis&logoColor=white&style=flat-square"></a>
@@ -18,25 +17,27 @@
 
 [**Frontline Register Cleaner 2.0**](https://www.frontlinecleaner.com) was released in 2011 and was distributed by several retailers in the UK.
 
-We bought the code from a company in Ukraine, promoted it through the Internet and rarely updated it. It was a proprietary engine based on "RegCure" (popular product at the time).
+We procured the code from a company in Ukraine, promoted it through the Internet and rarely updated it. It has a proprietary engine based on "RegCure" (popular product at the time).
 
 The distribution version requires a licensing server to permit users to log in, which we've now removed. 
 
 In 2022, we revamped the GUI and some of the backend scanning functionality to bring the product up to modern standards. We intend to continue to add to this functionality to embrace cloud endpoints and various other additions.
 
-We are also in the process of building an [**RMM** (Remote Monitoring & Management)](https://en.wikipedia.org/wiki/Remote_monitoring_and_management) tool ([**FLCleaner 3.0**](https://www.flcleaner.com)), which supersedes this by a significant margin. The new product is built around our experience with web centric infrastructure, permitting quite a bit of extensibility.
+We are also in the process of building an [**RMM** (Remote Monitoring & Management)](https://www.flcleaner.com) tool, which supersedes this. 
 
 ---
 
 #### ℹ️ How It Works
 
-Every Operating System has files and settings it requires to operate. 
+FLCleaner 2.1 permits "items" to be created.
 
-In Windows, most of these are stored inside the "registry" (a database at the heart of the system).
+These come in three types - settings, files and security. 
 
-One of the biggest issues for Windows PC users is this database becoming corrupted / damaged, leading to a sluggish system and potential problems & errors.
+Settings are OS-level options, such as registry entries. Files are files that you can program the system to find. Security includes things such as cookies and browser cache data.
 
-"Registry Cleaner" tools were designed to clean through the database and fix any of the problems. Over time, the requirements 
+Users are able to add and manage the "items" they wish to scan. Some are pre-programmed. They can be backed-up to a profile.
+
+In the future, we want to add the means to include "plugins" that permit pre-packaged items to be added. 
 
 ---
 

@@ -551,7 +551,7 @@
 
                         <!-- Subtitle -->
                         <TextBlock Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
-                            Scan, Optimize &amp; Boost PC Performance!
+                            Scan, Optimize &amp; Maintain PC Performance
                             <TextBlock.Effect>
                                 <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
                             </TextBlock.Effect>
@@ -644,7 +644,7 @@
                                 <RadioButton Style="{StaticResource MainButtons}" ToolTip="Scan Your System's Registry" Content="Scan" Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Scan" IsChecked="True" />
 
                                 <!-- Extras -->
-                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="View Other Tools and Metrics" Content="Extras" Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Extras" />
+                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="View Other Tools and Metrics" Content="Customization" Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Extras" />
 
                                 <!-- Backup -->
                                 <RadioButton Style="{StaticResource MainButtons}" ToolTip="Backup Your System's Registry" Content="Backup" Name="BackupButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Backup" />
