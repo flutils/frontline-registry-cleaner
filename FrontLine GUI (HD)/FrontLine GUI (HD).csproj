@@ -159,8 +159,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Localization\Strings\en-GB.xaml">
+    <Content Include="Resources\Localization\Strings\fr.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\Localization\Strings\en.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

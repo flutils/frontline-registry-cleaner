@@ -2,6 +2,6 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:s="clr-namespace:System;assembly=mscorlib" >
 
-    <s:String x:Key="MainSubtitle">Scan, Optimize &amp; Maintain PC Performance</s:String>
+    <s:String x:Key="MainSubtitle">Bonjour!</s:String>
 
 </ResourceDictionary>

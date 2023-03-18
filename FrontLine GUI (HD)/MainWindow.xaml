@@ -559,8 +559,7 @@
                         </Grid.RowDefinitions>
 
                         <!-- Subtitle -->
-                        <TextBlock Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
-                            Scan, Optimize &amp; Maintain PC Performance
+                        <TextBlock Foreground="#462e00" Text="{DynamicResource MainSubtitleString}" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
                             <TextBlock.Effect>
                                 <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
                             </TextBlock.Effect>

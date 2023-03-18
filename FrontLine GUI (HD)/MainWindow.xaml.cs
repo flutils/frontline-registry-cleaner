@@ -15,6 +15,7 @@ namespace FrontLineGUI
 
         // Vars
         private Brush maxbutton_bg;
+        public EZLocalizeNS.EZLocalize MyEZLocalize = FrontLineGUI.App.MyEZLocalize;
 
         // Main Ingression Point
         // This is where the app loads
