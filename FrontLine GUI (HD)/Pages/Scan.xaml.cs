@@ -149,7 +149,7 @@ namespace FrontLineGUI
                         break;
                 }
 
-                return "/Resources/" + image; 
+                return "/Resources/OS/" + image; 
             
             }
         }

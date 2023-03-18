@@ -31,6 +31,29 @@
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Resources\Localization\**" />
+    <EmbeddedResource Remove="Resources\Localization\**" />
+    <None Remove="Resources\Localization\**" />
+    <Page Remove="Resources\Localization\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Resources\OS\windows-10.png" />
+    <None Remove="Resources\OS\windows-11.png" />
+    <None Remove="Resources\OS\windows-8.png" />
+    <None Remove="Resources\OS\windows-95.png" />
+    <None Remove="Resources\OS\windows-xp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Localization\Icons\fr-FR.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Localization\Icons\en-GB.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\216.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +63,11 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\anniversary.png" />
+    <Resource Include="Resources\OS\windows-10.png" />
+    <Resource Include="Resources\OS\windows-11.png" />
+    <Resource Include="Resources\OS\windows-8.png" />
+    <Resource Include="Resources\OS\windows-95.png" />
+    <Resource Include="Resources\OS\windows-xp.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\scan_icon.png" />
@@ -93,21 +121,6 @@
     <Resource Include="Resources\Scan\internet_cache.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\windows-11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\windows-8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\windows-10.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\windows-95.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\windows-xp.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\select_all.png" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +128,11 @@
     <PackageReference Include="Microsoft.DotNet.UpgradeAssistant.Extensions.Default.Analyzers" Version="0.4.336902">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EZLocalize">
+      <HintPath>..\..\..\..\Users\Richard\Downloads\EZLocalize.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
@@ -139,5 +157,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Localization\Strings\en-GB.xaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

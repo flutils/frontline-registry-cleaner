@@ -103,27 +103,18 @@ namespace FrontLineGUI
             Process.Start(Properties.Settings.Default.Repo);
         }
 
-        // Help Button
-        // Takes to the FrontlineCleaner.com website
-        private void HelpButton_Click(object sender, RoutedEventArgs e)
-        {
-            Process.Start(Properties.Settings.Default.WebSite);
-        }
-
-        // Main Buttons (Left Hand Menu)
-        // Loads different pages depending on which radiobutton was checked
-        private void MainButton_Click(object sender, RoutedEventArgs e)
-        {
-            RadioButton srcButton = e.Source as RadioButton;
-            string tag = srcButton.Tag.ToString();
-            if(!String.IsNullOrEmpty(tag)) ContentFrame.Navigate(new Uri($"Pages/{tag}.xaml", UriKind.Relative));
-        }
-
         // Settings Button
         // Loads the "settings" page
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+
             ContentFrame.Navigate(new Uri("Pages/Settings.xaml", UriKind.Relative));
+
+            // RPECK 18/03/2023
+            // Updated this functionality to use a modal dialog
+            // https://stackoverflow.com/a/42933694/1143732
+
+            //ModalWindow modalWindow = new ModalWindow(new Uri("Pages/Settings.xaml", UriKind.Relative));
         }
     }
 }

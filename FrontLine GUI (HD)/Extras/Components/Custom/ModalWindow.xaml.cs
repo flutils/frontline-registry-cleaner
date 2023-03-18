@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FrontLineGUI.Pages
+namespace FrontLineGUI.Extras.Components.Custom
 {
     /// <summary>
-    /// Interaction logic for Extras.xaml
+    /// Interaction logic for ModalWindow.xaml
     /// </summary>
-    public partial class Extras : Page
+    public partial class ModalWindow : UserControl
     {
-        public Extras()
+        public ModalWindow()
         {
             InitializeComponent();
         }

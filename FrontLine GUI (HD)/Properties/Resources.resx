@@ -150,8 +150,14 @@
   <data name="edit_startup_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_startup_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="en-GB" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Localization\Icons\en-GB.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="extras_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\extras_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fr-FR" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Localization\Icons\fr-FR.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="internet_cache" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Scan\internet_cache.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -203,22 +209,22 @@
   <data name="temp_files" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Scan\temp_files.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="windows_10" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\windows-10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="windows-10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OS\windows-10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="windows_11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\windows-11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="windows-11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OS\windows-11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="windows_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\windows-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="windows-8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OS\windows-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="windows_95" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\windows-95.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="windows-95" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OS\windows-95.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="windows-xp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OS\windows-xp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="windows_errors" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Scan\windows_errors.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="windows_xp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\windows-xp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

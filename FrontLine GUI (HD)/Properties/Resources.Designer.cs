@@ -161,9 +161,29 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap en_GB {
+            get {
+                object obj = ResourceManager.GetObject("en-GB", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap extras_icon {
             get {
                 object obj = ResourceManager.GetObject("extras_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap fr_FR {
+            get {
+                object obj = ResourceManager.GetObject("fr-FR", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -318,7 +338,7 @@ namespace FrontLineGUI.Properties {
         /// </summary>
         public static System.Drawing.Bitmap windows_10 {
             get {
-                object obj = ResourceManager.GetObject("windows_10", resourceCulture);
+                object obj = ResourceManager.GetObject("windows-10", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -328,7 +348,7 @@ namespace FrontLineGUI.Properties {
         /// </summary>
         public static System.Drawing.Bitmap windows_11 {
             get {
-                object obj = ResourceManager.GetObject("windows_11", resourceCulture);
+                object obj = ResourceManager.GetObject("windows-11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -338,7 +358,7 @@ namespace FrontLineGUI.Properties {
         /// </summary>
         public static System.Drawing.Bitmap windows_8 {
             get {
-                object obj = ResourceManager.GetObject("windows_8", resourceCulture);
+                object obj = ResourceManager.GetObject("windows-8", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -348,7 +368,7 @@ namespace FrontLineGUI.Properties {
         /// </summary>
         public static System.Drawing.Bitmap windows_95 {
             get {
-                object obj = ResourceManager.GetObject("windows_95", resourceCulture);
+                object obj = ResourceManager.GetObject("windows-95", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -368,7 +388,7 @@ namespace FrontLineGUI.Properties {
         /// </summary>
         public static System.Drawing.Bitmap windows_xp {
             get {
-                object obj = ResourceManager.GetObject("windows_xp", resourceCulture);
+                object obj = ResourceManager.GetObject("windows-xp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

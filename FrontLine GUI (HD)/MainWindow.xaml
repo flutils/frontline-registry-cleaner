@@ -28,7 +28,7 @@
         <!-- Converters -->
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
         <local:ButtonColourConverter            x:Key="ButtonColourConverter" />
-        
+
         <!-- Images -->
         <!-- Used to give us anti aliasing - https://stackoverflow.com/a/14490654/1143732 -->
         <Style TargetType="{x:Type Image}">
@@ -471,7 +471,7 @@
 
                 <!-- HD -->
                 <Border x:Name="HDBorder" Height="20" Margin="0,0,5,0" BorderBrush="Black" Background="White" BorderThickness="1" CornerRadius="10">
-                    <Border x:Name="HDBorderInner" Background="White" BorderThickness="2" CornerRadius="10">
+                    <Border x:Name="HDBorderInner" Background="White" BorderThickness="1" CornerRadius="10">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="25px" />
@@ -481,13 +481,22 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
-                            <Border Background="Black" CornerRadius="8,0,0,8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                            <TextBlock Foreground="White" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="9" FontStyle="Italic" FontWeight="Bold" Margin="1,0,0,0">HD</TextBlock>
+                            <Border CornerRadius="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="Black"/>
+                                        <GradientStop Color="LimeGreen" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+                            <TextBlock Foreground="White" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="9" FontWeight="Bold" Margin="1,0,0,0">HD</TextBlock>
 
-                            <TextBlock Foreground="Black" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="9" Margin="3,0">Edition</TextBlock>
                         </Grid>
                     </Border>
                 </Border>
+
+                <!-- Localization Flag -->
+                
 
                 <!-- Minimize -->
                 <Button ToolTip="Minimize" Name="MinimizeButton" Style="{StaticResource MainActionButton}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
@@ -583,7 +592,6 @@
 
                     <!-- Grid Definitions -->
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="265" />
                         <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
@@ -604,81 +612,6 @@
                                 <GradientStop Offset="1" Color="#FF000000" />
                             </LinearGradientBrush>
                         </Border.OpacityMask>
-                    </Border>
-
-                    <!-- Left Menu BG -->
-                    <!-- This is required to achieve the "fade" effect on the left menu background -->
-                    <!-- Source: https://stackoverflow.com/a/5505174/1143732 -->
-                    <Border BorderThickness="0,0,1,0" BorderBrush="#FFA7A7A7" Grid.Column="0">
-                        <Border.Background>
-                            <LinearGradientBrush EndPoint="0,0" StartPoint="1,0">
-                                <GradientStop Color="#FFDFDFDF"/>
-                                <GradientStop Color="White" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <Border.OpacityMask>
-                            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
-                                <GradientStop Offset="0.15" Color="#00000000" />
-                                <GradientStop Offset="1" Color="#FF000000" />
-                            </LinearGradientBrush>
-                        </Border.OpacityMask>
-                    </Border>
-
-                    <!-- Left Menu Content -->
-                    <Border BorderThickness="0,0,2,0" BorderBrush="White" Grid.Column="0" Margin="0,0,1,0">
-                        <Grid Grid.Row="2" Grid.Column="0" Margin="5,0">
-
-                            <!-- Grid Definitions -->
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-
-                            <!-- Buttons -->
-                            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="0" Grid.Row="0">
-
-                                <!-- Scan -->
-                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="Scan Your System's Registry" Content="Scan" Name="ScanButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Scan" IsChecked="True" />
-
-                                <!-- Extras -->
-                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="View Other Tools and Metrics" Content="Customization" Name="ExtrasButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Extras" />
-
-                                <!-- Backup -->
-                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="Backup Your System's Registry" Content="Backup" Name="BackupButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Backup" />
-
-                                <!-- Statistics -->
-                                <RadioButton Style="{StaticResource MainButtons}" ToolTip="View Scanning Statistics" Content="Statistics" Name="StatisticsButton" GroupName="Main" HorizontalAlignment="Stretch" VerticalAlignment="Top" Click="MainButton_Click" Tag="Statistics" />
-
-                            </StackPanel>
-
-                            <!-- Footer -->
-                            <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,10" Grid.Row="1">
-
-                                <!-- Anniversary -->
-                                <Image Source="/Resources/anniversary.png" Stretch="UniformToFill" Margin="10,0,10,10" MaxWidth="175" />
-
-                                <!-- FL -->
-                                <Button Name="FrontlineButton" Style="{StaticResource CompanyButton}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,0,30,0" Click="FrontlineButton_Click" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}">
-                                    <Path Name="FLPath" Data="{Binding Source={x:Static properties:Resources.CompanyURLButtonPathData}, Mode=OneTime}" />
-                                </Button>
-
-                                <!-- Version -->
-                                <Button Name="VersionButton" Click="VersionButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="30,5,30,5" BorderBrush="{x:Null}" Foreground="Black" Background="{x:Null}">
-                                    <TextBlock>
-                                        <Run Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" />
-                                        <Run Text="(August 23rd 2022)" />
-                                    </TextBlock>
-                                </Button>
-
-                                <!-- Need Help? -->
-                                <Button Name="HelpButton" Content="Need Help?" Style="{StaticResource NeedHelp}" Click="HelpButton_Click" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="10,5,7,5" BorderBrush="{x:Null}" Background="{x:Null}" Height="65" />
-
-                            </StackPanel>
-
-                        </Grid>
                     </Border>
 
                     <!-- Right Area (Left Menu Shadow) -->
