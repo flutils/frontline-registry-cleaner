@@ -44,12 +44,12 @@
     <None Remove="Resources\OS\windows-xp.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Localization\Icons\fr-FR.jpg">
+    <Resource Include="Resources\Localization\Icons\fr.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Localization\Icons\en-GB.jpg">
+    <Resource Include="Resources\Localization\Icons\en.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

@@ -4,6 +4,7 @@ using System.Windows.Input;
 using System.Diagnostics; // for Process.Start
 using System.Windows.Controls; // for MainButton_Click (referencing button)
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 
 namespace FrontLineGUI
 {
@@ -14,7 +15,6 @@ namespace FrontLineGUI
     {
 
         // Vars
-        private Brush maxbutton_bg;
         public EZLocalizeNS.EZLocalize MyEZLocalize = FrontLineGUI.App.MyEZLocalize;
 
         // Main Ingression Point
@@ -27,8 +27,6 @@ namespace FrontLineGUI
             // DataContext (for the version button)
             this.DataContext = this;
 
-            // Vars
-            this.maxbutton_bg = MaximizeButton.Background;
         }
 
         // Version
@@ -60,27 +58,6 @@ namespace FrontLineGUI
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close(); // https://www.tech-recipes.com/rx/23742/create-an-exit-button-in-c-visual-studio/
-        }
-
-        // Maximize
-        // Maximizes the window to the taskbar
-        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
-        {
-
-            // Maximized
-            if (this.WindowState == WindowState.Maximized) {
-
-                this.WindowState = WindowState.Normal;
-                this.SizeToContent = SizeToContent.WidthAndHeight;
-                MaximizeButton.Background = this.maxbutton_bg;
-
-            } else {
-
-                this.SizeToContent = SizeToContent.Manual;
-                this.WindowState   = WindowState.Maximized;
-                MaximizeButton.Background = (SolidColorBrush)new BrushConverter().ConvertFromString("#1fde57");
-
-            }
         }
 
         // Minimize
@@ -116,6 +93,13 @@ namespace FrontLineGUI
             // https://stackoverflow.com/a/42933694/1143732
 
             //ModalWindow modalWindow = new ModalWindow(new Uri("Pages/Settings.xaml", UriKind.Relative));
+        }
+
+        // Localization Button
+        // This loads the localization modal (which should be in the settings pane)
+        private void LocalizationButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

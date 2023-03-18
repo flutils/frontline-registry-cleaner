@@ -9,8 +9,10 @@
         Title="Frontline Registry Cleaner 2.1 (HD Edition)"
         Height="{Binding ElementName=myWindow, Path=MinHeight}"
         Width="{Binding ElementName=myWindow, Path=MinWidth}"
-        MinWidth="835"
-        MinHeight="670"
+        MinWidth="665"
+        MinHeight="585"
+        MaxWidth="1000"
+        MaxHeight="750"
         SizeToContent="WidthAndHeight"
         ResizeMode="CanResizeWithGrip"
         Topmost="False"
@@ -470,7 +472,7 @@
             <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,7,0"  Orientation="Horizontal" Grid.Column="1" Panel.ZIndex="10" Height="42">
 
                 <!-- HD -->
-                <Border x:Name="HDBorder" Height="20" Margin="0,0,5,0" BorderBrush="Black" Background="White" BorderThickness="1" CornerRadius="10">
+                <Border x:Name="HDBorder" Height="20" Margin="0" BorderBrush="Black" Background="White" BorderThickness="1" CornerRadius="10">
                     <Border x:Name="HDBorderInner" Background="White" BorderThickness="1" CornerRadius="10">
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -481,14 +483,7 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
-                            <Border CornerRadius="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                <Border.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="Black"/>
-                                        <GradientStop Color="LimeGreen" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Border.Background>
-                            </Border>
+                            <Border CornerRadius="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black"/>
                             <TextBlock Foreground="White" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="9" FontWeight="Bold" Margin="1,0,0,0">HD</TextBlock>
 
                         </Grid>
@@ -496,16 +491,13 @@
                 </Border>
 
                 <!-- Localization Flag -->
-                
+                <Button Name="LocalizationButton" MaxHeight="25" Margin="5,0" Click="LocalizationButton_Click" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainChangeLang}">
+                    <Image Source="/Resources/Localization/Icons/en.jpg" />
+                </Button>
 
                 <!-- Minimize -->
                 <Button ToolTip="Minimize" Name="MinimizeButton" Style="{StaticResource MainActionButton}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
                     <Path Data="{Binding Source={x:Static properties:Resources.MinimizeButtonPathData}, Mode=OneTime}" Fill="White"/>
-                </Button>
-
-                <!-- Maximize -->
-                <Button ToolTip="Maximize" Name="MaximizeButton" Style="{StaticResource MainActionButton}" Click="MaximizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#FF272727">
-                    <Path Data="{Binding Source={x:Static properties:Resources.MaximizeButtonPathData}, Mode=OneTime}" Stretch="Fill" MaxHeight="11" MaxWidth="11" Fill="White"/>
                 </Button>
 
                 <!-- Close -->
@@ -559,7 +551,7 @@
                         </Grid.RowDefinitions>
 
                         <!-- Subtitle -->
-                        <TextBlock Foreground="#462e00" Text="{DynamicResource MainSubtitleString}" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
+                        <TextBlock Foreground="#462e00" Text="{DynamicResource Str_MainSubtitle}" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
                             <TextBlock.Effect>
                                 <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
                             </TextBlock.Effect>
@@ -569,7 +561,7 @@
                         <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal">
 
                             <!-- Settings -->
-                            <Button ToolTip="Manage Settings" Name="SettingsButton" Content="Settings" Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" />
+                            <Button ToolTip="Manage Settings" Name="SettingsButton" Content="{DynamicResource Str_MainSettings}" Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" />
 
                         </StackPanel>
 

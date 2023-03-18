@@ -161,9 +161,9 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap en_GB {
+        public static System.Drawing.Bitmap en {
             get {
-                object obj = ResourceManager.GetObject("en-GB", resourceCulture);
+                object obj = ResourceManager.GetObject("en", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -181,9 +181,9 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap fr_FR {
+        public static System.Drawing.Bitmap fr {
             get {
-                object obj = ResourceManager.GetObject("fr-FR", resourceCulture);
+                object obj = ResourceManager.GetObject("fr", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,7 +246,7 @@ namespace FrontLineGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to M28,2h-6c-1.104,0-2,0.896-2,2s0.896,2,2,2h1.2l-4.6,4.601C18.28,10.921,18,11.344,18,12c0,1.094,0.859,2,2,2  c0.641,0,1.049-0.248,1.4-0.6L26,8.8V10c0,1.104,0.896,2,2,2s2-0.896,2-2V4C30,2.896,29.104,2,28,2z M12,18  c-0.641,0-1.049,0.248-1.4,0.6L6,23.2V22c0-1.104-0.896-2-2-2s-2,0.896-2,2v6c0,1.104,0.896,2,2,2h6c1.104,0,2-0.896,2-2  s-0.896-2-2-2H8.8l4.6-4.601C13.72,21.079,14,20.656,14,20C14,18.906,13.141,18,12,18z.
+        ///   Looks up a localized string similar to M7,26h5a1,1,0,0,0,0-2H9.41L16,17.41,22.59,24H20a1,1,0,0,0,0,2h5a1,1,0,0,0,1-1V20a1,1,0,0,0-2,0v2.59L17.41,16,24,9.41V12a1,1,0,0,0,2,0V7a1,1,0,0,0-1-1H20a1,1,0,0,0,0,2h2.59L16,14.59,9.41,8H12a1,1,0,0,0,0-2H7A1,1,0,0,0,6,7v5a1,1,0,0,0,2,0V9.41L14.59,16,8,22.59V20a1,1,0,0,0-2,0v5A1,1,0,0,0,7,26Z.
         /// </summary>
         public static string MaximizeButtonPathData {
             get {
