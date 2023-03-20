@@ -34,7 +34,7 @@ namespace FrontLineGUI
         // https://stackoverflow.com/a/15873711/1143732
         public string Version
         {
-            get { return $"v {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()}"; }
+            get { return $"Version: {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()}"; }
         }
 
         // Load
@@ -67,18 +67,18 @@ namespace FrontLineGUI
             this.WindowState = WindowState.Minimized; // https://stackoverflow.com/a/2841278/1143732
         }
 
-        // FL Button
-        // This loads up the Frontline web interface. The URL may change, so it's stored as a Setting (accessed via "Properties" of the WPF project
-        private void FrontlineButton_Click(object sender, RoutedEventArgs e)
-        {
-            Process.Start(Properties.Settings.Default.FLWeb);
-        }
-
-        // Version Button
+        // Github Button
         // Takes the user to the GIT repo
-        private void VersionButton_Click(object sender, RoutedEventArgs e)
+        private void GithubButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(Properties.Settings.Default.Repo);
+            // from .NET 6.0 onwards, need to define the following to open web browser
+            // https://stackoverflow.com/questions/73113068/windows-forms-app-gives-me-error-when-i-use-process-start
+            Process.Start(new ProcessStartInfo
+                {
+                    FileName = Properties.Settings.Default.Repo,
+                    UseShellExecute = true
+                }
+            );
         }
 
         // Settings Button
@@ -86,13 +86,6 @@ namespace FrontLineGUI
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
 
-            ContentFrame.Navigate(new Uri("Pages/Settings.xaml", UriKind.Relative));
-
-            // RPECK 18/03/2023
-            // Updated this functionality to use a modal dialog
-            // https://stackoverflow.com/a/42933694/1143732
-
-            //ModalWindow modalWindow = new ModalWindow(new Uri("Pages/Settings.xaml", UriKind.Relative));
         }
 
         // Localization Button
@@ -101,5 +94,6 @@ namespace FrontLineGUI
         {
 
         }
+
     }
 }

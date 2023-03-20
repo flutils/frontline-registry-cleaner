@@ -189,6 +189,15 @@ namespace FrontLineGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm3.163 21.783h-.093a.513.513 0 0 1-.382-.14.513.513 0 0 1-.14-.372v-1.406c.006-.467.01-.94.01-1.416a3.693 3.693 0 0 0-.151-1.028 1.832 1.832 0 0 0-.542-.875 8.014 8.014 0 0 0 2.038-.471 4.051 4.051 0 0 0 1.466-.964c.407-.427.71-.943.885-1.506a6.77 6.77 0 0 0 .3-2.13 4.138 4.138 0 0 0-.26-1.476 3.892 3.892 0 0 0-.795-1.284 2.81 2.81 0 0 0 .162-.582c.033-.2.05-.402.05-.604 0-.26-.03-.52-.09-.773a5.309 5.309 0 0 0-.221-.763.293.293 0 0 0-.111-.02h-.11c-.23.002-.456.04-.6 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string GithubIconPathData {
+            get {
+                return ResourceManager.GetString("GithubIconPathData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap internet_cache {
@@ -242,15 +251,6 @@ namespace FrontLineGUI.Properties {
         public static string LogoTextPathData2 {
             get {
                 return ResourceManager.GetString("LogoTextPathData2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to M7,26h5a1,1,0,0,0,0-2H9.41L16,17.41,22.59,24H20a1,1,0,0,0,0,2h5a1,1,0,0,0,1-1V20a1,1,0,0,0-2,0v2.59L17.41,16,24,9.41V12a1,1,0,0,0,2,0V7a1,1,0,0,0-1-1H20a1,1,0,0,0,0,2h2.59L16,14.59,9.41,8H12a1,1,0,0,0,0-2H7A1,1,0,0,0,6,7v5a1,1,0,0,0,2,0V9.41L14.59,16,8,22.59V20a1,1,0,0,0-2,0v5A1,1,0,0,0,7,26Z.
-        /// </summary>
-        public static string MaximizeButtonPathData {
-            get {
-                return ResourceManager.GetString("MaximizeButtonPathData", resourceCulture);
             }
         }
         

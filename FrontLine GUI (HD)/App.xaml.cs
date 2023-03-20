@@ -24,6 +24,7 @@ namespace FrontLineGUI
         // https://www.codeproject.com/Articles/524878/Localisation-made-easy-for-WPF
         private void Application_Startup(object sender, StartupEventArgs e)
         {
+
             //MyEZLocalize = new EZLocalize(App.Current.Resources, "en-GB", null, "Localization\\", "Strings");
 
             // EZ
