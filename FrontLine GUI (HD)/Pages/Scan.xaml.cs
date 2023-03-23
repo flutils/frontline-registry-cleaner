@@ -2,6 +2,9 @@
 using System.Windows.Forms;
 using System.Threading;
 using System;
+using Microsoft.VisualBasic.Devices;
+using Microsoft.VisualBasic;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FrontLineGUI
 {
@@ -114,7 +117,7 @@ namespace FrontLineGUI
         // https://stackoverflow.com/a/45045313/1143732
         public string OSVersion
         {
-            get { return Environment.OSVersion.ToString(); }
+            get { return Environment.OSVersion.Version.Major.ToString(); }
         }
 
         // OS Icon
@@ -155,4 +158,5 @@ namespace FrontLineGUI
         }
 
     }
+
 }

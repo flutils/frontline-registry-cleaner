@@ -5,16 +5,25 @@
     <!-- Main Window -->
     <s:String x:Key="Str_MainSubtitle">Scan, Optimize &amp; Maintain PC Performance</s:String>
 
+    <s:String x:Key="Str_MainScan">Scan</s:String>
     <s:String x:Key="Str_MainSettings">Settings</s:String>
     <s:String x:Key="Str_MainAbout">About</s:String>
 
+    <s:String x:Key="Str_MainCopyrightButton">Frontline Utilities LTD</s:String>
+    <s:String x:Key="Str_MainCopyrightButtonTooltip">Company Website</s:String>
+    <s:String x:Key="Str_MainCopyrightAllRightsReserved">All rights reserved</s:String>
 
-    <s:String x:Key="Str_MainCopyright">© Frontline Utilities LTD 2023 - All rights reserved.</s:String>
+    <s:String x:Key="Str_MainGithubTooltip">View on Github</s:String>
 
     <!-- Scan Page -->
     <s:String x:Key="Str_ScanPreTitle">Start Scanning Below</s:String>
+    <s:String x:Key="Str_ScanPreInfo">Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -</s:String>
+    <s:String x:Key="Str_ScanMainButton">Start Scan</s:String>
 
     <!-- Settings Page -->
     <s:String x:Key="Str_SettingsTitle">Settings</s:String>
+    
+    <!-- About Page -->
+    <s:String x:Key="Str_AboutTitle">About</s:String>
 
 </ResourceDictionary>

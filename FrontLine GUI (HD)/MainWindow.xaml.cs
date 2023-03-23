@@ -5,6 +5,8 @@ using System.Diagnostics; // for Process.Start
 using System.Windows.Controls; // for MainButton_Click (referencing button)
 using System.Windows.Media;
 using System.Windows.Media.Effects;
+using System.Security.Policy;
+using System.Windows.Controls.Primitives;
 
 namespace FrontLineGUI
 {
@@ -34,7 +36,14 @@ namespace FrontLineGUI
         // https://stackoverflow.com/a/15873711/1143732
         public string Version
         {
-            get { return $"Version: {System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString()}"; }
+            get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+        }
+
+        // Year
+        // Get the current year
+        public string CurrentYear
+        {
+            get { return DateTime.Now.Year.ToString(); }
         }
 
         // Load
@@ -85,7 +94,33 @@ namespace FrontLineGUI
         // Loads the "settings" page
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
+            Button srcButton = e.Source as Button;
+            string tag = srcButton.Tag.ToString();
+            if (!String.IsNullOrEmpty(tag))
+            {
+                // Get parent
+                StackPanel parent = VisualTreeHelper.GetParent(srcButton) as StackPanel;
 
+                // Count children
+                int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
+
+                // Go through siblings
+                if (childrenCount > 0)
+                {
+                    for (int i = 0; i < childrenCount; i++)
+                    {
+                        // Get sibling element
+                        Button child = VisualTreeHelper.GetChild(parent, i) as Button;
+
+                        // If element's tag is different to current, update the IsEnabled
+                        child.IsEnabled = (child.Tag != srcButton.Tag);
+
+                    }
+                }
+
+                // Navigate the main content area
+                ContentFrame.Navigate(new Uri($"Pages/{tag}.xaml", UriKind.Relative));
+            }
         }
 
         // Localization Button

@@ -25,10 +25,6 @@ namespace FrontLineGUI
         private void Application_Startup(object sender, StartupEventArgs e)
         {
 
-            //MyEZLocalize = new EZLocalize(App.Current.Resources, "en-GB", null, "Localization\\", "Strings");
-
-            // EZ
-            //EZLocalize.ChangeLanguage(System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
         }
 
     }

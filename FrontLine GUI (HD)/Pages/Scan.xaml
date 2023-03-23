@@ -23,7 +23,7 @@
             <!-- General -->
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Foreground" Value="White" />
-            <Setter Property="Margin" Value="75,15,75,15" />
+            <Setter Property="Margin" Value="75,10,75,5" />
             <Setter Property="Height" Value="105"/>
 
             <!-- Template -->
@@ -48,7 +48,7 @@
                                     <DropShadowEffect Direction="0" ShadowDepth="0" Color="Black" Opacity="1" BlurRadius="10"/>
                                 </Border.Effect>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="38" FontWeight="Bold" Text="Scan Now" Margin="0">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="38" FontWeight="Bold" Text="{TemplateBinding Property=Content}" Margin="0" TextOptions.TextFormattingMode="Display">
                                         <TextBlock.Effect>
                                             <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
                                         </TextBlock.Effect>
@@ -154,16 +154,17 @@
             <StackPanel HorizontalAlignment="stretch" VerticalAlignment="Top">
                 
                 <!-- Title -->
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontStyle="Italic" TextDecorations="Underline" FontSize="18" Foreground="#FF323232" Margin="0,15,0,0" Text="{DynamicResource Str_ScanPreTitle}" />
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{DynamicResource Str_ScanPreTitle}" />
+                
+                <!-- Intro -->
+                <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_ScanPreInfo}" TextAlignment="Center" FontSize="12" />
 
                 <!-- Scan Now Button -->
-                <Button Style="{StaticResource MainScanButton}" Content="Start Scan" />
+                <Button Style="{StaticResource MainScanButton}" Content="{DynamicResource Str_ScanMainButton}" />
                 
                 <!-- Last Scan -->
                 <TextBlock Text="Last Performed: 01/08/2022" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="12" FontStyle="Italic"/>
 
-                <!-- Intro -->
-                <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="Click on the scan button above to perform a scan.&#x0a;You can change the items to be scanned below:" TextAlignment="Center" FontSize="12" />
 
                 <!-- Items Grid -->
                 <Grid Margin="25,15,25,0" Name="Scan_Checkboxes">
@@ -216,7 +217,10 @@
                     <TextBlock Text="Your System:" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0"/>
                     <StackPanel Orientation="Horizontal" Name="OSBlock" Style="{StaticResource OSBlockStyling}" ToolTip="View System Specifications">
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                        <TextBlock Name="OSInfo" Text="{Binding OSVersion, Mode=OneTime}" VerticalAlignment="Center" />
+                        <TextBlock Name="OSInfo" VerticalAlignment="Center">
+                            <Run Text="{Binding OSVersion, Mode=OneTime}" />
+                            <Run Text="{Binding OSVersion, Mode=OneTime}" />
+                        </TextBlock>
                     </StackPanel>
                 </StackPanel>
 

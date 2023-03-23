@@ -68,7 +68,7 @@
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="Black" />
+                                        <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="#222" />
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
