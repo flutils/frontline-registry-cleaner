@@ -42,6 +42,7 @@
         <!-- https://stackoverflow.com/a/13858357/1143732 -->
         <!-- https://www.youtube.com/watch?v=aFGDs3z7zpM&ab_channel=tips%27ntricks -->
         <Style TargetType="{x:Type Button}" x:Key="SettingsLink" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Opacity" Value="0.45" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -58,19 +59,32 @@
                                     <Condition Property="IsEnabled" Value="True" />
                                     <Condition Property="IsMouseOver" Value="True" />
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Opacity" Value="1.0" />
+                                <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.1" To="1.0" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+                                <MultiTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.1" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.ExitActions>
                             </MultiTrigger>
-                            <Trigger Property="IsMouseOver" Value="true">
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsEnabled" Value="True" />
+                                    <Condition Property="IsPressed" Value="True" />
+                                </MultiTrigger.Conditions>
                                 <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
-                            </Trigger>
+                            </MultiTrigger>
                             <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="1.0" />
                                 <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
-                            </Trigger>
-                            <Trigger Property="IsEnabled" Value="True">
-                                <Setter TargetName="SettingsText" Property="Opacity" Value="0.45" />                                
                             </Trigger>
                         </ControlTemplate.Triggers>
 
@@ -196,7 +210,7 @@
                 </Border>
 
                 <!-- Localization Flag -->
-                <Button Name="LocalizationButton" MaxHeight="25" Margin="5,0" Click="LocalizationButton_Click" Background="{x:Null}" Foreground="{x:Null}" ToolTip="Change Language">
+                <Button Name="LocalizationButton" MaxHeight="25" Margin="5,0" Click="SettingsButton_Click" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainLocalizationButtonTooltip}">
                     <Image Source="/Resources/Localization/Icons/en.jpg" />
                 </Button>
 

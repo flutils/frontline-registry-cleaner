@@ -12,11 +12,6 @@
     <!-- Resources -->
     <Page.Resources>
 
-        <!-- OS Version Block -->
-        <Style TargetType="{x:Type StackPanel}" x:Key="OSBlockStyling">
-            <Setter Property="Cursor" Value="Hand" />
-        </Style>
-
         <!-- Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="MainScanButton">
 
@@ -30,8 +25,8 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="10" Background="Black" BorderThickness="2" BorderBrush="Black">
-                            <Border CornerRadius="10">
+                        <Border CornerRadius="10" x:Name="MainButtonBackground" Background="Black" BorderThickness="2" BorderBrush="Black">
+                            <Border CornerRadius="10" BorderThickness="1">
                                 <Border.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="#A5FFFFFF"/>
@@ -39,16 +34,16 @@
                                     </LinearGradientBrush>
                                 </Border.Background>
                                 <Border.BorderBrush>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#99FFFFFF" />
-                                        <GradientStop Color="#00000000" Offset="1"/>
+                                    <LinearGradientBrush EndPoint="0.5,0.75" StartPoint="0.5,0">
+                                        <GradientStop Color="White" />
+                                        <GradientStop Color="Transparent" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Border.BorderBrush>
                                 <Border.Effect>
                                     <DropShadowEffect Direction="0" ShadowDepth="0" Color="Black" Opacity="1" BlurRadius="10"/>
                                 </Border.Effect>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="38" FontWeight="Bold" Text="{TemplateBinding Property=Content}" Margin="0" TextOptions.TextFormattingMode="Display">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontWeight="Bold" Text="{TemplateBinding Property=Content}" Margin="0" LineStackingStrategy="BlockLineHeight" LineHeight="38">
                                         <TextBlock.Effect>
                                             <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
                                         </TextBlock.Effect>
@@ -61,10 +56,21 @@
                                 </StackPanel>
                             </Border>
                         </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsEnabled" Value="True" />
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter TargetName="MainButtonBackground" Property="Opacity" Value="0.4" />
+                            </MultiTrigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.55" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
         </Style>
 
         <!-- Main Buttons -->
@@ -163,8 +169,11 @@
                 <Button Style="{StaticResource MainScanButton}" Content="{DynamicResource Str_ScanMainButton}" />
                 
                 <!-- Last Scan -->
-                <TextBlock Text="Last Performed: 01/08/2022" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="12" FontStyle="Italic"/>
-
+                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="12" FontStyle="Italic">
+                    <Run Text="{DynamicResource Str_ScanMainLastPerformed}" TextDecorations="Underline" /><!--
+                    --><Run Text=":" TextDecorations="Underline" />
+                    <Run Text="01/08/2022" />
+                </TextBlock>
 
                 <!-- Items Grid -->
                 <Grid Margin="25,15,25,0" Name="Scan_Checkboxes">
@@ -215,12 +224,12 @@
                 <!-- OS Info -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
                     <TextBlock Text="Your System:" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0"/>
-                    <StackPanel Orientation="Horizontal" Name="OSBlock" Style="{StaticResource OSBlockStyling}" ToolTip="View System Specifications">
+                    <StackPanel Orientation="Horizontal" Name="OSBlock">
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                        <TextBlock Name="OSInfo" VerticalAlignment="Center">
-                            <Run Text="{Binding OSVersion, Mode=OneTime}" />
-                            <Run Text="{Binding OSVersion, Mode=OneTime}" />
-                        </TextBlock>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="Windows 11" Name="OSSystem" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12"/>
+                            <TextBlock Text="Build XYZ123" Name="OSInfo" VerticalAlignment="Center" FontSize="8" LineStackingStrategy="BlockLineHeight" LineHeight="10" />
+                        </StackPanel>
                     </StackPanel>
                 </StackPanel>
 

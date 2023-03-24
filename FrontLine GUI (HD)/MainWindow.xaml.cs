@@ -94,12 +94,16 @@ namespace FrontLineGUI
         // Loads the "settings" page
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            Button srcButton = e.Source as Button;
-            string tag = srcButton.Tag.ToString();
-            if (!String.IsNullOrEmpty(tag))
+            // Elements
+            Button srcButton  = e.Source as Button;
+            StackPanel parent = FindName("SubActionButtons") as StackPanel;
+            
+            // Define Tag
+            var tag = srcButton.Tag ?? "Settings";
+
+            // Only proceed if tag is present
+            if (tag != null)
             {
-                // Get parent
-                StackPanel parent = VisualTreeHelper.GetParent(srcButton) as StackPanel;
 
                 // Count children
                 int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
@@ -113,20 +117,24 @@ namespace FrontLineGUI
                         Button child = VisualTreeHelper.GetChild(parent, i) as Button;
 
                         // If element's tag is different to current, update the IsEnabled
-                        child.IsEnabled = (child.Tag != srcButton.Tag);
+                        if (child != null)
+                        {
+                            // Cast
+                            String child_tag   = child.Tag.ToString() as String;
+                            String current_tag = tag.ToString() as String;
+
+                            // Enabled
+                            child.IsEnabled = (child_tag != current_tag);
+                        }
 
                     }
+
                 }
 
                 // Navigate the main content area
-                ContentFrame.Navigate(new Uri($"Pages/{tag}.xaml", UriKind.Relative));
-            }
-        }
+                ContentFrame.Navigate(new Uri($"Pages/{tag.ToString()}.xaml", UriKind.Relative));
 
-        // Localization Button
-        // This loads the localization modal (which should be in the settings pane)
-        private void LocalizationButton_Click(object sender, RoutedEventArgs e)
-        {
+            }
 
         }
 
