@@ -229,10 +229,34 @@
 
                 <!-- Performance (CPU/RAM) -->
                 <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
-                    <TextBlock Text="CPU" />
-                    <TextBlock Text="RAM" Margin="10,0,0,0" />
-                    <TextBlock Text="HDD" Margin="10,0,0,0" />
-                    <TextBlock Text="GPU" Margin="10,0,0,0" />
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                        <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
+                        <TextBlock HorizontalAlignment="Center">
+                            <Run x:Name="CPUPercentage" Text="{Binding CPUPower, Mode=OneTime}" /><!--
+                            --><Run Text="%" />
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
+                        <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
+                        <TextBlock HorizontalAlignment="Center">
+                            <Run x:Name="RAMPercentage" Text="0" /><!--
+                            --><Run Text="%" />
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
+                        <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
+                        <TextBlock HorizontalAlignment="Center">
+                            <Run x:Name="HDDPercentage" Text="0" /><!--
+                            --><Run Text="%" />
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
+                        <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
+                        <TextBlock HorizontalAlignment="Center">
+                            <Run x:Name="GPUPercentage" Text="0" /><!--
+                            --><Run Text="%" />
+                        </TextBlock>
+                    </StackPanel>
                 </StackPanel>
 
             </Grid>

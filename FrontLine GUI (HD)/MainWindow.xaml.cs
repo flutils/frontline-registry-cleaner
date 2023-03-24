@@ -7,18 +7,13 @@ using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Security.Policy;
 using System.Windows.Controls.Primitives;
+using System.Threading;
 
 namespace FrontLineGUI
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
-
-        // Vars
-        public EZLocalizeNS.EZLocalize MyEZLocalize = FrontLineGUI.App.MyEZLocalize; // Localization
-        int itemsSelected = 0; // number of items selected (changes when the user checks an item to be scanned)
 
         // Main Ingression Point
         // This is where the app loads

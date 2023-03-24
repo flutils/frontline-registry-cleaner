@@ -29,6 +29,6 @@
     
     <!-- About Page -->
     <s:String x:Key="Str_AboutTitle">About</s:String>
-    <s:String x:Key="Str_AboutPreInfo">Please view information about the application and our company below.</s:String>
+    <s:String x:Key="Str_AboutPreInfo">Please view information about the application and our company.</s:String>
 
 </ResourceDictionary>

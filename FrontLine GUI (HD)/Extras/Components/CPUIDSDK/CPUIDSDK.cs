@@ -599,20 +599,24 @@ public class CPUIDSDK
     public const int BUS_TYPE_NVME = 0x11;
 
 
-///////////////////////////////////////////////////////////////////////////
-//	DLL name & path
-///////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+    //	DLL name & path
+    ///////////////////////////////////////////////////////////////////////////
+
+    // RPECK 24/03/2023
+    // The above requires a static reference to the DLL
+    // If the DLL is not accessible, then the system won't work. I've set it up so that it gets copied to the output directory when the FrontlineGUI project is built
 
 #if _X64_
 #if DEBUG
-    public const string szDllPath = "..\\..\\..\\..\\..\\..\\bin\\";
+    public const string szDllPath = "";
 #else
     public const string szDllPath = "";
 #endif
     public const string szDllFilename = "cpuidsdk64.dll";    
 #else   // _X64_
 #if DEBUG
-    public const string szDllPath = "..\\..\\..\\..\\..\\bin\\";
+    public const string szDllPath = "";
 #else
     public const string szDllPath = "";
 #endif
