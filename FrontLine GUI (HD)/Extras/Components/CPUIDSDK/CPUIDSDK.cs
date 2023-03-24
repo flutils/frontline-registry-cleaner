@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 public class CPUIDSDK
@@ -609,16 +610,16 @@ public class CPUIDSDK
 
 #if _X64_
 #if DEBUG
-    public const string szDllPath = "";
+    public const string szDllPath = ".\\Lib\\";
 #else
-    public const string szDllPath = "";
+    public const string szDllPath = ".\\Lib\\";
 #endif
     public const string szDllFilename = "cpuidsdk64.dll";    
 #else   // _X64_
 #if DEBUG
-    public const string szDllPath = "";
+    public const string szDllPath = ".\\Lib\\";
 #else
-    public const string szDllPath = "";
+    public const string szDllPath = ".\\Lib\\";
 #endif
     public const string szDllFilename = "cpuidsdk.dll";
 #endif  // _X64_

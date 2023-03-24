@@ -43,8 +43,6 @@ namespace FrontLineGUI
                             ref error_code,
                             ref extended_error_code);
 
-            Debug.Write(pSDK);
-
             if (error_code != CPUIDSDK.CPUIDSDK_ERROR_NO_ERROR)
             {
 
