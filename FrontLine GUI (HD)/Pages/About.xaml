@@ -33,6 +33,7 @@
             <!-- Title -->
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <TextBlock Text="{DynamicResource Str_AboutTitle}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextDecorations="Underline" Foreground="#FF323232" Margin="0,10,0,0" />
+                <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_AboutPreInfo}" TextAlignment="Center" FontSize="12" />
             </StackPanel>
 
         </Grid>

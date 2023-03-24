@@ -1,23 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows.Controls;
 
 namespace FrontLineGUI.Pages
 {
-    /// <summary>
-    /// Interaction logic for Settings.xaml
-    /// </summary>
+
+    /* 
+     *  RPECK 24/03/2023
+     *  System to populate the 'settings' of the app - this is invoked at init with a separate class
+     * 
+     *  The following are options present in the app's settings: -
+     *  
+     *   - debug (should the app run in debug mode or not?)
+     *   - language (which localization should the app be running under?)
+     *   - backup (where should backups be stored?)
+    */
+
     public partial class Settings : Page
     {
         public Settings()

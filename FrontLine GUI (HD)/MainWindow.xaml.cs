@@ -17,7 +17,8 @@ namespace FrontLineGUI
     {
 
         // Vars
-        public EZLocalizeNS.EZLocalize MyEZLocalize = FrontLineGUI.App.MyEZLocalize;
+        public EZLocalizeNS.EZLocalize MyEZLocalize = FrontLineGUI.App.MyEZLocalize; // Localization
+        int itemsSelected = 0; // number of items selected (changes when the user checks an item to be scanned)
 
         // Main Ingression Point
         // This is where the app loads
@@ -32,7 +33,7 @@ namespace FrontLineGUI
         }
 
         // Version
-        // Used to show the version number on the left menu area 
+        // Used to show the version number on the bottom menu area 
         // https://stackoverflow.com/a/15873711/1143732
         public string Version
         {

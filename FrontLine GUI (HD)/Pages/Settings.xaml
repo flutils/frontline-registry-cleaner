@@ -33,7 +33,17 @@
             <!-- Title -->
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
                 <TextBlock Text="{DynamicResource Str_SettingsTitle}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" />
+                <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_SettingsPreInfo}" TextAlignment="Center" FontSize="12" />
             </StackPanel>
+            
+            <!--
+                Options
+                -
+                RPECK 24/03/2023
+                This was introduced to give us the means to manage the various options inside the system - all settings are added to the 'ConfigurationOptions' class, which is invoked at app init
+            -->
+            
+            
 
         </Grid>
 
