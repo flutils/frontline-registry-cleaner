@@ -86,7 +86,19 @@ namespace FrontLineGUI
             );
         }
 
-        // Settings Button
+        // Version Button
+        // Takes us to the 'releases' Github URL
+        private void VersionButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+                {
+                    FileName = Properties.Settings.Default.Repo + "/releases",
+                    UseShellExecute = true
+                }
+            );
+        }
+
+        // Settings Buttons
         // Loads the "settings" page
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {

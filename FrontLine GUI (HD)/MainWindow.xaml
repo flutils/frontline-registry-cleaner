@@ -399,10 +399,12 @@
 
                         <!-- Version -->
                         <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock HorizontalAlignment="Right" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" Margin="0" VerticalAlignment="Center">
-                                <Run Text="Version:" />
-                                <Run Text="{Binding Version, Mode=OneTime}" />
-                            </TextBlock>
+                            <TextBlock Text="Version:" HorizontalAlignment="Right" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" Margin="0" VerticalAlignment="Center" />
+                            <Button Background="{x:Null}" Click="VersionButton_Click" BorderBrush="{x:Null}" Margin="5,0,0,0">
+                                <Border Background="#00000000">
+                                    <TextBlock Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{DynamicResource Str_VersionButtonTooltip}" TextDecorations="Underline" />
+                                </Border>
+                            </Button>
                             <Button Background="{x:Null}" Click="GithubButton_Click" BorderBrush="{x:Null}" ToolTip="{DynamicResource Str_MainGithubTooltip}" Cursor="Hand" Margin="0" VerticalAlignment="Center">
                                 <Border Background="#00000000">
                                     <Viewbox Margin="5,0,0,0" Height="15" VerticalAlignment="Center">

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Threading;
 using System;
+using System.Diagnostics;
 
 namespace FrontLineGUI
 {
@@ -11,8 +12,6 @@ namespace FrontLineGUI
 
         // RPECK 15/08/2022
         // Added for performance monitoring
-        public static CPUIDSDK pSDK;
-
         private static volatile bool _shouldStop = false;
 
         public Scan()
@@ -24,8 +23,11 @@ namespace FrontLineGUI
             this.DataContext = this;
 
             // CPUID
-            // Initialize ticker
-
+            // Initialize ticker if CPUID is present
+            if (App.ConfigOptions.CPUID)
+            {
+                
+            }
 
         }
 

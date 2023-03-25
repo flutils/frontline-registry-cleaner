@@ -5,6 +5,7 @@ using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,7 +22,7 @@ namespace FrontLineGUI
         // RPECK 24/03/2023
         // CPUID SDK Information
         public static CPUIDSDK pSDK;
-        private static volatile bool _shouldStop = false;
+        public static ConfigurationOptions ConfigOptions;
 
         // RPECK 18/03/2023
         // https://www.codeproject.com/Articles/524878/Localisation-made-easy-for-WPF
@@ -30,7 +31,30 @@ namespace FrontLineGUI
 
             // Configuration Options
             // These are loaded from a file and used to populate different features of the app
+            ConfigOptions = new ConfigurationOptions();
 
+            // Load settings from JSON file if present
+            ConfigOptions.LoadFromFile("test");
+
+            // RPECK 25/03/2023
+            // Fire CPUID if option is enabled
+            if(ConfigOptions.CPUID)
+            {
+
+                // Create a new thread for CPUID
+                Thread CPUID_Thread = new Thread(Init_CPUID);
+
+                // Start Thread
+                CPUID_Thread.Start();
+
+            }
+
+        }
+
+        // RPECK 25/03/2023
+        // This is used to initialize the CPUID library in a separate thread
+        private void Init_CPUID()
+        {
             // RPECK 24/03/2023
             // CPUID
             bool res;
@@ -95,25 +119,11 @@ namespace FrontLineGUI
             {
                 pSDK.GetDllVersion(ref dll_version);
 
-                Debug.Write("test");
-
             }
 
             // Close CPUID
             pSDK.Close();
             pSDK.DestroyInstance();
-
-        }
-
-        // RPECK 24/03/2023
-        // Threadloop - used to update ticks for our CPUID Instance
-        public static void ThreadLoop()
-        {
-            while (!_shouldStop)
-            {
-                pSDK.RefreshInformation();
-                Thread.Sleep(1000);
-            }
         }
 
     }

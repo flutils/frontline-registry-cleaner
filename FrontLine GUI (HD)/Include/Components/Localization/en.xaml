@@ -15,10 +15,11 @@
     <s:String x:Key="Str_MainCopyrightButtonTooltip">Company Website</s:String>
     <s:String x:Key="Str_MainCopyrightAllRightsReserved">All rights reserved</s:String>
 
-    <s:String x:Key="Str_MainGithubTooltip">View on Github</s:String>
+    <s:String x:Key="Str_MainGithubTooltip">View Repository on Github</s:String>
+    <s:String x:Key="Str_VersionButtonTooltip">View Release on Github</s:String>
 
     <!-- Scan Page -->
-    <s:String x:Key="Str_ScanPreTitle">Start Scanning Below</s:String>
+    <s:String x:Key="Str_ScanPreTitle">Start Scan Below</s:String>
     <s:String x:Key="Str_ScanPreInfo">Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -</s:String>
     <s:String x:Key="Str_ScanMainButton">Start Scan</s:String>
     <s:String x:Key="Str_ScanMainLastPerformed">Scan Last Performed</s:String>
