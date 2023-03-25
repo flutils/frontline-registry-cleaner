@@ -10,9 +10,9 @@
         <!-- https://www.c-sharpcorner.com/article/customize-wpf-application-using-template-and-styles/ -->
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Extras/Styles/GeneralStyling.xaml"/>
-                <ResourceDictionary x:Name="LanguagesEN" Source="/Resources/Localization/Strings/en.xaml" />
-                <ResourceDictionary x:Name="LanguagesFR" Source="/Resources/Localization/Strings/fr.xaml" />
+                <ResourceDictionary x:Name="StylingGeneral" Source="/Include/Styles/GeneralStyling.xaml"/>
+                <ResourceDictionary x:Name="LanguagesEN"    Source="/Include/Components/Localization/Strings/en.xaml" />
+                <ResourceDictionary x:Name="LanguagesFR"    Source="/Include/Components/Localization/Strings/fr.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         

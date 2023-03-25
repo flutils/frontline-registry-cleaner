@@ -239,21 +239,21 @@
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="RAMPercentage" Text="0" /><!--
+                            <Run x:Name="RAMPercentage" Text="{Binding RAMPower, Mode=OneTime}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="HDDPercentage" Text="0" /><!--
+                            <Run x:Name="HDDPercentage" Text="{Binding HDDSpace, Mode=OneTime}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="GPUPercentage" Text="0" /><!--
+                            <Run x:Name="GPUPercentage" Text="{Binding CPUPower, Mode=OneTime}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>

@@ -28,9 +28,13 @@ namespace FrontLineGUI
         private void Application_Startup(object sender, StartupEventArgs e)
         {
 
+            // Configuration Options
+            // These are loaded from a file and used to populate different features of the app
+
             // RPECK 24/03/2023
             // CPUID
             bool res;
+            int dll_version = 0;
             int error_code = 0, extended_error_code = 0;
             string error_message;
 
@@ -89,8 +93,15 @@ namespace FrontLineGUI
 
             if (res)
             {
-                
+                pSDK.GetDllVersion(ref dll_version);
+
+                Debug.Write("test");
+
             }
+
+            // Close CPUID
+            pSDK.Close();
+            pSDK.DestroyInstance();
 
         }
 

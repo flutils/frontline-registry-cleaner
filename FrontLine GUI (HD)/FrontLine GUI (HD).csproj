@@ -167,12 +167,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Localization\Strings\fr.xaml">
+    <Content Include="Include\Components\Localization\Strings\fr.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Localization\Strings\en.xaml">
+    <Content Include="Include\Components\Localization\Strings\en.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

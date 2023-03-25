@@ -2,9 +2,6 @@
 using System.Windows.Forms;
 using System.Threading;
 using System;
-using Microsoft.VisualBasic.Devices;
-using Microsoft.VisualBasic;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FrontLineGUI
 {
@@ -35,6 +32,30 @@ namespace FrontLineGUI
         // CPU Power
         // Value from HWMonitor to get the CPU utilization
         public int CPUPower
+        {
+            get { return 0; }
+            set { }
+        }
+
+        // RAM Power
+        // Value from HWMonitor to get the CPU utilization
+        public int RAMPower
+        {
+            get { return 0; }
+            set { }
+        }
+
+        // CPU Power
+        // Value from HWMonitor to get the CPU utilization
+        public int HDDSpace
+        {
+            get { return 0; }
+            set { }
+        }
+
+        // CPU Power
+        // Value from HWMonitor to get the CPU utilization
+        public int GPUPower
         {
             get { return 0; }
             set { }
