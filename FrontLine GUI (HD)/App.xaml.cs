@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,9 +31,6 @@ namespace FrontLineGUI
             // Configuration Options
             // These are loaded from a file and used to populate different features of the app
             ConfigOptions = new ConfigurationOptions();
-
-            // Load settings from JSON file if present
-            ConfigOptions.LoadFromFile("test");
 
             // RPECK 25/03/2023
             // Fire CPUID if option is enabled

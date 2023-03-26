@@ -131,6 +131,11 @@
   <ItemGroup>
     <Reference Include="EZLocalize">
       <HintPath>..\..\..\..\Users\Richard\Downloads\EZLocalize.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="OSVersionInfo">
+      <HintPath>Lib\OSVersionInfo.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -159,7 +164,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Lib\EZLocalize.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Lib\OSVersionInfo.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

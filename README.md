@@ -1,7 +1,7 @@
 <h1 align="left">PC Optimization Software</h1>
 <p align="left">Welcome to the redesigned repository for <a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.0</a>.</p>
 <p>A commercial product released in 2011, we've now repackaged it open source for anybody interested in using it: -</p>
-<img src="readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
+<img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/Eugeny/terminus/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/eugeny/terminus.svg?label=License&style=flat-square"></a> <a href="https://travis-ci.org/Eugeny/terminus"><img alt="Travis (.org)" src="https://img.shields.io/travis/Eugeny/terminus.svg?label=CI&logo=travis&logoColor=white&style=flat-square"></a>

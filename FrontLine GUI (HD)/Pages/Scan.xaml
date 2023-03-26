@@ -4,13 +4,16 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FrontLineGUI"
-      x:Class="FrontLineGUI.Scan"
+    x:Class="FrontLineGUI.Scan"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="771"
       Title="Scan">
 
     <!-- Resources -->
     <Page.Resources>
+        
+        <!-- Collection -->
+        <local:ScanItemsCollection x:Key="ScanItems"/>
 
         <!-- Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="MainScanButton">
@@ -174,33 +177,24 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="1*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-
+                    
                     <!-- Items -->
-                    <!-- These are all part of a checkbox group, allowing us to collate them as needed -->
-                    <CheckBox Content="Registry Errors"     Grid.Row="0" Grid.Column="0" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/registry_errors.png"    Name="RegistryErrors"      IsChecked="true" />
-                    <CheckBox Content="Invalid Files"       Grid.Row="1" Grid.Column="0" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/invalid_files.png"      Name="InvalidFiles"        IsChecked="true" />
-                    <CheckBox Content="Application Errors"  Grid.Row="2" Grid.Column="0" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/application_errors.png" Name="ApplicationErrors"   IsChecked="true" />
-                    <CheckBox Content="DLL Errors"          Grid.Row="0" Grid.Column="1" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/dll_errors.png"         Name="DLLErrors"           IsChecked="true" />
-                    <CheckBox Content="Internet Errors"     Grid.Row="1" Grid.Column="1" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/internet_errors.png"    Name="InternetErrors"      IsChecked="true" />
-                    <CheckBox Content="Windows Errors"      Grid.Row="2" Grid.Column="1" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/windows_errors.png"     Name="WindowsErrors"       IsChecked="true" />
-                    <CheckBox Content="Temp Files"          Grid.Row="0" Grid.Column="2" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/temp_files.png"         Name="TempFiles"           IsChecked="true" />
-                    <CheckBox Content="Junk Files"          Grid.Row="1" Grid.Column="2" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/recycle_bin.png"        Name="RecycleBin"          IsChecked="true" />
-                    <CheckBox Content="Internet Cache"      Grid.Row="2" Grid.Column="2" Style="{StaticResource MainOptionButtons}" Tag="/Resources/Scan/internet_cache.png"     Name="InternetCache"       IsChecked="true" />
+                    
 
+
+                    <!-- Selected -->
+                    <Border Grid.Row="1">
+                        <CheckBox Grid.Row="1" ToolTip="Select All Scanning Options" Content="Select All" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource SelectAllButton}"  Margin="0,0,15,0" IsThreeState="True" Name="AllSelected" IsChecked="true" />
+                    </Border>
+            
                 </Grid>
-
-                <!-- Selected -->
-                <CheckBox ToolTip="Select All Scanning Options" Content="Select All" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource SelectAllButton}"  Margin="0,0,15,0" IsThreeState="True" Name="AllSelected" IsChecked="true" />
-
-            </StackPanel>
+            
+        </StackPanel>
 
             <!-- Bottom Row -->
             <Border Grid.Row="2" Background="#f9f9f9" BorderBrush="#c5c5c5" BorderThickness="0,1,0,0"/>
@@ -217,12 +211,20 @@
 
                 <!-- OS Info -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
-                    <TextBlock Text="Your System:" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0"/>
+                    <TextBlock FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0">
+                        <Run Text="{DynamicResource Str_ScanYourSystem}" /><!--
+                        --><Run Text=":" />
+                    </TextBlock>
                     <StackPanel Orientation="Horizontal" Name="OSBlock">
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="Windows 11" Name="OSSystem" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12"/>
-                            <TextBlock Text="Build XYZ123" Name="OSInfo" VerticalAlignment="Center" FontSize="8" LineStackingStrategy="BlockLineHeight" LineHeight="10" />
+                            <TextBlock Name="OSSystem" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12">
+                                <Run Text="{Binding OSVersionName, Mode=OneTime, FallbackValue=N/A}" />
+                                <Run Text="(" /><!--
+                                --><Run Text="{Binding OSVersionBits, Mode=OneTime, FallbackValue=0}" /><!--
+                                --><Run Text="bit)" />
+                            </TextBlock>
+                            <TextBlock Text="{Binding OSVersionBuild, Mode=OneTime, FallbackValue=N/A}" Name="OSInfo" VerticalAlignment="Center" FontSize="8" LineStackingStrategy="BlockLineHeight" LineHeight="10" />
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System;
 using System.Diagnostics;
+using JCS;
 
 namespace FrontLineGUI
 {
@@ -19,15 +20,12 @@ namespace FrontLineGUI
             // Initialize the form
             InitializeComponent();
 
-            // Required for OSVersion
+            // Required for OSIcon
             this.DataContext = this;
 
             // CPUID
             // Initialize ticker if CPUID is present
-            if (App.ConfigOptions.CPUID)
-            {
-                
-            }
+            if (App.ConfigOptions.CPUID) {}
 
         }
 
@@ -63,12 +61,21 @@ namespace FrontLineGUI
             set { }
         }
 
-        // OS Version
-        // Used to show the Operating System name in the bottom left of the grid
-        // https://stackoverflow.com/a/45045313/1143732
-        public string OSVersion
+        // OSVersionInfo
+        public string OSVersionName
         {
-            get { return Environment.OSVersion.Version.Major.ToString(); }
+            get { return OSVersionInfo.Name;  }
+        }
+
+        public string OSVersionBits
+        {
+            get { return OSVersionInfo.OSBits.ToString().Replace("Bit", ""); }
+        }
+
+        // OSVersionBuild
+        public string OSVersionBuild
+        {
+            get { return "Build " + OSVersionInfo.VersionString; }
         }
 
         // OS Icon
@@ -77,33 +84,10 @@ namespace FrontLineGUI
         {
             get {
 
-                // Vars 
-                string image;
-
                 // OSVersion
                 // Get the version of the OS from the above method and then extract the version of Windows from it
                 // https://stackoverflow.com/a/5651002/1143732
-                switch (Environment.OSVersion.Version.Major)
-                {
-                    case 95:
-                    case 98:
-                        image = "windows-95.png";
-                        break;
-                    case 7:
-                        image = "windows-xp.png";
-                        break;
-                    case 8:
-                        image = "windows-8.png";
-                        break;
-                    case 10:
-                        image = "windows-10.png";
-                        break;
-                    default:
-                        image = "windows-11.png";
-                        break;
-                }
-
-                return "/Resources/OS/" + image; 
+                return "/Resources/OS/" + OSVersionInfo.Name.Replace(" ", "-").ToLower() + ".png"; 
             
             }
         }
