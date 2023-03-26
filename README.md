@@ -1,6 +1,3 @@
-<h1 align="left">PC Optimization Software</h1>
-<p align="left">Welcome to the redesigned repository for <a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.0</a>.</p>
-<p>A commercial product released in 2011, we've now repackaged it open source for anybody interested in using it: -</p>
 <img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
 
 <p align="center">
@@ -14,7 +11,7 @@
 
 <div align="center">--</div><Br />
 
-As mentioned, the product was released in 2011 and distributed by several retailers in the UK.
+[Frontline Registry Cleaner 2.0](https://www.frontlinecleaner.com) was released in 2011 and distributed by several retailers in the UK.
 
 We procured the code from a company in Ukraine and promoted it through the Internet. It has a proprietary engine.
 

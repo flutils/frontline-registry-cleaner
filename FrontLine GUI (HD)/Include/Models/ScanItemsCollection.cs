@@ -12,10 +12,10 @@ namespace FrontLineGUI
     {
         public ScanItemsCollection() : base()
         {
-            Add(new ScanItem("Willa", "Cather"));
-            Add(new ScanItem("Isak", "Dinesen"));
-            Add(new ScanItem("Victor", "Hugo"));
-            Add(new ScanItem("Jules", "Verne"));
+            Add(new ScanItem("Registry Errors"));
+            Add(new ScanItem("Invalid Files"));
+            Add(new ScanItem("Application Errors"));
+            Add(new ScanItem("DLL Errors"));
         }
     }
 

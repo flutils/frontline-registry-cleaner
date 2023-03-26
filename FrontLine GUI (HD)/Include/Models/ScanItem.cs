@@ -12,26 +12,23 @@ namespace FrontLineGUI
     public class ScanItem
     {
         // Internal values
-        private string firstName;
-        private string lastName;
+        //private enum scanItemType { File, Setting }; // this is a choice between file or setting when using the scanner 
+        private string name;                 // name of the scanning item
+        private string label;                // label of the item
+        private string image;                // filename of image icon
 
         // Constructor
-        public ScanItem(string first, string last)
+        // https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/how-to-create-and-bind-to-an-observablecollection?view=netframeworkdesktop-4.8
+        public ScanItem(string name, string image = null)
         {
-            this.firstName = first;
-            this.lastName = last;
+            this.name  = name;
+            if(image != null) this.image = image;
         }
 
-        public string FirstName
+        public string Name
         {
-            get { return firstName; }
-            set { firstName = value; }
-        }
-
-        public string LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
+            get { return name; }
+            set { name = value; }
         }
 
     }

@@ -11,10 +11,6 @@ namespace FrontLineGUI
     public partial class Scan : Page
     {
 
-        // RPECK 15/08/2022
-        // Added for performance monitoring
-        private static volatile bool _shouldStop = false;
-
         public Scan()
         {
             // Initialize the form
@@ -29,43 +25,13 @@ namespace FrontLineGUI
 
         }
 
-        // CPU Power
-        // Value from HWMonitor to get the CPU utilization
-        public int CPUPower
-        {
-            get { return 0; }
-            set { }
-        }
+        // RPECK 15/08/2022
+        // Added for performance monitoring
+        private static volatile bool _shouldStop = false;
 
-        // RAM Power
+        // CPU Information (Usage/Power)
         // Value from HWMonitor to get the CPU utilization
-        public int RAMPower
-        {
-            get { return 0; }
-            set { }
-        }
-
-        // CPU Power
-        // Value from HWMonitor to get the CPU utilization
-        public int HDDSpace
-        {
-            get { return 0; }
-            set { }
-        }
-
-        // CPU Power
-        // Value from HWMonitor to get the CPU utilization
-        public int GPUPower
-        {
-            get { return 0; }
-            set { }
-        }
-
-        // OSVersionInfo
-        public string OSVersionName
-        {
-            get { return OSVersionInfo.Name;  }
-        }
+        public int CPUPower, RAMPower, HDDSpace, GPUPower;
 
         public string OSVersionBits
         {

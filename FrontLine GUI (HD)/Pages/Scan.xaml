@@ -234,28 +234,28 @@
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="CPUPercentage" Text="{Binding CPUPower, Mode=OneTime}" /><!--
+                            <Run x:Name="CPUPercentage" Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="RAMPercentage" Text="{Binding RAMPower, Mode=OneTime}" /><!--
+                            <Run x:Name="RAMPercentage" Text="{Binding RAMPower, Mode=OneTime, FallbackValue=0}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="HDDPercentage" Text="{Binding HDDSpace, Mode=OneTime}" /><!--
+                            <Run x:Name="HDDPercentage" Text="{Binding HDDSpace, Mode=OneTime, FallbackValue=0}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="GPUPercentage" Text="{Binding CPUPower, Mode=OneTime}" /><!--
+                            <Run x:Name="GPUPercentage" Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>
