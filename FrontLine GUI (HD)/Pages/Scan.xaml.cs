@@ -1,47 +1,45 @@
 ﻿using System.Windows.Controls;
-using System.Windows.Forms;
-using System.Threading;
-using System;
-using System.Diagnostics;
 using JCS;
+using System.Windows;
 
 namespace FrontLineGUI
 {
-    //Scan Logic
+
+    // Scan Page
+    // Used to provide core scanning functionality
     public partial class Scan : Page
     {
 
+        // Public class vars
+        public CPUUtilization CPUInfo;
+
+        // Constructor
         public Scan()
         {
             // Initialize the form
             InitializeComponent();
 
             // Required for OSIcon
-            this.DataContext = this;
+            DataContext = this;
 
             // CPUID
             // Initialize ticker if CPUID is present
-            if (App.ConfigOptions.CPUID) {}
+            if (App.ConfigOptions.CPUID) {
 
-        }
+                // RPECK 26/03/2023
+                // Class instance to return the values for each of the 4 properties of the system (CPU, RAM, HDD, GPU)
 
-        // RPECK 15/08/2022
-        // Added for performance monitoring
-        private static volatile bool _shouldStop = false;
+            }
 
-        // CPU Information (Usage/Power)
-        // Value from HWMonitor to get the CPU utilization
-        public int CPUPower, RAMPower, HDDSpace, GPUPower;
+            CPUInfo = new CPUUtilization(10, 12, 10, 12);
 
-        public string OSVersionBits
-        {
-            get { return OSVersionInfo.OSBits.ToString().Replace("Bit", ""); }
-        }
+            CPUPower.DataContext = CPUInfo;
 
-        // OSVersionBuild
-        public string OSVersionBuild
-        {
-            get { return "Build " + OSVersionInfo.VersionString; }
+            // RPECK 26/03/2023
+            // Scan Items Collection
+            // Presents an ObservableListCollection of "ScanItem" classes
+            ScanItemsCollection ScanItems = new ScanItemsCollection();
+
         }
 
         // OS Icon
@@ -56,6 +54,24 @@ namespace FrontLineGUI
                 return "/Resources/OS/" + OSVersionInfo.Name.Replace(" ", "-").ToLower() + ".png"; 
             
             }
+        }
+
+        // Select All Button Click
+        public void SelectAllButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            // Find ListBox
+            System.Windows.Controls.ListBox ScanItems = FindName("ScanItems") as System.Windows.Controls.ListBox;
+
+            // If present, selectAll else deselect everything
+            if (ScanItems.SelectedItems.Count != ScanItems.Items.Count)
+            {
+                ScanItems.SelectAll();
+            } else 
+            {
+                ScanItems.UnselectAll();
+            }
+
         }
 
     }

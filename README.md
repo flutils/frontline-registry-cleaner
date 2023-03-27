@@ -13,7 +13,7 @@
 
 [Frontline Registry Cleaner 2.0](https://www.frontlinecleaner.com) was released in 2011 and distributed by several retailers in the UK.
 
-We procured the code from a company in Ukraine and promoted it through the Internet. It has a proprietary engine.
+It enables Windows PC users to clean out junk files and corrupted registry settings with a simple scanning system.
 
 In 2022, we revamped the GUI and some of the backend scanning functionality to bring it up to modern standards. We intend to continue to add to this functionality to embrace cloud endpoints and various other additions.
 

@@ -64,36 +64,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\anniversary.png" />
     <Resource Include="Resources\OS\windows-10.png" />
     <Resource Include="Resources\OS\windows-11.png" />
     <Resource Include="Resources\OS\windows-8.png" />
     <Resource Include="Resources\OS\windows-95.png" />
     <Resource Include="Resources\OS\windows-xp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\scan_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\backup_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\statistics_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\extras_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\edit_startup_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\defragment_registry_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\remove_junk_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\clean_registry_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Scan\registry_errors.png" />

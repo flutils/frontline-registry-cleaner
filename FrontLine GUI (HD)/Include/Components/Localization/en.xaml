@@ -21,14 +21,21 @@
     <!-- Scan Page -->
     <s:String x:Key="Str_ScanPreTitle">Start Scan Below</s:String>
     <s:String x:Key="Str_ScanPreInfo">Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -</s:String>
+    
     <s:String x:Key="Str_ScanMainButton">Start Scan</s:String>
-    <s:String x:Key="Str_ScanMainLastPerformed">Scan Last Performed</s:String>
+    <s:String x:Key="Str_ScanMainLastPerformed">Last Scan Performed</s:String>
     <s:String x:Key="Str_ScanYourSystem">Your System</s:String>
+
+    <s:String x:Key="Str_ScanSelectAllButton">Select All</s:String>
+    <s:String x:Key="Str_ScanSelectAllButtonTooltip">Select All</s:String>
 
     <!-- Settings Page -->
     <s:String x:Key="Str_SettingsTitle">Settings</s:String>
     <s:String x:Key="Str_SettingsPreInfo">Choose the settings for the app below. These are meant to help the system run smoothly.</s:String>
-    
+
+    <s:String x:Key="Str_SettingsGeneralTab">General</s:String>
+    <s:String x:Key="Str_SettingsBackupTab">Backup</s:String>
+
     <!-- About Page -->
     <s:String x:Key="Str_AboutTitle">About</s:String>
     <s:String x:Key="Str_AboutPreInfo">Further information about the application and our company.</s:String>

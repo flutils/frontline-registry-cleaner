@@ -12,7 +12,8 @@
     <!-- Resources -->
     <Page.Resources>
         
-        <!-- Collection -->
+        <!-- Data Bindings -->
+        <!-- Allows us to import data from the VM layer -->
         <local:ScanItemsCollection x:Key="ScanItems"/>
 
         <!-- Scan Button -->
@@ -29,7 +30,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border CornerRadius="10" x:Name="MainButtonBackground" Background="Black" BorderThickness="2" BorderBrush="Black">
-                            <Border CornerRadius="10" BorderThickness="1">
+                            <Border CornerRadius="10" BorderThickness="1" x:Name="Border">
                                 <Border.Background>
                                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                         <GradientStop Color="#A5FFFFFF"/>
@@ -60,72 +61,45 @@
                             </Border>
                         </Border>
                         <ControlTemplate.Triggers>
-
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" Value="0.55" />
                             </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                    <Condition Property="IsEnabled" Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" Value="Blue" />
+                            </MultiTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-        <!-- Main Buttons -->
-        <Style TargetType="{x:Type CheckBox}" x:Key="MainOptionButtons">
-
-            <!-- Cursor -->
+        <!-- Select All Button -->
+        <Style TargetType="{x:Type Button}" x:Key="SelectAllButton">
             <Setter Property="Cursor" Value="Hand" />
-
-            <!-- Template -->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type CheckBox}">
-                        <StackPanel Orientation="Horizontal">
-                            <Border Padding="0,0,10,0">
-                                <Image x:Name="checkboxImage" Source="{Binding Path=Tag, RelativeSource={RelativeSource TemplatedParent}}" Width="40" RenderOptions.BitmapScalingMode="HighQuality"/>
-                            </Border>
-                            <ContentPresenter VerticalAlignment="center" TextBlock.FontFamily="Arial" TextBlock.FontSize="14px" TextBlock.Foreground="#858884"/>
-                        </StackPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="False">
-                                <Setter Property="StackPanel.Opacity" Value="0.5" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="StackPanel.Opacity" Value="1.0" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
         </Style>
-
-
-        <Style TargetType="{x:Type CheckBox}" x:Key="SelectAllButton">
-
-            <!-- Cursor -->
+        
+        <!-- ScanItems ListBox -->
+        <Style TargetType="{x:Type ListBox}" x:Key="ScanItemsListBox">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        
+        <!-- ScanItems ListBox Items -->
+        <Style TargetType="{x:Type ListBoxItem}" x:Key="ScanItemsItemStyle">
             <Setter Property="Cursor" Value="Hand" />
-
-            <!-- Template -->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type CheckBox}">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="/Resources/select_all.png" MaxHeight="20" Margin="0,0,3,0"/>
-                            <ContentPresenter VerticalAlignment="center" TextBlock.FontFamily="Arial" TextBlock.FontSize="12px" TextBlock.Foreground="#858884"/>
-                        </StackPanel>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="False">
-                                <Setter Property="StackPanel.Opacity" Value="0.5" />
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="StackPanel.Opacity" Value="1.0" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-
+            <Setter Property="BorderThickness" Value="0" />
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True" >
+                    <Setter Property="FontWeight" Value="Bold" />
+                    <Setter Property="BorderThickness" Value="0" />
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True" >
+                    <Setter Property="Background" Value="Blue" />
+                </Trigger>                
+            </Style.Triggers>
         </Style>
 
     </Page.Resources>
@@ -176,7 +150,7 @@
                 <Grid Margin="25,15,25,0" Name="Scan_Checkboxes">
 
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
@@ -184,14 +158,27 @@
                     </Grid.RowDefinitions>
                     
                     <!-- Items -->
-                    
-
+                    <!-- ListView used because it gives us the ability to design everything we need -->
+                    <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
+                    <ListView ItemsSource="{Binding Source={StaticResource ScanItems}}" Style="{StaticResource ScanItemsListBox}" IsSynchronizedWithCurrentItem="True" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItems">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Margin="0" />
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel Margin="2">
+                                    <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left"/>
+                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListView>
 
                     <!-- Selected -->
-                    <Border Grid.Row="1">
-                        <CheckBox Grid.Row="1" ToolTip="Select All Scanning Options" Content="Select All" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Style="{StaticResource SelectAllButton}"  Margin="0,0,15,0" IsThreeState="True" Name="AllSelected" IsChecked="true" />
-                    </Border>
-            
+                    <Button Grid.Row="1" ToolTip="{DynamicResource Str_ScanSelectAllButtonTooltip}" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
+
                 </Grid>
             
         </StackPanel>
@@ -219,7 +206,7 @@
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Name="OSSystem" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12">
-                                <Run Text="{Binding OSVersionName, Mode=OneTime, FallbackValue=N/A}" />
+                                <Run Text="{Binding Path=OSVersionInfo.Name, Mode=OneTime, FallbackValue=N/A}" />
                                 <Run Text="(" /><!--
                                 --><Run Text="{Binding OSVersionBits, Mode=OneTime, FallbackValue=0}" /><!--
                                 --><Run Text="bit)" />
@@ -233,7 +220,7 @@
                 <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock HorizontalAlignment="Center">
+                        <TextBlock HorizontalAlignment="Center" Name="CPUPower">
                             <Run x:Name="CPUPercentage" Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
@@ -241,21 +228,21 @@
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="RAMPercentage" Text="{Binding RAMPower, Mode=OneTime, FallbackValue=0}" /><!--
+                            <Run x:Name="RAMPercentage" Text="{Binding CPUInfo.CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="HDDPercentage" Text="{Binding HDDSpace, Mode=OneTime, FallbackValue=0}" /><!--
+                            <Run x:Name="HDDPercentage" Text="{Binding CPUInfo.CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="GPUPercentage" Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
+                            <Run x:Name="GPUPercentage" Text="{Binding CPUInfo.CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
                             --><Run Text="%" />
                         </TextBlock>
                     </StackPanel>

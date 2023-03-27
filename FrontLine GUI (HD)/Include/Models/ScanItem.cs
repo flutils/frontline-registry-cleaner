@@ -16,12 +16,14 @@ namespace FrontLineGUI
         private string name;                 // name of the scanning item
         private string label;                // label of the item
         private string image;                // filename of image icon
+        private bool   enabled;              // is the item enabled?
 
         // Constructor
         // https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/how-to-create-and-bind-to-an-observablecollection?view=netframeworkdesktop-4.8
-        public ScanItem(string name, string image = null)
+        public ScanItem(string name, bool enabled = true, string image = null)
         {
             this.name  = name;
+            this.enabled = enabled;
             if(image != null) this.image = image;
         }
 
@@ -29,6 +31,12 @@ namespace FrontLineGUI
         {
             get { return name; }
             set { name = value; }
+        }
+
+        public string Image
+        {
+            get { return image; }
+            set { image = value; }
         }
 
     }

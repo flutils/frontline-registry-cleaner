@@ -73,39 +73,9 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap anniversary {
-            get {
-                object obj = ResourceManager.GetObject("anniversary", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap application_errors {
             get {
                 object obj = ResourceManager.GetObject("application_errors", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap backup_icon {
-            get {
-                object obj = ResourceManager.GetObject("backup_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap clean_registry_icon {
-            get {
-                object obj = ResourceManager.GetObject("clean_registry_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -131,16 +101,6 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap defragment_registry_icon {
-            get {
-                object obj = ResourceManager.GetObject("defragment_registry_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap dll_errors {
             get {
                 object obj = ResourceManager.GetObject("dll_errors", resourceCulture);
@@ -151,29 +111,9 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap edit_startup_icon {
-            get {
-                object obj = ResourceManager.GetObject("edit_startup_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap en {
             get {
                 object obj = ResourceManager.GetObject("en", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap extras_icon {
-            get {
-                object obj = ResourceManager.GetObject("extras_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,39 +226,9 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap remove_junk_icon {
-            get {
-                object obj = ResourceManager.GetObject("remove_junk_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap scan_icon {
-            get {
-                object obj = ResourceManager.GetObject("scan_icon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap select_all {
             get {
                 object obj = ResourceManager.GetObject("select_all", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap statistics_icon {
-            get {
-                object obj = ResourceManager.GetObject("statistics_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
