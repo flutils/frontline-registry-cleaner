@@ -8,6 +8,7 @@ using System.Windows.Media.Effects;
 using System.Security.Policy;
 using System.Windows.Controls.Primitives;
 using System.Threading;
+using System.ComponentModel;
 
 namespace FrontLineGUI
 {
@@ -46,8 +47,8 @@ namespace FrontLineGUI
         // Makes the form default to the top of the Window stack
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Topmost = true;
-            this.Topmost = false;
+            Topmost = true;
+            Topmost = false;
         }
 
         // MouseDown
@@ -55,14 +56,27 @@ namespace FrontLineGUI
         // https://stackoverflow.com/a/7418629/1143732
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left) this.DragMove();
+            if (e.ChangedButton == MouseButton.Left) DragMove();
         }
 
         // Close
         // Closes the Window (exits the application)
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close(); // https://www.tech-recipes.com/rx/23742/create-an-exit-button-in-c-visual-studio/
+            Close(); // https://www.tech-recipes.com/rx/23742/create-an-exit-button-in-c-visual-studio/
+        }
+
+        // Closing
+        // Fired when the main Window is preparing to close
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            // Close CPUID
+            if (App.pSDK != null)
+            {
+                App.pSDK.Close();
+                App.pSDK.DestroyInstance();
+            }
+
         }
 
         // Minimize

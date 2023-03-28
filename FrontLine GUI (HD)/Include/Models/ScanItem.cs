@@ -17,6 +17,7 @@ namespace FrontLineGUI
         private string label;                // label of the item
         private string image;                // filename of image icon
         private bool   enabled;              // is the item enabled?
+        private bool   is_selected;          // primarily used for the frontend
 
         // Constructor
         // https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/how-to-create-and-bind-to-an-observablecollection?view=netframeworkdesktop-4.8
@@ -41,7 +42,8 @@ namespace FrontLineGUI
 
         public bool IsSelected
         {
-            get { return true;  }
+            get { return false;  }
+            set { is_selected = value; }
         }
 
     }

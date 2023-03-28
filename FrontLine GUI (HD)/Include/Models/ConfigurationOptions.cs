@@ -29,7 +29,12 @@ namespace FrontLineGUI
 
         // RPECK 25/03/2023
         // CPUID Option -- this is used to determine whether the CPUID library should be invoked
-        public bool CPUID { get; set; }
+        public bool CPUID {
+            get
+            {
+                return false;
+            }
+        }
 
         // RPECK 25/03/2023
         // Load Settings from JSON

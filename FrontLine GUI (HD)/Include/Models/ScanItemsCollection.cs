@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FrontLineGUI
 {
  
-    public class ScanItemsCollection : ObservableCollection<ScanItem>
+    public class ScanItemsCollection : ObservableCollection<ScanItem>, INotifyPropertyChanged
     {
         public ScanItemsCollection() : base()
         {
@@ -22,6 +24,18 @@ namespace FrontLineGUI
             Add(new ScanItem("Junk Files",         true, "/Resources/Scan/recycle_bin.png"));
             Add(new ScanItem("Internet Cache",     true, "/Resources/Scan/internet_cache.png"));
         }
+
+        // RPECK 28/03/2023
+        // Get the number of selected items from the ScanItems object
+        // https://stackoverflow.com/questions/25803871/counting-number-of-items-in-observablecollection-where-it-equals-1-c-sharp
+        public int SelectedItems
+        {
+            get
+            {
+                return this.Where(x => x.IsSelected == true).Count(); ;
+            }
+        }
+
     }
 
 }

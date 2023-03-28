@@ -1,14 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:FrontLineGUI">
-
+    <!-- Converters -->
+    <local:ButtonColourConverter x:Key="ButtonColourConverter" /> <!-- Used to change colour darker or lighter -->
+    
     <!-- RPECK 15/03/2022 -->
     <!-- Button Styling (removes background on hover) -->
     <!-- https://askto.pro/question/how-do-i-change-the-background-of-a-button-in-wpf-on-mouse-hover -->
-    
-    <!-- Converters -->
-    <local:ButtonColourConverter x:Key="ButtonColourConverter" /> <!-- Used to change colour darker or lighter -->
-
     <!-- https://social.msdn.microsoft.com/Forums/vstudio/en-US/7e36ff52-0968-47e5-872f-f35ba76bf156/remove-default-control-style-wpf?forum=wpf#2c7c6ccd-d34f-444f-b249-cef8c65b7ac8 -->
     <Style TargetType="{x:Type Button}">
         <Setter Property="Cursor" Value="Hand"/>
@@ -26,7 +24,7 @@
                             <Setter TargetName="Border" Property="Background" Value="{x:Null}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
-                    
+
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

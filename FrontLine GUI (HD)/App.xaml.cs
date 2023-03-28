@@ -38,10 +38,12 @@ namespace FrontLineGUI
             {
 
                 // Create a new thread for CPUID
-                Thread CPUID_Thread = new Thread(Init_CPUID);
+                //Thread CPUID_Thread = new Thread(Init_CPUID);
 
                 // Start Thread
-                CPUID_Thread.Start();
+                //CPUID_Thread.Start();
+
+                Init_CPUID();
 
             }
 
@@ -117,9 +119,6 @@ namespace FrontLineGUI
 
             }
 
-            // Close CPUID
-            pSDK.Close();
-            pSDK.DestroyInstance();
         }
 
     }

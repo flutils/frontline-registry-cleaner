@@ -23,11 +23,9 @@
     <s:String x:Key="Str_ScanPreInfo">Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -</s:String>
     
     <s:String x:Key="Str_ScanMainButton">Start Scan</s:String>
-    <s:String x:Key="Str_ScanMainLastPerformed">Last Scan Performed</s:String>
+    <s:String x:Key="Str_ScanMainLastPerformed">Scan Last Performed</s:String>
     <s:String x:Key="Str_ScanYourSystem">Your System</s:String>
-
     <s:String x:Key="Str_ScanSelectAllButton">Select All</s:String>
-    <s:String x:Key="Str_ScanSelectAllButtonTooltip">Select All</s:String>
 
     <!-- Settings Page -->
     <s:String x:Key="Str_SettingsTitle">Settings</s:String>

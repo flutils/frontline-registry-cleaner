@@ -7,14 +7,15 @@
     x:Class="FrontLineGUI.Scan"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="771"
-      Title="Scan">
+      Title="Scan"
+      Loaded="ScanForm_Loaded">
 
     <!-- Resources -->
     <Page.Resources>
         
         <!-- Data Bindings -->
         <!-- Allows us to import data from the VM layer -->
-        <local:ScanItemsCollection x:Key="ScanItems"/>
+        <local:ScanItemsCollection x:Key="ScanItemsObject"/>
 
         <!-- Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="MainScanButton">
@@ -80,6 +81,60 @@
         <!-- Select All Button -->
         <Style TargetType="{x:Type Button}" x:Key="SelectAllButton">
             <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Background" Value="#333" />
+            <Setter Property="Foreground" Value="White" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="Border" Background="{TemplateBinding Background}" CornerRadius="5" BorderBrush="#090d11" BorderThickness="2">
+                            <Border CornerRadius="5" BorderThickness="1" Padding="5,2">
+                                <Border.Background>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#59000000"/>
+                                        <GradientStop Color="Transparent" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <Border.BorderBrush>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#99FFFFFF" />
+                                        <GradientStop Color="#00000000" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Border.BorderBrush>
+                                <Border>
+                                    <Border.Effect>
+                                        <DropShadowEffect Color="Black" Opacity="0.85" ShadowDepth="1" BlurRadius="0" />
+                                    </Border.Effect>
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Border>
+                            </Border>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="#222" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.05" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         
         <!-- ScanItems ListBox -->
@@ -140,46 +195,57 @@
                 <Button Style="{StaticResource MainScanButton}" Content="{DynamicResource Str_ScanMainButton}" />
                 
                 <!-- Last Scan -->
-                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="12" FontStyle="Italic">
-                    <Run Text="{DynamicResource Str_ScanMainLastPerformed}" TextDecorations="Underline" /><!--
-                    --><Run Text=":" TextDecorations="Underline" />
-                    <Run Text="01/08/2022" />
-                </TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <TextBlock DataContext="{DynamicResource Str_ScanMainLastPerformed}" Text="{Binding Path=., StringFormat='{}{0}:'}" FontWeight="Bold" FontSize="12" FontStyle="Italic" TextDecorations="Underline" />
+                    <TextBlock Text="01/08/2022" FontWeight="Bold" FontSize="12" FontStyle="Italic" />
+                </StackPanel>
 
                 <!-- Items Grid -->
-                <Grid Margin="25,15,25,0" Name="Scan_Checkboxes">
+                <Grid Margin="15,15,15,0" Name="Scan_Checkboxes">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
                     
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView ItemsSource="{Binding Source={StaticResource ScanItems}}" Style="{StaticResource ScanItemsListBox}" IsSynchronizedWithCurrentItem="True" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItems">
+                    <ListView Margin="15,0" ItemsSource="{Binding Source={StaticResource ScanItemsObject}}" Style="{StaticResource ScanItemsListBox}" IsSynchronizedWithCurrentItem="True" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItems" SelectionChanged="ScanItemsListBox_Changed">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <UniformGrid Columns="4" />
+                                <UniformGrid Columns="3" />
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <DockPanel Margin="2">
-                                    <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left"/>
-                                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                                <DockPanel Margin="2" LastChildFill="True">
+                                    <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left" Margin="0,0,5,0"/>
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Label, FallbackValue=Test}" FontWeight="Normal" FontSize="11"/>
+                                    </StackPanel>
                                 </DockPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListView>
 
-                    <!-- Selected -->
+                    <!-- Items Info Grid -->
                     <Grid Grid.Row="1" >
-                        <TextBlock Text="{Binding Path=ScanItems.Count,Mode=OneWay}"/>
-                        <Button ToolTip="{DynamicResource Str_ScanSelectAllButtonTooltip}" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Text="{Binding Source={StaticResource ScanItemsObject}, Path=SelectedItems, Mode=OneWay, FallbackValue=0,StringFormat='Selected: {0}/{0}'}" VerticalAlignment="Center" />
+                        <Button Grid.Column="1" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
                     </Grid>
                     
                 </Grid>
@@ -221,11 +287,11 @@
                 <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="CPUPower">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" />
+                        <TextBlock Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding RAMPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" />
+                        <TextBlock Text="{Binding RAMPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
