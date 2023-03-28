@@ -39,6 +39,11 @@ namespace FrontLineGUI
             set { image = value; }
         }
 
+        public bool IsSelected
+        {
+            get { return true;  }
+        }
+
     }
 
 }

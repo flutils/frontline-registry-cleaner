@@ -33,7 +33,11 @@ namespace FrontLineGUI
 
             CPUInfo = new CPUUtilization(10, 12, 10, 12);
 
+            // RPECK 28/03/2023
+            // Allows us to bind to the CPUInfo object
             CPUPower.DataContext = CPUInfo;
+
+            //OSBlock.DataContext = OSVersionInfo;
 
             // RPECK 26/03/2023
             // Scan Items Collection

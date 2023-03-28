@@ -163,7 +163,7 @@
                     <ListView ItemsSource="{Binding Source={StaticResource ScanItems}}" Style="{StaticResource ScanItemsListBox}" IsSynchronizedWithCurrentItem="True" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItems">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Margin="0" />
+                                <UniformGrid Columns="4" />
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
                         <ListBox.ItemTemplate>
@@ -177,8 +177,11 @@
                     </ListView>
 
                     <!-- Selected -->
-                    <Button Grid.Row="1" ToolTip="{DynamicResource Str_ScanSelectAllButtonTooltip}" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
-
+                    <Grid Grid.Row="1" >
+                        <TextBlock Text="{Binding Path=ScanItems.Count,Mode=OneWay}"/>
+                        <Button ToolTip="{DynamicResource Str_ScanSelectAllButtonTooltip}" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
+                    </Grid>
+                    
                 </Grid>
             
         </StackPanel>
@@ -202,14 +205,12 @@
                         <Run Text="{DynamicResource Str_ScanYourSystem}" /><!--
                         --><Run Text=":" />
                     </TextBlock>
-                    <StackPanel Orientation="Horizontal" Name="OSBlock">
+                    <StackPanel Orientation="Horizontal" x:Name="OSBlock">
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Name="OSSystem" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12">
-                                <Run Text="{Binding Path=OSVersionInfo.Name, Mode=OneTime, FallbackValue=N/A}" />
-                                <Run Text="(" /><!--
-                                --><Run Text="{Binding OSVersionBits, Mode=OneTime, FallbackValue=0}" /><!--
-                                --><Run Text="bit)" />
+                                <Run Text="{Binding Path=Name, Mode=OneTime, FallbackValue=0}" />
+                                <Run Text="{Binding Path=Name, Mode=OneTime, FallbackValue=0, StringFormat='({0}bit)'}" />
                             </TextBlock>
                             <TextBlock Text="{Binding OSVersionBuild, Mode=OneTime, FallbackValue=N/A}" Name="OSInfo" VerticalAlignment="Center" FontSize="8" LineStackingStrategy="BlockLineHeight" LineHeight="10" />
                         </StackPanel>
@@ -217,34 +218,22 @@
                 </StackPanel>
 
                 <!-- Performance (CPU/RAM) -->
-                <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="CPUPower">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock HorizontalAlignment="Center" Name="CPUPower">
-                            <Run x:Name="CPUPercentage" Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
-                            --><Run Text="%" />
-                        </TextBlock>
+                        <TextBlock Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="RAMPercentage" Text="{Binding CPUInfo.CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
-                            --><Run Text="%" />
-                        </TextBlock>
+                        <TextBlock Text="{Binding RAMPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="HDDPercentage" Text="{Binding CPUInfo.CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
-                            --><Run Text="%" />
-                        </TextBlock>
+                        <TextBlock Text="{Binding HDDPower, Mode=OneTime, FallbackValue=0,StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock HorizontalAlignment="Center">
-                            <Run x:Name="GPUPercentage" Text="{Binding CPUInfo.CPUPower, Mode=OneTime, FallbackValue=0}" /><!--
-                            --><Run Text="%" />
-                        </TextBlock>
+                        <TextBlock Text="{Binding GPUPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
 

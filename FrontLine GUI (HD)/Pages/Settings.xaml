@@ -7,6 +7,16 @@
       mc:Ignorable="d" 
       d:DesignHeight="820" d:DesignWidth="771"
       Title="Settings">
+    
+    <!-- Styles etc -->
+    <Page.Resources>
+        
+        <!-- Tab Styling -->
+        <Style TargetType="{x:Type TabControl}" x:Key="SettingsTabs">
+            
+        </Style>
+
+    </Page.Resources>
 
     <Grid>
 
@@ -38,7 +48,7 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_SettingsPreInfo}" TextAlignment="Center" FontSize="12" />
 
                 <!-- Content -->
-                <TabControl Margin="25,10,25,0">
+                <TabControl Margin="25,10,25,0" x:Name="SettingsTabs">
                     <TabItem Header="{DynamicResource Str_SettingsGeneralTab}">
                         <Grid Background="#FFE5E5E5"/>
                     </TabItem>
