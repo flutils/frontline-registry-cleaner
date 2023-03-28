@@ -146,6 +146,7 @@
         <Style TargetType="{x:Type ListBoxItem}" x:Key="ScanItemsItemStyle">
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True" >
                     <Setter Property="FontWeight" Value="Bold" />
@@ -197,7 +198,7 @@
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <TextBlock DataContext="{DynamicResource Str_ScanMainLastPerformed}" Text="{Binding Path=., StringFormat='{}{0}:'}" FontWeight="Bold" FontSize="12" FontStyle="Italic" TextDecorations="Underline" />
-                    <TextBlock Text="01/08/2022" FontWeight="Bold" FontSize="12" FontStyle="Italic" />
+                    <TextBlock Text="01/08/2022" FontWeight="Bold" FontSize="12" FontStyle="Italic" Margin="5,0,0,0" />
                 </StackPanel>
 
                 <!-- Items Grid -->
