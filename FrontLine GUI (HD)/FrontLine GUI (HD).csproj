@@ -150,12 +150,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Include\Components\Localization\fr.xaml">
+    <Content Include="Include\Localization\fr.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Include\Components\Localization\en.xaml">
+    <Content Include="Include\Localization\en.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

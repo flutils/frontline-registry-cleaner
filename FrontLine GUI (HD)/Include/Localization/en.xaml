@@ -12,7 +12,7 @@
     <s:String x:Key="Str_MainAbout">About</s:String>
 
     <s:String x:Key="Str_MainCopyrightButton">Frontline Utilities LTD</s:String>
-    <s:String x:Key="Str_MainCopyrightButtonTooltip">Company Website</s:String>
+    <s:String x:Key="Str_MainCopyrightButtonTooltip">Visit Company Website</s:String>
     <s:String x:Key="Str_MainCopyrightAllRightsReserved">All rights reserved</s:String>
 
     <s:String x:Key="Str_MainGithubTooltip">View Repository on Github</s:String>

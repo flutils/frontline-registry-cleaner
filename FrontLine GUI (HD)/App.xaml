@@ -11,8 +11,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="StylingGeneral" Source="/Include/Styles/GeneralStyling.xaml"/>
-                <ResourceDictionary x:Name="LanguagesEN"    Source="/Include/Components/Localization/en.xaml" />
-                <ResourceDictionary x:Name="LanguagesFR"    Source="/Include/Components/Localization/fr.xaml" />
+                <ResourceDictionary x:Name="LanguagesEN"    Source="/Include/Localization/en.xaml" />
+                <ResourceDictionary x:Name="LanguagesFR"    Source="/Include/Localization/fr.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
         

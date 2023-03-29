@@ -12,8 +12,10 @@
     <Page.Resources>
         
         <!-- Tab Styling -->
-        <Style TargetType="{x:Type TabControl}" x:Key="SettingsTabs">
-            
+        <Style TargetType="{x:Type TabControl}" x:Key="TabControlStyling">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Background" Value="Black" />
         </Style>
 
     </Page.Resources>
@@ -48,12 +50,78 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_SettingsPreInfo}" TextAlignment="Center" FontSize="12" />
 
                 <!-- Content -->
-                <TabControl Margin="25,10,25,0" x:Name="SettingsTabs">
-                    <TabItem Header="{DynamicResource Str_SettingsGeneralTab}">
-                        <Grid Background="#FFE5E5E5"/>
+                <TabControl Margin="25,10,25,0" Style="{StaticResource TabControlStyling}" x:Name="SettingsTabs">
+                    
+                    <!-- Header Styling -->
+                    <!-- https://wpf-tutorial.com/tabcontrol/styling-the-tabitems/ -->
+                    <TabControl.Resources>
+                        <Style TargetType="TabControl">
+                            <Setter Property="Foreground" Value="Black" />
+                        </Style>
+                        <Style TargetType="TabItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="TabItem">
+                                        <Border Name="Border" BorderThickness="1" CornerRadius="5" Margin="0">
+                                            <ContentPresenter Name="Content" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="10,5"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter Property="Foreground" Value="White" />
+                                                <Setter TargetName="Border" Property="Background" Value="Black" />
+                                            </Trigger>
+                                            <Trigger Property="IsSelected" Value="False">
+                                                <Setter Property="Cursor" Value="Hand" />
+                                                <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                            </Trigger>
+                                            <MultiTrigger>
+                                                <MultiTrigger.Conditions>
+                                                    <Condition Property="Tag" Value="General" />
+                                                    <Condition Property="IsSelected" Value="False" />
+                                                </MultiTrigger.Conditions>
+                                                <Setter TargetName="Border" Property="Background" Value="LimeGreen"/>
+                                            </MultiTrigger>
+                                            <MultiTrigger>
+                                                <MultiTrigger.Conditions>
+                                                    <Condition Property="IsMouseOver" Value="True" />
+                                                    <Condition Property="IsSelected" Value="False" />
+                                                </MultiTrigger.Conditions>
+                                                <Setter Property="Foreground" Value="White"/>
+                                                <MultiTrigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="#222" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </MultiTrigger.EnterActions>
+                                                <MultiTrigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.05" To="{x:Null}" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </MultiTrigger.ExitActions>
+                                            </MultiTrigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </TabControl.Resources>
+                    
+                    <TabItem Header="{DynamicResource Str_SettingsGeneralTab}" Tag="General">
+                        <StackPanel Orientation="Vertical">
+                            
+                            <!-- Debug -->
+                            <TextBlock Text="Debug" />
+                            
+                            <!-- Localization -->
+                            <TextBlock Text="Localization" />
+
+                        </StackPanel>
                     </TabItem>
-                    <TabItem Header="{DynamicResource Str_SettingsBackupTab}">
-                        <Grid Background="#FFE5E5E5"/>
+                    <TabItem Header="{DynamicResource Str_SettingsBackupTab}" Tag="Backup">
+                        <Grid />
                     </TabItem>
                 </TabControl>
 

@@ -3,6 +3,8 @@ using JCS;
 using System.Windows;
 using System.Diagnostics;
 using System;
+using System.Linq;
+using System.Collections.ObjectModel;
 
 namespace FrontLineGUI
 {
@@ -14,31 +16,40 @@ namespace FrontLineGUI
 
         // Public class vars
         public CPUUtilization CPUInfo;
-        public ScanItemsCollection ScanItemsObject;
+        //public ScanItemsCollection ScanItemsObject;
+        public ObservableCollection<ScanItem> ScanItemsObject;
+
+        #region Constructor
 
         // Constructor
         public Scan()
         {
 
-            // Initialize the form
-            InitializeComponent();
-
             // Required for OSIcon
             DataContext = this;
             
             // Define CPUInfo
-            CPUInfo = new CPUUtilization(0,0,0,0);
-
-            // RPECK 28/03/2023
-            // Allows us to bind to the CPUInfo object
-            CPUPower.DataContext = CPUInfo;
+            CPUInfo = new CPUUtilization(0,10,0,0);
 
             // RPECK 26/03/2023
             // Scan Items Collection
             // Presents an ObservableListCollection of "ScanItem" classes
-            ScanItemsObject = new ScanItemsCollection();
+            ScanItemsObject = new ObservableCollection<ScanItem>()
+            {
+                new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png")
+            };
 
+            Debug.Write(ScanItemsObject.Where(x => x.IsSelected == true).Count());
+
+            // Initialize the form
+            InitializeComponent();
+
+            // RPECK 28/03/2023
+            // Allows us to bind to the CPUInfo object
+            CPUPower.DataContext = CPUInfo;
         }
+
+        #endregion
 
         #region Methods
 
@@ -95,15 +106,12 @@ namespace FrontLineGUI
         public void ScanItemsListBox_Changed(object sender, SelectionChangedEventArgs args)
         {
 
-            // Get Object
-            ListBoxItem item = ((sender as ListBox).SelectedItem as ListBoxItem); ;
-
-            // Make 'IsSelected' true for the item
-            // https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.primitives.selector.selectionchanged?view=windowsdesktop-7.0
-            if (item != null)
+            if (ScanItemsObject != null)
             {
-                Debug.Write(item.Content.ToString());
-                item.IsSelected = true;
+                Debug.Write(ScanItemsObject[0].IsSelected);
+                ScanItemsObject.Clear();
+                ScanItemsObject.Add(new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"));
+                Debug.Write(ScanItemsObject.Count());
             }
 
         }
@@ -111,6 +119,14 @@ namespace FrontLineGUI
         // Select All Button Click
         public void SelectAllButton_Click(object sender, RoutedEventArgs e)
         {
+
+            if (ScanItemsObject != null)
+            {
+                Debug.Write(ScanItemsObject[0].IsSelected);
+                ScanItemsObject.Clear();
+                ScanItemsObject.Add(new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"));
+                Debug.Write(ScanItemsObject.Count());
+            }
 
             if (App.pSDK != null)
             { 

@@ -48,7 +48,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
 
-                        <TextBlock x:Name="SettingsText" Text="{TemplateBinding Content}" Foreground="#462e00" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" FontFamily="Calibri">
+                        <TextBlock x:Name="SettingsText" Text="{TemplateBinding Content}" Foreground="#FF3A2600" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" FontFamily="Calibri">
                             <TextBlock.Effect>
                                 <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
                             </TextBlock.Effect>
@@ -191,25 +191,6 @@
             <!-- Action Buttons -->
             <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,7,0"  Orientation="Horizontal" Grid.Column="1" Panel.ZIndex="10" Height="42">
 
-                <!-- HD -->
-                <Border x:Name="HDBorder" Height="20" Margin="0" BorderBrush="Black" Background="White" BorderThickness="1" CornerRadius="10">
-                    <Border x:Name="HDBorderInner" Background="White" BorderThickness="1" CornerRadius="10">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="25px" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-
-                            <Border CornerRadius="8" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="Black"/>
-                            <TextBlock Foreground="White" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="9" FontWeight="Bold" Margin="1,0,0,0">HD</TextBlock>
-
-                        </Grid>
-                    </Border>
-                </Border>
-
                 <!-- Localization Flag -->
                 <Button Name="LocalizationButton" MaxHeight="25" Margin="5,0" Click="SettingsButton_Click" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainLocalizationButtonTooltip}">
                     <Image Source="/Resources/Localization/Icons/en.jpg" />
@@ -271,7 +252,7 @@
                         </Grid.RowDefinitions>
 
                         <!-- Subtitle -->
-                        <TextBlock Foreground="#462e00" Text="{DynamicResource Str_MainSubtitle}" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
+                        <TextBlock Foreground="#FF3A2600" Text="{DynamicResource Str_MainSubtitle}" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
                             <TextBlock.Effect>
                                 <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
                             </TextBlock.Effect>

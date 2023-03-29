@@ -70,7 +70,20 @@
                                     <Condition Property="IsMouseOver" Value="True" />
                                     <Condition Property="IsEnabled" Value="True" />
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" Value="Blue" />
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="MainButtonBackground" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="Blue" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+                                <MultiTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <ColorAnimation Storyboard.TargetName="MainButtonBackground" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.05" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.ExitActions>
                             </MultiTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -211,11 +224,11 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    
+
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="15,0" ItemsSource="{Binding Source={StaticResource ScanItemsObject}}" Style="{StaticResource ScanItemsListBox}" IsSynchronizedWithCurrentItem="True" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItems" SelectionChanged="ScanItemsListBox_Changed">
+                    <ListView Margin="15,0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" IsSynchronizedWithCurrentItem="True" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItems" SelectionChanged="ScanItemsListBox_Changed">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />
@@ -227,13 +240,17 @@
                                     <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left" Margin="0,0,5,0"/>
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                         <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding Label, FallbackValue=Test}" FontWeight="Normal" FontSize="11"/>
+                                        <TextBlock Text="{Binding IsSelected, FallbackValue=Test}" TextWrapping="Wrap" FontWeight="Normal" FontSize="11" />
                                     </StackPanel>
                                 </DockPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListView>
 
+                    <ListView ItemsSource="{Binding ScanItemsObject}">
+                        
+                    </ListView>
+                    
                     <!-- Items Info Grid -->
                     <Grid Grid.Row="1" >
                         
@@ -268,10 +285,7 @@
 
                 <!-- OS Info -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
-                    <TextBlock FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0">
-                        <Run Text="{DynamicResource Str_ScanYourSystem}" /><!--
-                        --><Run Text=":" />
-                    </TextBlock>
+                    <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="{DynamicResource Str_ScanYourSystem}" ContentStringFormat="{}{0}:" Padding="0" />
                     <StackPanel Orientation="Horizontal" x:Name="OSBlock">
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -305,6 +319,7 @@
                 </StackPanel>
 
             </Grid>
+            <Separator HorizontalAlignment="Left" Margin="326,205,0,0" VerticalAlignment="Top"/>
 
         </Grid>
 
