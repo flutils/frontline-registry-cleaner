@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
-using JCS;
 using System.Windows;
+using JCS;
 using System.Diagnostics;
 using System;
 using System.Linq;
@@ -16,8 +16,8 @@ namespace FrontLineGUI
 
         // Public class vars
         public CPUUtilization CPUInfo;
-        //public ScanItemsCollection ScanItemsObject;
-        public ObservableCollection<ScanItem> ScanItemsObject;
+        public ScanItemsCollection ScanItemsObject { get; set; }
+        //public ObservableCollection<ScanItem> ScanItemsObject { get; set; }
 
         #region Constructor
 
@@ -27,19 +27,21 @@ namespace FrontLineGUI
 
             // Required for OSIcon
             DataContext = this;
-            
+
             // Define CPUInfo
-            CPUInfo = new CPUUtilization(0,10,0,0);
+            CPUInfo = new CPUUtilization(0, 10, 0, 0);
 
             // RPECK 26/03/2023
             // Scan Items Collection
             // Presents an ObservableListCollection of "ScanItem" classes
-            ScanItemsObject = new ObservableCollection<ScanItem>()
-            {
-                new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png")
-            };
+            ScanItemsObject = new ScanItemsCollection();
 
-            Debug.Write(ScanItemsObject.Where(x => x.IsSelected == true).Count());
+            ScanItemsObject.Add(new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"));
+
+            //        new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png")
+             //   };
+
+            
 
             // Initialize the form
             InitializeComponent();
@@ -120,16 +122,10 @@ namespace FrontLineGUI
         public void SelectAllButton_Click(object sender, RoutedEventArgs e)
         {
 
-            if (ScanItemsObject != null)
-            {
-                Debug.Write(ScanItemsObject[0].IsSelected);
-                ScanItemsObject.Clear();
-                ScanItemsObject.Add(new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"));
-                Debug.Write(ScanItemsObject.Count());
-            }
+            ScanItemsObject.Add(new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"));
 
             if (App.pSDK != null)
-            { 
+            {
                 string s;
                 float fValue;
                 int dummy = 0;
@@ -147,13 +143,14 @@ namespace FrontLineGUI
             }
 
             // Find ListBox
-            ListBox ScanItems = FindName("ScanItems") as ListBox;
+            ListBox ScanItems = FindName("ScanItemsElement") as ListBox;
 
             // If present, selectAll else deselect everything
             if (ScanItems.SelectedItems.Count != ScanItems.Items.Count)
             {
                 ScanItems.SelectAll();
-            } else 
+            }
+            else
             {
                 ScanItems.UnselectAll();
             }

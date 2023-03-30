@@ -11,13 +11,20 @@ namespace FrontLineGUI
 {
     public class ConfigurationOptions
     {
+        
         // Constructor
         // Used to instantiate the class (IE define different options when it's loaded)
         public ConfigurationOptions() {}
 
-        //////////////
-        //////////////
-        // Public
+        #region PrivateOptions
+
+        private bool debug;
+        private bool cpuid;
+        private string language;
+
+        #endregion
+
+        #region PublicOptions
 
         // RPECK 26/03/2023
         // Default Directory for app
@@ -25,31 +32,34 @@ namespace FrontLineGUI
 
         // RPECK 25/03/2023
         // Language - used to determine the localization 
-        public string Language { get; set; }
+        public string Language
+        {
+            get { return language; }
+            set { language = value; }
+        }
 
         // RPECK 25/03/2023
         // CPUID Option -- this is used to determine whether the CPUID library should be invoked
         public bool CPUID {
-            get
-            {
-                return false;
-            }
+            get { return cpuid; }
+            set { cpuid = value; }
         }
+
+        // RPECK 29/03/2023
+        // Debug Option -- used to determine if the app should run in debug mode
+        public bool Debug
+        {
+            get { return debug; }
+            set { debug = value; }
+        }
+
+        #endregion
 
         // RPECK 25/03/2023
         // Load Settings from JSON
         // https://stackoverflow.com/a/54065208/1143732
         public void LoadFromFile(string filename = "config.json")
         {
-
-            // JSON file expects key:value pairs to match structure of class
-            /*  {
-             *    "CPUID": true,
-             *    "Language": "en"
-             *  }
-            */
-
-
         }
 
         // RPECK 25/03/2023
@@ -57,15 +67,7 @@ namespace FrontLineGUI
         // https://stackoverflow.com/a/54065208/1143732
         public void SaveToFile(string filename = "config.json")
         {
-
-            
-
-
         }
-
-        //////////////
-        //////////////
-        // Private
 
     }
 }

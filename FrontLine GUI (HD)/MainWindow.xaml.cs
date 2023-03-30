@@ -114,7 +114,7 @@ namespace FrontLineGUI
 
         // Settings Buttons
         // Loads the "settings" page
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        public void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             // Elements
             Button srcButton  = e.Source as Button;

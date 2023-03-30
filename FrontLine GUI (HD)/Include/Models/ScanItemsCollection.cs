@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FrontLineGUI
 {
- 
+
+    // https://learn.microsoft.com/en-us/dotnet/desktop/wpf/data/how-to-create-and-bind-to-an-observablecollection?view=netframeworkdesktop-4.8
     public class ScanItemsCollection : ObservableCollection<ScanItem>
     {
         public ScanItemsCollection() : base()

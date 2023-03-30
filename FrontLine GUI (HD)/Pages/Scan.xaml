@@ -4,18 +4,13 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FrontLineGUI"
-    x:Class="FrontLineGUI.Scan"
+      x:Class="FrontLineGUI.Scan"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="771"
-      Title="Scan"
-      Loaded="ScanForm_Loaded">
+      Title="Scan">
 
     <!-- Resources -->
     <Page.Resources>
-        
-        <!-- Data Bindings -->
-        <!-- Allows us to import data from the VM layer -->
-        <local:ScanItemsCollection x:Key="ScanItemsObject"/>
 
         <!-- Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="MainScanButton">
@@ -118,7 +113,7 @@
                                     <Border.Effect>
                                         <DropShadowEffect Color="Black" Opacity="0.85" ShadowDepth="1" BlurRadius="0" />
                                     </Border.Effect>
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <ContentPresenter Name="ButtonContent" HorizontalAlignment="Center" VerticalAlignment="Center" />
                                 </Border>
                             </Border>
                         </Border>
@@ -142,6 +137,8 @@
                             </Trigger>
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="Border" Property="Background" Value="Black" />
+                                <!-- https://stackoverflow.com/a/30699891/1143732 -->
+                                <Setter TargetName="ButtonContent" Property="ContentPresenter.Content" Value="Test" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                         
@@ -210,7 +207,7 @@
                 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <TextBlock DataContext="{DynamicResource Str_ScanMainLastPerformed}" Text="{Binding Path=., StringFormat='{}{0}:'}" FontWeight="Bold" FontSize="12" FontStyle="Italic" TextDecorations="Underline" />
+                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" Content="{Binding Path=., StringFormat='{}{0}:'}" FontWeight="Bold" FontSize="12" FontStyle="Italic" />
                     <TextBlock Text="01/08/2022" FontWeight="Bold" FontSize="12" FontStyle="Italic" Margin="5,0,0,0" />
                 </StackPanel>
 
@@ -228,7 +225,7 @@
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="15,0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" IsSynchronizedWithCurrentItem="True" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItems" SelectionChanged="ScanItemsListBox_Changed">
+                    <ListView Margin="15,0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />
@@ -247,10 +244,6 @@
                         </ListBox.ItemTemplate>
                     </ListView>
 
-                    <ListView ItemsSource="{Binding ScanItemsObject}">
-                        
-                    </ListView>
-                    
                     <!-- Items Info Grid -->
                     <Grid Grid.Row="1" >
                         
@@ -262,13 +255,13 @@
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
 
-                        <TextBlock Grid.Column="0" Text="{Binding Source={StaticResource ScanItemsObject}, Path=SelectedItems, Mode=OneWay, FallbackValue=0,StringFormat='Selected: {0}/{0}'}" VerticalAlignment="Center" />
+                        <!-- <TextBlock Grid.Column="0" Text="{Binding Source={StaticResource ScanItemsObject}, Path=SelectedItems, Mode=OneWay, FallbackValue=0,StringFormat='Selected: {0}/{0}'}" VerticalAlignment="Center" /> -->
                         <Button Grid.Column="1" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
                     </Grid>
                     
                 </Grid>
             
-        </StackPanel>
+            </StackPanel>
 
             <!-- Bottom Row -->
             <Border Grid.Row="2" Background="#f9f9f9" BorderBrush="#c5c5c5" BorderThickness="0,1,0,0"/>
@@ -289,11 +282,8 @@
                     <StackPanel Orientation="Horizontal" x:Name="OSBlock">
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Name="OSSystem" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12">
-                                <Run Text="{Binding Path=Name, Mode=OneTime, FallbackValue=0}" />
-                                <Run Text="{Binding Path=Name, Mode=OneTime, FallbackValue=0, StringFormat='({0}bit)'}" />
-                            </TextBlock>
-                            <TextBlock Text="{Binding OSVersionBuild, Mode=OneTime, FallbackValue=N/A}" Name="OSInfo" VerticalAlignment="Center" FontSize="8" LineStackingStrategy="BlockLineHeight" LineHeight="10" />
+                            <TextBlock Name="OSName" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12" />
+                            <TextBlock Name="OSEdition" VerticalAlignment="Center" FontSize="10" LineStackingStrategy="BlockLineHeight" LineHeight="10" />
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
@@ -319,7 +309,6 @@
                 </StackPanel>
 
             </Grid>
-            <Separator HorizontalAlignment="Left" Margin="326,205,0,0" VerticalAlignment="Top"/>
 
         </Grid>
 

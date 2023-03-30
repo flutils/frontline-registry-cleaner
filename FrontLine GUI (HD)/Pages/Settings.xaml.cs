@@ -18,6 +18,7 @@ namespace FrontLineGUI.Pages
     {
         public Settings()
         {
+            DataContext = App.ConfigOptions;
             InitializeComponent();
         }
     }
