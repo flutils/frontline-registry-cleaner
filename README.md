@@ -1,8 +1,8 @@
 <h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
 <h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software.</h3>
-<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable tool to help remove bloat from Windows. It was originally released in 2011 and we redesigned it in 2023 to support the open source community: -  
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable scanner tool to help remove bloat from Windows. It was released in 2011 and we redesigned it in 2023 to support the open source community: -  
 
-<img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
+<p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/Eugeny/terminus/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/eugeny/terminus.svg?label=License&style=flat-square"></a> <a href="https://travis-ci.org/Eugeny/terminus"><img alt="Travis (.org)" src="https://img.shields.io/travis/Eugeny/terminus.svg?label=CI&logo=travis&logoColor=white&style=flat-square"></a>
@@ -19,13 +19,15 @@ It is able to scan files and settings inside a Windows® PC, removing those you 
 
 The need is born of junk files and damaged registry settings slowing down certain parts of the system.
 
- Whilst improvements in CPU and RAM performance have mitigated the wider effects of this, the problem is still prevalent and can adversely affect the likes of gamers, graphic designers, programmers and others who depend on their systems each day.
+Whilst improvements in CPU and RAM have mitigated the wider effects of this, the problem remains and can adversely affect the likes of graphic designers, programmers and others who depend on their systems each day.
 
-<u>Frontline Registry Cleaner 2.0</u> was originally designed to solve this with a rigid set of scanning options. We've now changed that to enable customization - whereby users are able to add and manage the files/settings the tool scans from within the UI.
+<u>Frontline Registry Cleaner 2.0</u> was designed to solve this with a rigid set of scanning options. We've now changed that to enable customization - whereby users are able to add and manage the files/settings the tool scans.
+
+We'll be updating the repository with usage instructions soon.
 
 --
 
-This repository is provided 'as-is' and we accept no responsibility for using the application. 
+The software is provided 'as-is' and we accept no responsibility for its use. 
 
 If you have any questions, you're welcome to [raise an issue](issues) or send us an email.
 
