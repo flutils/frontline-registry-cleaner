@@ -167,6 +167,12 @@
                 </Trigger>                
             </Style.Triggers>
         </Style>
+        
+        <!-- Last Scan Button -->
+        <Style TargetType="{x:Type Button}" x:Key="LastScanButton" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
 
     </Page.Resources>
 
@@ -207,7 +213,7 @@
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Background="{x:Null}">
+                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Background="{x:Null}" Style="{StaticResource LastScanButton}">
                         <TextBlock>
                             <Run Text="{Binding Path=.}" TextDecorations="Underline" /><!--
                             --><Run Text=":" />
@@ -230,7 +236,7 @@
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="15,0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement">
+                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />
@@ -257,13 +263,13 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Column="0" VerticalAlignment="Center">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="Selected: {0}/{1}">
-                                    <Binding Path="ScanItemsObject.SelectedItems" />
+                                    <Binding ElementName="ScanItemsElement" Path="SelectedItems.Count" />
                                     <Binding Path="ScanItemsObject.Count" />
                                 </MultiBinding>
                             </TextBlock.Text>
@@ -292,7 +298,7 @@
                 <!-- OS Info -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
                     <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="{DynamicResource Str_ScanYourSystem}" ContentStringFormat="{}{0}:" Padding="0" />
-                    <StackPanel Orientation="Horizontal" x:Name="OSBlock">
+                    <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Name="OSName" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12" />

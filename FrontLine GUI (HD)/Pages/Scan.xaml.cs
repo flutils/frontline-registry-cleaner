@@ -4,7 +4,6 @@ using JCS;
 using System.Diagnostics;
 using System;
 using System.Linq;
-using System.Collections.ObjectModel;
 
 namespace FrontLineGUI
 {
@@ -15,7 +14,7 @@ namespace FrontLineGUI
     {
 
         // Public class vars
-        public CPUUtilization CPUInfo;
+        public CPUUtilization CPUInfo { get; set; }
         public ScanItemsCollection ScanItemsObject { get; set; }
 
         #region Constructor
@@ -52,6 +51,12 @@ namespace FrontLineGUI
             // RPECK 28/03/2023
             // Allows us to bind to the CPUInfo object
             CPUPower.DataContext = CPUInfo;
+
+            // RPECK 02/04/2023
+            // Bind to OSVersionInfo
+            OSName.Text = OSVersionInfo.Name + " (" + OSVersionInfo.OSBits.ToString().Remove(0,3) + "bit)";
+            OSEdition.Text = OSVersionInfo.VersionString.ToString();
+
         }
 
         #endregion

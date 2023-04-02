@@ -1,6 +1,6 @@
 <h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
 <h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software.</h3>
-<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable scanner tool to help remove bloat from Windows. It was released in 2011 and we redesigned it in 2023 to support the open source community: -  
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable scanner tool to remove bloat from Windows®. It was released in 2011 and redesigned in 2023 to support the open source community: -  
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
@@ -15,7 +15,7 @@
 
 <p align="center">--</p>
 
-It is able to scan files and settings inside a Windows® PC, removing those you define as being unnecessary.
+It works by scanning files and settings inside a Windows® PC, removing those you define as unnecessary.
 
 The need is born of junk files and damaged registry settings slowing down certain parts of the system.
 
@@ -23,7 +23,7 @@ Whilst improvements in CPU and RAM have mitigated the wider effects of this, the
 
 <u>Frontline Registry Cleaner 2.0</u> was designed to solve this with a rigid set of scanning options. We've now changed that to enable customization - whereby users are able to add and manage the files/settings the tool scans.
 
-We'll be updating the repository with usage instructions soon.
+We'll be updating the repository with further instructions soon.
 
 --
 
@@ -91,8 +91,7 @@ If you notice any of our products used in an illegal way, you should send an ale
 
 <!-- Links -->
 [flutils]:              http://www.frontlineutilities.co.uk
-[flcleaner.com]:        https://www.flcleaner.com
-[frontlinecleaner.com]: https://www.flcleaner.com/2.0
+[frontlinecleaner.com]: https://www.frontlinecleaner.com
 
 <!-- ################################### -->
 <!-- ################################### -->
