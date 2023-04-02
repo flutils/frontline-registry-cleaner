@@ -1,7 +1,11 @@
-<h1 align="left"><u>Frontline Registry Cleaner 2.1</u> - Windows 7,8,10,11 Junk File & Registry Cleaner Software. Open Source & Physical Copies.</h1>
-<p align="left">Welcome to the repository for <a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>.</p>
-<p>We've updated the code and have provided it as an open source project for anybody who is interested: -</p>
-<img src="readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
+<h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
+<h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software.</h3>
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a> is a programmable tool to help remove bloat from Windows. 
+
+It was originally developed by our team in Ukraine and released as a commercial product in 2011. In 2023, we redesigned it for the UK open source community, adding the ability to customize the scanning system.
+
+<p>This repository contains the code for the system. You're welcome to change/contribute to it as you wish: -</p>
+<img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/Eugeny/terminus/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/eugeny/terminus.svg?label=License&style=flat-square"></a> <a href="https://travis-ci.org/Eugeny/terminus"><img alt="Travis (.org)" src="https://img.shields.io/travis/Eugeny/terminus.svg?label=CI&logo=travis&logoColor=white&style=flat-square"></a>
@@ -12,33 +16,35 @@
   <a href="https://github.com/Eugeny/terminus/releases/latest"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/eugeny/terminus/total.svg?label=DOWNLOAD&logo=github&style=for-the-badge"></a> <a href="https://ci.appveyor.com/project/Eugeny/terminus/build/artifacts"><img src="https://img.shields.io/badge/download-nightly%20build-magenta.svg?logo=appveyor&style=for-the-badge"/></a> <a href="https://gitter.im/terminus-terminal/community"><img alt="Gitter" src="https://img.shields.io/gitter/room/terminus/community.svg?color=blue&logo=gitter&style=for-the-badge"></a>
 </p>
 
-<div align="center">--</div><Br />
+<p align="center">--</p><br />
 
-<u>Frontline Registry Cleaner 2.0</u> was originally released in 2011 and distributed by several retailers in the UK.
+Its need comes from the tendancy for Windows® PC's to collect junk files and erroneous registry settings.
 
-We procured the code from a company in Ukraine and promoted it through the Internet. It has a proprietary engine.
+This can happen due to a number of reasons, however, it is mainly through updating Windows and the usage of apps.
 
-In 2022, we revamped the GUI and some of the backend scanning functionality to bring it up to modern standards. The new system provides the means to manage the items to be scanned. 
+Whilst Microsoft provide a ["Disk Cleanup" tool](https://support.microsoft.com/en-us/windows/disk-cleanup-in-windows-8a96ff42-5751-39ad-23d6-434b4d5b9a68), and there are numerous "optimizer" systems that address the issue, none are customizable. We designed 2.1 to permit customizability, allowing people to define which types of files/settings to clean.
+
+If you have questions, you're welcome to [raise an issue](https://github.com/flutils/flcleaner/issues) or send us an email.
 
 -
 
-You're welcome to ask questions and / or contribute to the code with a PR.
+We'll eventually be updating [the wiki](https://github.com/flutils/flcleaner/wiki) with information on how it works.
 
 ---
 
 #### ⚠️ Requirements
 
 1. [VC++ Redistributable (x86)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
-2. [.NET Core 7.0+](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) (x86 or x64 Windows SDK)
+2. [.NET 7.0+](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) (x86 or x64 Windows SDK)
 
-When running the app, you will need to an `x86` version of VC++ redistributable.
+Runtime requires VC++ redistributable `x86` >= 2015.
 
 
 ---
 
 #### 🚦 Changelog
 
-- [x] (02/04/2023) Upgraded .NET to 7.0 and changed interface
+- [x] (02/04/2023) Upgraded to .NET 7.0 and changed interface
 - [x] (25/01/2022) Upgraded UI to HD
 - [x] (24/01/2022) Added Setup project to deploy Win32 binaries, added MSIX for Microsoft Store submission
 - [x] (27/09/2020) Changed .NET target to 4.7, VS Studio 2019, Windows SDK
