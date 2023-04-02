@@ -7,7 +7,7 @@
       x:Class="FrontLineGUI.Scan"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="771"
-      Title="Scan">
+      Title="Scan" Background="Black">
 
     <!-- Resources -->
     <Page.Resources>
@@ -157,14 +157,12 @@
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
+            <Setter Property="IsEnabled" Value="{Binding IsEnabled, Mode=OneWay}"/>
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True" >
                     <Setter Property="FontWeight" Value="Bold" />
                     <Setter Property="BorderThickness" Value="0" />
                 </Trigger>
-                <Trigger Property="IsMouseOver" Value="True" >
-                    <Setter Property="Background" Value="Blue" />
-                </Trigger>                
             </Style.Triggers>
         </Style>
         
@@ -172,6 +170,25 @@
         <Style TargetType="{x:Type Button}" x:Key="LastScanButton" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Background" Value="{x:Null}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.1" To="0.7" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.05" To="{x:Null}" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
         </Style>
 
     </Page.Resources>
@@ -213,13 +230,14 @@
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Background="{x:Null}" Style="{StaticResource LastScanButton}">
+                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}">
                         <TextBlock>
                             <Run Text="{Binding Path=.}" TextDecorations="Underline" /><!--
                             --><Run Text=":" />
+                            <Run Text="01/08/2022" />
                         </TextBlock>
                     </Button>
-                    <TextBlock Text="01/08/2022" FontWeight="Bold" FontSize="12" FontStyle="Italic" Margin="5,0,0,0" />
+
                 </StackPanel>
 
                 <!-- Items Grid -->
@@ -236,7 +254,7 @@
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement">
+                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement" Background="{x:Null}" BorderBrush="{x:Null}">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />
@@ -296,13 +314,14 @@
                 </Grid.RowDefinitions>
 
                 <!-- OS Info -->
+                <!-- https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win#_comments -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
                     <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="{DynamicResource Str_ScanYourSystem}" ContentStringFormat="{}{0}:" Padding="0" />
                     <StackPanel Orientation="Horizontal">
                         <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                         <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                             <TextBlock Name="OSName" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12" />
-                            <TextBlock Name="OSEdition" VerticalAlignment="Center" FontSize="10" LineStackingStrategy="BlockLineHeight" LineHeight="10" />
+                            <TextBlock Name="OSEdition" VerticalAlignment="Center" FontSize="10" LineStackingStrategy="BlockLineHeight" LineHeight="11" />
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>

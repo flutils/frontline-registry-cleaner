@@ -27,7 +27,7 @@ namespace FrontLineGUI
             DataContext = this;
 
             // Define CPUInfo
-            CPUInfo = new CPUUtilization(0, 10, 0, 0);
+            CPUInfo = new CPUUtilization(56, 10, 25, 11);
 
             // RPECK 26/03/2023
             // Scan Items Collection
@@ -54,7 +54,7 @@ namespace FrontLineGUI
 
             // RPECK 02/04/2023
             // Bind to OSVersionInfo
-            OSName.Text = OSVersionInfo.Name + " (" + OSVersionInfo.OSBits.ToString().Remove(0,3) + "bit)";
+            OSName.Text    = OSVersionInfo.Name + " (" + OSVersionInfo.OSBits.ToString().Remove(0,3) + "bit)";
             OSEdition.Text = OSVersionInfo.VersionString.ToString();
 
         }

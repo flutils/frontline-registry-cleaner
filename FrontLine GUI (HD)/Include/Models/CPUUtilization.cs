@@ -23,7 +23,7 @@ namespace FrontLineGUI
         private int hdd_power;
 
         // Constructor
-        public CPUUtilization(int cpu_power, int gpu_power, int ram_power, int hdd_power)
+        public CPUUtilization(int cpu_power, int ram_power, int hdd_power, int gpu_power)
         {
             this.cpu_power = cpu_power;
             this.gpu_power = gpu_power;
