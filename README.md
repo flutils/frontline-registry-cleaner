@@ -1,10 +1,7 @@
 <h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
 <h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software.</h3>
-<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a> is a programmable tool to help remove bloat from Windows. 
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable tool to help remove bloat from Windows. It was originally released in 2011 and we redesigned it in 2023 to support the open source community: -  
 
-It was originally developed by our team in Ukraine and released as a commercial product in 2011. In 2023, we redesigned it for the UK open source community, adding the ability to customize the scanning system.
-
-<p>This repository contains the code for the system. You're welcome to change/contribute to it as you wish: -</p>
 <img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
 
 <p align="center">
@@ -16,19 +13,22 @@ It was originally developed by our team in Ukraine and released as a commercial 
   <a href="https://github.com/Eugeny/terminus/releases/latest"><img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/eugeny/terminus/total.svg?label=DOWNLOAD&logo=github&style=for-the-badge"></a> <a href="https://ci.appveyor.com/project/Eugeny/terminus/build/artifacts"><img src="https://img.shields.io/badge/download-nightly%20build-magenta.svg?logo=appveyor&style=for-the-badge"/></a> <a href="https://gitter.im/terminus-terminal/community"><img alt="Gitter" src="https://img.shields.io/gitter/room/terminus/community.svg?color=blue&logo=gitter&style=for-the-badge"></a>
 </p>
 
-<p align="center">--</p><br />
+<p align="center">--</p>
 
-Its need comes from the tendancy for Windows® PC's to collect junk files and erroneous registry settings.
+It is able to scan files and settings inside a Windows® PC, removing those you define as being unnecessary.
 
-This can happen due to a number of reasons, however, it is mainly through updating Windows and the usage of apps.
+The need is born of junk files and damaged registry settings slowing down certain parts of the system.
 
-Whilst Microsoft provide a ["Disk Cleanup" tool](https://support.microsoft.com/en-us/windows/disk-cleanup-in-windows-8a96ff42-5751-39ad-23d6-434b4d5b9a68), and there are numerous "optimizer" systems that address the issue, none are customizable. We designed 2.1 to permit customizability, allowing people to define which types of files/settings to clean.
+ Whilst improvements in CPU and RAM performance have mitigated the wider effects of this, the problem is still prevalent and can adversely affect the likes of gamers, graphic designers, programmers and others who depend on their systems each day.
 
-If you have questions, you're welcome to [raise an issue](https://github.com/flutils/flcleaner/issues) or send us an email.
+<u>Frontline Registry Cleaner 2.0</u> was originally designed to solve this with a rigid set of scanning options. We've now changed that to enable customization - whereby users are able to add and manage the files/settings the tool scans from within the UI.
 
--
+--
 
-We'll eventually be updating [the wiki](https://github.com/flutils/flcleaner/wiki) with information on how it works.
+This repository is provided 'as-is' and we accept no responsibility for using the application. 
+
+If you have any questions, you're welcome to [raise an issue](issues) or send us an email.
+
 
 ---
 
