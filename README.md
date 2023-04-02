@@ -1,4 +1,7 @@
-<img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
+<h1 align="left"><u>Frontline Registry Cleaner 2.1</u> - Windows 7,8,10,11 Junk File & Registry Cleaner Software. Open Source & Physical Copies.</h1>
+<p align="left">Welcome to the repository for <a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>.</p>
+<p>We've updated the code and have provided it as an open source project for anybody who is interested: -</p>
+<img src="readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1">
 
 <p align="center">
   <a href="https://raw.githubusercontent.com/Eugeny/terminus/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/eugeny/terminus.svg?label=License&style=flat-square"></a> <a href="https://travis-ci.org/Eugeny/terminus"><img alt="Travis (.org)" src="https://img.shields.io/travis/Eugeny/terminus.svg?label=CI&logo=travis&logoColor=white&style=flat-square"></a>
@@ -11,70 +14,31 @@
 
 <div align="center">--</div><Br />
 
-[Frontline Registry Cleaner 2.0](https://www.frontlinecleaner.com) was released in 2011 and distributed by several retailers in the UK.
+<u>Frontline Registry Cleaner 2.0</u> was originally released in 2011 and distributed by several retailers in the UK.
 
-It enables Windows PC users to clean out junk files and corrupted registry settings with a simple scanning system.
+We procured the code from a company in Ukraine and promoted it through the Internet. It has a proprietary engine.
 
-In 2022, we revamped the GUI and some of the backend scanning functionality to bring it up to modern standards. We intend to continue to add to this functionality to embrace cloud endpoints and various other additions.
+In 2022, we revamped the GUI and some of the backend scanning functionality to bring it up to modern standards. The new system provides the means to manage the items to be scanned. 
 
----
+-
 
-#### ℹ️ How It Works
-
-The redesigned version permits "items" to be created.
-
-These are what the tool scans and come in three types - `settings`, `files` and `security`. 
-
-Users are able to add and manage the "items" they wish to scan, allowing for customizability.
-
-In the future, we want to add the means to include "plugins" that permit pre-packaged items to be added. 
+You're welcome to ask questions and / or contribute to the code with a PR.
 
 ---
 
 #### ⚠️ Requirements
 
 1. [VC++ Redistributable (x86)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
-2. [.NET Core 6.0+](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) (x86 or x64 Windows SDK)
+2. [.NET Core 7.0+](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) (x86 or x64 Windows SDK)
 
 When running the app, you will need to an `x86` version of VC++ redistributable.
 
-It does not seem to matter which version you use, as long as it is `x86` compatible. We found that without it, the app will fail citing `FLCleanEngine.dll` being unavailable.
 
 ---
 
-#### 🚦 Github Actions
+#### 🚦 Changelog
 
-We have now moved the build pipeline to Github Actions.
-
-The build script is triggered when a `tag` is pushed to the repository: -
-
-```
-git tag v2.0.0.3-alpha1
-git push origin v2.0.0.3-alpha1
-```
-
-If you wish to remove the tag, you need to use the following: -
-
-```
-git tag -d v2.0.0.3-alpha1
-git push -d origin v2.0.0.3-alpha1
-```
-
-The build creates a [release](https://github.com/flutils/flcleaner/releases), which contains MSI setup applications for x64 and x86 binaries, as well as zip files with the raw executable & DLL files inside.
-
-The code only runs in x86, so you can ignore x64 entirely.
-
-We're working on integrating signing the various components that require it: -
-
- - Setup
- - SetupActions (creates a DLL for Setup)
- - FrontlineGUI (main app)
- - FLCleanEngine (cleaner engine DLL)
-
----
-
-#### 🗓️ Changelog
-
+- [x] (02/04/2023) Upgraded .NET to 7.0 and changed interface
 - [x] (25/01/2022) Upgraded UI to HD
 - [x] (24/01/2022) Added Setup project to deploy Win32 binaries, added MSIX for Microsoft Store submission
 - [x] (27/09/2020) Changed .NET target to 4.7, VS Studio 2019, Windows SDK
@@ -91,10 +55,6 @@ To contribute, please follow the steps below:
 2. Make the changes you want/need
 3. Commit your local repo and push to your remote repository
 4. Create a PR to bring the new changes into our master branch
-
-Anyone is welcome to contribute whatever they wish.
-
-As the product has been discontinued for some time, we are no longer actively developing it.
 
 ---
 

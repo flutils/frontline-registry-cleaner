@@ -195,19 +195,24 @@
 
             <!-- Title -->
             <StackPanel HorizontalAlignment="stretch" VerticalAlignment="Top">
-                
+
                 <!-- Title -->
                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{DynamicResource Str_ScanPreTitle}" />
-                
+
                 <!-- Intro -->
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_ScanPreInfo}" TextAlignment="Center" FontSize="12" />
 
                 <!-- Scan Now Button -->
                 <Button Style="{StaticResource MainScanButton}" Content="{DynamicResource Str_ScanMainButton}" />
-                
+
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" Content="{Binding Path=., StringFormat='{}{0}:'}" FontWeight="Bold" FontSize="12" FontStyle="Italic" />
+                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Background="{x:Null}">
+                        <TextBlock>
+                            <Run Text="{Binding Path=.}" TextDecorations="Underline" /><!--
+                            --><Run Text=":" />
+                        </TextBlock>
+                    </Button>
                     <TextBlock Text="01/08/2022" FontWeight="Bold" FontSize="12" FontStyle="Italic" Margin="5,0,0,0" />
                 </StackPanel>
 
@@ -237,7 +242,7 @@
                                     <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left" Margin="0,0,5,0"/>
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                                         <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding IsSelected, FallbackValue=Test}" TextWrapping="Wrap" FontWeight="Normal" FontSize="11" />
+                                        <TextBlock Text="{Binding IsSelected}" TextWrapping="Wrap" FontWeight="Normal" FontSize="11" />
                                     </StackPanel>
                                 </DockPanel>
                             </DataTemplate>
@@ -246,7 +251,7 @@
 
                     <!-- Items Info Grid -->
                     <Grid Grid.Row="1" >
-                        
+
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
@@ -255,12 +260,20 @@
                             <RowDefinition Height="1*" />
                         </Grid.RowDefinitions>
 
-                        <!-- <TextBlock Grid.Column="0" Text="{Binding Source={StaticResource ScanItemsObject}, Path=SelectedItems, Mode=OneWay, FallbackValue=0,StringFormat='Selected: {0}/{0}'}" VerticalAlignment="Center" /> -->
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="Selected: {0}/{1}">
+                                    <Binding Path="ScanItemsObject.SelectedItems" />
+                                    <Binding Path="ScanItemsObject.Count" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
                         <Button Grid.Column="1" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
                     </Grid>
-                    
+
                 </Grid>
-            
+
             </StackPanel>
 
             <!-- Bottom Row -->

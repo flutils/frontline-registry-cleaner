@@ -17,7 +17,6 @@ namespace FrontLineGUI
         // Public class vars
         public CPUUtilization CPUInfo;
         public ScanItemsCollection ScanItemsObject { get; set; }
-        //public ObservableCollection<ScanItem> ScanItemsObject { get; set; }
 
         #region Constructor
 
@@ -34,14 +33,18 @@ namespace FrontLineGUI
             // RPECK 26/03/2023
             // Scan Items Collection
             // Presents an ObservableListCollection of "ScanItem" classes
-            ScanItemsObject = new ScanItemsCollection();
-
-            ScanItemsObject.Add(new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"));
-
-            //        new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png")
-             //   };
-
-            
+            ScanItemsObject = new ScanItemsCollection()
+            {
+                new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"),
+                new ScanItem("Invalid Files", "Clear invalid file errors.", true, "/Resources/Scan/invalid_files.png"),
+                new ScanItem("Application Errors", "Remove old application settings.", true, "/Resources/Scan/application_errors.png"),
+                new ScanItem("DLL Errors", "Fix orphaned DLL entries.", true, "/Resources/Scan/dll_errors.png"),
+                new ScanItem("Internet Errors", "Fix web browser errors.", true, "/Resources/Scan/internet_errors.png"),
+                new ScanItem("Windows Errors", "Resolve Windows registry errors.", true, "/Resources/Scan/windows_errors.png"),
+                new ScanItem("Temp Files", "Clear Windows temp files.", true, "/Resources/Scan/temp_files.png"),
+                new ScanItem("Junk Files", "Remove Windows junk files.", true, "/Resources/Scan/recycle_bin.png"),
+                new ScanItem("Internet Cache", "Clear privacy data from browser caches.", true, "/Resources/Scan/internet_cache.png")
+            };
 
             // Initialize the form
             InitializeComponent();
@@ -123,6 +126,7 @@ namespace FrontLineGUI
         {
 
             ScanItemsObject.Add(new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"));
+            Debug.Write(ScanItemsObject.Count());
 
             if (App.pSDK != null)
             {
