@@ -8,12 +8,12 @@
   IgnorableNamespaces="uap rescap iot">
 
   <Identity
-    Name="FLC2"
+    Name="FLC2.1"
     Publisher="CN=Richard"
-    Version="2.0.0.0" />
+    Version="2.1.0.0" />
 
   <Properties>
-    <DisplayName>Frontline Registry Cleaner 2.0</DisplayName>
+    <DisplayName>Frontline Registry Cleaner 2.1</DisplayName>
     <PublisherDisplayName>Frontline Utilities LTD</PublisherDisplayName>
     <Logo>Images\StoreLogo.png</Logo>
   </Properties>
@@ -32,13 +32,15 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="Frontline Registry Cleaner 2.0"
-        Description="Temporary &amp; Junk File Cleaner + Registry Cleaner"
+        DisplayName="Frontline Registry Cleaner 2.1"
+        Description="Windows Junk File Cleaner + Registry Cleaner"
         BackgroundColor="transparent"
         Square150x150Logo="Images\Square150x150Logo.png"
         Square44x44Logo="Images\Square44x44Logo.png">
         <uap:DefaultTile Wide310x150Logo="Images\Wide310x150Logo.png" />
         <uap:SplashScreen Image="Images\SplashScreen.png" />
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape"/></uap:InitialRotationPreference>
       </uap:VisualElements>
     </Application>
   </Applications>

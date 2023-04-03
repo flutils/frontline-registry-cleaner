@@ -172,19 +172,13 @@
                             </DockPanel>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=(Selector.IsSelected)}" Value="True">
-                                <Setter TargetName="BackgroundBorder" Property="Visibility" Value="Collapsed" />
+                            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"  Value="True">
+                                <Setter Property="Visibility" Value="Hidden" />
                             </DataTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True" >
-                    <Setter Property="FontWeight" Value="Bold" />
-                    <Setter Property="BorderThickness" Value="0" />
-                </Trigger>
-            </Style.Triggers>
         </Style>
         
         <!-- Last Scan Button -->

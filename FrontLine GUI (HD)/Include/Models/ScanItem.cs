@@ -11,7 +11,7 @@ namespace FrontLineGUI
     // RPECK 26/03/2023
     // ScanItem class for the 'scan' page -- allows us to populate a datagrid without having to define the items manually
     // Underlying benefit is that it gives us the means to extend the underlying scan feature as needed
-    public class ScanItem 
+    public class ScanItem
     {
         // Internal values
         //private enum scanItemType { File, Setting }; // this is a choice between file or setting when using the scanner 
