@@ -327,7 +327,7 @@
                 </StackPanel>
 
                 <!-- Performance (CPU/RAM) -->
-                <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="CPUPower">
+                <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
                         <TextBlock Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />

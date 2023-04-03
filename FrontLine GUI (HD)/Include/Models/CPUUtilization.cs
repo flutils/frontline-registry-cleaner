@@ -40,7 +40,7 @@ namespace FrontLineGUI
             get { return cpu_power; }
             set {
                 cpu_power = value;
-                OnPropertyChanged();
+                OnPropertyChanged("CPUPower");
             }
         }
         public int GPUPower
@@ -48,7 +48,7 @@ namespace FrontLineGUI
             get { return gpu_power; }
             set {
                 gpu_power = value;
-                OnPropertyChanged();
+                OnPropertyChanged("GPUPower");
             }
         }
 
@@ -57,7 +57,7 @@ namespace FrontLineGUI
             get { return ram_power; }
             set {
                 ram_power = value;
-                OnPropertyChanged();
+                OnPropertyChanged(null);
             }
         }
 
@@ -66,7 +66,7 @@ namespace FrontLineGUI
             get { return hdd_power; }
             set {
                 hdd_power = value;
-                OnPropertyChanged();
+                OnPropertyChanged("HDDPower");
             }
         }
 

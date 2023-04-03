@@ -57,6 +57,10 @@ namespace FrontLineGUI
             OSName.Text    = OSVersionInfo.Name + " (" + OSVersionInfo.OSBits.ToString().Remove(0,3) + "bit)";
             OSEdition.Text = OSVersionInfo.VersionString.ToString();
 
+            // RPECK 02/04/2023
+            // Update CPU infos
+            CPUInfo.RAMPower = 90;
+
         }
 
         #endregion

@@ -1,6 +1,6 @@
 <h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
-<h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software.</h3>
-<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable scanner tool to remove bloat from Windows®. It was released in 2011 and redesigned in 2023 to support scan management: -  
+<h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software</h3>
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable scanner software tool designed to remove bloat from Windows®. It was released in 2011 and redesigned in 2023 to support scan management: -  
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
@@ -17,13 +17,13 @@
 
 It works by scanning files and settings inside a Windows® PC, removing those defined as unnecessary.
 
-The need is born of junk files and damaged registry settings slowing down certain parts of the system.
+Its need is born of junk files and damaged registry settings slowing down certain parts of the Windows® OS.
 
-Whilst improvements in CPU and RAM have mitigated the wider effects of this, the problem remains and can adversely affect the likes of graphic designers, programmers and others who depend on their systems each day.
+Whilst improvements in CPU and RAM performance have mitigated the wider effects of this, the problem remains and can adversely affect the likes of graphic designers, programmers and other professionals who depend on their systems each day.
 
-The original (2.0) was designed to solve the issue with a hard-coded set of scanning options. We've now changed that to enable customization - whereby users are able to add and manage the files/settings the tool scans.
+The product was originally designed to solve the issue with a hard-coded set of scanning options. We've now changed that to enable customization - whereby users are able to manage the files/settings it scans.
 
-We'll be updating the repository with further instructions soon.
+We'll be updating the repository with further information soon.
 
 --
 
