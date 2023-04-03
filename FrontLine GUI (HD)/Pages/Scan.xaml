@@ -11,6 +11,9 @@
 
     <!-- Resources -->
     <Page.Resources>
+        
+        <!-- Converters -->
+        <local:NotEqualToOneBooleanConverter x:Key="NotEqualToOneBooleanConverter" />
 
         <!-- Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="MainScanButton">
@@ -138,7 +141,7 @@
                             <Trigger Property="IsPressed" Value="True">
                                 <Setter TargetName="Border" Property="Background" Value="Black" />
                                 <!-- https://stackoverflow.com/a/30699891/1143732 -->
-                                <Setter TargetName="ButtonContent" Property="ContentPresenter.Content" Value="Test" />
+                                <!-- <Setter TargetName="ButtonContent" Property="ContentPresenter.Content" Value="Test" /> -->
                             </Trigger>
                         </ControlTemplate.Triggers>
                         
@@ -161,7 +164,7 @@
             <Setter Property="IsEnabled" Value="{Binding IsEnabled, Mode=OneWay}"/>
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
                         <Border Background="Transparent" x:Name="BackgroundBorder">
                             <DockPanel Margin="2" LastChildFill="True">
                                 <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left" />
@@ -172,9 +175,22 @@
                             </DockPanel>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}"  Value="True">
-                                <Setter Property="Visibility" Value="Hidden" />
-                            </DataTrigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="BackgroundBorder" Storyboard.TargetProperty="Opacity" Duration="0:0:0.1" To="0.25" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="BackgroundBorder" Storyboard.TargetProperty="Opacity" Duration="0:0:0.05" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -241,7 +257,7 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_ScanPreInfo}" TextAlignment="Center" FontSize="12" />
 
                 <!-- Scan Now Button -->
-                <Button Style="{StaticResource MainScanButton}" Content="{DynamicResource Str_ScanMainButton}" />
+                <Button Style="{StaticResource MainScanButton}" Content="{DynamicResource Str_ScanMainButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" />
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -269,7 +285,7 @@
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />

@@ -4,10 +4,6 @@ using System.Windows.Input;
 using System.Diagnostics; // for Process.Start
 using System.Windows.Controls; // for MainButton_Click (referencing button)
 using System.Windows.Media;
-using System.Windows.Media.Effects;
-using System.Security.Policy;
-using System.Windows.Controls.Primitives;
-using System.Threading;
 using System.ComponentModel;
 
 namespace FrontLineGUI
