@@ -50,7 +50,7 @@ namespace FrontLineGUI
 
             // RPECK 28/03/2023
             // Allows us to bind to the CPUInfo object
-            CPUPower.DataContext = CPUInfo;
+            CPUInformation.DataContext = CPUInfo;
 
             // RPECK 02/04/2023
             // Bind to OSVersionInfo
@@ -115,27 +115,9 @@ namespace FrontLineGUI
 
         }
 
-        // Scan Items ListBox Change
-        // This is used to create functionality that is dependent on the 
-        public void ScanItemsListBox_Changed(object sender, SelectionChangedEventArgs args)
-        {
-
-            if (ScanItemsObject != null)
-            {
-                Debug.Write(ScanItemsObject[0].IsSelected);
-                ScanItemsObject.Clear();
-                ScanItemsObject.Add(new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"));
-                Debug.Write(ScanItemsObject.Count());
-            }
-
-        }
-
         // Select All Button Click
         public void SelectAllButton_Click(object sender, RoutedEventArgs e)
         {
-
-            ScanItemsObject.Add(new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"));
-            Debug.Write(ScanItemsObject.Count());
 
             if (App.pSDK != null)
             {
@@ -168,6 +150,12 @@ namespace FrontLineGUI
                 ScanItems.UnselectAll();
             }
 
+        }
+
+        // Delete ScanItem Click
+        public void ScanItemDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.Write("Test");
         }
 
     }

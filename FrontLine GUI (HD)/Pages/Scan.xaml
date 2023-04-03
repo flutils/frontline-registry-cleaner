@@ -254,7 +254,7 @@
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement" Background="{x:Null}" BorderBrush="{x:Null}">
+                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement" Background="{x:Null}" BorderBrush="{x:Null}">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />
@@ -327,22 +327,22 @@
                 </StackPanel>
 
                 <!-- Performance (CPU/RAM) -->
-                <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="CPUInformation">
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                         <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding CPUPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{Binding CPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding RAMPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{Binding RAMPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding HDDPower, Mode=OneTime, FallbackValue=0,StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{Binding HDDPower, Mode=OneWay, FallbackValue=0,StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                         <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding GPUPower, Mode=OneTime, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                        <TextBlock Text="{Binding GPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                     </StackPanel>
                 </StackPanel>
 

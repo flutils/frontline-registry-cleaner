@@ -13,7 +13,7 @@ namespace FrontLineGUI
 
     // RPECK 26/03/2023
     // This is used to give us the means to dynamically manage the CPU performance for the 4 parts of the system
-    public class CPUUtilization : INotifyPropertyChanged
+    public class CPUUtilization : PropertyChangedBase
     {
 
         // Vars
@@ -30,9 +30,6 @@ namespace FrontLineGUI
             this.ram_power = ram_power;
             this.hdd_power = hdd_power;
         }
-
-        // Class methods
-        public event PropertyChangedEventHandler PropertyChanged;
 
         // Class methods
         public int CPUPower
@@ -57,7 +54,7 @@ namespace FrontLineGUI
             get { return ram_power; }
             set {
                 ram_power = value;
-                OnPropertyChanged(null);
+                OnPropertyChanged("RAMPower");
             }
         }
 
@@ -70,12 +67,6 @@ namespace FrontLineGUI
             }
         }
 
-        // Create the OnPropertyChanged method to raise the event
-        // The calling member's name will be used as the parameter.
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
     }
 
 }

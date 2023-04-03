@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace FrontLineGUI
 {
-    public class ConfigurationOptions
+    public class ConfigurationOptions : PropertyChangedBase
     {
         
         // Constructor
