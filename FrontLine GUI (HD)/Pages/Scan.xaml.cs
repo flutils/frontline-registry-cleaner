@@ -57,10 +57,6 @@ namespace FrontLineGUI
             OSName.Text    = OSVersionInfo.Name + " (" + OSVersionInfo.OSBits.ToString().Remove(0,3) + "bit)";
             OSEdition.Text = OSVersionInfo.VersionString.ToString();
 
-            // RPECK 02/04/2023
-            // Update CPU infos
-            CPUInfo.RAMPower = 90;
-
         }
 
         #endregion
@@ -152,10 +148,12 @@ namespace FrontLineGUI
 
         }
 
-        // Delete ScanItem Click
-        public void ScanItemDelete_Click(object sender, RoutedEventArgs e)
+        // RPECK 03/04/2023
+        // LastScan Button Click - requires MainWindow
+        // https://stackoverflow.com/a/55469913/1143732
+        public void LastScanButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.Write("Test");
+            ((MainWindow)Application.Current.MainWindow).SettingsButton_Click(sender, e);
         }
 
     }

@@ -153,11 +153,32 @@
         </Style>
         
         <!-- ScanItems ListBox Items -->
+        <!-- ControlTemplate was required due to .NET 4.5 removing the ability to change system brushes - https://stackoverflow.com/a/18945651/1143732 -->
         <Style TargetType="{x:Type ListBoxItem}" x:Key="ScanItemsItemStyle">
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}"/>
             <Setter Property="IsEnabled" Value="{Binding IsEnabled, Mode=OneWay}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border Background="Transparent" x:Name="BackgroundBorder">
+                            <DockPanel Margin="2" LastChildFill="True">
+                                <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left" />
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="5,0,0,0">
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding IsSelected}" TextWrapping="Wrap" FontWeight="Normal" FontSize="11" />
+                                </StackPanel>
+                            </DockPanel>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}, Path=(Selector.IsSelected)}" Value="True">
+                                <Setter TargetName="BackgroundBorder" Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             <Style.Triggers>
                 <Trigger Property="IsSelected" Value="True" >
                     <Setter Property="FontWeight" Value="Bold" />
@@ -230,7 +251,7 @@
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}">
+                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Click="LastScanButton_Click">
                         <TextBlock>
                             <Run Text="{Binding Path=.}" TextDecorations="Underline" /><!--
                             --><Run Text=":" />
@@ -260,17 +281,6 @@
                                 <UniformGrid Columns="3" />
                             </ItemsPanelTemplate>
                         </ListView.ItemsPanel>
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <DockPanel Margin="2" LastChildFill="True">
-                                    <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left" Margin="0,0,5,0"/>
-                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding IsSelected}" TextWrapping="Wrap" FontWeight="Normal" FontSize="11" />
-                                    </StackPanel>
-                                </DockPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
                     </ListView>
 
                     <!-- Items Info Grid -->
