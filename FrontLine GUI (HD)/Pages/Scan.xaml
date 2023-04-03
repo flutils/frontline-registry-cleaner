@@ -51,17 +51,18 @@
                                             <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
                                         </TextBlock.Effect>
                                     </TextBlock>
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Text="(Recommended)" Margin="0">
-                                        <TextBlock.Effect>
+                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="White" Content="{DynamicResource Str_ScanSelectAllButtonRecommended}" ContentStringFormat="({0})" Padding="0 " Margin="0">
+                                        <Label.Effect>
                                             <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
-                                        </TextBlock.Effect>
-                                    </TextBlock>
+                                        </Label.Effect>
+                                    </Label>
                                 </StackPanel>
                             </Border>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" Value="0.55" />
+                                <Setter Property="Content" Value="Please Select An Item To Scan" />
                             </Trigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
