@@ -193,6 +193,12 @@
 
                 <!-- Localization Flag -->
                 <Button Name="LocalizationButton" MaxHeight="25" Margin="5,0" Click="SettingsButton_Click" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainLocalizationButtonTooltip}">
+                    <Button.CommandParameter>
+                        <x:Array Type="sys:Object" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">>
+                            <sys:String>General</sys:String>
+                            <sys:String>Localization</sys:String>
+                        </x:Array>
+                    </Button.CommandParameter>
                     <Image Source="/Resources/Localization/Icons/en.jpg" />
                 </Button>
 

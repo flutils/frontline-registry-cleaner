@@ -154,6 +154,7 @@
         <!-- ScanItems ListBox -->
         <Style TargetType="{x:Type ListBox}" x:Key="ScanItemsListBox">
             <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         </Style>
         
         <!-- ScanItems ListBox Items -->
@@ -169,9 +170,9 @@
                         <Border Background="Transparent" x:Name="BackgroundBorder">
                             <DockPanel Margin="2" LastChildFill="True">
                                 <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left" />
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="5,0,0,0">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0">
                                     <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
-                                    <TextBlock Text="{Binding IsSelected}" TextWrapping="Wrap" FontWeight="Normal" FontSize="11" />
+                                    <TextBlock Text="{Binding Label}" TextWrapping="Wrap" FontWeight="Normal" FontSize="11" />
                                 </StackPanel>
                             </DockPanel>
                         </Border>
@@ -245,7 +246,7 @@
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*" />
-                <RowDefinition Height="55" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!-- Title -->
@@ -263,6 +264,13 @@
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
                     <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Click="LastScanButton_Click">
+                        <!-- If we want to pass an array, need to do it like this -->
+                        <!-- https://stackoverflow.com/questions/1350598/passing-two-command-parameters-using-a-wpf-binding -->
+                        <Button.CommandParameter>
+                            <x:Array Type="sys:Object" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">>
+                                <sys:String>Statistics</sys:String>
+                            </x:Array>
+                        </Button.CommandParameter>
                         <TextBlock>
                             <Run Text="{Binding Path=.}" TextDecorations="Underline" /><!--
                             --><Run Text=":" />
@@ -273,7 +281,7 @@
                 </StackPanel>
 
                 <!-- Items Grid -->
-                <Grid Margin="15,15,15,0" Name="Scan_Checkboxes">
+                <Grid Margin="15,10,15,0">
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -294,78 +302,95 @@
                         </ListView.ItemsPanel>
                     </ListView>
 
-                    <!-- Items Info Grid -->
-                    <Grid Grid.Row="1" >
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Column="0" VerticalAlignment="Center">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="Selected: {0}/{1}">
-                                    <Binding ElementName="ScanItemsElement" Path="SelectedItems.Count" />
-                                    <Binding Path="ScanItemsObject.Count" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
-
-                        <Button Grid.Column="1" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
-                    </Grid>
-
                 </Grid>
 
             </StackPanel>
 
             <!-- Bottom Row -->
-            <Border Grid.Row="2" Background="#f9f9f9" BorderBrush="#c5c5c5" BorderThickness="0,1,0,0"/>
-
-            <!-- Bottom Info -->
             <Grid Grid.Row="2">
+
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="0.35*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <!-- OS Info -->
-                <!-- https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win#_comments -->
-                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
-                    <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="{DynamicResource Str_ScanYourSystem}" ContentStringFormat="{}{0}:" Padding="0" />
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
-                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Name="OSName" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12" />
-                            <TextBlock Name="OSEdition" VerticalAlignment="Center" FontSize="10" LineStackingStrategy="BlockLineHeight" LineHeight="11" />
+                <!-- Selection Management -->
+                <Grid Grid.Row="0" Margin="10">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Selected -->
+                    <TextBlock Grid.Column="0" VerticalAlignment="Center">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="Selected: {0}/{1}">
+                                <Binding ElementName="ScanItemsElement" Path="SelectedItems.Count" />
+                                <Binding Path="ScanItemsObject.Count" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                    <!-- Select all -->
+                    <Button Grid.Column="1" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
+
+                </Grid>
+
+                <!-- Bottom Info -->
+                <Grid Grid.Row="1" Background="#f9f9f9" Height="55">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="0.35*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                        
+                    <!-- Border -->
+                    <Border BorderBrush="#c5c5c5" BorderThickness="0,1,0,0" Grid.ColumnSpan="2" />
+
+                    <!-- OS Info -->
+                    <!-- https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win#_comments -->
+                    <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
+                        <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="{DynamicResource Str_ScanYourSystem}" ContentStringFormat="{}{0}:" Padding="0" />
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
+                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <!-- These need to be bound programmatically as they require an instance of a static class -->
+                                <TextBlock Name="OSName" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12" />
+                                <TextBlock Name="OSEdition" VerticalAlignment="Center" FontSize="10" LineStackingStrategy="BlockLineHeight" LineHeight="11" />
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
-                </StackPanel>
 
-                <!-- Performance (CPU/RAM) -->
-                <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="CPUInformation">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
-                        <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding CPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                    <!-- Performance (CPU/RAM) -->
+                    <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="CPUInformation">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
+                            <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
+                            <TextBlock Text="{Binding CPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
+                            <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
+                            <TextBlock Text="{Binding RAMPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
+                            <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
+                            <TextBlock Text="{Binding HDDPower, Mode=OneWay, FallbackValue=0,StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
+                            <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
+                            <TextBlock Text="{Binding GPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
-                        <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding RAMPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
-                        <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding HDDPower, Mode=OneWay, FallbackValue=0,StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
-                    </StackPanel>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
-                        <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                        <TextBlock Text="{Binding GPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
-                    </StackPanel>
-                </StackPanel>
+
+                </Grid>
 
             </Grid>
 

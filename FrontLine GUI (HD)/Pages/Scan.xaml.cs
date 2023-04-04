@@ -53,7 +53,7 @@ namespace FrontLineGUI
             CPUInformation.DataContext = CPUInfo;
 
             // RPECK 02/04/2023
-            // Bind to OSVersionInfo
+            // Bind to OSVersionInfo -- need to do it programmatically because it requires an instance of the class (XAML attempts to instantiate classes)
             OSName.Text    = OSVersionInfo.Name + " (" + OSVersionInfo.OSBits.ToString().Remove(0,3) + "bit)";
             OSEdition.Text = OSVersionInfo.VersionString.ToString();
 
@@ -111,27 +111,15 @@ namespace FrontLineGUI
 
         }
 
+        // ScanItem Edit Button Click
+        public void ScanItemEdit_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.Write("Edit");
+        }
+
         // Select All Button Click
         public void SelectAllButton_Click(object sender, RoutedEventArgs e)
         {
-
-            if (App.pSDK != null)
-            {
-                string s;
-                float fValue;
-                int dummy = 0;
-
-                // RPECK 26/03/2023
-                // Class instance to return the values for each of the 4 properties of the system (CPU, RAM, HDD, GPU)
-                fValue = App.pSDK.GetSensorTypeValue(CPUIDSDK.SENSOR_UTILIZATION_CPU, ref dummy, ref dummy);
-                Debug.Write(fValue);
-                if (Math.Round(fValue, 0) >= 0)
-                {
-                    s = Convert.ToString(Math.Round(fValue, 1));
-                    s = s + "  %";
-                    Debug.Write(s);
-                }
-            }
 
             // Find ListBox
             ListBox ScanItems = FindName("ScanItemsElement") as ListBox;

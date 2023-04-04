@@ -115,7 +115,16 @@ namespace FrontLineGUI
             // Elements
             Button srcButton  = e.Source as Button;
             StackPanel parent = FindName("SubActionButtons") as StackPanel;
-            
+
+            // Parameters
+            // There are two parameters which can be handled here -- "Tab" and "Element"
+            // These are used to identify which "Settings" tab should be loaded and which Element within that tab should be focused (IE tab -> General, element -> Debug)
+            if (srcButton.CommandParameter != null)
+            {
+                Array value = srcButton.CommandParameter as Array;
+                Debug.Write(value);
+            }
+
             // Define Tag
             var tag = srcButton.Tag ?? "Settings";
 
