@@ -98,9 +98,6 @@
     <Resource Include="Resources\Scan\internet_cache.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\select_all.png" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
   <ItemGroup>

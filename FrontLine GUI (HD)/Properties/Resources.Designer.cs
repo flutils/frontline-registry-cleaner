@@ -226,16 +226,6 @@ namespace FrontLineGUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap select_all {
-            get {
-                object obj = ResourceManager.GetObject("select_all", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         public static System.Drawing.Bitmap temp_files {
             get {
                 object obj = ResourceManager.GetObject("temp_files", resourceCulture);
