@@ -150,6 +150,8 @@ namespace FrontLineGUI
             ScanItemsObject.Add(
                 new ScanItem("Internet Cache", "Clear privacy data from browser caches.", true, "/Resources/Scan/internet_cache.png")
             );
+
+            //InputForm.IsEnabled = !InputForm.IsEnabled;
         }
 
         // Select All Button Click

@@ -16,6 +16,57 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="10" />
             <Setter Property="Background" Value="Black" />
+            <Style.Resources>
+                <Style TargetType="TabItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TabItem">
+                                <Border Name="Border" BorderThickness="0" CornerRadius="5" Margin="0,0,2,2" >
+                                    <ContentPresenter Name="Content" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="10,5" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter TargetName="Border" Property="Background" Value="Red" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter Property="Cursor" Value="Hand" />
+                                        <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
+                                    </Trigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="Tag" Value="General" />
+                                            <Condition Property="IsSelected" Value="False" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter TargetName="Border" Property="Background" Value="LimeGreen"/>
+                                    </MultiTrigger>
+                                    <MultiTrigger>
+                                        <MultiTrigger.Conditions>
+                                            <Condition Property="IsMouseOver" Value="True" />
+                                            <Condition Property="IsSelected" Value="False" />
+                                        </MultiTrigger.Conditions>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <MultiTrigger.EnterActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="#222" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </MultiTrigger.EnterActions>
+                                        <MultiTrigger.ExitActions>
+                                            <BeginStoryboard>
+                                                <Storyboard>
+                                                    <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.05" To="{x:Null}" />
+                                                </Storyboard>
+                                            </BeginStoryboard>
+                                        </MultiTrigger.ExitActions>
+                                    </MultiTrigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Style.Resources>
         </Style>
 
     </Page.Resources>
@@ -55,58 +106,7 @@
                     <!-- Header Styling -->
                     <!-- https://wpf-tutorial.com/tabcontrol/styling-the-tabitems/ -->
                     <TabControl.Resources>
-                        <Style TargetType="TabControl">
-                            <Setter Property="Foreground" Value="Black" />
-                        </Style>
-                        <Style TargetType="TabItem">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="TabItem">
-                                        <Border Name="Border" BorderThickness="0" CornerRadius="5" Margin="0,0,2,2" >
-                                            <ContentPresenter Name="Content" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="10,5" />
-                                        </Border>
-                                        <ControlTemplate.Triggers>
-                                            <Trigger Property="IsSelected" Value="True">
-                                                <Setter Property="Foreground" Value="White" />
-                                                <Setter TargetName="Border" Property="Background" Value="Black" />
-                                            </Trigger>
-                                            <Trigger Property="IsSelected" Value="False">
-                                                <Setter Property="Cursor" Value="Hand" />
-                                                <Setter TargetName="Border" Property="Background" Value="GhostWhite" />
-                                            </Trigger>
-                                            <MultiTrigger>
-                                                <MultiTrigger.Conditions>
-                                                    <Condition Property="Tag" Value="General" />
-                                                    <Condition Property="IsSelected" Value="False" />
-                                                </MultiTrigger.Conditions>
-                                                <Setter TargetName="Border" Property="Background" Value="LimeGreen"/>
-                                            </MultiTrigger>
-                                            <MultiTrigger>
-                                                <MultiTrigger.Conditions>
-                                                    <Condition Property="IsMouseOver" Value="True" />
-                                                    <Condition Property="IsSelected" Value="False" />
-                                                </MultiTrigger.Conditions>
-                                                <Setter Property="Foreground" Value="White"/>
-                                                <MultiTrigger.EnterActions>
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="#222" />
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </MultiTrigger.EnterActions>
-                                                <MultiTrigger.ExitActions>
-                                                    <BeginStoryboard>
-                                                        <Storyboard>
-                                                            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.05" To="{x:Null}" />
-                                                        </Storyboard>
-                                                    </BeginStoryboard>
-                                                </MultiTrigger.ExitActions>
-                                            </MultiTrigger>
-                                        </ControlTemplate.Triggers>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
+                       
                     </TabControl.Resources>
                     
                     <!-- General -->
