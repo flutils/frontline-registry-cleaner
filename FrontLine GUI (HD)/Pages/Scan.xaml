@@ -23,6 +23,7 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Margin" Value="75,10,75,5" />
             <Setter Property="Height" Value="105"/>
+            <Setter Property="Content" Value="{DynamicResource Str_ScanMainButton}" />
 
             <!-- Template -->
             <Setter Property="Template">
@@ -46,7 +47,7 @@
                                     <DropShadowEffect Direction="0" ShadowDepth="0" Color="Black" Opacity="1" BlurRadius="10"/>
                                 </Border.Effect>
                                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontWeight="Bold" Text="{TemplateBinding Property=Content}" Margin="0" LineStackingStrategy="BlockLineHeight" LineHeight="38">
+                                    <TextBlock Name="MainText"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="40" FontWeight="Bold" Text="{TemplateBinding Property=Content}" Margin="0" LineStackingStrategy="BlockLineHeight" LineHeight="38">
                                         <TextBlock.Effect>
                                             <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
                                         </TextBlock.Effect>
@@ -62,7 +63,8 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" Value="0.55" />
-                                <Setter Property="Content" Value="Please Select An Item To Scan" />
+                                <Setter Property="Content" Value="{DynamicResource Str_ScanMainButtonNoSelection}" />
+                                <Setter TargetName="MainText" Property="FontSize" Value="34" />
                             </Trigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
@@ -90,67 +92,6 @@
             </Setter>
         </Style>
 
-        <!-- Select All Button -->
-        <Style TargetType="{x:Type Button}" x:Key="SelectAllButton">
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Background" Value="#333" />
-            <Setter Property="Foreground" Value="White" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="Border" Background="{TemplateBinding Background}" CornerRadius="5" BorderBrush="#090d11" BorderThickness="2">
-                            <Border CornerRadius="5" BorderThickness="1" Padding="5,2">
-                                <Border.Background>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#59000000"/>
-                                        <GradientStop Color="Transparent" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Border.Background>
-                                <Border.BorderBrush>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <GradientStop Color="#99FFFFFF" />
-                                        <GradientStop Color="#00000000" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </Border.BorderBrush>
-                                <Border>
-                                    <Border.Effect>
-                                        <DropShadowEffect Color="Black" Opacity="0.85" ShadowDepth="1" BlurRadius="0" />
-                                    </Border.Effect>
-                                    <ContentPresenter Name="ButtonContent" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                </Border>
-                            </Border>
-                        </Border>
-
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Trigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="#222" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.EnterActions>
-                                <Trigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.05" To="{x:Null}" />
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </Trigger.ExitActions>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="Black" />
-                                <!-- https://stackoverflow.com/a/30699891/1143732 -->
-                                <!-- <Setter TargetName="ButtonContent" Property="ContentPresenter.Content" Value="Test" /> -->
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                        
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
         <!-- ScanItems ListBox -->
         <Style TargetType="{x:Type ListBox}" x:Key="ScanItemsListBox">
             <Setter Property="BorderThickness" Value="0" />
@@ -177,6 +118,26 @@
                             </DockPanel>
                         </Border>
                         <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                    <Condition Property="IsSelected" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="BackgroundBorder" Storyboard.TargetProperty="Opacity" Duration="0:0:0.1" To="0.7" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+                                <MultiTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="BackgroundBorder" Storyboard.TargetProperty="Opacity" Duration="0:0:0.05" To="{x:Null}" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.ExitActions>
+                            </MultiTrigger>
                             <Trigger Property="IsSelected" Value="False">
                                 <Trigger.EnterActions>
                                     <BeginStoryboard>
@@ -223,6 +184,15 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
+        <!-- Select All Button -->
+        <Style TargetType="{x:Type Button}" x:Key="SelectAllButton" BasedOn="{StaticResource GeneralButton}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding SelectedItems, ElementName=ScanItemsElement}" Value="0">
+                    <Setter Property="Content" Value="De-Select"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
 
     </Page.Resources>
 
@@ -259,7 +229,7 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_ScanPreInfo}" TextAlignment="Center" FontSize="12" />
 
                 <!-- Scan Now Button -->
-                <Button Style="{StaticResource MainScanButton}" Content="{DynamicResource Str_ScanMainButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" />
+                <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" />
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
@@ -267,7 +237,7 @@
                         <!-- If we want to pass an array, need to do it like this -->
                         <!-- https://stackoverflow.com/questions/1350598/passing-two-command-parameters-using-a-wpf-binding -->
                         <Button.CommandParameter>
-                            <x:Array Type="sys:Object" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">>
+                            <x:Array Type="sys:String" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                                 <sys:String>Statistics</sys:String>
                             </x:Array>
                         </Button.CommandParameter>
@@ -294,7 +264,7 @@
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement">
+                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" x:Name="ScanItemsElement">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />
@@ -329,18 +299,24 @@
                     </Grid.RowDefinitions>
 
                     <!-- Selected -->
-                    <TextBlock Grid.Column="0" VerticalAlignment="Center">
-                        <TextBlock.Text>
-                            <MultiBinding StringFormat="Selected: {0}/{1}">
-                                <Binding ElementName="ScanItemsElement" Path="SelectedItems.Count" />
-                                <Binding Path="ScanItemsObject.Count" />
-                            </MultiBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
+                        <Label Content="Selected: " FontWeight="Bold" VerticalContentAlignment="Center" VerticalAlignment="Center" />
+                        <TextBlock VerticalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}/{1}">
+                                    <Binding ElementName="ScanItemsElement" Path="SelectedItems.Count" FallbackValue="0"/>
+                                    <Binding Path="ScanItemsObject.Count" FallbackValue="0" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </StackPanel>
 
                     <!-- Select all -->
-                    <Button Grid.Column="1" Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
-
+                    <StackPanel Orientation="Horizontal"  Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch">
+                        <Button Content="{DynamicResource Str_AddNewButton}" Background="Red" Style="{StaticResource GeneralButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="InfoSelected" Margin="0,0,1,0" />
+                        <Button Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
+                    </StackPanel>
+                    
                 </Grid>
 
                 <!-- Bottom Info -->

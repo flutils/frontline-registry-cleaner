@@ -15,12 +15,13 @@ namespace FrontLineGUI
         // Main Ingression Point
         // This is where the app loads
         public MainWindow()
-        {
-            // Init
-            InitializeComponent();
+        { 
 
             // DataContext (for the version button)
-            this.DataContext = this;
+            DataContext = this;
+
+            // Init
+            InitializeComponent();
 
         }
 
@@ -122,7 +123,10 @@ namespace FrontLineGUI
             if (srcButton.CommandParameter != null)
             {
                 Array value = srcButton.CommandParameter as Array;
-                Debug.Write(value);
+                foreach (var item in value)
+                {
+                    Debug.Write(item.ToString());
+                }
             }
 
             // Define Tag

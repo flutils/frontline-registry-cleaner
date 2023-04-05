@@ -29,6 +29,12 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <!-- RPECK 04/04/2023 -->
+    <!-- Label Styling (remove Padding) -->
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="Padding" Value="0" />
+    </Style>
 
     <!-- "Main" Action Buttons (Min/Close) -->
     <!-- Reworked to make them 100% styled in WPF -->
@@ -80,6 +86,68 @@
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource ButtonColourConverter}, ConverterParameter='-0.15'}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- RPECK 05/04/2023 -->
+    <!-- General Button - used to give us the means to assign the style to any button we need -->
+    <Style TargetType="{x:Type Button}" x:Key="GeneralButton">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="Background" Value="#333" />
+        <Setter Property="Foreground" Value="White" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="Border" Background="{TemplateBinding Background}" CornerRadius="5" BorderBrush="#090d11" BorderThickness="2">
+                        <Border CornerRadius="5" BorderThickness="1" Padding="5,2">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#59000000"/>
+                                    <GradientStop Color="Transparent" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.BorderBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#99FFFFFF" />
+                                    <GradientStop Color="#00000000" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.BorderBrush>
+                            <Border>
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" Opacity="0.85" ShadowDepth="1" BlurRadius="0" />
+                                </Border.Effect>
+                                <ContentPresenter Name="ButtonContent" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </Border>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.1" To="#222" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Border" Storyboard.TargetProperty="Background.Color" Duration="0:0:0.05" To="{x:Null}" />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="Black" />
+                            <!-- https://stackoverflow.com/a/30699891/1143732 -->
+                            <!-- <Setter TargetName="ButtonContent" Property="ContentPresenter.Content" Value="Test" /> -->
                         </Trigger>
                     </ControlTemplate.Triggers>
 
