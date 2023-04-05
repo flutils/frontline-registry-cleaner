@@ -17,19 +17,14 @@ namespace FrontLineGUI
     {
 
         // Vars
-        private int cpu_power;
-        private int gpu_power;
-        private int ram_power;
-        private int hdd_power;
+        private int cpu_power = 0;
+        private int gpu_power = 0;
+        private int ram_power = 0;
+        private int hdd_power = 0;
 
         // Constructor
-        public CPUUtilization(int cpu_power, int ram_power, int hdd_power, int gpu_power)
-        {
-            this.cpu_power = cpu_power;
-            this.gpu_power = gpu_power;
-            this.ram_power = ram_power;
-            this.hdd_power = hdd_power;
-        }
+        public CPUUtilization()
+        {}
 
         // Class methods
         public int CPUPower

@@ -7,6 +7,16 @@ using System;
 namespace FrontLineGUI
 {
 
+    // RPECK 05/04/2023
+    // Notes on the use of "OSVersionInfo"
+    // https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win
+
+    /*
+     * The above library is used to give us access to operating system information
+     * The reason for using the library (rather than self coded) is beacuse it offloads the functionality required to compute the results
+     * The only issue with it lies in how it is not geared for Windows 11. It may be worth addressing that at some point but, for now, it should be okay
+     */
+
     // Scan Page
     // Used to provide core scanning functionality
     public partial class Scan : Page
@@ -16,8 +26,6 @@ namespace FrontLineGUI
 
         public CPUUtilization CPUInfo { get; set; }
         public ScanItemsCollection ScanItemsObject { get; set; }
-
-        private string OSNameText; // RPECK 05/04/2023 - allows us to define the explicit name of the OS version ourselves
 
         #region Constructor
 
@@ -29,7 +37,7 @@ namespace FrontLineGUI
             DataContext = this;
 
             // Define CPUInfo
-            CPUInfo = new CPUUtilization(56, 10, 25, 11);
+            CPUInfo = new CPUUtilization();
 
             // RPECK 26/03/2023
             // Scan Items Collection
@@ -54,16 +62,6 @@ namespace FrontLineGUI
             // Allows us to bind to the CPUInfo object
             CPUInformation.DataContext = CPUInfo;
 
-            // Check to see if the name needs to be changed
-            if(OSVersionInfo.MajorVersion == 10 && OSVersionInfo.BuildVersion > 22000)
-            {
-                OSNameText = "Windows 11";
-            } 
-            else
-            {
-                OSNameText = OSVersionInfo.Name;
-            }
-
             // RPECK 02/04/2023
             // Bind to OSVersionInfo -- need to do it programmatically because it requires an instance of the class (XAML attempts to instantiate classes)
             OSName.Text    = OSNameText + " (" + OSVersionInfo.OSBits.ToString().Remove(0,3) + "bit)";
@@ -75,6 +73,21 @@ namespace FrontLineGUI
 
         #region Methods
 
+        // RPECK 05/04/2023
+        // OS Name
+        // This is a private method used to give us the means to access information about the OS
+        private string OSNameText
+        {
+            get
+            {
+                // Check to see if the name needs to be changed
+                if (OSVersionInfo.MajorVersion == 10 && OSVersionInfo.BuildVersion > 22000) return "Windows 11";
+  
+                // Default
+                return OSVersionInfo.Name;
+            }
+        }
+
         // OS Icon
         // Shows the image at the bottom of the page (next to the OSVersion)
         public string OSIcon
@@ -85,7 +98,7 @@ namespace FrontLineGUI
                 // OSVersion
                 // Get the version of the OS from the above method and then extract the version of Windows from it
                 // https://stackoverflow.com/a/5651002/1143732
-                return "/Resources/OS/" + OSVersionInfo.Name.Replace(" ", "-").ToLower() + ".png";
+                return "/Resources/OS/" + OSNameText.Replace(" ", "-").ToLower() + ".png";
 
             }
         }
@@ -123,10 +136,20 @@ namespace FrontLineGUI
 
         }
 
+        // RPECK 04/04/2023
         // ScanItem Edit Button Click
         public void ScanItemEdit_Click(object sender, RoutedEventArgs e)
         {
             Debug.Write("Edit");
+        }
+
+        // RPECK 05/04/2023
+        // Add New Button click
+        public void AddNewButton_Click(object sender, RoutedEventArgs e)
+        {
+            ScanItemsObject.Add(
+                new ScanItem("Internet Cache", "Clear privacy data from browser caches.", true, "/Resources/Scan/internet_cache.png")
+            );
         }
 
         // Select All Button Click

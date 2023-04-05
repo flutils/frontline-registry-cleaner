@@ -109,10 +109,10 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
                         <Border Background="Transparent" x:Name="BackgroundBorder">
-                            <DockPanel Margin="2" LastChildFill="True">
+                            <DockPanel Margin="2" LastChildFill="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                                 <Image Source="{Binding Image}" Width="38" Height="38" DockPanel.Dock="Left" />
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0">
-                                    <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap" FontWeight="Bold"/>
                                     <TextBlock Text="{Binding Label}" TextWrapping="Wrap" FontWeight="Normal" FontSize="11" />
                                 </StackPanel>
                             </DockPanel>
@@ -187,9 +187,10 @@
         
         <!-- Select All Button -->
         <Style TargetType="{x:Type Button}" x:Key="SelectAllButton" BasedOn="{StaticResource GeneralButton}">
+            <Setter Property="Content" Value="{DynamicResource Str_ScanSelectAllButton}"/>
             <Style.Triggers>
-                <DataTrigger Binding="{Binding SelectedItems, ElementName=ScanItemsElement}" Value="0">
-                    <Setter Property="Content" Value="De-Select"/>
+                <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" Value="False">
+                    <Setter Property="Content" Value="{DynamicResource Str_ScanSelectAllButtonDeSelect}"/>
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -313,8 +314,8 @@
 
                     <!-- Select all -->
                     <StackPanel Orientation="Horizontal"  Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch">
-                        <Button Content="{DynamicResource Str_AddNewButton}" Background="Red" Style="{StaticResource GeneralButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="InfoSelected" Margin="0,0,1,0" />
-                        <Button Content="{DynamicResource Str_ScanSelectAllButton}" Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
+                        <Button Content="{DynamicResource Str_AddNewButton}" Background="Red" Style="{StaticResource GeneralButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="AddNewButton_Click" Name="InfoSelected" Margin="0,0,1,0" />
+                        <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
                     </StackPanel>
                     
                 </Grid>
