@@ -192,7 +192,7 @@
             <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,7,0"  Orientation="Horizontal" Grid.Column="1" Panel.ZIndex="10" Height="42">
 
                 <!-- Localization Flag -->
-                <Button Name="LocalizationButton" MaxHeight="25" Margin="5,0" Click="SettingsButton_Click" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainLocalizationButtonTooltip}">
+                <Button Name="LocalizationButton" MaxHeight="25" Margin="0,0,5,0" Click="SettingsButton_Click" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainLocalizationButtonTooltip}">
                     <Button.CommandParameter>
                         <x:Array Type="sys:String" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                             <sys:String>General</sys:String>

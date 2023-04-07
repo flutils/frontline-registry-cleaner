@@ -46,6 +46,10 @@
     <None Remove="Resources\OS\windows-xp.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Remove="Include\Localization\Strings_en.xaml" />
+    <Page Remove="Include\Localization\Strings_fr.xaml" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Resources\Localization\Icons\fr.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -144,12 +148,12 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Include\Localization\fr.xaml">
+    <Content Include="Include\Localization\Strings_fr.xaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Include\Localization\en.xaml">
+    <Content Include="Include\Localization\Strings_en.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

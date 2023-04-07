@@ -27,8 +27,6 @@ namespace FrontLineGUI
         public CPUUtilization CPUInfo { get; set; }
         public ScanItemsCollection ScanItemsObject { get; set; }
 
-        #region Constructor
-
         // Constructor
         public Scan()
         {
@@ -68,8 +66,6 @@ namespace FrontLineGUI
             OSEdition.Text = OSVersionInfo.VersionString.ToString();
 
         }
-
-        #endregion
 
         #region Methods
 
@@ -147,11 +143,7 @@ namespace FrontLineGUI
         // Add New Button click
         public void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            ScanItemsObject.Add(
-                new ScanItem("Internet Cache", "Clear privacy data from browser caches.", true, "/Resources/Scan/internet_cache.png")
-            );
-
-            //InputForm.IsEnabled = !InputForm.IsEnabled;
+            InputForm.IsEnabled = !InputForm.IsEnabled;
         }
 
         // Select All Button Click

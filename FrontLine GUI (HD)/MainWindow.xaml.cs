@@ -25,6 +25,11 @@ namespace FrontLineGUI
 
         }
 
+        // RPECK 07/04/2023
+        // Localization options (inherit from main)
+        // Taken from demo app
+        public EZLocalizeNS.EZLocalize MyEZLocalize = App.MyEZLocalize;
+
         // Version
         // Used to show the version number on the bottom menu area 
         // https://stackoverflow.com/a/15873711/1143732

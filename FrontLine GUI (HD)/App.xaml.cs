@@ -1,12 +1,5 @@
 ﻿using EZLocalizeNS;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace FrontLineGUI
@@ -22,6 +15,7 @@ namespace FrontLineGUI
         // CPUID SDK Information
         public static CPUIDSDK pSDK;
         public static ConfigurationOptions ConfigOptions;
+        public static EZLocalizeNS.EZLocalize MyEZLocalize = null; // RPECK 07/04/2023 - added for EZLocalization
 
         // RPECK 18/03/2023
         // https://www.codeproject.com/Articles/524878/Localisation-made-easy-for-WPF
@@ -32,9 +26,13 @@ namespace FrontLineGUI
             // These are loaded from a file and used to populate different features of the app
             ConfigOptions = new ConfigurationOptions();
 
+            // RPECK 07/04/2023
+            // Added for localization system
+            MyEZLocalize = new EZLocalize(Current.Resources, "en", null, "Include\\Localization\\", "Strings");
+
             // RPECK 25/03/2023
             // Fire CPUID if option is enabled
-            if(ConfigOptions.CPUID)
+            if (ConfigOptions.CPUID)
             {
 
                 // Create a new thread for CPUID
