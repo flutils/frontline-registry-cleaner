@@ -7,13 +7,13 @@
         xmlns:local="clr-namespace:FrontLineGUI"
         mc:Ignorable="d"
         Title="Frontline Registry Cleaner 2.1 (HD Edition)"
-        Height="{Binding ElementName=myWindow, Path=MinHeight}"
-        Width="{Binding ElementName=myWindow, Path=MinWidth}"
+        Height="{Binding MinWidth, RelativeSource={RelativeSource Self}}"
+        Width="{Binding MinHeight, RelativeSource={RelativeSource Self}}"
         MinWidth="665"
         MinHeight="585"
         MaxWidth="850"
         MaxHeight="700"
-        SizeToContent="WidthAndHeight"
+        SizeToContent="Height"
         ResizeMode="CanResizeWithGrip"
         Topmost="False"
         WindowStartupLocation="CenterScreen"
@@ -31,12 +31,6 @@
         <!-- Converters -->
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
         <local:ButtonColourConverter            x:Key="ButtonColourConverter" />
-
-        <!-- Images -->
-        <!-- Used to give us anti aliasing - https://stackoverflow.com/a/14490654/1143732 -->
-        <Style TargetType="{x:Type Image}">
-            <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
-        </Style>
 
         <!-- Settings -->
         <!-- Add a decorator to the text on hover, mousedown and navigation -->
@@ -115,6 +109,13 @@
                     </Trigger.ExitActions>
                 </Trigger>
             </Style.Triggers>
+        </Style>
+        
+        <!-- Frame Syling -->
+        <Style TargetType="{x:Type Frame}" x:Key="MainFrameStyle">
+            <Setter Property="BorderBrush" Value="#a6b0b5" />
+            <Setter Property="BorderThickness" Value="2" />
+
         </Style>
 
     </Window.Resources>
@@ -199,7 +200,7 @@
                             <sys:String>Localization</sys:String>
                         </x:Array>
                     </Button.CommandParameter>
-                    <Image Source="/Resources/Localization/Icons/en.jpg" />
+                    <Image Source="{Binding LanguageFlag, Mode=OneWay}" />
                 </Button>
 
                 <!-- Minimize -->
@@ -351,7 +352,7 @@
                     <!-- Content Area -->
                     <!-- This houses all of the panels (grids), which means that we're able to hide them as needed -->
                     <!-- I have split the panels into separate CS files for the sake of brevity -->
-                    <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Margin="10,10,10,0" Source="/Pages/Scan.xaml" BorderBrush="#a6b0b5" BorderThickness="2"/>
+                    <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Margin="10,10,10,0" Source="/Pages/Scan.xaml" Style="{StaticResource MainFrameStyle}" />
                     
                     <!-- Company & Assembly Info -->
                     <Grid Grid.Row="1" Margin="10,2" VerticalAlignment="Center">

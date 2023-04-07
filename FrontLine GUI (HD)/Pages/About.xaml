@@ -38,7 +38,10 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
+                
+                
             
                 <!-- Update -->
                 <StackPanel Grid.Row="0">
@@ -48,6 +51,11 @@
                 <!-- About -->
                 <StackPanel Grid.Row="1">
                     <TextBlock Text="Company Information" />
+                </StackPanel>
+
+                <!-- Statistics -->
+                <StackPanel Grid.Row="2">
+                    <TextBlock Text="Statistics" />
                 </StackPanel>
 
             </Grid>

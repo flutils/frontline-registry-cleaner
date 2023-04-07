@@ -1,30 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+using EZLocalizeNS;
 
 namespace FrontLineGUI
 {
     public class ConfigurationOptions : PropertyChangedBase
     {
-        
-        // Constructor
-        // Used to instantiate the class (IE define different options when it's loaded)
-        public ConfigurationOptions() {}
 
-        #region PrivateOptions
-
+        // Private Options
         private bool debug;
         private bool cpuid;
         private string language;
 
-        #endregion
+        // Constructor
+        // Used to instantiate the class (IE define different options when it's loaded)
+        public ConfigurationOptions() {
 
-        #region PublicOptions
+            // RPECK 07/04/2023
+            // Added for localization system
+            Localization = new EZLocalize(System.Windows.Application.Current.Resources, "en", null, "Include\\Localization\\", "Strings");
+
+        }
+
+        // RPECK 07/04/2023
+        // Added for EZLocalization
+        // Check demo at https://www.codeproject.com/Articles/524878/Localisation-made-easy-for-WPF
+        public EZLocalize Localization = null;
 
         // RPECK 26/03/2023
         // Default Directory for app
@@ -52,8 +53,6 @@ namespace FrontLineGUI
             get { return debug; }
             set { debug = value; }
         }
-
-        #endregion
 
         // RPECK 25/03/2023
         // Load Settings from JSON

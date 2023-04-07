@@ -102,13 +102,7 @@
 
                 <!-- Content -->
                 <TabControl Margin="25,10,25,0" Style="{StaticResource TabControlStyling}" x:Name="SettingsTabs">
-                    
-                    <!-- Header Styling -->
-                    <!-- https://wpf-tutorial.com/tabcontrol/styling-the-tabitems/ -->
-                    <TabControl.Resources>
-                       
-                    </TabControl.Resources>
-                    
+
                     <!-- General -->
                     <TabItem Header="{DynamicResource Str_SettingsGeneralTab}" Tag="General">
                         <StackPanel Orientation="Vertical">
@@ -127,12 +121,7 @@
                     <TabItem Header="{DynamicResource Str_SettingsBackupTab}" Tag="Backup">
                         <Grid />
                     </TabItem>
-                    
-                    <!-- Statistics -->
-                    <TabItem Header="{DynamicResource Str_SettingsStatisticsTab}" Tag="Statistics">
-                        <Grid />
-                    </TabItem>
-                    
+
                 </TabControl>
 
             </StackPanel>

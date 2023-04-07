@@ -25,11 +25,6 @@ namespace FrontLineGUI
 
         }
 
-        // RPECK 07/04/2023
-        // Localization options (inherit from main)
-        // Taken from demo app
-        public EZLocalizeNS.EZLocalize MyEZLocalize = App.MyEZLocalize;
-
         // Version
         // Used to show the version number on the bottom menu area 
         // https://stackoverflow.com/a/15873711/1143732
@@ -43,6 +38,17 @@ namespace FrontLineGUI
         public string CurrentYear
         {
             get { return DateTime.Now.Year.ToString(); }
+        }
+
+        // RPECK 07/03/2023
+        // Added to give us the means to display the current flag
+        public string LanguageFlag
+        {
+            get
+            {
+                string language = App.ConfigOptions.Localization.CurrentLanguage;
+                return $"/Resources/Localization/Icons/{language}.jpg";
+            }
         }
 
         // Load
@@ -156,8 +162,8 @@ namespace FrontLineGUI
                         if (child != null)
                         {
                             // Cast
-                            String child_tag   = child.Tag.ToString() as String;
-                            String current_tag = tag.ToString() as String;
+                            string child_tag   = child.Tag.ToString();
+                            string current_tag = tag.ToString();
 
                             // Enabled
                             child.IsEnabled = (child_tag != current_tag);

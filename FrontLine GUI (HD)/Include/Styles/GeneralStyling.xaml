@@ -36,6 +36,12 @@
         <Setter Property="Padding" Value="0" />
     </Style>
 
+    <!-- Images -->
+    <!-- Used to give us anti aliasing - https://stackoverflow.com/a/14490654/1143732 -->
+    <Style TargetType="{x:Type Image}">
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="HighQuality" />
+    </Style>
+
     <!-- "Main" Action Buttons (Min/Close) -->
     <!-- Reworked to make them 100% styled in WPF -->
     <Style TargetType="{x:Type Button}" x:Key="MainActionButton" BasedOn="{StaticResource {x:Type Button}}">

@@ -272,10 +272,32 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
 
+                <!-- Background -->
                 <Border Background="Black" Grid.RowSpan="3" Grid.ColumnSpan="3" Opacity="0.95" Panel.ZIndex="11" />
 
+                <!-- Main Layout -->
                 <Grid Grid.Row="1" Grid.Column="1" Background="White" Panel.ZIndex="12">
-                    <TextBlock Text="Test" />
+                    
+                    <!-- Content -->
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="25">
+                        
+                        <!-- Title -->
+                        <Label Content="Add Scan Item" Margin="0,0,0,10" Padding="0" />
+
+                        <!-- Name -->
+                        <TextBox Text="{Binding Name, FallbackValue=Name}" Margin="0,0,0,10" />
+
+                        <!-- Type -->
+                        <TextBox Text="Type" Margin="0,0,0,10" />
+                        
+                        <!-- Buttons -->
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                            <Button Content="Save" Style="{StaticResource GeneralButton}" Background="Blue" Margin="0,0,1,0" />
+                            <Button Content="Cancel" Style="{StaticResource GeneralButton}" Click="GridCancel_Click" />
+                        </StackPanel>
+
+                    </StackPanel>
+                    
                 </Grid>
             </Grid>
 
@@ -293,7 +315,7 @@
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Click="LastScanButton_Click">
+                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Click="LastScanButton_Click" Tag="About">
                         <!-- If we want to pass an array, need to do it like this -->
                         <!-- https://stackoverflow.com/questions/1350598/passing-two-command-parameters-using-a-wpf-binding -->
                         <Button.CommandParameter>
@@ -324,7 +346,7 @@
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" x:Name="ScanItemsElement">
+                    <ListView Margin="0" MaxWidth="{Binding ActualWidth, ElementName=MainWindow}" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" x:Name="ScanItemsElement">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />

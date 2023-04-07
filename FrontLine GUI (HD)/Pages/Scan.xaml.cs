@@ -146,6 +146,13 @@ namespace FrontLineGUI
             InputForm.IsEnabled = !InputForm.IsEnabled;
         }
 
+        // RPECK 07/04/2023
+        // Grid cancel button click
+        public void GridCancel_Click(object sender, RoutedEventArgs e)
+        {
+            InputForm.IsEnabled = false;
+        }
+
         // Select All Button Click
         public void SelectAllButton_Click(object sender, RoutedEventArgs e)
         {
