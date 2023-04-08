@@ -32,8 +32,6 @@ namespace FrontLineGUI
         public CPUUtilization CPUInfo { get; set; }
         public ScanItemsCollection ScanItemsObject { get; set; }
 
-        public PerformanceCounter cpuCounter;
-
         // Constructor
         public Scan()
         {
@@ -73,24 +71,9 @@ namespace FrontLineGUI
             OSName.Text    = OSNameText + " (" + OSVersionInfo.OSBits.ToString().Remove(0,3) + "bit)";
             OSEdition.Text = OSVersionInfo.VersionString.ToString();
 
-            // RPECK 08/04/2023
-            // This was recommended rather than a thread
-            // https://spacetech.dk/c-wpf-run-a-function-every-second.html
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(update_cpu_usage);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
-
         }
 
         #region Methods
-
-        // RPECK 08/04/2023
-        // Update the CPU speed etc using CPUID
-        private void update_cpu_usage(object sender, EventArgs e)
-        {
-            CPUInfo.UpdateValues();
-        }
 
         // RPECK 05/04/2023
         // OS Name
@@ -132,27 +115,22 @@ namespace FrontLineGUI
         public void ScanForm_Loaded(object sender, RoutedEventArgs e)
         {
 
-            // CPUID
-            // Initialize ticker if CPUID is present
-            if (App.ConfigOptions.CPUID)
-            {
+            // RPECK 08/04/2023
+            // This was recommended rather than a thread
+            // https://spacetech.dk/c-wpf-run-a-function-every-second.html
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(update_cpu_usage);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
 
-                string s;
-                float fValue;
-                int dummy = 0;
+        }
 
-                // RPECK 26/03/2023
-                // Class instance to return the values for each of the 4 properties of the system (CPU, RAM, HDD, GPU)
-                fValue = App.pSDK.GetSensorTypeValue(CPUIDSDK.SENSOR_UTILIZATION_CPU, ref dummy, ref dummy);
-                if (Math.Round(fValue, 0) >= 0)
-                {
-                    s = Convert.ToString(Math.Round(fValue, 1));
-                    s = s + "  %";
-                    Debug.Write(s);
-                }
-
-            }
-
+        // RPECK 08/04/2023
+        // Update the CPU speed etc using CPUID
+        private void update_cpu_usage(object sender, EventArgs e)
+        {
+            Debug.Write("test");
+            CPUInfo.UpdateValues();
         }
 
         // RPECK 04/04/2023

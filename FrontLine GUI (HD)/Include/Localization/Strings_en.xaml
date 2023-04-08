@@ -37,7 +37,7 @@
     <s:String x:Key="Str_SettingsPreInfo">Choose the settings for the app below. These are meant to help the system run smoothly.</s:String>
 
     <s:String x:Key="Str_SettingsGeneralTab">General</s:String>
-    <s:String x:Key="Str_SettingsBackupTab">Backup</s:String>
+    <s:String x:Key="Str_SettingsBackupTab">Backups</s:String>
 
     <!-- About Page -->
     <s:String x:Key="Str_AboutTitle">About</s:String>

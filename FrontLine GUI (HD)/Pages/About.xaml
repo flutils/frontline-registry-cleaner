@@ -42,8 +42,13 @@
                 </Grid.RowDefinitions>
                 
                 <!-- Version -->
-                <StackPanel Grid.Row="0">
-                    <TextBlock Text="System Information" />
+                <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
+                    <!-- Title -->
+                    <Label Content="System Information"/>
+                    
+                    
+
                 </StackPanel>
 
                 <!-- About -->

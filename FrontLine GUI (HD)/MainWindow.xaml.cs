@@ -74,19 +74,6 @@ namespace FrontLineGUI
             Close(); // https://www.tech-recipes.com/rx/23742/create-an-exit-button-in-c-visual-studio/
         }
 
-        // Closing
-        // Fired when the main Window is preparing to close
-        private void Window_Closing(object sender, CancelEventArgs e)
-        {
-            // Close CPUID
-            if (App.pSDK != null)
-            {
-                App.pSDK.Close();
-                App.pSDK.DestroyInstance();
-            }
-
-        }
-
         // Minimize
         // Minimizes the window to the taskbar
         private void MinimizeButton_Click(object sender, RoutedEventArgs e)

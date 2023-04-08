@@ -7,7 +7,8 @@
       x:Class="FrontLineGUI.Scan"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="771"
-      Title="Scan" Background="Black">
+      Title="Scan"
+      Loaded="ScanForm_Loaded">
 
     <!-- Resources -->
     <Page.Resources>
@@ -440,7 +441,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding HDDSpace, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}MB'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding HDDSpace, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
