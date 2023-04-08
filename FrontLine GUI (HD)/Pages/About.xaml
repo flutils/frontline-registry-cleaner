@@ -29,7 +29,7 @@
             </StackPanel>
 
             <!-- Content -->
-            <Grid Margin="0,10,0,0">
+            <Grid Margin="25,10,25,0">
             
                 <!-- Definitions -->
                 <Grid.ColumnDefinitions>
@@ -38,23 +38,24 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
                     <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 
                 <!-- Version -->
-                <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    
+                    <!-- Definitions -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
                     <!-- Title -->
-                    <Label Content="System Information"/>
-                    
-                    
+                    <Label Grid.Column="0" Content="System Information"/>
 
-                </StackPanel>
+                    <!-- Company Info -->
+                    <Label Grid.Column="1" Content="Company Information" />
 
-                <!-- About -->
-                <StackPanel Grid.Row="1">
-                    <TextBlock Text="Company Information" />
-                </StackPanel>
+                </Grid>
 
                 <!-- Statistics -->
                 <StackPanel Grid.Row="2">

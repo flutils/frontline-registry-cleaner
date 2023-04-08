@@ -13,15 +13,6 @@ namespace FrontLineGUI
     // Notes on the use of "OSVersionInfo"
     // https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win
 
-    /*
-     * The above library is used to give us access to operating system information
-     * The reason for using the library (rather than self coded) is beacuse it offloads the functionality required to compute the results
-     * The only issue with it lies in how it is not geared for Windows 11. It may be worth addressing that at some point but, for now, it should be okay
-     */
-
-    // Scan Page
-    // Used to provide core scanning functionality
-
     // RPECK 08/04/2023 - this was required to limit the application to Windows OS versions only
     [SupportedOSPlatform("windows")]
     public partial class Scan : Page
@@ -129,15 +120,7 @@ namespace FrontLineGUI
         // Update the CPU speed etc using CPUID
         private void update_cpu_usage(object sender, EventArgs e)
         {
-            Debug.Write("test");
             CPUInfo.UpdateValues();
-        }
-
-        // RPECK 04/04/2023
-        // ScanItem Edit Button Click
-        public void ScanItemEdit_Click(object sender, RoutedEventArgs e)
-        {
-            Debug.Write("Edit");
         }
 
         // RPECK 05/04/2023
@@ -162,7 +145,7 @@ namespace FrontLineGUI
             ListBox ScanItems = FindName("ScanItemsElement") as ListBox;
 
             // If present, selectAll else deselect everything
-            if (ScanItems.SelectedItems.Count != ScanItems.Items.Count)
+            if (ScanItems != null && ScanItems.SelectedItems.Count != ScanItems.Items.Count)
             {
                 ScanItems.SelectAll();
             }

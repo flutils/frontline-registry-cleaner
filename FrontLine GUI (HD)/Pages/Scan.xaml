@@ -180,7 +180,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <!-- Last Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="LastScanButton" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="BorderThickness" Value="0" />

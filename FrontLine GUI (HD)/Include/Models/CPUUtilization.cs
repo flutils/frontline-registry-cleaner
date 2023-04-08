@@ -20,11 +20,13 @@ namespace FrontLineGUI
         private int ram_power = 0;
         private int hdd_space = 0;
 
+        // HDD Specific
+        private long total_hdd = 0;
+        private long available_hdd = 0;
+
         // PerformanceContainers
         PerformanceCounter cpuCounter;
         PerformanceCounter ramCounter;
-        PerformanceCounter hddCounter;
-        PerformanceCounter gpuCounter;
 
         // CPUID
         public static CPUIDSDK pSDK;
@@ -35,6 +37,9 @@ namespace FrontLineGUI
             // CPU & RAM (use PerformanceCounter)
             cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
             ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
+
+            // HDD
+            hdd_space = getDriveSpace();
         }
 
         // Methods
@@ -81,6 +86,25 @@ namespace FrontLineGUI
         }
 
         // Private Methods
+
+        // RPECK 08/04/2023
+        // Get drive space (this is used in multiple instances)
+        private int getDriveSpace()
+        {
+            DriveInfo[] allDrives = DriveInfo.GetDrives();
+
+            // get the correct hard drive
+            foreach (DriveInfo drive in allDrives)
+            {
+                if (drive.IsReady)
+                {
+                    available_hdd += drive.AvailableFreeSpace;
+                    total_hdd     += drive.TotalSize;
+                }
+            }
+
+            return (available_hdd > 0 && total_hdd > 0) ? Convert.ToInt32((available_hdd / (float)total_hdd) * 100) : 0;
+        }
 
         // RPECK 25/03/2023
         // This is used to initialize the CPUID library in a separate thread
