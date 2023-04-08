@@ -346,7 +346,7 @@
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="0" MaxWidth="{Binding ActualWidth, ElementName=MainWindow}" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" x:Name="ScanItemsElement">
+                    <ListView Margin="0" ItemsSource="{Binding ScanItemsObject}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" x:Name="ScanItemsElement">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />
@@ -440,7 +440,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding HDDPower, Mode=OneWay, FallbackValue=0,StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding HDDSpace, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}MB'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />

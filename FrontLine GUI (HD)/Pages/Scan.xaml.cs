@@ -3,6 +3,8 @@ using System.Windows;
 using JCS;
 using System.Diagnostics;
 using System;
+using System.Windows.Threading;
+using System.Runtime.Versioning;
 
 namespace FrontLineGUI
 {
@@ -19,6 +21,9 @@ namespace FrontLineGUI
 
     // Scan Page
     // Used to provide core scanning functionality
+
+    // RPECK 08/04/2023 - this was required to limit the application to Windows OS versions only
+    [SupportedOSPlatform("windows")]
     public partial class Scan : Page
     {
 
@@ -26,6 +31,8 @@ namespace FrontLineGUI
 
         public CPUUtilization CPUInfo { get; set; }
         public ScanItemsCollection ScanItemsObject { get; set; }
+
+        public PerformanceCounter cpuCounter;
 
         // Constructor
         public Scan()
@@ -35,6 +42,7 @@ namespace FrontLineGUI
             DataContext = this;
 
             // Define CPUInfo
+            // This is contained within the class itself and doesn't need any configuration options
             CPUInfo = new CPUUtilization();
 
             // RPECK 26/03/2023
@@ -65,9 +73,24 @@ namespace FrontLineGUI
             OSName.Text    = OSNameText + " (" + OSVersionInfo.OSBits.ToString().Remove(0,3) + "bit)";
             OSEdition.Text = OSVersionInfo.VersionString.ToString();
 
+            // RPECK 08/04/2023
+            // This was recommended rather than a thread
+            // https://spacetech.dk/c-wpf-run-a-function-every-second.html
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(update_cpu_usage);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
+
         }
 
         #region Methods
+
+        // RPECK 08/04/2023
+        // Update the CPU speed etc using CPUID
+        private void update_cpu_usage(object sender, EventArgs e)
+        {
+            CPUInfo.UpdateValues();
+        }
 
         // RPECK 05/04/2023
         // OS Name
@@ -77,7 +100,7 @@ namespace FrontLineGUI
             get
             {
                 // Check to see if the name needs to be changed
-                if (OSVersionInfo.MajorVersion == 10 && OSVersionInfo.BuildVersion > 22000) return "Windows 11";
+                if (OSVersionInfo.MajorVersion == 10 && OSVersionInfo.BuildVersion >= 22000) return "Windows 11";
   
                 // Default
                 return OSVersionInfo.Name;

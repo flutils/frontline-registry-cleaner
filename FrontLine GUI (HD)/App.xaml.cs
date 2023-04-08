@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System.Runtime.Versioning;
 using System.Windows;
 
 namespace FrontLineGUI
@@ -35,9 +35,9 @@ namespace FrontLineGUI
                 // Start Thread
                 //CPUID_Thread.Start();
 
-                Init_CPUID();
-
             }
+
+            //Init_CPUID();
 
         }
 

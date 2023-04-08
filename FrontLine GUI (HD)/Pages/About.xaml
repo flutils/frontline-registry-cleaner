@@ -41,11 +41,9 @@
                     <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
                 
-                
-            
-                <!-- Update -->
+                <!-- Version -->
                 <StackPanel Grid.Row="0">
-                    <TextBlock Text="Version Control" />
+                    <TextBlock Text="System Information" />
                 </StackPanel>
 
                 <!-- About -->
@@ -55,7 +53,7 @@
 
                 <!-- Statistics -->
                 <StackPanel Grid.Row="2">
-                    <TextBlock Text="Statistics" />
+                    <TextBlock Text="Scan Statistics" />
                 </StackPanel>
 
             </Grid>
