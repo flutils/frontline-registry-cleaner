@@ -1,6 +1,6 @@
 <h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
 <h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software</h3>
-<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable software tool designed to remove bloat from Windows®. It was originally released in 2011 and redesigned in 2023 to support scan management: -  
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable software tool designed to remove bloat from Windows®. It was released in 2011 and redesigned in 2023: -  
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
@@ -15,19 +15,19 @@
 
 <p align="center">--</p>
 
-It works by scanning files and settings inside a Windows® PC, removing any defined as unnecessary.
+Windows users know the importance of keeping the system secure & optimized. This has become especially important with the increased complexity of apps & threats posed by malware.
 
-Its need is born of junk files and damaged registry settings slowing down certain parts of the OS.
+"Registry Cleaner" tools were built to help do this. Developed around cleaning the "registry" database at the heart of Windows PC's, they scanned through the settings it contains and repaired errors found inside.  
 
-Whilst improvements in CPU and RAM performance have mitigated the wider effects of this, the problem remains and can adversely affect graphic designers, programmers and other professionals who depend on their systems each day.
+Earlier versions of Windows (up to 7) required significant registry maintenance. As the technology matured (with the release of Windows 10 + 11), Microsoft implemented a number of measures to mitigate the more common issues it experienced. This lead to a decline in the popularity of the cleaners.
 
-The product was originally designed to solve the issue with a hard-coded set of scanning options. We've now changed that to enable customization - whereby users are able to manage the files/settings it scans.
+Our contribution to this market was "Frontline Registry Cleaner 2.0", a tool we built with the help of a company in Ukraine. The product was distributed online and through several retailers in the UK.
 
-We'll be updating the repository with further information soon.
+Due to us switching our focus, we stopped distributing it in 2012. We have since refreshed the technology as an internal project and have published the source here.
 
 --
 
-The software is provided 'as-is' and we accept no responsibility for its use. 
+This applicatiom is provided 'as-is' and we accept no responsibility for its use. 
 
 If you have any questions, you're welcome to [raise an issue](issues) or send us an email.
 

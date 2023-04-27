@@ -59,7 +59,7 @@
 
                 <!-- Statistics -->
                 <StackPanel Grid.Row="2">
-                    <TextBlock Text="Scan Statistics" />
+                    <TextBlock Text="Statistics" />
                 </StackPanel>
 
             </Grid>
