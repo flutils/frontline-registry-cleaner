@@ -15,19 +15,19 @@
 
 <p align="center">--</p>
 
-"Registry Cleaner" tools were built to repair errors in the Windows ["registry"](https://en.wikipedia.org/wiki/Windows_Registry) database.
+"Registry Cleaner" tools were built to repair errors in the Windows "[registry](https://en.wikipedia.org/wiki/Windows_Registry)" database.
 
-The registry is a storage system Windows uses to keep the OS running properly.
+As earlier Windows versions required significant registry maintenance, the tools became popular. As Windows evolved, the need dimished, leading many vendors to switch to speed & security optimization instead.
 
-Earlier versions of the system required significant registry maintenance, leading the tools to become popular in the late 2000's. As Windows evolved, their need dimished, leading many vendors to re-focus onto speed & security.
-
-We found success with "registry cleaner" software in 2009/2010 - achieving great reviews for our work. We continued to invest into the underlying technology and eventually ended up with "[Frontline Registry Cleaner 2.0](https://www.frontlinecleaner.com)" in 2011.
+We found success with "registry cleaner" software in 2009 - achieving positive reviews for our work. We invested into the underlying technology and released "[Frontline Registry Cleaner 2.0](https://www.frontlinecleaner.com)" in 2011.
 
 In 2012, we switched focus to web based applications, leading us to discontinue our registry repair system. As we've been maintaining the source code for an internal project, we released it as open source in 2015.
 
+In 2023, we issued a major update - allowing users to customize the engine to their own specifications. The reason for this came from our use of the "Disk Cleaner" tool in Windows, which showed us the need to keep a Windows PC free of bloat is omnipresent.
+
 --
 
-The applicatiom is provided 'as-is' and we accept no responsibility for its use. 
+This applicatiom is provided 'as-is' and we accept no responsibility for its use. 
 
 If you have any questions, you're welcome to [raise an issue](issues) or send us an email.
 
