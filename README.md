@@ -17,17 +17,17 @@
 
 "Registry Cleaner" tools were built to repair errors in the Windows "[registry](https://en.wikipedia.org/wiki/Windows_Registry)" database.
 
-As earlier Windows versions required significant registry maintenance, the tools became popular. As Windows evolved, the need dimished, leading many vendors to switch to speed & security optimization instead.
+As earlier Windows versions required regular registry maintenance, these tools became popular in the late 2000's. As Windows evolved, the need dimished, leading many vendors to switch to speed & security optimization instead.
 
 We found success with "registry cleaner" software in 2009 - achieving positive reviews for our work. We invested into the underlying technology and released [Frontline Registry Cleaner 2.0](https://www.frontlinecleaner.com) in 2011.
 
-In 2012, we switched focus to web based applications, leading us to discontinue our registry repair system. As we've been maintaining the source code for an internal project, we released it as open source in 2015.
+In 2012, we switched focus to web based applications, leading us to discontinue our registry repair system. As we've been maintaining the source code for an internal project, we released it open source in 2015.
 
-In 2023, we updated the design to permit customization.
+In 2023, we updated the design to support customization.
 
 --
 
-This applicatiom is provided 'as-is' and we accept no responsibility for its use. 
+The applicatiom is provided 'as-is' and we accept no responsibility for its use. 
 
 If you have any questions, you're welcome to [raise an issue](issues) or send us an email.
 
@@ -36,11 +36,8 @@ If you have any questions, you're welcome to [raise an issue](issues) or send us
 
 #### ⚠️ Requirements
 
-1. [VC++ Redistributable (x86)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
+1. [VC++ Redistributable (x86 >= 2015)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
 2. [.NET 7.0+](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) (x86 or x64 Windows SDK)
-
-Runtime requires VC++ redistributable `x86` >= 2015.
-
 
 ---
 
