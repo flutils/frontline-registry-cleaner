@@ -24,6 +24,7 @@ We found success with "registry cleaner" software in 2009 - achieving positive r
 In 2012, we switched focus to web based applications, leading us to discontinue our registry repair system. As we've been maintaining the source code for an internal project, we released it as open source in 2015.
 
 In 2023, we updated the design to permit customization.
+
 --
 
 This applicatiom is provided 'as-is' and we accept no responsibility for its use. 
