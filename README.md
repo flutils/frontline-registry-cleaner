@@ -1,6 +1,6 @@
 <h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
 <h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software</h3>
-<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable software tool designed to remove bloat from Windows®. It was released in 2011 and redesigned in 2023: -  
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable software tool designed to remove bloat from Windows®. It was released in 2011 and redesigned in 2023 to support scan management: -  
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
@@ -15,19 +15,19 @@
 
 <p align="center">--</p>
 
-Windows users know the importance of keeping the system secure & optimized. This has become especially important with the increased complexity of apps & threats posed by malware.
+"Registry Cleaner" tools were built to repair errors in the Windows ["registry"](https://en.wikipedia.org/wiki/Windows_Registry) database.
 
-"Registry Cleaner" tools were built to help do this. Developed around cleaning the "registry" database at the heart of Windows PC's, they scanned through the settings it contains and repaired errors found inside.  
+The registry is a storage system Windows uses to keep the OS running properly.
 
-Earlier versions of Windows (up to 7) required significant registry maintenance. As the technology matured (with the release of Windows 10 + 11), Microsoft implemented a number of measures to mitigate the more common issues it experienced. This lead to a decline in the popularity of the cleaners.
+Earlier versions of the system required significant registry maintenance, leading the tools to become popular in the late 2000's. As Windows evolved, their need dimished, leading many vendors to re-focus onto speed & security.
 
-Our contribution to this market was "Frontline Registry Cleaner 2.0", a tool we built with the help of a company in Ukraine. The product was distributed online and through several retailers in the UK.
+We found success with "registry cleaner" software in 2009/2010 - achieving great reviews for our work. We continued to invest into the underlying technology and eventually ended up with "[Frontline Registry Cleaner 2.0](https://www.frontlinecleaner.com)" in 2011.
 
-Due to us switching our focus, we stopped distributing it in 2012. We have since refreshed the technology as an internal project and have published the source here.
+In 2012, we switched focus to web based applications, leading us to discontinue our registry repair system. As we've been maintaining the source code for an internal project, we released it as open source in 2015.
 
 --
 
-This applicatiom is provided 'as-is' and we accept no responsibility for its use. 
+The applicatiom is provided 'as-is' and we accept no responsibility for its use. 
 
 If you have any questions, you're welcome to [raise an issue](issues) or send us an email.
 
