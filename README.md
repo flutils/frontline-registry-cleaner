@@ -30,20 +30,19 @@ Some of the more popular include: -
 
 Ours released in 2011 and was relatively successful.
 
-Unfortunately, it suffered a number of deficiencies due to our inability to code it.
+Unfortunately, it suffered a number of deficiencies due to our inability to maintain the code.
 
-After bringing development in-house in 2012, we re-released it open source with the intention of continuing to develop it. We still use it and have been implementing fixes to make it compatible with the latest software.
+After bringing development in-house in 2012, we released it open source in 2015 with the intention of continuing to develop it. We still use it and have been implementing fixes to make it compatible with the latest software.
 
-The current version provides the ability to define scanning criteria, remove junk files & damaged registry entries and generally improve performance of a Windows® based system. We will publish the roadmap soon.
+The current version provides the ability to define scanning criteria, remove junk files & damaged registry entries and generally improve performance of a Windows® based system. We will publish the future roadmap soon.
 
-The aim of this repository is to provide a means to continue the development of this tool and an outlet for experimentation within our company & beyond.
+The aim of this repository is to provide continual development of this tool and an outlet for experimentation from our company & the wider community.
 
 --
 
 The application & source code is provided 'as-is'. We accept no responsibility for its use. 
 
 If you have any questions, you're welcome to [raise an issue](issues) or [send us an email](https://www.frontlineutilities.co.uk/contact).
-
 
 ---
 
