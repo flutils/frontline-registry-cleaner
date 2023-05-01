@@ -1,6 +1,6 @@
 <h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
 <h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software</h3>
-<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable software tool designed to remove bloat from Windows®. It was released in 2011 and redesigned in 2023 to support scan management: -  
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable software tool designed to remove bloat from Windows®. It was released in 2011 and redesigned in 2023 to support custom scan management: - </p>
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
@@ -15,15 +15,28 @@
 
 <p align="center">--</p>
 
-"Registry Cleaner" tools were built to repair errors in the Windows "[registry](https://en.wikipedia.org/wiki/Windows_Registry)" database.
+Registry cleaner tools were popular in the late 2000's as a means to keep Windows® PC's running smoothly.
 
-As earlier Windows versions required regular registry maintenance, these tools became popular in the late 2000's. As Windows evolved, the need dimished, leading many vendors to switch to speed & security optimization instead.
+They originally cleaned corrupted/damaged registry entries and have since evolved into "optimization" tools that can clean junk files and other damaged system elements.
 
-We found success with "registry cleaner" software in 2009 - achieving positive reviews for our work. We invested into the underlying technology and released [Frontline Registry Cleaner 2.0](https://www.frontlinecleaner.com) in 2011.
+Some of the more popular include: -
 
-In 2012, we switched focus to web based applications, leading us to discontinue our registry repair system. As we've been maintaining the source code for an internal project, we released it open source in 2015.
+- CCleaner
+- IOBit System Care
+- SysTweak Advanced System Optimizer
+- Glary Utilities 
 
-In 2023, we updated the design to support customization.
+--
+
+Ours released in 2011 and was relatively successful.
+
+Unfortunately, it suffered a number of deficiencies due to us being unable to code it.
+
+After bringing our dev team in-house in 2012, we re-released it open source with the intention of continuing to develop it. We still use it and have been implementing fixes to make it compatible with the latest software versions.
+
+The current version provides the ability to define scanning criteria, remove junk files & damaged registry entries and generally improve performance of a Windows® based system. Our roadmap has categorization and several other features in the works.
+
+The aim of this repository is to give us a means to continue the development of this tool and provide an outlet for development experimentation within our company & beyond.
 
 --
 
@@ -36,7 +49,7 @@ If you have any questions, you're welcome to [raise an issue](issues) or send us
 
 #### ⚠️ Requirements
 
-1. [VC++ Redistributable (x86 >= 2015)](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads)
+1. [VC++ Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) (x86 ≥ 2015)
 2. [.NET 7.0+](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) (x86 or x64 Windows SDK)
 
 ---
