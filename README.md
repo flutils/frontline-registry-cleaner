@@ -15,32 +15,32 @@
 
 <p align="center">--</p>
 
-Registry cleaner tools were popular in the late 2000's as a means to keep Windows® PC's running smoothly.
+Registry cleaner tools became popular in the 2000's as a means to keep Windows® PC's running smoothly.
 
 They originally cleaned corrupted/damaged registry entries and have since evolved into "optimization" tools that can clean junk files and other damaged system elements.
 
 Some of the more popular include: -
 
-- CCleaner
-- IOBit System Care
-- SysTweak Advanced System Optimizer
-- Glary Utilities 
+- [CCleaner](https://www.ccleaner.com)
+- [IOBit System Care](https://www.iobit.com/en/advancedsystemcarefree.php)
+- [SysTweak Advanced System Optimizer](https://www.systweak.com/advanced-system-optimizer)
+- [Glary Utilities](https://www.glarysoft.com/)
 
 --
 
 Ours released in 2011 and was relatively successful.
 
-Unfortunately, it suffered a number of deficiencies due to us being unable to code it.
+Unfortunately, it suffered a number of deficiencies due to our inability to code it.
 
-After bringing our dev team in-house in 2012, we re-released it open source with the intention of continuing to develop it. We still use it and have been implementing fixes to make it compatible with the latest software versions.
+After bringing development in-house in 2012, we re-released it open source with the intention of continuing to develop it. We still use it and have been implementing fixes to make it compatible with the latest software.
 
 The current version provides the ability to define scanning criteria, remove junk files & damaged registry entries and generally improve performance of a Windows® based system. Our roadmap has categorization and several other features in the works.
 
-The aim of this repository is to give us a means to continue the development of this tool and provide an outlet for development experimentation within our company & beyond.
+The aim of this repository is to provide a means to continue the development of this tool and provide an outlet for development experimentation within our company & beyond.
 
 --
 
-The applicatiom is provided 'as-is' and we accept no responsibility for its use. 
+This applicatiom & source code is provided 'as-is'. We accept no responsibility for its use. 
 
 If you have any questions, you're welcome to [raise an issue](issues) or send us an email.
 
