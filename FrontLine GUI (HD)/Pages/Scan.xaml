@@ -15,6 +15,7 @@
         
         <!-- Converters -->
         <local:NotEqualToOneBooleanConverter x:Key="NotEqualToOneBooleanConverter" />
+        <local:ListNotfullConverter x:Key="ListNotFullConverter" /> <!-- RPECK 30/12/2023 - Added to allow us to make the Select All button disabled if the list is not full -->
 
         <!-- Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="MainScanButton">
@@ -210,7 +211,7 @@
         <Style TargetType="{x:Type Button}" x:Key="SelectAllButton" BasedOn="{StaticResource GeneralButton}">
             <Setter Property="Content" Value="{DynamicResource Str_ScanSelectAllButton}"/>
             <Style.Triggers>
-                <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" Value="True">
+                <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource ListNotFullConverter}, ConverterParameter={x:Reference ScanItemsElement}}" Value="False">
                     <Setter Property="IsEnabled" Value="False"/>
                     <Setter Property="Opacity" Value="0.35"/>
                 </DataTrigger>

@@ -1,6 +1,6 @@
 <h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
 <h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software</h3>
-<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable software tool designed to remove bloat from Windows®. It was released in 2011 and redesigned in 2023 to support custom scan management: - </p>
+<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable software tool designed to remove bloat from Windows. It was released in 2011 and now supports custom scan management: - </p>
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
@@ -34,9 +34,9 @@ Unfortunately, it suffered a number of deficiencies due to our inability to main
 
 After bringing development in-house in 2012, we released it open source in 2015 with the intention of continuing to develop it. We still use it and have been implementing fixes to make it compatible with the latest software.
 
-The current version provides the ability to define scanning criteria, remove junk files & damaged registry entries and generally improve performance of a Windows® based system. We will publish the future roadmap soon.
+The current version provides the ability to define scanning criteria, remove junk files & damaged registry entries and generally improve performance of a Windows® based system. We will publish the roadmap soon.
 
-The aim of this repository is to provide continual development of this tool and an outlet for experimentation from our company & the wider community.
+The aim of this repository is to facilitate the continual development of this tool and an outlet for experimentation from our company & the wider community.
 
 --
 
