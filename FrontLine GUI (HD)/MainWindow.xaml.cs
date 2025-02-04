@@ -4,6 +4,8 @@ using System.Windows.Input;
 using System.Diagnostics; // for Process.Start
 using System.Windows.Controls; // for MainButton_Click (referencing button)
 using System.Windows.Media;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace FrontLineGUI
 {
@@ -70,7 +72,18 @@ namespace FrontLineGUI
         // Closes the Window (exits the application)
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Close(); // https://www.tech-recipes.com/rx/23742/create-an-exit-button-in-c-visual-studio/
+
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            // Displays the MessageBox.
+            result = System.Windows.Forms.MessageBox.Show("Are you sure that you would like to exit the application?", "Exit", buttons);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            { 
+                Close(); // https://www.tech-recipes.com/rx/23742/create-an-exit-button-in-c-visual-studio/
+
+            }
+
         }
 
         // Minimize
@@ -123,7 +136,7 @@ namespace FrontLineGUI
         public void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             // Elements
-            Button srcButton  = e.Source as Button;
+            System.Windows.Controls.Button srcButton  = e.Source as System.Windows.Controls.Button;
             StackPanel parent = FindName("SubActionButtons") as StackPanel;
 
             // Parameters
@@ -154,7 +167,7 @@ namespace FrontLineGUI
                     for (int i = 0; i < childrenCount; i++)
                     {
                         // Get sibling element
-                        Button child = VisualTreeHelper.GetChild(parent, i) as Button;
+                        System.Windows.Controls.Button child = VisualTreeHelper.GetChild(parent, i) as System.Windows.Controls.Button;
 
                         // If element's tag is different to current, update the IsEnabled
                         if (child != null)
