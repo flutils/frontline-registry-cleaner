@@ -1,5 +1,5 @@
 <h1 align="center">Windows® File & Registry Cleaner Software</h1>
-<p align="center"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a> is a desktop software package designed to remove bloat from Windows.</p>
+<p align="center"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a> is a desktop software tool designed to remove bloat from Windows.</p>
 <p align="center">Released in 2011, it has been updated to accomodate GUI, QoL and OS updates: -</p>
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
