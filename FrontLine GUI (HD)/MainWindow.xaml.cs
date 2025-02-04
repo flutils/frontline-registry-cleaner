@@ -5,6 +5,7 @@ using System.Diagnostics; // for Process.Start
 using System.Windows.Controls; // for MainButton_Click (referencing button)
 using System.Windows.Media;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace FrontLineGUI
 {

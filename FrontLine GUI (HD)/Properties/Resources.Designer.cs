@@ -61,16 +61,6 @@ namespace FrontLineGUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
-        public static System.Drawing.Icon _216 {
-            get {
-                object obj = ResourceManager.GetObject("216", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap application_errors {
@@ -134,6 +124,16 @@ namespace FrontLineGUI.Properties {
         public static string GithubIconPathData {
             get {
                 return ResourceManager.GetString("GithubIconPathData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] icon {
+            get {
+                object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

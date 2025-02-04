@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FrontLineGUI</RootNamespace>
     <AssemblyName>FLCleaner2.1</AssemblyName>
@@ -17,20 +17,22 @@
     <OutputPath>..\Release\</OutputPath>
     <NoWarn>1701;1702;WFAC010</NoWarn>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Resources\216.ico</ApplicationIcon>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <StartupObject>FrontLineGUI.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
     <PlatformTarget>x86</PlatformTarget>
     <RepositoryUrl>https://www.github.com/flutils/flcleaner</RepositoryUrl>
     <PackageTags>registry, cleaner, windows, 10, 11</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <BaseOutputPath>$(SolutionDir)$(Configuration)\</BaseOutputPath>
     <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+    <Copyright>Frontline Utilities LTD</Copyright>
+    <PackageProjectUrl>https://www.frontlinecleaner.com</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Resources\Localization\**" />
@@ -39,6 +41,7 @@
     <Page Remove="Resources\Localization\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\icon.png" />
     <None Remove="Resources\OS\windows-10.png" />
     <None Remove="Resources\OS\windows-11.png" />
     <None Remove="Resources\OS\windows-8.png" />
@@ -50,6 +53,11 @@
     <Page Remove="Include\Localization\Strings_fr.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Localization\Icons\fr.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -58,9 +66,6 @@
     <Resource Include="Resources\Localization\Icons\en.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\216.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FLCleanEngine\FLCleanEngine.vcxproj">
@@ -157,5 +162,8 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 </Project>
