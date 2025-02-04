@@ -1,11 +1,11 @@
-<h1 align="left"><u>Frontline Registry Cleaner 2.1</u></h1>
-<h3 align="left">Windows® 7, 8, 10, 11 Junk File & Registry Cleaner Software</h3>
-<p align="left"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a>  is a customizable software tool designed to remove bloat from Windows. It was released in 2011 and now supports custom scan management: - </p>
+<h1 align="center">Windows® Junk File & Registry Cleaner Software</h1>
+<p align="center"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a> was a desktop software tool designed to remove bloat from Windows.</p>
+<p align="center">It was released in 2011 and has now been updated to accomodate GUI, QoL and OS updates.</p>
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/Eugeny/terminus/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/eugeny/terminus.svg?label=License&style=flat-square"></a> <a href="https://travis-ci.org/Eugeny/terminus"><img alt="Travis (.org)" src="https://img.shields.io/travis/Eugeny/terminus.svg?label=CI&logo=travis&logoColor=white&style=flat-square"></a>
+  <a href="https://raw.githubusercontent.com/Eugeny/terminus/master/LICENSE"><img alt="GitHub" src="https://img.shields.io/github/license/eugeny/terminus.svg?label=License&style=flat-square"></a>
   <a href="https://ci.appveyor.com/project/Eugeny/terminus"><img alt="AppVeyor" src="https://img.shields.io/appveyor/ci/eugeny/terminus.svg?label=CI&logo=appveyor&logoColor=white&style=flat-square"></a>
 </p>
 
@@ -83,11 +83,11 @@ By publishing the repository, and adopting the [MIT license](LICENSE), we have e
 
 Anyone who wishes to use, adapt, change, parody or mimic the design may do so (within the scope of fair use). Any malicious interpretations of our code, engine and interface will not be tolerated and will be met with appropriate recourse. Our code is provided in good faith, as a gesture of good will to the community.
 
-If you notice any of our products used in an illegal way, you should send an alert, either as an [issue](issues), or via our abuse email [abuse@frontlineutilities.co.uk](mailto:abuse@frontlineutilities.co.uk).
+If you notice any of our products used in an illegal way, you should send an alert, either as an [issue](issues), or via our abuse email [abuse@frontlineutilities.co.uk](mailto:abuse@fl.co.uk).
 
 ---
 
-:copyright: <a href="http://www.frontlineutilities.co.uk" align="absmiddle"><img src="https://i.imgur.com/xwejn02.jpg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://github.com/richpeck" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R Peck" /></a>
+:copyright: <a href="http://www.fl.co.uk" align="absmiddle"><img src="https://i.imgur.com/xwejn02.jpg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://github.com/richpeck" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R Peck" /></a>
 
 
 
@@ -99,7 +99,7 @@ If you notice any of our products used in an illegal way, you should send an ale
 [main]: Readme/main.jpeg
 
 <!-- Links -->
-[flutils]:              http://www.frontlineutilities.co.uk
+[flutils]:              http://www.fl.co.uk
 [frontlinecleaner.com]: https://www.frontlinecleaner.com
 
 <!-- ################################### -->

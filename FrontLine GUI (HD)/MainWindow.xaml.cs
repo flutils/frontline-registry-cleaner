@@ -4,8 +4,6 @@ using System.Windows.Input;
 using System.Diagnostics; // for Process.Start
 using System.Windows.Controls; // for MainButton_Click (referencing button)
 using System.Windows.Media;
-using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace FrontLineGUI
 {
@@ -113,7 +111,7 @@ namespace FrontLineGUI
         public void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             // Elements
-            Button srcButton  = e.Source as Button;
+            System.Windows.Forms.Button srcButton  = e.Source as System.Windows.Forms.Button;
             StackPanel parent = FindName("SubActionButtons") as StackPanel;
 
             // Parameters
