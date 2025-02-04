@@ -1,6 +1,6 @@
-<h1 align="center">Windows® Junk File & Registry Cleaner Software</h1>
-<p align="center"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a> was a desktop software tool designed to remove bloat from Windows.</p>
-<p align="center">It was released in 2011 and has now been updated to accomodate GUI, QoL and OS updates.</p>
+<h1 align="center">Windows® File & Registry Cleaner Software</h1>
+<p align="center"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a> is a desktop software package designed to remove bloat from Windows.</p>
+<p align="center">Released in 2011, it has been updated to accomodate GUI, QoL and OS updates: -</p>
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
@@ -15,22 +15,7 @@
 
 <p align="center">--</p>
 
-Registry cleaner tools became popular in the 2000's as a means to keep Windows® PC's running smoothly.
-
-They originally cleaned corrupted/damaged registry entries and have since evolved into "optimization" tools that can clean junk files and other damaged system elements.
-
-Some of the more popular include: -
-
-- [CCleaner](https://www.ccleaner.com)
-- [IOBit System Care](https://www.iobit.com/en/advancedsystemcarefree.php)
-- [SysTweak Advanced System Optimizer](https://www.systweak.com/advanced-system-optimizer)
-- [Glary Utilities](https://www.glarysoft.com/)
-
---
-
-Ours released in 2011 and was relatively successful.
-
-Unfortunately, it suffered a number of deficiencies due to our inability to maintain the code.
+The latest version is targeted at [.NET 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and has an updated user interface.
 
 After bringing development in-house in 2012, we released it open source in 2015 with the intention of continuing to develop it. We still use it and have been implementing fixes to make it compatible with the latest software.
 
@@ -42,19 +27,20 @@ The aim of this repository is to facilitate the continual development of this to
 
 The application & source code is provided 'as-is'. We accept no responsibility for its use. 
 
-If you have any questions, you're welcome to [raise an issue](issues) or [send us an email](https://www.frontlineutilities.co.uk/contact).
+If you have any questions, you're welcome to [raise an issue](issues) or [send us an email](https://www.fl.co.uk/contact).
 
 ---
 
-#### ⚠️ Requirements
+#### ⚠️ Runtime Requirements
 
 1. [VC++ Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) (x86 ≥ 2015)
-2. [.NET 7.0+](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) (x86 or x64 Windows SDK)
+2. [.NET Framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework) (4.8+ runtime installer)
 
 ---
 
 #### 🚦 Changelog
 
+- [x] (04/02/2025) Upgraded to .NET 9.0
 - [x] (02/04/2023) Upgraded to .NET 7.0 and changed interface
 - [x] (25/01/2022) Upgraded UI to HD
 - [x] (24/01/2022) Added Setup project to deploy Win32 binaries, added MSIX for Microsoft Store submission
@@ -83,7 +69,7 @@ By publishing the repository, and adopting the [MIT license](LICENSE), we have e
 
 Anyone who wishes to use, adapt, change, parody or mimic the design may do so (within the scope of fair use). Any malicious interpretations of our code, engine and interface will not be tolerated and will be met with appropriate recourse. Our code is provided in good faith, as a gesture of good will to the community.
 
-If you notice any of our products used in an illegal way, you should send an alert, either as an [issue](issues), or via our abuse email [abuse@frontlineutilities.co.uk](mailto:abuse@fl.co.uk).
+If you notice any of our products used in an illegal way, you should send an alert, either as an [issue](issues), or via our abuse email [abuse@fl.co.uk](mailto:abuse@fl.co.uk).
 
 ---
 

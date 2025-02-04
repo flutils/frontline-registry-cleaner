@@ -94,6 +94,18 @@ namespace FrontLineGUI
             );
         }
 
+        // Copyright Button
+        // Takes us to the "FL" website
+        private void CopyRightButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo
+                {
+                    FileName = Properties.Settings.Default.FLWeb,
+                    UseShellExecute = true
+                }
+            );
+        }
+
         // Version Button
         // Takes us to the 'releases' Github URL
         private void VersionButton_Click(object sender, RoutedEventArgs e)
@@ -111,7 +123,7 @@ namespace FrontLineGUI
         public void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             // Elements
-            System.Windows.Forms.Button srcButton  = e.Source as System.Windows.Forms.Button;
+            Button srcButton  = e.Source as Button;
             StackPanel parent = FindName("SubActionButtons") as StackPanel;
 
             // Parameters
