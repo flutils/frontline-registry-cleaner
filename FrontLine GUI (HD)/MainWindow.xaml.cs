@@ -13,6 +13,8 @@ namespace FrontLineGUI
     public partial class MainWindow : Window
     {
 
+        public String Test { get; set; }
+
         // Main Ingression Point
         // This is where the app loads
         public MainWindow()
@@ -192,4 +194,5 @@ namespace FrontLineGUI
         }
 
     }
+
 }

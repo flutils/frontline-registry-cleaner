@@ -8,7 +8,8 @@
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="771"
       Title="Scan"
-      Loaded="ScanForm_Loaded">
+      Loaded="ScanForm_Loaded"
+    >
 
     <!-- Resources -->
     <Page.Resources>
@@ -313,7 +314,7 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_ScanPreInfo}" TextAlignment="Center" FontSize="12" />
 
                 <!-- Scan Now Button -->
-                <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" />
+                <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" Click="MainScanButton_Click" />
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >

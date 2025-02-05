@@ -25,7 +25,7 @@ namespace FrontLineGUI
             ConfigOptions = new ConfigurationOptions();
 
             // RPECK 08/04/2023
-            // Alocate the scan items variable to he main application thread
+            // Alocate the scan items variable to the main application thread
             ScanItemsObject = new ScanItemsCollection();
 
         }

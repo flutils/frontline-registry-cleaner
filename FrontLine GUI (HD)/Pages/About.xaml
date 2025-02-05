@@ -6,7 +6,8 @@
       xmlns:local="clr-namespace:FrontLineGUI"
       mc:Ignorable="d" 
       d:DesignHeight="820" d:DesignWidth="771"
-      Title="Settings">
+      Title="About"
+     >
 
     <!-- Main Grid Area -->
     <Grid Background="White">
@@ -41,6 +42,7 @@
                 </Grid.RowDefinitions>
                 
                 <!-- Version -->
+                <TextBlock Text="{Binding Test, ElementName=FLMainWindow}"></TextBlock>
                 <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     
                     <!-- Definitions -->

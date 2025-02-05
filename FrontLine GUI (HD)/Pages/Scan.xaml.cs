@@ -5,6 +5,8 @@ using System.Diagnostics;
 using System;
 using System.Windows.Threading;
 using System.Runtime.Versioning;
+using System.Reflection;
+using System.Windows.Data;
 
 namespace FrontLineGUI
 {
@@ -39,15 +41,15 @@ namespace FrontLineGUI
             // Presents an ObservableListCollection of "ScanItem" classes
             ScanItemsObject = new ScanItemsCollection()
             {
-                new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png"),
-                new ScanItem("Invalid Files", "Clear invalid file errors.", true, "/Resources/Scan/invalid_files.png"),
-                new ScanItem("Application Errors", "Remove old application settings.", true, "/Resources/Scan/application_errors.png"),
-                new ScanItem("DLL Errors", "Fix orphaned DLL entries.", true, "/Resources/Scan/dll_errors.png"),
+                new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png", "20318;20311;20319;"),
+                new ScanItem("Invalid Files", "Clear invalid file errors.", true, "/Resources/Scan/invalid_files.png", "20310;20301;20313;"),
+                new ScanItem("Application Errors", "Remove old application settings.", true, "/Resources/Scan/application_errors.png", "20320;20308;20306;20312;"),
+                new ScanItem("DLL Errors", "Fix orphaned DLL entries.", true, "/Resources/Scan/dll_errors.png", "20315;"),
                 new ScanItem("Internet Errors", "Fix web browser errors.", true, "/Resources/Scan/internet_errors.png"),
-                new ScanItem("Windows Errors", "Resolve Windows registry errors.", true, "/Resources/Scan/windows_errors.png"),
-                new ScanItem("Temp Files", "Clear Windows temp files.", true, "/Resources/Scan/temp_files.png"),
-                new ScanItem("Junk Files", "Remove Windows junk files.", true, "/Resources/Scan/recycle_bin.png"),
-                new ScanItem("Internet Cache", "Clear privacy data from browser caches.", true, "/Resources/Scan/internet_cache.png")
+                new ScanItem("Windows Errors", "Resolve Windows registry errors.", true, "/Resources/Scan/windows_errors.png", "20307;20316;20402;20309;"),
+                new ScanItem("Temp Files", "Clear Windows temp files.", true, "/Resources/Scan/temp_files.png", "20505;20504;20506;20406;20503;20507;20407;"),
+                new ScanItem("Junk Files", "Remove Windows junk files.", true, "/Resources/Scan/recycle_bin.png", "20502;20405;"),
+                new ScanItem("Internet Cache", "Clear privacy data from browser caches.", true, "/Resources/Scan/internet_cache.png", "20314;20317;20403;20404;20501;")
             };
 
             // Initialize the form
@@ -162,6 +164,43 @@ namespace FrontLineGUI
         public void LastScanButton_Click(object sender, RoutedEventArgs e)
         {
             ((MainWindow)Application.Current.MainWindow).SettingsButton_Click(sender, e);
+        }
+
+        // RPECK 04/02/2025 - Main Scan Button Click
+        // Allows us to trigger the main scan of the system
+        public void MainScanButton_Click(object sender, RoutedEventArgs e)
+        {
+
+            // Find ListBox
+            ListBox ScanItems = FindName("ScanItemsElement") as ListBox;
+
+            // RPECK 04/02/2025 - First check to see if there are some selected options, otherwise don't do anything
+            if (ScanItems != null && ScanItems.SelectedItems.Count < 1)
+            {
+                // RPECK 04/02/2025 - Show a message box to highlight the issue
+                MessageBox.Show("Please Select At Least 1 Category To Scan", "Scan");
+
+                // RPECK 04/02/2025 - Exit
+                return;
+
+            }
+
+            // RPECK 04/02/2025 - Check to see if the Scanner Client engine is busy
+            // This provides some protection against loading the scanner up more than once
+            if (CleanEngineClient.Instance().IsBusy())
+            {
+                // RPECK 04/02/2025 - Show that the engine is busy
+                MessageBox.Show("Scanning engine is busy. Please wait or stop engine to perform next action", "Scan");
+
+                // RPECK 04/02/2025 - Exit
+                return;
+
+            } else {
+
+                
+
+            }
+
         }
 
     }
