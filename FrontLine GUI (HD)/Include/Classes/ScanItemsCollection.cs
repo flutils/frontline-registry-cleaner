@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -29,6 +30,8 @@ namespace FrontLineGUI
         public void SelectAll()
         {
 
+            // RPECK 07/02/2025 - Loops through all items within collection and sets "IsSelected" to true
+            this.All(x => x.IsSelected = true);
 
         }
 

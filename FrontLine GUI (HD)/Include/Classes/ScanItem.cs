@@ -11,7 +11,7 @@ namespace FrontLineGUI
     // RPECK 26/03/2023
     // ScanItem class for the 'scan' page -- allows us to populate a datagrid without having to define the items manually
     // Underlying benefit is that it gives us the means to extend the underlying scan feature as needed
-    public class ScanItem
+    public class ScanItem : PropertyChangedBase
     {
         // Internal values
         //private enum scanItemType { File, Setting }; // this is a choice between file or setting when using the scanner 
@@ -46,31 +46,55 @@ namespace FrontLineGUI
         public string Name
         {
             get { return name; }
-            set { name = value; }
+            set {
+
+                name = value;
+                OnPropertyChanged("Name");
+
+            }
         }
 
         public string Image
         {
             get { return image; }
-            set { image = value; }
+            set {
+               
+                image = value;
+                OnPropertyChanged("Image");
+
+            }
         }
 
         public string Label
         {
             get { return label; }
-            set { label = value; }
+            set {
+                
+                label = value;
+                OnPropertyChanged("Label");
+
+            }
         }
 
         public bool IsEnabled
         {
             get { return enabled; }
-            set { enabled = value;  }
+            set {
+                
+                enabled = value;
+                OnPropertyChanged("IsEnabled");
+
+            }
         }
 
         public bool IsSelected
         {
             get { return is_selected;  }
-            set { is_selected = value; }
+            set { 
+                
+                is_selected = value;
+                OnPropertyChanged("IsSelected");
+            }
         }
 
     }

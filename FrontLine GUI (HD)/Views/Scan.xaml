@@ -395,7 +395,7 @@
 
                     <!-- Select all -->
                     <StackPanel Orientation="Horizontal"  Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch">
-                        <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="AllSelected"  />
+                        <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="AllSelected" Command="{ Binding SelectAllClick }" />
                     </StackPanel>
                     
                 </Grid>
