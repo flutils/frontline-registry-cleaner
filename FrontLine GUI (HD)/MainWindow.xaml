@@ -43,6 +43,7 @@
         <!-- Converters -->
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
         <local:ButtonColourConverter            x:Key="ButtonColourConverter" />
+        <local:NotEqualToOneBooleanConverter    x:Key="BoolConverter" />
 
         <!-- Settings -->
         <!-- Add a decorator to the text on hover, mousedown and navigation -->
@@ -98,6 +99,36 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+
+        <!-- ScanItems ListBox -->
+        <Style TargetType="{x:Type ListBox}" x:Key="NavigationListBox">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+
+        <!-- ScanItems ListBox Items -->
+        <!-- ControlTemplate was required due to .NET 4.5 removing the ability to change system brushes - https://stackoverflow.com/a/18945651/1143732 -->
+        <Style TargetType="{x:Type ListBoxItem}" x:Key="NavigationListItemStyle">
+
+            <!-- Styling -->
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="IsEnabled" Value="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}},Converter={StaticResource BoolConverter}, Mode=OneWay}"/>
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="Padding" Value="0" />
+
+            <!-- RPECK 07/02/2025 - Added to get rid of default system styling -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Button Name="NavigationButton" Content="{Binding Title}" Style="{StaticResource SettingsLink}" Command="{Binding DataContext.NavigationButtonClick, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
         </Style>
 
         <!-- FL Button Text -->
@@ -291,23 +322,16 @@
                             RPECK 06/02/2025 - Dynamically add the buttons based on which ViewModels we have in the system 
                             Ref: https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/
                         -->
-                        <ItemsControl ItemsSource="{Binding ViewModels}" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0" >
+                        <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}" Style="{StaticResource NavigationListBox}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
 
                             <!-- Panel -->
-                            <ItemsControl.ItemsPanel>
+                            <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            
-                            <!-- Items -->
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Button Name="NavigationButton" IsEnabled="{Binding IsActive}" Content="{Binding Title, FallbackValue='Item'}" Command="{Binding DataContext.NavigationButtonClick, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" />
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                            
-                        </ItemsControl>
+                            </ListView.ItemsPanel>
+
+                        </ListView>
 
                     </Grid>
                 </Border>

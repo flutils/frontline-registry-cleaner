@@ -72,7 +72,6 @@ namespace FrontLineGUI
         // Ref: https://stackoverflow.com/a/15960843
         private void LoadView(ViewModelBase viewModel)
         {
-            Debug.WriteLine(viewModel);
 
             if(!ViewModels.Contains(viewModel)) ViewModels.Add(viewModel);
 

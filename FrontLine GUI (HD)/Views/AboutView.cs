@@ -8,6 +8,7 @@ namespace FrontLineGUI
     /// </summary>
     public partial class AboutView : UserControl
     {
+
         public AboutView()
         {
             InitializeComponent();
