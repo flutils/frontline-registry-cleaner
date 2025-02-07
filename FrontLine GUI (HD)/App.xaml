@@ -2,8 +2,8 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:FrontLineGUI"
-             Startup="Application_Startup"
-             StartupUri="MainWindow.xaml">
+             Startup="Application_Startup">
+            <!-- RPECK 05/02/2025 - Removed StartupUri to allow us to manually invoke MainWindow as per (https://stackoverflow.com/a/15960843) -->
     <Application.Resources>
 
         <!-- RPECK 15/03/2022 -->

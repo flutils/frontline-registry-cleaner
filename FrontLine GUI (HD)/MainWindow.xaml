@@ -4,9 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:FrontLineGUI.Properties"
-        xmlns:local="clr-namespace:FrontLineGUI"
+        xmlns:local="clr-namespace:FrontLineGUI" d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
-        Title="Frontline Registry Cleaner 2.1 (HD Edition)"
+        Title="Frontline Registry Cleaner 2.1 (HD)"
         Height="{Binding MinWidth, RelativeSource={RelativeSource Self}}"
         Width="{Binding MinHeight, RelativeSource={RelativeSource Self}}"
         MinWidth="665"
@@ -25,7 +25,20 @@
     >
 
     <!-- Resources for this window only -->
-    <Window.Resources> 
+    <Window.Resources>
+
+        <!-- Data Templates -->
+        <!-- Added to give us the ability to use the ability to retain state between the different pages/views -->
+        <!-- Ref: https://stackoverflow.com/a/15960843 -->
+        <DataTemplate DataType="{x:Type local:ScanViewModel}">
+            <local:ScanView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:SettingsViewModel}">
+            <local:SettingsView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AboutViewModel}">
+            <local:AboutView />
+        </DataTemplate>
 
         <!-- Converters -->
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
@@ -110,11 +123,21 @@
             </Style.Triggers>
         </Style>
         
-        <!-- Frame Syling -->
-        <Style TargetType="{x:Type Frame}" x:Key="MainFrameStyle">
+        <!-- Content Control Syling -->
+        <Style TargetType="{x:Type ContentControl}" x:Key="MainFrameStyle">
             <Setter Property="BorderBrush" Value="#a6b0b5" />
             <Setter Property="BorderThickness" Value="2" />
-
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Margin" Value="10px 10px 10px 0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ContentControl">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
     </Window.Resources>
@@ -264,19 +287,27 @@
                             </TextBlock.Effect>
                         </TextBlock>
 
-                        <!-- Buttons -->
-                        <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0" Orientation="Horizontal">
+                        <!-- 
+                            RPECK 06/02/2025 - Dynamically add the buttons based on which ViewModels we have in the system 
+                            Ref: https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/
+                        -->
+                        <ItemsControl ItemsSource="{Binding ViewModels}" HorizontalAlignment="Right" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,10,0" >
 
-                            <!-- Scan -->
-                            <Button Name="ScanButton" IsEnabled="False" Content="{DynamicResource Str_MainScan}" Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" Tag="Scan"/>
-
-                            <!-- Settings -->
-                            <Button Name="SettingsButton" IsEnabled="True" Margin="5,0,0,0" Content="{DynamicResource Str_MainSettings}" Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" Tag="Settings" />
-
-                            <!-- About -->
-                            <Button Name="AboutButton" IsEnabled="True" Margin="5,0,0,0" Content="{DynamicResource Str_MainAbout}"  Click="SettingsButton_Click" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" Tag="About"/>
-
-                        </StackPanel>
+                            <!-- Panel -->
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            
+                            <!-- Items -->
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Name="NavigationButton" IsEnabled="{Binding IsActive}" Content="{Binding Title, FallbackValue='Item'}" Command="{Binding DataContext.NavigationButtonClick, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}" Style="{StaticResource SettingsLink}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                            
+                        </ItemsControl>
 
                     </Grid>
                 </Border>
@@ -351,8 +382,8 @@
                     <!-- Content Area -->
                     <!-- This houses all of the panels (grids), which means that we're able to hide them as needed -->
                     <!-- I have split the panels into separate CS files for the sake of brevity -->
-                    <Frame x:Name="ContentFrame" NavigationUIVisibility="Hidden" Margin="10,10,10,0" Source="/Pages/Scan.xaml" Style="{StaticResource MainFrameStyle}" />
-                    
+                    <ContentControl Style="{StaticResource MainFrameStyle}" Content="{Binding CurrentViewModel}" />
+
                     <!-- Company & Assembly Info -->
                     <Grid Grid.Row="1" Margin="10,2" VerticalAlignment="Center">
 

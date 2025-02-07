@@ -1,4 +1,4 @@
-﻿<Page x:Class="FrontLineGUI.Pages.Settings"
+﻿<UserControl x:Class="FrontLineGUI.SettingsView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,10 +6,10 @@
       xmlns:local="clr-namespace:FrontLineGUI"
       mc:Ignorable="d" 
       d:DesignHeight="820" d:DesignWidth="771"
-      Title="Settings">
+      >
     
     <!-- Styles etc -->
-    <Page.Resources>
+    <UserControl.Resources>
 
         <!-- Tab Styling -->
         <Style TargetType="{x:Type TabControl}" x:Key="TabControlStyling">
@@ -69,7 +69,7 @@
             </Style.Resources>
         </Style>
 
-    </Page.Resources>
+    </UserControl.Resources>
         
     <Grid>
 
@@ -129,4 +129,4 @@
         </Grid>
 
     </Grid>
-</Page>
+</UserControl>

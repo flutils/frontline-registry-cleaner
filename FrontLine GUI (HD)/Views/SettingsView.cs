@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace FrontLineGUI.Pages
+namespace FrontLineGUI
 {
 
     /* 
@@ -14,12 +14,12 @@ namespace FrontLineGUI.Pages
      *   - backup (where should backups be stored?)
     */
 
-    public partial class Settings : Page
+    public partial class SettingsView : UserControl
     {
-        public Settings()
+        public SettingsView()
         {
-            DataContext = App.ConfigOptions;
             InitializeComponent();
         }
+
     }
 }

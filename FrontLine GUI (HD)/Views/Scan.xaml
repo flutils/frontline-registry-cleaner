@@ -1,18 +1,16 @@
-﻿<Page
+﻿<UserControl
+      x:Class="FrontLineGUI.ScanView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FrontLineGUI"
-      x:Class="FrontLineGUI.Scan"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="771"
-      Title="Scan"
-      Loaded="ScanForm_Loaded"
     >
 
     <!-- Resources -->
-    <Page.Resources>
+    <UserControl.Resources>
         
         <!-- Converters -->
         <local:NotEqualToOneBooleanConverter x:Key="NotEqualToOneBooleanConverter" />
@@ -236,7 +234,7 @@
             </Style.Triggers>
         </Style>
 
-    </Page.Resources>
+    </UserControl.Resources>
 
     <!-- Main -->
     <Grid x:Name="MainGrid">
@@ -296,7 +294,7 @@
                         <!-- Buttons -->
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <Button Content="Save" Style="{StaticResource GeneralButton}" Background="Blue" Margin="0,0,1,0" />
-                            <Button Content="Cancel" Style="{StaticResource GeneralButton}" Click="GridCancel_Click" />
+                            <Button Content="Cancel" Style="{StaticResource GeneralButton}" />
                         </StackPanel>
 
                     </StackPanel>
@@ -314,11 +312,11 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_ScanPreInfo}" TextAlignment="Center" FontSize="12" />
 
                 <!-- Scan Now Button -->
-                <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" Click="MainScanButton_Click" />
+                <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" />
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" >
-                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Click="LastScanButton_Click" Tag="About">
+                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Tag="About">
                         <!-- If we want to pass an array, need to do it like this -->
                         <!-- https://stackoverflow.com/questions/1350598/passing-two-command-parameters-using-a-wpf-binding -->
                         <Button.CommandParameter>
@@ -398,8 +396,8 @@
 
                     <!-- Select all -->
                     <StackPanel Orientation="Horizontal"  Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch">
-                        <Button Content="{DynamicResource Str_AddNewButton}" Background="Red" Style="{StaticResource GeneralButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="AddNewButton_Click" Name="InfoSelected" Margin="0,0,1,0" Visibility="Hidden" />
-                        <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Click="SelectAllButton_Click" Name="AllSelected" />
+                        <Button Content="{DynamicResource Str_AddNewButton}" Background="Red" Style="{StaticResource GeneralButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="InfoSelected" Margin="0,0,1,0" Visibility="Hidden" />
+                        <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="AllSelected" />
                     </StackPanel>
                     
                 </Grid>
@@ -458,4 +456,4 @@
         </Grid>
 
     </Grid>
-</Page>
+</UserControl>

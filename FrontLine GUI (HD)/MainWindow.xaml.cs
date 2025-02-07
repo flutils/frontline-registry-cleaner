@@ -6,6 +6,7 @@ using System.Windows.Controls; // for MainButton_Click (referencing button)
 using System.Windows.Media;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Configuration;
 
 namespace FrontLineGUI
 {
@@ -13,15 +14,10 @@ namespace FrontLineGUI
     public partial class MainWindow : Window
     {
 
-        public String Test { get; set; }
-
         // Main Ingression Point
         // This is where the app loads
         public MainWindow()
         { 
-
-            // DataContext (for the version button)
-            DataContext = this;
 
             // Init
             InitializeComponent();
@@ -175,7 +171,7 @@ namespace FrontLineGUI
                         if (child != null)
                         {
                             // Cast
-                            string child_tag   = child.Tag.ToString();
+                            string child_tag = child.Tag.ToString();
                             string current_tag = tag.ToString();
 
                             // Enabled
@@ -185,9 +181,6 @@ namespace FrontLineGUI
                     }
 
                 }
-
-                // Navigate the main content area
-                ContentFrame.Navigate(new Uri($"Pages/{tag.ToString()}.xaml", UriKind.Relative));
 
             }
 
