@@ -24,28 +24,13 @@ namespace FrontLineGUI
 
         }
 
-        // Version
-        // Used to show the version number on the bottom menu area 
-        // https://stackoverflow.com/a/15873711/1143732
-        public string Version
-        {
-            get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
-        }
-
-        // Year
-        // Get the current year
-        public string CurrentYear
-        {
-            get { return DateTime.Now.Year.ToString(); }
-        }
-
         // RPECK 07/03/2023
         // Added to give us the means to display the current flag
         public string LanguageFlag
         {
             get
             {
-                string language = App.ConfigOptions.Localization.CurrentLanguage;
+                string language = "en-GB";// App.ConfigOptions.Localization.CurrentLanguage;
                 return $"/Resources/Localization/Icons/{language}.jpg";
             }
         }
@@ -127,63 +112,6 @@ namespace FrontLineGUI
                     UseShellExecute = true
                 }
             );
-        }
-
-        // Settings Buttons
-        // Loads the "settings" page
-        public void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Elements
-            System.Windows.Controls.Button srcButton  = e.Source as System.Windows.Controls.Button;
-            StackPanel parent = FindName("SubActionButtons") as StackPanel;
-
-            // Parameters
-            // There are two parameters which can be handled here -- "Tab" and "Element"
-            // These are used to identify which "Settings" tab should be loaded and which Element within that tab should be focused (IE tab -> General, element -> Debug)
-            if (srcButton.CommandParameter != null)
-            {
-                Array value = srcButton.CommandParameter as Array;
-                foreach (var item in value)
-                {
-                    Debug.Write(item.ToString());
-                }
-            }
-
-            // Define Tag
-            var tag = srcButton.Tag ?? "Settings";
-
-            // Only proceed if tag is present
-            if (tag != null)
-            {
-
-                // Count children
-                int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
-
-                // Go through siblings
-                if (childrenCount > 0)
-                {
-                    for (int i = 0; i < childrenCount; i++)
-                    {
-                        // Get sibling element
-                        System.Windows.Controls.Button child = VisualTreeHelper.GetChild(parent, i) as System.Windows.Controls.Button;
-
-                        // If element's tag is different to current, update the IsEnabled
-                        if (child != null)
-                        {
-                            // Cast
-                            string child_tag = child.Tag.ToString();
-                            string current_tag = tag.ToString();
-
-                            // Enabled
-                            child.IsEnabled = (child_tag != current_tag);
-                        }
-
-                    }
-
-                }
-
-            }
-
         }
 
     }

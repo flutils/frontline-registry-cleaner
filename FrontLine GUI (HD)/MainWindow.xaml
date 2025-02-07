@@ -20,7 +20,7 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        MouseDown="Window_MouseDown" Foreground="{x:Null}"
+        MouseDown="Window_MouseDown"
         Loaded="Window_Loaded"
     >
 
@@ -44,11 +44,13 @@
         <local:SystemColorToSolidBrushConverter x:Key="BrushConverter" />
         <local:ButtonColourConverter            x:Key="ButtonColourConverter" />
         <local:NotEqualToOneBooleanConverter    x:Key="BoolConverter" />
-
+        <local:OppositeBooleanConverter         x:Key="OppositeBooleanConverter" />
+   
         <!-- Settings -->
         <!-- Add a decorator to the text on hover, mousedown and navigation -->
         <!-- https://stackoverflow.com/a/13858357/1143732 -->
         <!-- https://www.youtube.com/watch?v=aFGDs3z7zpM&ab_channel=tips%27ntricks -->
+        <!-- RPECK 07/02/2025 - Had to list here otherwise the navigation list would not recognise it! -->
         <Style TargetType="{x:Type Button}" x:Key="SettingsLink" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="Opacity" Value="0.45" />
             <Setter Property="Template">
@@ -114,9 +116,15 @@
         <!-- ControlTemplate was required due to .NET 4.5 removing the ability to change system brushes - https://stackoverflow.com/a/18945651/1143732 -->
         <Style TargetType="{x:Type ListBoxItem}" x:Key="NavigationListItemStyle">
 
+            <!-- Triggers -->
+            <Style.Triggers>
+                <Trigger Property="IsSelected" Value="True" >
+                    <Setter Property="IsEnabled" Value="False" />
+                </Trigger>
+            </Style.Triggers>
+            
             <!-- Styling -->
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="IsEnabled" Value="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}},Converter={StaticResource BoolConverter}, Mode=OneWay}"/>
             <Setter Property="Background" Value="{x:Null}" />
             <Setter Property="Padding" Value="0" />
 
@@ -124,7 +132,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Button Name="NavigationButton" Content="{Binding Title}" Style="{StaticResource SettingsLink}" Command="{Binding DataContext.NavigationButtonClick, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" />
+                        <Button Name="NavigationButton" Content="{Binding Title}" Command="{Binding DataContext.NavigationButtonClick, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{StaticResource SettingsLink}" CommandParameter="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -246,7 +254,7 @@
             <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,7,0"  Orientation="Horizontal" Grid.Column="1" Panel.ZIndex="10" Height="42">
 
                 <!-- Localization Flag -->
-                <Button Name="LocalizationButton" MaxHeight="25" Margin="0,0,5,0" Click="SettingsButton_Click" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainLocalizationButtonTooltip}">
+                <Button Name="LocalizationButton" MaxHeight="25" Margin="0,0,5,0" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainLocalizationButtonTooltip}">
                     <Button.CommandParameter>
                         <x:Array Type="sys:String" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
                             <sys:String>General</sys:String>
@@ -322,7 +330,7 @@
                             RPECK 06/02/2025 - Dynamically add the buttons based on which ViewModels we have in the system 
                             Ref: https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/
                         -->
-                        <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}" Style="{StaticResource NavigationListBox}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
+                        <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}"  Style="{StaticResource NavigationListBox}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" SelectedItem="{Binding CurrentViewModel}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
 
                             <!-- Panel -->
                             <ListView.ItemsPanel>

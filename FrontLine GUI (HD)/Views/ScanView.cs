@@ -22,7 +22,6 @@ namespace FrontLineGUI
 
         // Public class vars
         public CPUUtilization CPUInfo { get; set; }
-        public ScanItemsCollection ScanItemsObject { get; set; }
 
         public ScanView()
         {

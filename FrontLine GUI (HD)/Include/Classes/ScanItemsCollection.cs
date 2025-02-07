@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace FrontLineGUI
 {
@@ -19,6 +21,14 @@ namespace FrontLineGUI
             {
                 return this.Where(x => x.IsSelected == true).Count();
             }
+
+        }
+
+        // RPECK 07/02/2025 - Select All
+        // Used to change all "IsSelected" values to true
+        public void SelectAll()
+        {
+
 
         }
 

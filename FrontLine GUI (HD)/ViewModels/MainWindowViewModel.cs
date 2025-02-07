@@ -11,7 +11,7 @@ namespace FrontLineGUI
     {
         #region Declarations
 
-        // RPECK 05/02/2025 - ViewModels
+        // RPECK 05/02/2025 - Declarations
         // Set as a private attributes so can be maintained internally
         private ViewModelBase       _currentViewModel;
         private List<ViewModelBase> _viewModels;
@@ -37,6 +37,7 @@ namespace FrontLineGUI
 
             // RPECK 06/02/2025 - Hook up Commands to associated methods
             NavigationButtonClick = new DelegateCommand(o => LoadView( (ViewModelBase)o ));
+
         }
 
         #region Public Properties
