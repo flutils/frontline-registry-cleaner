@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JCS;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
@@ -16,9 +17,12 @@ namespace FrontLineGUI
         // Used to give us the ability to call or modify attributes publicly
         public ScanView Model { get; private set; }
         public ScanItemsCollection _scanItemsCollection { get; set; }
+        public CPUUtilization CPUInfo { get; set; }
+        public OSInfo OSInformation { get; set; }
 
         // RPECK 06/02/2025 - Commands
-        public ICommand SelectAllClick { get; private set; }
+        public ICommand SelectAllClick      { get; private set; }
+        public ICommand LastScanButtonClick { get; private set; }
 
         public ScanViewModel(ScanView model)
         {
@@ -30,6 +34,10 @@ namespace FrontLineGUI
             // RPECK 06/02/2025 - Title
             // Sets the public title of the ModelView (in this case, "Scan")
             Title = "Scan";
+
+            // RPECK 08/02/2025 - Set up the OSInfo Value
+            // This invokes a new instance of the "OSInfo" class we created for the purpose
+            OSInformation = new OSInfo();
 
             // RPECK 26/03/2023 - Scan Items Collection
             // Presents an ObservableListCollection of "ScanItem" classes
@@ -47,7 +55,8 @@ namespace FrontLineGUI
             };
 
             // RPECK 06/02/2025 - Hook up Commands to associated methods
-            SelectAllClick = new DelegateCommand(o => ScanItemsCollection.SelectAll());
+            SelectAllClick       = new DelegateCommand(o => ScanItemsCollection.SelectAll());
+            LastScanButtonClick  = new DelegateCommand(o => LastScanClick());
 
         }
 
@@ -63,6 +72,13 @@ namespace FrontLineGUI
                 OnPropertyChanged("ScanItemsCollection");
             }
 
+        }
+
+        // RPECK 08/02/2025 - LastScan Button Click
+        // Should invoke the "About" view 
+        public void LastScanClick()
+        {
+            Debug.WriteLine("test");
         }
 
     }

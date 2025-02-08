@@ -103,7 +103,6 @@
             </Setter>
         </Style>
 
-
         <!-- ScanItems ListBox -->
         <Style TargetType="{x:Type ListBox}" x:Key="NavigationListBox">
             <Setter Property="BorderThickness" Value="0" />
