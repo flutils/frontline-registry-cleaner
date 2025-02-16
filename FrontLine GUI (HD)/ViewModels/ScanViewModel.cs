@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace FrontLineGUI
 {
@@ -23,6 +24,7 @@ namespace FrontLineGUI
         // RPECK 06/02/2025 - Commands
         public ICommand SelectAllClick      { get; private set; }
         public ICommand LastScanButtonClick { get; private set; }
+        public ICommand MainScanButtonClick { get; private set; }
 
         public ScanViewModel(ScanView model)
         {
@@ -38,6 +40,10 @@ namespace FrontLineGUI
             // RPECK 08/02/2025 - Set up the OSInfo Value
             // This invokes a new instance of the "OSInfo" class we created for the purpose
             OSInformation = new OSInfo();
+
+            // RPECK 08/02/2025 - CPUInfo
+            // Used to populate the CPU/RAM/HDD/GPU values on the scanning screen
+            CPUInfo = new CPUUtilization();
 
             // RPECK 26/03/2023 - Scan Items Collection
             // Presents an ObservableListCollection of "ScanItem" classes
@@ -57,6 +63,14 @@ namespace FrontLineGUI
             // RPECK 06/02/2025 - Hook up Commands to associated methods
             SelectAllClick       = new DelegateCommand(o => ScanItemsCollection.SelectAll());
             LastScanButtonClick  = new DelegateCommand(o => LastScanClick());
+            MainScanButtonClick  = new DelegateCommand(o => Debug.WriteLine("tester"));
+
+            // RPECK 08/02/2025 - Set up a timer to get the hardware info to update 
+            // https://spacetech.dk/c-wpf-run-a-function-every-second.html
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(update_cpu_values);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
 
         }
 
@@ -79,6 +93,13 @@ namespace FrontLineGUI
         public void LastScanClick()
         {
             Debug.WriteLine("test");
+        }
+
+        // RPECK 08/02/2025 - Updates CPUInfo Values
+        // Called by the ticker above
+        public void update_cpu_values(object sender, EventArgs e)
+        {
+            CPUInfo.UpdateValues();
         }
 
     }

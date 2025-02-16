@@ -53,7 +53,7 @@
                                             <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
                                         </TextBlock.Effect>
                                     </TextBlock>
-                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="White" Content="{DynamicResource Str_ScanSelectAllButtonRecommended}" ContentStringFormat="({0})" Padding="0 " Margin="0">
+                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="White" Content="{DynamicResource Str_ScanMainButtonRecommended}" ContentStringFormat="({0})" Padding="0 " Margin="0">
                                         <Label.Effect>
                                             <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
                                         </Label.Effect>
@@ -258,74 +258,24 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            
-            <!-- Edit/New Item Form -->
-            <Grid Grid.Row="0" Grid.RowSpan="2" Style="{StaticResource InputFormStyle}" x:Name="InputForm" IsEnabled="False">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="4*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-
-                <!-- Background -->
-                <Border Background="Black" Grid.RowSpan="3" Grid.ColumnSpan="3" Opacity="0.95" Panel.ZIndex="11" />
-
-                <!-- Main Layout -->
-                <Grid Grid.Row="1" Grid.Column="1" Background="White" Panel.ZIndex="12">
-                    
-                    <!-- Content -->
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="25">
-                        
-                        <!-- Title -->
-                        <Label Content="Add Scan Item" Margin="0,0,0,10" Padding="0" />
-
-                        <!-- Name -->
-                        <TextBox Text="{Binding Name, FallbackValue=Name}" Margin="0,0,0,10" />
-
-                        <!-- Type -->
-                        <TextBox Text="Type" Margin="0,0,0,10" />
-                        
-                        <!-- Buttons -->
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                            <Button Content="Save" Style="{StaticResource GeneralButton}" Background="Blue" Margin="0,0,1,0" />
-                            <Button Content="Cancel" Style="{StaticResource GeneralButton}" />
-                        </StackPanel>
-
-                    </StackPanel>
-                    
-                </Grid>
-            </Grid>
 
             <!-- Title -->
             <StackPanel HorizontalAlignment="stretch" VerticalAlignment="Top">
 
                 <!-- Title -->
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{DynamicResource Str_ScanPreTitle}" />
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{DynamicResource Str_ScanTitle}" />
 
                 <!-- Intro -->
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_ScanPreInfo}" TextAlignment="Center" FontSize="12" />
 
                 <!-- Scan Now Button -->
-                <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" />
+                <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" Command="{Binding LastScanButtonClick}" />
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button DataContext="{DynamicResource Str_ScanMainLastPerformed}" ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Command="{Binding LastScanButtonClick}">
-                        <!-- If we want to pass an array, need to do it like this -->
-                        <!-- https://stackoverflow.com/questions/1350598/passing-two-command-parameters-using-a-wpf-binding -->
-                        <Button.CommandParameter>
-                            <x:Array Type="sys:String" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
-                                <sys:String>Statistics</sys:String>
-                            </x:Array>
-                        </Button.CommandParameter>
+                    <Button ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Command="{Binding LastScanButtonClick}">
                         <TextBlock>
-                            <Run Text="{Binding Path=.}" TextDecorations="Underline" /><!--
+                            <Run Text="{DynamicResource Str_ScanMainLastPerformed}" TextDecorations="Underline" /><!--
                             --><Run Text=":" />
                             <Run Text="01/08/2022" />
                         </TextBlock>
@@ -430,19 +380,19 @@
                     <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="CPUInformation">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                             <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding CPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding CPUInfo.CPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding RAMPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding CPUInfo.RAMPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding HDDSpace, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding CPUInfo.HDDSpace, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding GPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding CPUInfo.GPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                     </StackPanel>
 

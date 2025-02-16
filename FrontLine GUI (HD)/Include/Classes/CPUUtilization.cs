@@ -38,8 +38,6 @@ namespace FrontLineGUI
             cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
             ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
 
-            // HDD
-            hdd_space = getDriveSpace();
         }
 
         // Methods
@@ -47,6 +45,7 @@ namespace FrontLineGUI
         {
             CPUPower = Convert.ToInt32(cpuCounter.NextValue());
             RAMPower = Convert.ToInt32(ramCounter.NextValue());
+            HDDSpace = Convert.ToInt32(getDriveSpace());
         }
 
         // Properties
@@ -103,7 +102,7 @@ namespace FrontLineGUI
                 }
             }
 
-            return (available_hdd > 0 && total_hdd > 0) ? Convert.ToInt32((available_hdd / (float)total_hdd) * 100) : 0;
+            return (available_hdd > 0 && total_hdd > 0) ? Convert.ToInt32((100 - (available_hdd / (float)total_hdd) * 100)) : 0;
         }
 
         // RPECK 25/03/2023

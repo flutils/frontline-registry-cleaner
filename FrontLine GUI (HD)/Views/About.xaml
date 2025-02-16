@@ -30,41 +30,15 @@
             </StackPanel>
 
             <!-- Content -->
-            <Grid Margin="25,10,25,0">
-            
-                <!-- Definitions -->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                
-                <!-- Version -->
-                <TextBlock Text="{Binding Test, ElementName=FLMainWindow}"></TextBlock>
-                <Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                    
-                    <!-- Definitions -->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <!-- Title -->
-                    <Label Grid.Column="0" Content="System Information"/>
-
-                    <!-- Company Info -->
-                    <Label Grid.Column="1" Content="Company Information" />
-
-                </Grid>
-
-                <!-- Statistics -->
-                <StackPanel Grid.Row="2">
-                    <TextBlock Text="Statistics" />
-                </StackPanel>
-
-            </Grid>
+            <!-- ListView used because it gives us the ability to design everything we need -->
+            <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
+            <ListView Margin="25,10,25,0" ItemsSource="{Binding ScanItemsCollection}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" x:Name="ScanItemsElement">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="3" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+            </ListView>
 
         </StackPanel>
 
@@ -80,10 +54,9 @@
             </Grid.RowDefinitions>
 
             <!-- Bottom Info -->
-            <Grid Grid.Row="1" Background="#f9f9f9" Height="55">
+            <Grid Grid.Row="1" Background="#f9f9f9">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="0.35*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*" />
@@ -94,11 +67,12 @@
 
                 <!-- OS Info -->
                 <!-- https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win#_comments -->
-                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,0,0,0">
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,15,10,15">
                     <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="Company Information"  Padding="0" />
-                    <Label VerticalAlignment="Center" Margin="0,0,3,0" Content="Founded in 2011, Frontline Registry Cleaner was the culmination of a series of projects"  Padding="0" />
+                    <TextBlock VerticalAlignment="Center" Margin="0,0,3,0" TextWrapping="Wrap" Padding="0">
+                        <Hyperlink Foreground="Black" NavigateUri="{ Binding FLWebURL }" Click="clickTest">Frontline Utilities LTD</Hyperlink> was established in 2009 to distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product.
+                    </TextBlock> 
                 </StackPanel>
-
 
             </Grid>
 

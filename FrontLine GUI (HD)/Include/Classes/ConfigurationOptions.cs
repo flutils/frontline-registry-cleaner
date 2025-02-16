@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using EZLocalizeNS;
 
 namespace FrontLineGUI
 {
@@ -18,14 +17,9 @@ namespace FrontLineGUI
 
             // RPECK 07/04/2023
             // Added for localization system
-            Localization = new EZLocalize(System.Windows.Application.Current.Resources, "en", null, "Include\\Localization\\", "Strings");
+            //Localization = new EZLocalize(System.Windows.Application.Current.Resources, "en", null, "Include\\Localization\\", "Strings");
 
         }
-
-        // RPECK 07/04/2023
-        // Added for EZLocalization
-        // Check demo at https://www.codeproject.com/Articles/524878/Localisation-made-easy-for-WPF
-        public EZLocalize Localization = null;
 
         // RPECK 26/03/2023
         // Default Directory for app
