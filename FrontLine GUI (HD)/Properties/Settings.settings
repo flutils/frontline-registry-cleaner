@@ -17,5 +17,8 @@
     <Setting Name="AppDataDir" Type="System.String" Scope="Application">
       <Value Profile="(Default)">%APPDATA%\Frontline Utilities LTD</Value>
     </Setting>
+    <Setting Name="FlatIconWeb" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.flaticon.com</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

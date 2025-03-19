@@ -40,5 +40,9 @@
     <!-- About Page -->
     <s:String x:Key="Str_AboutTitle">About</s:String>
     <s:String x:Key="Str_AboutPreInfo">Further information about the application and our company.</s:String>
+    <s:String x:Key="Str_FLHyperlink">Frontline Utilities LTD</s:String>
+    <s:String x:Key="Str_FLText">was established in 2009 to distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product.</s:String>
+    <s:String x:Key="Str_FlatIconHyperlink">FlatIcon.com</s:String>
+    <s:String x:Key="Str_FlatIconText">Icons made by Hopstarter and Dinosoftlabs from</s:String>
 
 </ResourceDictionary>

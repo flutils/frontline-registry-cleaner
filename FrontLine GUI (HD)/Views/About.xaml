@@ -32,13 +32,16 @@
             <!-- Content -->
             <!-- ListView used because it gives us the ability to design everything we need -->
             <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-            <ListView Margin="25,10,25,0" ItemsSource="{Binding ScanItemsCollection}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" x:Name="ScanItemsElement">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="3" />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-            </ListView>
+            <DataGrid Name = "dataGrid" AlternatingRowBackground = "LightBlue"  AlternationCount = "2" AutoGenerateColumns = "False" Margin="15,10,15,0" ItemsSource = "{Binding ScanItemsCollection}" >
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header = "Name" Binding = "{Binding Name}" />
+                    <DataGridTextColumn Header = "Title" Binding = "{Binding Title}" />
+                    <DataGridCheckBoxColumn Header = "ReElected?" Binding = "{Binding WasReElected}"/>
+                    <DataGridComboBoxColumn Header = "Party" SelectedItemBinding = "{Binding Affiliation}" />
+                </DataGrid.Columns>
+                
+            </DataGrid>
 
         </StackPanel>
 
@@ -68,10 +71,13 @@
                 <!-- OS Info -->
                 <!-- https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win#_comments -->
                 <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,15,10,15">
-                    <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="Company Information"  Padding="0" />
                     <TextBlock VerticalAlignment="Center" Margin="0,0,3,0" TextWrapping="Wrap" Padding="0">
-                        <Hyperlink Foreground="Black" NavigateUri="{ Binding FLWebURL }" Click="clickTest">Frontline Utilities LTD</Hyperlink> was established in 2009 to distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product.
-                    </TextBlock> 
+                        <Hyperlink Foreground="Black" NavigateUri="{ Binding FLWebURL }" Click="clickTest"><Run Text="{ DynamicResource Str_FLHyperlink }"/></Hyperlink> <Run Text="{ DynamicResource Str_FLText }"/>
+                    </TextBlock>
+                    <Separator Opacity="0" Height="1"/>
+                    <TextBlock VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Padding="0">
+                        <Run Text="{ DynamicResource Str_FlatIconText }"/> <Hyperlink Foreground="Black" NavigateUri="{ Binding FlatIconWeb }" Click="clickTest"><Run Text="{ DynamicResource Str_FlatIconHyperlink }"/></Hyperlink>
+                    </TextBlock>
                 </StackPanel>
 
             </Grid>
