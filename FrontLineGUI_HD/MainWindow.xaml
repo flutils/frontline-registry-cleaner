@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:FrontLineGUI.Properties"
+        xmlns:lang="clr-namespace:FrontLineGUI.Resources.Localization"
         xmlns:local="clr-namespace:FrontLineGUI" d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="Frontline Registry Cleaner 2.1 (HD)"
@@ -317,7 +318,7 @@
                         </Grid.RowDefinitions>
 
                         <!-- Subtitle -->
-                        <TextBlock Foreground="#FF3A2600" Text="{DynamicResource Str_MainSubtitle}" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
+                        <TextBlock Foreground="#FF3A2600" Text="{ x:Static lang:Strings.MainSubtitle }" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
                             <TextBlock.Effect>
                                 <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
                             </TextBlock.Effect>
@@ -427,15 +428,15 @@
                             <TextBlock Text="©" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" VerticalAlignment="Center" Margin="0,0,2,0"/>
                             <Button Background="{x:Null}" Click="CopyRightButton_Click" BorderBrush="{x:Null}">
                                 <Border Background="#00000000">
-                                    <TextBlock FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{DynamicResource Str_MainCopyrightButtonTooltip}" TextDecorations="Underline" Style="{StaticResource FLButtonText}">
-                                        <Run Text="{DynamicResource Str_MainCopyrightButton}" FontWeight="Bold" />
+                                    <TextBlock FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{ x:Static lang:Strings.MainCopyrightButtonTooltip }" TextDecorations="Underline" Style="{StaticResource FLButtonText}">
+                                        <Run Text="{ x:Static lang:Strings.MainCopyrightButton}" FontWeight="Bold" />
                                     </TextBlock>
                                 </Border>
                             </Button>
                             <TextBlock Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" VerticalAlignment="Center" Margin="2,0,0,0">
                                 <Run Text="{Binding CurrentYear, Mode=OneTime}" />
                                 <Run Text="-" />
-                                <Run Text="{DynamicResource Str_MainCopyrightAllRightsReserved}" /><!--
+                                <Run Text="{ x:Static lang:Strings.MainCopyrightAllRightsReserved }" /><!--
                                 
                                     RPECK 23/03/2023
                                     Gets rid of gap between these two elements
@@ -450,7 +451,7 @@
                             <TextBlock Text="Version:" HorizontalAlignment="Right" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" Margin="0" VerticalAlignment="Center" />
                             <Button Background="{x:Null}" Click="VersionButton_Click" BorderBrush="{x:Null}" Margin="5,0,0,0">
                                 <Border Background="#00000000">
-                                    <TextBlock Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{DynamicResource Str_VersionButtonTooltip}" TextDecorations="Underline" Style="{StaticResource FLButtonText}" />
+                                    <TextBlock Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{ x:Static lang:Strings.MainVersionButtonTooltip }" TextDecorations="Underline" Style="{StaticResource FLButtonText}" />
                                 </Border>
                             </Button>
                             <Button Background="{x:Null}" Click="GithubButton_Click" BorderBrush="{x:Null}" ToolTip="{DynamicResource Str_MainGithubTooltip}" Cursor="Hand" Margin="0" VerticalAlignment="Center">

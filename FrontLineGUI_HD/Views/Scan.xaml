@@ -5,6 +5,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FrontLineGUI"
+      xmlns:lang="clr-namespace:FrontLineGUI.Resources.Localization"
       mc:Ignorable="d" 
       d:DesignHeight="800" d:DesignWidth="771"
     >
@@ -24,7 +25,7 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Margin" Value="75,10,75,5" />
             <Setter Property="Height" Value="105"/>
-            <Setter Property="Content" Value="{DynamicResource Str_ScanMainButton}" />
+            <Setter Property="Content" Value="{ x:Static lang:Strings.ScanMainButton }" />
 
             <!-- Template -->
             <Setter Property="Template">
@@ -53,7 +54,7 @@
                                             <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
                                         </TextBlock.Effect>
                                     </TextBlock>
-                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="White" Content="{DynamicResource Str_ScanMainButtonRecommended}" ContentStringFormat="({0})" Padding="0 " Margin="0">
+                                    <Label HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="12" Foreground="White" Content="{ x:Static lang:Strings.ScanMainButtonRecommended }" ContentStringFormat="({0})" Padding="0 " Margin="0">
                                         <Label.Effect>
                                             <DropShadowEffect Direction="320" ShadowDepth="2" Color="Black" Opacity="1" BlurRadius="2"/>
                                         </Label.Effect>
@@ -64,7 +65,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Setter Property="Opacity" Value="0.55" />
-                                <Setter Property="Content" Value="{DynamicResource Str_ScanMainButtonNoSelection}" />
+                                <Setter Property="Content" Value="{ x:Static lang:Strings.ScanMainButtonNoSelection }" />
                                 <Setter TargetName="MainText" Property="FontSize" Value="34" />
                             </Trigger>
                             <MultiTrigger>
@@ -208,7 +209,7 @@
         
         <!-- Select All Button -->
         <Style TargetType="{x:Type Button}" x:Key="SelectAllButton" BasedOn="{StaticResource GeneralButton}">
-            <Setter Property="Content" Value="{DynamicResource Str_ScanSelectAllButton}"/>
+            <Setter Property="Content" Value="{ x:Static lang:Strings.ScanSelectAllButton }"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource ListNotFullConverter}, ConverterParameter={x:Reference ScanItemsElement}}" Value="False">
                     <Setter Property="IsEnabled" Value="False"/>
@@ -263,19 +264,19 @@
             <StackPanel HorizontalAlignment="stretch" VerticalAlignment="Top">
 
                 <!-- Title -->
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{DynamicResource Str_ScanTitle}" />
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ x:Static lang:Strings.ScanTitle }" />
 
                 <!-- Intro -->
-                <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{DynamicResource Str_ScanPreInfo}" TextAlignment="Center" FontSize="12" />
+                <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.ScanPreInfo }" TextAlignment="Center" FontSize="12" />
 
                 <!-- Scan Now Button -->
                 <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" Command="{Binding LastScanButtonClick}" />
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <Button ToolTip="{DynamicResource Str_ScanMainLastPerformedToolTip}" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Command="{Binding LastScanButtonClick}">
+                    <Button ToolTip="{ x:Static lang:Strings.ScanMainLastPerformedToolTip }" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Command="{Binding LastScanButtonClick}">
                         <TextBlock>
-                            <Run Text="{DynamicResource Str_ScanMainLastPerformed}" TextDecorations="Underline" /><!--
+                            <Run Text="{ x:Static lang:Strings.ScanMainLastPerformed }" TextDecorations="Underline" /><!--
                             --><Run Text=":" />
                             <Run Text="01/08/2022" />
                         </TextBlock>
