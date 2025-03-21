@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="MainAbout" xml:space="preserve">
+    <value>About</value>
+    <comment>Subtitle "About" Button Text</comment>
+  </data>
+  <data name="MainCopyrightAllRightsReserved" xml:space="preserve">
+    <value>All rights reserved</value>
+    <comment>"All Rights Reserved" text at the bottom of Main Window</comment>
+  </data>
+  <data name="MainCopyrightButton" xml:space="preserve">
+    <value>Frontline Utilities LTD</value>
+    <comment>Text For "Copyright" button at bottom of Main Window</comment>
+  </data>
+  <data name="MainCopyrightButtonTooltip" xml:space="preserve">
+    <value>View Company Website</value>
+    <comment>Text for "Copyright" button tooltip on Main Window</comment>
+  </data>
+  <data name="MainLocalizationTooltip" xml:space="preserve">
+    <value>Change Localization</value>
+    <comment>Settings Localization Tooltip</comment>
+  </data>
+  <data name="MainScan" xml:space="preserve">
+    <value>Scan</value>
+    <comment>Subtitle "Scan" Button Text</comment>
+  </data>
+  <data name="MainSettings" xml:space="preserve">
+    <value>Settings</value>
+    <comment>Subtitle "Settings" Button Text</comment>
+  </data>
+  <data name="MainSubtitle" xml:space="preserve">
+    <value>Scan, Optimize &amp;amp; Maintain PC Performance</value>
+    <comment>Subtitle on "Main" Header</comment>
+  </data>
+  <data name="MainVersionButtonTooltip" xml:space="preserve">
+    <value>View Repository on GitHub</value>
+    <comment>Text for "Version" button toolip on Main Window</comment>
+  </data>
+  <data name="ScanMainButton" xml:space="preserve">
+    <value>Start Scan</value>
+    <comment>"Scan" Main Button text</comment>
+  </data>
+  <data name="ScanMainButtonNoSelection" xml:space="preserve">
+    <value>Please Select Items To Scan!</value>
+    <comment>"Scan" Main Button text for if no scan items are selected</comment>
+  </data>
+  <data name="ScanMainButtonRecommended" xml:space="preserve">
+    <value>Recommended</value>
+    <comment>"Scan" Main Button "recommended" text</comment>
+  </data>
+  <data name="ScanMainLastPerformed" xml:space="preserve">
+    <value>Scan Last Performed</value>
+    <comment>"Scan" Scan Last Performed text underneath main button</comment>
+  </data>
+  <data name="ScanMainLastPerformedToolTip" xml:space="preserve">
+    <value>View Scan Statistics</value>
+    <comment>"Scan" Scan Last Performed Tooltip text</comment>
+  </data>
+  <data name="ScanPreInfo" xml:space="preserve">
+    <value>Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -</value>
+    <comment>Main subtitle for "Scan" screen</comment>
+  </data>
+  <data name="ScanTitle" xml:space="preserve">
+    <value>Start Scan Below</value>
+    <comment>Main title for the "Scan" screen</comment>
+  </data>
+  <data name="ScanSelectAllButton" xml:space="preserve">
+    <value>Select All</value>
+    <comment>"Scan" Select All button text</comment>
+  </data>
+  <data name="ScanYourSystem" xml:space="preserve">
+    <value>Your System</value>
+    <comment>"Scan"  Hardware Info OSName Text</comment>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Settings</value>
+    <comment>"Settings" View title area</comment>
+  </data>
+  <data name="SettingsPreInfo" xml:space="preserve">
+    <value>Choose the settings for the app below. These are meant to help the system run smoothly.</value>
+    <comment>Main subtitle for "Settings" screen</comment>
+  </data>
+  <data name="SettingsGeneralTab" xml:space="preserve">
+    <value>General</value>
+    <comment>"General" tab in the settings page</comment>
+  </data>
+  <data name="SettingsBackupTab" xml:space="preserve">
+    <value>Backup</value>
+    <comment>"Backup" tab in the settings page</comment>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>About</value>
+    <comment>"About" page main title </comment>
+  </data>
+  <data name="AboutPreInfo" xml:space="preserve">
+    <value>Further information about the application and our company.</value>
+    <comment>Main subtitle for "About" screen</comment>
+  </data>
+  <data name="AboutFLText" xml:space="preserve">
+    <value>was established in 2009 to distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product.</value>
+    <comment>Text about Frontline Utilities LTD on the "About" page</comment>
+  </data>
+  <data name="AboutFlatIconHyperLink" xml:space="preserve">
+    <value>FlatIcon.com</value>
+    <comment>FlatIcon URL HyperLink text, used in the button</comment>
+  </data>
+  <data name="AboutFlatIconText" xml:space="preserve">
+    <value>Icons made by Hopstarter and Dinosoftlabs from</value>
+    <comment>Text for use in the FlatIcon.com text at the bottom of the about page</comment>
+  </data>
+</root>
