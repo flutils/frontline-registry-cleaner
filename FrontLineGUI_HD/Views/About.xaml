@@ -10,6 +10,14 @@
       d:DesignHeight="820" d:DesignWidth="771"
      >
 
+    <!-- Resources -->
+    <UserControl.Resources>
+
+        <!-- Converters -->
+        <local:CapitalizeFirstLetterConverter x:Key="CapitalizeFirstLetterConverter" />
+
+    </UserControl.Resources>
+
     <!-- Main Grid Area -->
     <Grid Background="White">
 
@@ -27,14 +35,14 @@
 
             <!-- Title -->
             <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top">
-                <TextBlock Text="{ x:Static lang:Strings.AboutTitle }" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextDecorations="Underline" Foreground="#FF323232" Margin="0,10,0,0" />
+                <TextBlock Text="{ Binding Source={ x:Static lang:Strings.AboutTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" TextDecorations="Underline" Foreground="#FF323232" Margin="0,10,0,0" />
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.AboutPreInfo }" TextAlignment="Center" FontSize="12" />
             </StackPanel>
 
             <!-- Content -->
             <!-- ListView used because it gives us the ability to design everything we need -->
             <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-            <DataGrid Name = "dataGrid" AlternatingRowBackground = "LightBlue"  AlternationCount = "2" AutoGenerateColumns = "False" Margin="15,10,15,0" ItemsSource = "{Binding ScanItemsCollection}" >
+            <DataGrid Name = "dataGrid" AlternatingRowBackground= "LightGray" AlternationCount="2" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserResizeColumns="True" Margin="15,10,15,0" ItemsSource="{Binding ScanItemsCollection}" >
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header = "Name" Binding = "{Binding Name}" />
@@ -79,7 +87,7 @@
                     </TextBlock>
                     <Separator Opacity="0.25" Height="1" Margin="0,5,0,5" />
                     <TextBlock VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Padding="0">
-                        <Run Text="{ x:Static lang:Strings.AboutFlatIconText }"/> <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FlatIconWeb }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutFlatIconHyperLink }"/></Hyperlink>
+                        <Run Text="{ x:Static lang:Strings.AboutFlatIconText }"/> <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FlatIconWeb }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutFlatIconHyperlink }"/></Hyperlink>
                     </TextBlock>
                 </StackPanel>
 

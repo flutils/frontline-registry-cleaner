@@ -117,7 +117,88 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutFlatIconHyperLink" xml:space="preserve">
+  <data name="MainAbout" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="MainCopyrightAllRightsReserved" xml:space="preserve">
+    <value>All rights reserved</value>
+  </data>
+  <data name="MainCopyrightButton" xml:space="preserve">
+    <value>Frontline Utilities LTD</value>
+  </data>
+  <data name="MainCopyrightButtonTooltip" xml:space="preserve">
+    <value>View Company Website</value>
+  </data>
+  <data name="MainLocalizationTooltip" xml:space="preserve">
+    <value>Change Localization</value>
+  </data>
+  <data name="MainScan" xml:space="preserve">
+    <value>Scan</value>
+  </data>
+  <data name="MainSettings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="MainSubtitle" xml:space="preserve">
+    <value>Scan, Optimize &amp;amp; Maintain PC Performance</value>
+  </data>
+  <data name="MainVersionButtonTooltip" xml:space="preserve">
+    <value>View Repository on GitHub</value>
+  </data>
+  <data name="ScanMainButton" xml:space="preserve">
+    <value>Start Scan</value>
+  </data>
+  <data name="ScanMainButtonNoSelection" xml:space="preserve">
+    <value>Please Select Items To Scan!</value>
+  </data>
+  <data name="ScanMainButtonRecommended" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
+  <data name="ScanMainLastPerformed" xml:space="preserve">
+    <value>Scan Last Performed</value>
+  </data>
+  <data name="ScanMainLastPerformedToolTip" xml:space="preserve">
+    <value>View Scan Statistics</value>
+  </data>
+  <data name="ScanPreInfo" xml:space="preserve">
+    <value>Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -</value>
+  </data>
+  <data name="ScanTitle" xml:space="preserve">
+    <value>Start Scan Below</value>
+  </data>
+  <data name="ScanSelectAllButton" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="ScanYourSystem" xml:space="preserve">
+    <value>Your System</value>
+  </data>
+  <data name="SettingsTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="SettingsPreInfo" xml:space="preserve">
+    <value>Choose the settings for the app below. These are meant to help the system run smoothly.</value>
+  </data>
+  <data name="SettingsGeneralTab" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="SettingsBackupTab" xml:space="preserve">
+    <value>Backup</value>
+  </data>
+  <data name="AboutTitle" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AboutPreInfo" xml:space="preserve">
+    <value>Further information about the application and our company.</value>
+  </data>
+  <data name="AboutFLText" xml:space="preserve">
+    <value>was established in 2009 to distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product.</value>
+  </data>
+  <data name="AboutFlatIconText" xml:space="preserve">
+    <value>Icons made by Hopstarter and Dinosoftlabs from</value>
+  </data>
+  <data name="AboutFlatIconHyperlink" xml:space="preserve">
     <value>FlatIcon.com</value>
+  </data>
+  <data name="ScanSelected" xml:space="preserve">
+    <value>Selected</value>
   </data>
 </root>

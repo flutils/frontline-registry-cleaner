@@ -1,4 +1,8 @@
-﻿using System.Windows;
+﻿using System.Globalization;
+using System;
+using System.Diagnostics;
+using System.Windows;
+using System.Threading;
 
 namespace FrontLineGUI
 {

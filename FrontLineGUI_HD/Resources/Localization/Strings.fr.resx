@@ -118,115 +118,87 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MainAbout" xml:space="preserve">
-    <value>About</value>
-    <comment>Subtitle "About" Button Text</comment>
+    <value>À Propos</value>
   </data>
   <data name="MainCopyrightAllRightsReserved" xml:space="preserve">
-    <value>All rights reserved</value>
-    <comment>"All Rights Reserved" text at the bottom of Main Window</comment>
+    <value>Tous droits réservés</value>
   </data>
   <data name="MainCopyrightButton" xml:space="preserve">
     <value>Frontline Utilities LTD</value>
-    <comment>Text For "Copyright" button at bottom of Main Window</comment>
   </data>
   <data name="MainCopyrightButtonTooltip" xml:space="preserve">
-    <value>View Company Website</value>
-    <comment>Text for "Copyright" button tooltip on Main Window</comment>
+    <value>Voir le site web de l'entreprise</value>
   </data>
   <data name="MainLocalizationTooltip" xml:space="preserve">
-    <value>Change Localization</value>
-    <comment>Settings Localization Tooltip</comment>
+    <value>Modifier la localisation</value>
   </data>
   <data name="MainScan" xml:space="preserve">
-    <value>Scan</value>
-    <comment>Subtitle "Scan" Button Text</comment>
+    <value>Lancer</value>
   </data>
   <data name="MainSettings" xml:space="preserve">
-    <value>Settings</value>
-    <comment>Subtitle "Settings" Button Text</comment>
+    <value>Paramètres</value>
   </data>
   <data name="MainSubtitle" xml:space="preserve">
-    <value>Scan, Optimize &amp; Maintain PC Performance</value>
-    <comment>Subtitle on "Main" Header</comment>
+    <value>Scanner, Optimiser &amp; Maintenir Les Performances Du PC</value>
   </data>
   <data name="MainVersionButtonTooltip" xml:space="preserve">
-    <value>View Repository on GitHub</value>
-    <comment>Text for "Version" button toolip on Main Window</comment>
+    <value>Voir le dépôt sur GitHub</value>
   </data>
   <data name="ScanMainButton" xml:space="preserve">
-    <value>Start Scan</value>
-    <comment>"Scan" Main Button text</comment>
+    <value>Lancer l'analyse</value>
   </data>
   <data name="ScanMainButtonNoSelection" xml:space="preserve">
-    <value>Please Select Items To Scan!</value>
-    <comment>"Scan" Main Button text for if no scan items are selected</comment>
+    <value>Sélectionnez les articles à scanner !</value>
   </data>
   <data name="ScanMainButtonRecommended" xml:space="preserve">
-    <value>Recommended</value>
-    <comment>"Scan" Main Button "recommended" text</comment>
+    <value>Recommandé</value>
   </data>
   <data name="ScanMainLastPerformed" xml:space="preserve">
-    <value>Scan Last Performed</value>
-    <comment>"Scan" Scan Last Performed text underneath main button</comment>
+    <value>Dernier balayage effectué</value>
   </data>
   <data name="ScanMainLastPerformedToolTip" xml:space="preserve">
-    <value>View Scan Statistics</value>
-    <comment>"Scan" Scan Last Performed Tooltip text</comment>
+    <value>Afficher les statistiques de numérisation</value>
   </data>
   <data name="ScanPreInfo" xml:space="preserve">
-    <value>Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -</value>
-    <comment>Main subtitle for "Scan" screen</comment>
+    <value>Cliquez sur le bouton d'analyse ci-dessous pour effectuer une analyse. Vous pouvez modifier les éléments à numériser sous le bouton de numérisation: -</value>
   </data>
   <data name="ScanTitle" xml:space="preserve">
-    <value>Start Scan Below</value>
-    <comment>Main title for the "Scan" screen</comment>
+    <value>Lancer le scan ci-dessous</value>
   </data>
   <data name="ScanSelectAllButton" xml:space="preserve">
-    <value>Select All</value>
-    <comment>"Scan" Select All button text</comment>
+    <value>Sélectionner tout</value>
   </data>
   <data name="ScanYourSystem" xml:space="preserve">
-    <value>Your System</value>
-    <comment>"Scan"  Hardware Info OSName Text</comment>
+    <value>Votre système</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Settings</value>
-    <comment>"Settings" View title area</comment>
+    <value>Paramètres</value>
   </data>
   <data name="SettingsPreInfo" xml:space="preserve">
-    <value>Choose the settings for the app below. These are meant to help the system run smoothly.</value>
-    <comment>Main subtitle for "Settings" screen</comment>
+    <value>Choisissez les paramètres de l'application ci-dessous. Ils sont destinés à faciliter le fonctionnement du système.</value>
   </data>
   <data name="SettingsGeneralTab" xml:space="preserve">
-    <value>General</value>
-    <comment>"General" tab in the settings page</comment>
+    <value>Général</value>
   </data>
   <data name="SettingsBackupTab" xml:space="preserve">
-    <value>Backup</value>
-    <comment>"Backup" tab in the settings page</comment>
+    <value>Sauvegarde</value>
   </data>
   <data name="AboutTitle" xml:space="preserve">
-    <value>About</value>
-    <comment>"About" page main title </comment>
+    <value>À Propos</value>
   </data>
   <data name="AboutPreInfo" xml:space="preserve">
-    <value>Further information about the application and our company.</value>
-    <comment>Main subtitle for "About" screen</comment>
+    <value>Plus d'informations sur l'application et sur notre entreprise.</value>
   </data>
   <data name="AboutFLText" xml:space="preserve">
-    <value>was established in 2009 to distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product.</value>
-    <comment>Text about Frontline Utilities LTD on the "About" page</comment>
+    <value>a été créée en 2009 pour distribuer des solutions logicielles aux consommateurs du monde entier. L'entreprise a connu une période de développement de 2014 à 2025, ce qui a conduit à la réédition de ce produit.</value>
   </data>
   <data name="AboutFlatIconText" xml:space="preserve">
-    <value>Icons made by Hopstarter and Dinosoftlabs from</value>
-    <comment>Text for use in the FlatIcon.com text at the bottom of the about page</comment>
+    <value>Icônes réalisées par Hopstarter et Dinosoftlabs à partir de</value>
   </data>
   <data name="AboutFlatIconHyperlink" xml:space="preserve">
     <value>FlatIcon.com</value>
-    <comment>FlatIcon.com</comment>
   </data>
   <data name="ScanSelected" xml:space="preserve">
-    <value>Selected</value>
-    <comment>"Selected" text value on the main scan page</comment>
+    <value>Sélectionné</value>
   </data>
 </root>

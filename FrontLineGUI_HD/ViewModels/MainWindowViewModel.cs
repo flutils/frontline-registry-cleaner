@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows.Input;
 
 namespace FrontLineGUI
@@ -26,6 +28,14 @@ namespace FrontLineGUI
             ViewModels.Add(new ScanViewModel(new ScanView() { }));
             ViewModels.Add(new SettingsViewModel(new SettingsView() { }));
             ViewModels.Add(new AboutViewModel(new AboutView() { }));
+
+
+            CultureInfo culture;
+
+            culture = CultureInfo.CreateSpecificCulture("fr");
+
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
 
             // Set starting page
             CurrentViewModel = ViewModels[0];

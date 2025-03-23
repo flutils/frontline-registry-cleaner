@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 
 namespace FrontLineGUI
@@ -7,6 +8,7 @@ namespace FrontLineGUI
     {
 
         // Private Options
+        // Used to hold the values within the system that can be manipulated at RunTime
         private bool debug;
         private bool cpuid;
         private string language;
@@ -16,9 +18,9 @@ namespace FrontLineGUI
         public ConfigurationOptions()
         {
 
-            // RPECK 07/04/2023
-            // Added for localization system
-            //Localization = new EZLocalize(System.Windows.Application.Current.Resources, "en", null, "Include\\Localization\\", "Strings");
+            // RPECK 23/03/2025 - Language
+            // Set the language to use within the system
+            language = "en";
 
         }
 
@@ -28,10 +30,27 @@ namespace FrontLineGUI
 
         // RPECK 25/03/2023
         // Language - used to determine the localization 
+        // Updates the CurrentCulture value to ensure we have the means to hotswap values
         public string Language
         {
-            get { return language; }
-            set { language = value; }
+            get {
+
+                // RPECK 23/03/2025 - Return the present language (defaults to 'en')
+                return language;
+            
+            }
+            set {
+                
+                // RPECK 23/03/2025 - Update the language if it is not the same as present value
+                if(language != value) {
+                    
+                    language = value;
+
+                    //System.Threading.Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr");
+
+                }
+            
+            }
         }
 
         // RPECK 25/03/2023

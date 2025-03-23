@@ -63,9 +63,9 @@ namespace FrontLineGUI.Resources.Localization {
         /// <summary>
         ///   Looks up a localized string similar to FlatIcon.com.
         /// </summary>
-        public static string AboutFlatIconHyperLink {
+        public static string AboutFlatIconHyperlink {
             get {
-                return ResourceManager.GetString("AboutFlatIconHyperLink", resourceCulture);
+                return ResourceManager.GetString("AboutFlatIconHyperlink", resourceCulture);
             }
         }
         
@@ -169,7 +169,7 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scan, Optimize &amp;amp; Maintain PC Performance.
+        ///   Looks up a localized string similar to Scan, Optimize &amp; Maintain PC Performance.
         /// </summary>
         public static string MainSubtitle {
             get {
@@ -246,6 +246,15 @@ namespace FrontLineGUI.Resources.Localization {
         public static string ScanSelectAllButton {
             get {
                 return ResourceManager.GetString("ScanSelectAllButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected.
+        /// </summary>
+        public static string ScanSelected {
+            get {
+                return ResourceManager.GetString("ScanSelected", resourceCulture);
             }
         }
         

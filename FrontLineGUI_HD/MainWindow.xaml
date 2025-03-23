@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:properties="clr-namespace:FrontLineGUI.Properties"
         xmlns:lang="clr-namespace:FrontLineGUI.Resources.Localization"
-        xmlns:local="clr-namespace:FrontLineGUI" d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
+        xmlns:local="clr-namespace:FrontLineGUI"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="Frontline Registry Cleaner 2.1 (HD)"
         Height="{Binding MinWidth, RelativeSource={RelativeSource Self}}"
@@ -130,7 +131,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Button Name="NavigationButton" Content="{Binding Title}" Command="{Binding DataContext.NavigationButtonClick, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{StaticResource SettingsLink}" CommandParameter="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" />
+                        <Button Name="NavigationButton" Content="{ Binding Title }" Command="{Binding DataContext.NavigationButtonClick, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{StaticResource SettingsLink}" CommandParameter="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -311,7 +312,7 @@
                         <!-- Grid Definitions -->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*" />

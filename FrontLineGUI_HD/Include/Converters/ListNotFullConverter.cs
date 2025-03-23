@@ -32,7 +32,7 @@ namespace FrontLineGUI
 
             }
 
-            // RPECK 30/12/2023 - If the 
+            // RPECK 30/12/2023 - Default value to 0
             return 0;
         }
 

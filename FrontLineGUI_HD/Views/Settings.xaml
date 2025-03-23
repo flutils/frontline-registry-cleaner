@@ -12,6 +12,9 @@
     <!-- Styles etc -->
     <UserControl.Resources>
 
+        <!-- Converters -->
+        <local:CapitalizeFirstLetterConverter x:Key="CapitalizeFirstLetterConverter" />
+
         <!-- Tab Styling -->
         <Style TargetType="{x:Type TabControl}" x:Key="TabControlStyling">
             <Setter Property="BorderThickness" Value="0"/>
@@ -96,14 +99,14 @@
             <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 
                 <!-- Title -->
-                <TextBlock Text="{ x:Static lang:Strings.SettingsTitle }" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" />
+                <TextBlock Text="{ Binding Source={ x:Static lang:Strings.SettingsTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" />
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.SettingsPreInfo }" TextAlignment="Center" FontSize="12" />
 
                 <!-- Content -->
                 <TabControl Margin="25,10,25,0" Style="{StaticResource TabControlStyling}" x:Name="SettingsTabs" Background="#EFEFEF">
 
                     <!-- General -->
-                    <TabItem Header="{ x:Static lang:Strings.SettingsGeneralTab }" Tag="General" BorderThickness="0" Padding="0">
+                    <TabItem Header="{ Binding Source={ x:Static lang:Strings.SettingsGeneralTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="General" BorderThickness="0" Padding="0">
                         <StackPanel Orientation="Vertical">
                             
                             <!-- Debug -->
@@ -117,7 +120,7 @@
                     </TabItem>
                     
                     <!-- Backup -->
-                    <TabItem Header="{ x:Static lang:Strings.SettingsBackupTab }" Tag="Backup">
+                    <TabItem Header="{ Binding Source={ x:Static lang:Strings.SettingsBackupTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="Backup">
                         <Grid />
                     </TabItem>
 

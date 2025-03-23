@@ -16,6 +16,7 @@
         <!-- Converters -->
         <local:NotEqualToOneBooleanConverter x:Key="NotEqualToOneBooleanConverter" />
         <local:ListNotfullConverter x:Key="ListNotFullConverter" /> <!-- RPECK 30/12/2023 - Added to allow us to make the Select All button disabled if the list is not full -->
+        <local:CapitalizeFirstLetterConverter x:Key="CapitalizeFirstLetterConverter" /> <!-- RPECK 23/03/2025 - Added for various text elements which need capitalized first letters -->
 
         <!-- Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="MainScanButton">
@@ -25,7 +26,7 @@
             <Setter Property="Foreground" Value="White" />
             <Setter Property="Margin" Value="75,10,75,5" />
             <Setter Property="Height" Value="105"/>
-            <Setter Property="Content" Value="{ x:Static lang:Strings.ScanMainButton }" />
+            <Setter Property="Content" Value="{ Binding Source={ x:Static lang:Strings.ScanMainButton }, Converter={ StaticResource CapitalizeFirstLetterConverter} }" />
 
             <!-- Template -->
             <Setter Property="Template">
@@ -209,7 +210,7 @@
         
         <!-- Select All Button -->
         <Style TargetType="{x:Type Button}" x:Key="SelectAllButton" BasedOn="{StaticResource GeneralButton}">
-            <Setter Property="Content" Value="{ x:Static lang:Strings.ScanSelectAllButton }"/>
+            <Setter Property="Content" Value="{ Binding Source={ x:Static lang:Strings.ScanSelectAllButton}, Converter={ StaticResource CapitalizeFirstLetterConverter }}"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource ListNotFullConverter}, ConverterParameter={x:Reference ScanItemsElement}}" Value="False">
                     <Setter Property="IsEnabled" Value="False"/>
@@ -264,7 +265,7 @@
             <StackPanel HorizontalAlignment="stretch" VerticalAlignment="Top">
 
                 <!-- Title -->
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ x:Static lang:Strings.ScanTitle }" />
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ Binding Source={ x:Static lang:Strings.ScanTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
 
                 <!-- Intro -->
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.ScanPreInfo }" TextAlignment="Center" FontSize="12" />
@@ -276,7 +277,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button ToolTip="{ x:Static lang:Strings.ScanMainLastPerformedToolTip }" FontWeight="Bold" FontSize="12" FontStyle="Italic" Style="{StaticResource LastScanButton}" Command="{Binding LastScanButtonClick}">
                         <TextBlock>
-                            <Run Text="{ x:Static lang:Strings.ScanMainLastPerformed }" TextDecorations="Underline" /><!--
+                            <Run Text="{ Binding Source={ x:Static lang:Strings.ScanMainLastPerformed }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime}" TextDecorations="Underline" /><!--
                             --><Run Text=":" />
                             <Run Text="01/08/2022" />
                         </TextBlock>
@@ -333,7 +334,7 @@
 
                     <!-- Selected -->
                     <StackPanel Grid.Column="0" VerticalAlignment="Center" Orientation="Horizontal">
-                        <Label Content="Selected: " FontWeight="Bold" VerticalContentAlignment="Center" VerticalAlignment="Center" />
+                        <Label Content="{ Binding Source={ x:Static lang:Strings.ScanSelected }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" ContentStringFormat="{}{0}: " FontWeight="Bold" VerticalContentAlignment="Center" VerticalAlignment="Center" />
                         <TextBlock VerticalAlignment="Center" Foreground="Black">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0}/{1}">
