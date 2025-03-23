@@ -1,4 +1,5 @@
 ﻿using JCS;
+using System;
 
 namespace FrontLineGUI
 {
@@ -45,6 +46,22 @@ namespace FrontLineGUI
                 return "/Resources/OS/" + OSName.Replace(" ", "-").ToLower() + ".png";
 
             }
+        }
+
+        // RPECK 23/03/2025 - Get the architecture of the operating system
+        // Uses the "Environment.Is64BitOperatingSystem" value to determine if x86 or x64
+        public string OSArchitecture
+        {
+            get
+            {
+
+                // RPECK 23/03/2025 - Get default variable value
+                string architecture = Environment.Is64BitOperatingSystem ? "64" : "32";
+
+                // RPECK 23/03/2025 - Return the architecture value
+                return $"""{architecture}bit""";
+            }
+
         }
 
         #endregion

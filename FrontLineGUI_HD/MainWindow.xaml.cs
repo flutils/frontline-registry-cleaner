@@ -78,10 +78,10 @@ namespace FrontLineGUI
             // from .NET 6.0 onwards, need to define the following to open web browser
             // https://stackoverflow.com/questions/73113068/windows-forms-app-gives-me-error-when-i-use-process-start
             Process.Start(new ProcessStartInfo
-            {
-                FileName = Properties.Settings.Default.Repo,
-                UseShellExecute = true
-            }
+                {
+                    FileName = Properties.Settings.Default.Repo,
+                    UseShellExecute = true
+                }
             );
         }
 
@@ -90,10 +90,10 @@ namespace FrontLineGUI
         private void CopyRightButton_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(new ProcessStartInfo
-            {
-                FileName = Properties.Settings.Default.FLWeb,
-                UseShellExecute = true
-            }
+                {
+                    FileName = Properties.Settings.Default.FLWeb,
+                    UseShellExecute = true
+                }
             );
         }
 

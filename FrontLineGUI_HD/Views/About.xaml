@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:FrontLineGUI"
       xmlns:lang="clr-namespace:FrontLineGUI.Resources.Localization"
+      xmlns:properties="clr-namespace:FrontLineGUI.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="820" d:DesignWidth="771"
      >
@@ -71,13 +72,14 @@
 
                 <!-- OS Info -->
                 <!-- https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win#_comments -->
-                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,15,10,15">
+                <!-- RPECK 23/03/2025 - Ref for binding - https://stackoverflow.com/a/845033 -->
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10">
                     <TextBlock VerticalAlignment="Center" Margin="0,0,3,0" TextWrapping="Wrap" Padding="0">
-                        <Hyperlink Foreground="Black" NavigateUri="{ Binding FLWebURL }" Click="clickTest"><Run Text="{ x:Static lang:Strings.MainCopyrightButton }" /></Hyperlink> <Run Text="{ x:Static lang:Strings.AboutFLText }"/>
+                        <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FLWeb }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.MainCopyrightButton }" /></Hyperlink> <Run Text="{ x:Static lang:Strings.AboutFLText }"/>
                     </TextBlock>
-                    <Separator Opacity="0" Height="1"/>
+                    <Separator Opacity="0.25" Height="1" Margin="0,5,0,5" />
                     <TextBlock VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Padding="0">
-                        <Run Text="{ x:Static lang:Strings.AboutFlatIconText }"/> <Hyperlink Foreground="Black" NavigateUri="{ Binding FlatIconWeb }" Click="clickTest"><Run Text="{ x:Static lang:Strings.AboutFlatIconHyperLink }"/></Hyperlink>
+                        <Run Text="{ x:Static lang:Strings.AboutFlatIconText }"/> <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FlatIconWeb }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutFlatIconHyperLink }"/></Hyperlink>
                     </TextBlock>
                 </StackPanel>
 

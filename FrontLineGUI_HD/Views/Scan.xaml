@@ -371,7 +371,10 @@
                         <StackPanel Orientation="Horizontal">
                             <Image Source="{Binding OSInformation.OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-                                <TextBlock Name="OSName" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12" Text="{Binding OSInformation.OSName, Mode=OneTime}" />
+                                <TextBlock Name="OSName" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12">
+                                    <Run Text="{Binding OSInformation.OSName, Mode=OneTime}" />
+                                    <Run Text="{Binding OSInformation.OSArchitecture, Mode=OneTime, StringFormat={}({0}) }" />
+                                </TextBlock> 
                                 <TextBlock Name="OSEdition" VerticalAlignment="Center" FontSize="10" LineStackingStrategy="BlockLineHeight" LineHeight="11" Text="{Binding OSInformation.OSVersion, Mode=OneTime}" />
                             </StackPanel>
                         </StackPanel>
