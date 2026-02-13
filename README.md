@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://i.imgur.com/FS1iaHV.png" alt="Frontline Registry Cleaner 2.0">
+  <img src="Readme/dashboard.png" alt="Frontline Registry Cleaner 2.0">
   <h1 align="center">⚡ Speed Up Windows PC's ⚡</h1>
   <p align="center">Keep Windows PC's running smoothly by cleaning out junk files and registry errors. Whilst retired, the product is still one of the most potent of its type - you're welcome to use it or edit the code.</p>
   <p align="center">
@@ -8,9 +8,9 @@
         <th colspan="3" align="center">Features</th>
       </tr>
       <tr>
-        <td align="center" width="33%"><img src="https://i.imgur.com/Zw9rI32.png" /><br /><strong>⌚ Scan<br />Perform a scan of your system with 18 different options.</strong></td>
-        <td align="center" width="33%"><img src="https://i.imgur.com/goKnV6t.png" /><br /><strong>💾 Backup<br />Backup your registry and files to protect against problems.</strong></td>
-        <td align="center" width="33%"><img src="https://i.imgur.com/PwDH5B4.png" /><br /><strong>📊 Maintain<br />Keep your system in check with regular updates.</strong></td>
+        <td align="center" width="33%"><img src="Readme/scanning_screen.png" /><br /><strong>⌚ Scan<br />Perform a scan of your system with 18 different options.</strong></td>
+        <td align="center" width="33%"><img src="Readme/backup_screen.png" /><br /><strong>💾 Backup<br />Backup your registry and files to protect against problems.</strong></td>
+        <td align="center" width="33%"><img src="Readme/stats_screen.png" /><br /><strong>📊 Maintain<br />Keep your system in check with regular updates.</strong></td>
       </tr>
     </table>
   </p>
@@ -112,7 +112,7 @@ If you notice any of our products used in an illegal way, you should send an ale
 
 ---
 
-:copyright: <a href="http://www.frontlineutilities.co.uk" align="absmiddle"><img src="https://i.imgur.com/xwejn02.jpg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://github.com/richpeck" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R Peck" /></a>
+:copyright: <a href="http://www.frontlineutilities.co.uk" align="absmiddle"><img src="Readme/fl_logo.jpeg" height="22" align="absmiddle" title="Frontline Utilities LTD"  /></a> <a href="http://github.com/richpeck" align="absmiddle" ><img src="https://avatars0.githubusercontent.com/u/1104431" height="22" align="absmiddle" title="Contributors - R Peck" /></a>
 
 
 
@@ -126,7 +126,7 @@ If you notice any of our products used in an illegal way, you should send an ale
 <!-- Links -->
 [flutils]:              http://www.fl.co.uk
 [flcleaner.com]:        https://www.flcleaner.com
-[frontlinecleaner.com]: https://www.flcleaner.com/2.0
+[frontlinecleaner.com]: https://www.frontlinecleaner.com
 
 <!-- ################################### -->
 <!-- ################################### -->
