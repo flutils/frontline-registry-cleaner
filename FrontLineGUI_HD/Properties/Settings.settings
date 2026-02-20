@@ -12,13 +12,37 @@
       <Value Profile="(Default)">https://www.frontlinecleaner.com</Value>
     </Setting>
     <Setting Name="Repo" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">https://www.github.com/flutils/flcleaner</Value>
+      <Value Profile="(Default)">https://www.github.com/flutils/frontline-registry-cleaner</Value>
     </Setting>
     <Setting Name="AppDataDir" Type="System.String" Scope="Application">
       <Value Profile="(Default)">%APPDATA%\Frontline Utilities LTD</Value>
     </Setting>
     <Setting Name="FlatIconWeb" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">https://www.flaticon.com</Value>
+    </Setting>
+    <Setting Name="PrivacyPolicy" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.frontlinecleaner.com/privacy</Value>
+    </Setting>
+    <Setting Name="DataPolicy" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.frontlinecleaner.com/data</Value>
+    </Setting>
+    <Setting Name="LicensingPolicy" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.frontlinecleaner.com/licensing</Value>
+    </Setting>
+    <Setting Name="MadeInBritain" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.madeinbritain.org/members/frontline-utilities-ltd</Value>
+    </Setting>
+    <Setting Name="Address" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">3 Dearnford Avenue, Bromborough, Wirral, CH62 6DX. United Kingdom</Value>
+    </Setting>
+    <Setting Name="Email" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">support@fl.co.uk</Value>
+    </Setting>
+    <Setting Name="RegNumber" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">07037173</Value>
+    </Setting>
+    <Setting Name="VATNumber" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">GB121358444</Value>
     </Setting>
   </Settings>
 </SettingsFile>

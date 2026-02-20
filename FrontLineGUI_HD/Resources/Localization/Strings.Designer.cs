@@ -19,7 +19,7 @@ namespace FrontLineGUI.Resources.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
@@ -61,6 +61,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data Protection.
+        /// </summary>
+        public static string AboutDataProtection {
+            get {
+                return ResourceManager.GetString("AboutDataProtection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FlatIcon.com.
         /// </summary>
         public static string AboutFlatIconHyperlink {
@@ -79,11 +88,20 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to was established in 2009 to distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product..
+        ///   Looks up a localized string similar to was established in 2009 to design &amp; distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product..
         /// </summary>
         public static string AboutFLText {
             get {
                 return ResourceManager.GetString("AboutFLText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Licensing.
+        /// </summary>
+        public static string AboutLicensing {
+            get {
+                return ResourceManager.GetString("AboutLicensing", resourceCulture);
             }
         }
         
@@ -97,11 +115,65 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        public static string AboutPrivacy {
+            get {
+                return ResourceManager.GetString("AboutPrivacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Number.
+        /// </summary>
+        public static string AboutRegNumber {
+            get {
+                return ResourceManager.GetString("AboutRegNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string AboutTitle {
             get {
                 return ResourceManager.GetString("AboutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trademarks property of their respective owners. Windows® is a registered trademark of Microsoft Corporation in the United States and other countries..
+        /// </summary>
+        public static string AboutTradeMarkText {
+            get {
+                return ResourceManager.GetString("AboutTradeMarkText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trading Address.
+        /// </summary>
+        public static string AboutTradingAddress {
+            get {
+                return ResourceManager.GetString("AboutTradingAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Number.
+        /// </summary>
+        public static string AboutVATNumber {
+            get {
+                return ResourceManager.GetString("AboutVATNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provided &apos;as-is&apos; without implication or guarantee..
+        /// </summary>
+        public static string AboutWarranty {
+            get {
+                return ResourceManager.GetString("AboutWarranty", resourceCulture);
             }
         }
         

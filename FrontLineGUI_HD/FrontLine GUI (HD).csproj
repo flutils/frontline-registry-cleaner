@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0-windows7.0</TargetFramework>
+    <TargetFramework>net10.0-windows7.0</TargetFramework>
     <OutputType>WinExe</OutputType>
     <RootNamespace>FrontLineGUI</RootNamespace>
     <AssemblyName>FLCleaner2.1</AssemblyName>
@@ -35,7 +35,9 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Resources\fl.jpg" />
     <None Remove="Resources\icon.png" />
+    <None Remove="Resources\MiB_Logo_Vertical_Colour-RGB.svg" />
     <None Remove="Resources\OS\windows-10.png" />
     <None Remove="Resources\OS\windows-11.png" />
     <None Remove="Resources\OS\windows-8.png" />
@@ -43,6 +45,9 @@
     <None Remove="Resources\OS\windows-xp.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\fl.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\icon.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -55,6 +60,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\MiB_Logo_Vertical_Colour-RGB.svg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\OS\windows-10.png" />
     <Resource Include="Resources\OS\windows-11.png" />
     <Resource Include="Resources\OS\windows-8.png" />
@@ -89,7 +97,15 @@
     <Resource Include="Resources\Scan\internet_cache.png" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="CountryFlag.Wpf" Version="1.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3" />
+    <PackageReference Include="SharpVectors.Wpf" Version="1.8.5" />
+    <PackageReference Include="squirrel.windows" Version="2.0.1" />
+    <PackageReference Include="Tomlyn.Signed" Version="0.20.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OSVersionInfo">
@@ -140,5 +156,8 @@
     <Resource Include="Resources\icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Include\Classes\DataBase\Models\" />
   </ItemGroup>
 </Project>

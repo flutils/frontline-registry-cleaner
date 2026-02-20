@@ -181,7 +181,7 @@
     <value>General</value>
   </data>
   <data name="SettingsBackupTab" xml:space="preserve">
-    <value>Backup</value>
+    <value>Backups</value>
   </data>
   <data name="AboutTitle" xml:space="preserve">
     <value>About</value>
@@ -190,7 +190,7 @@
     <value>Further information about the application and our company.</value>
   </data>
   <data name="AboutFLText" xml:space="preserve">
-    <value>was established in 2009 to distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product.</value>
+    <value>was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are a UK-based company, specializing in high level implementations for SME's. </value>
   </data>
   <data name="AboutFlatIconText" xml:space="preserve">
     <value>Icons made by Hopstarter and Dinosoftlabs from</value>
@@ -200,5 +200,29 @@
   </data>
   <data name="ScanSelected" xml:space="preserve">
     <value>Selected</value>
+  </data>
+  <data name="AboutTradeMarkText" xml:space="preserve">
+    <value>Trademarks property of their respective owners.</value>
+  </data>
+  <data name="AboutPrivacy" xml:space="preserve">
+    <value>Privacy Policy</value>
+  </data>
+  <data name="AboutDataProtection" xml:space="preserve">
+    <value>Data Protection</value>
+  </data>
+  <data name="AboutLicensing" xml:space="preserve">
+    <value>Licensing</value>
+  </data>
+  <data name="AboutTradingAddress" xml:space="preserve">
+    <value>Trading Address</value>
+  </data>
+  <data name="AboutWarranty" xml:space="preserve">
+    <value>Provided 'as-is' without warranty.</value>
+  </data>
+  <data name="AboutRegNumber" xml:space="preserve">
+    <value>Registration Number</value>
+  </data>
+  <data name="AboutVATNumber" xml:space="preserve">
+    <value>VAT Number</value>
   </data>
 </root>

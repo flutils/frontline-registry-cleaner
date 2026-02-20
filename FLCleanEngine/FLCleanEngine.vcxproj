@@ -19,7 +19,7 @@
     <RootNamespace>FLCleanEngine</RootNamespace>
     <Keyword>ManagedCProj</Keyword>
     <ProjectName>FLCleanEngine</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.22000.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.26100.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseTest|Win32'" Label="Configuration">
@@ -42,7 +42,7 @@
     <UseOfAtl>Static</UseOfAtl>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset>v145</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">

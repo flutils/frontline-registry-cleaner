@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows.Input;
@@ -24,7 +25,33 @@ namespace FrontLineGUI
         public MainWindowViewModel()
         {
 
-            // RPECK 06/02/2025 - Set up the ViewModels (used for navigation)
+            // RPECK 13/02/2026 - Config File
+            // These can be inferred from a config.toml file placed in the same directory as the binary, otherwise the default options will be used
+            // --
+            // Ref: https://mojoauth.com/parse-and-generate-formats/parse-and-generate-toml-with-aspnet-core#reading-and-deserializing-toml-configuration 
+            if (File.Exists("config.toml"))
+            {
+
+                // RPECK 13/02/2026 - Pull in the config.toml file and compute the values it has inside
+                // Available Options: -
+                // - debug      - BOOLEAN (whether the app should run in debug mode)
+                // - config_dir - STRING (the directory where the database should be stored // either relative or absolute)
+                // - language   - ENUM (en, fr)
+                // - cpu_id     - BOOLEAN (whether we should use the CPUID functionality to load the performance of the system)
+                var tomlContent = File.ReadAllText("config.toml");
+
+                // RPECK 13/02/2026 - Interpolate the file using the Tomlyn library
+                // This was loaded into NuGet and is generally used to proces TOML files inside C#
+                var document = Tomlyn.Toml.Parse(tomlContent);
+
+
+                //var settings = document.Deserialize<ConfigurationOptions>();
+
+
+            }
+
+            // RPECK 06/02/2025 - ViewModels
+            // Used to populate different views inside the system (Scan, Settings & About)
             ViewModels.Add(new ScanViewModel(new ScanView() { }));
             ViewModels.Add(new SettingsViewModel(new SettingsView() { }));
             ViewModels.Add(new AboutViewModel(new AboutView() { }));
@@ -32,7 +59,7 @@ namespace FrontLineGUI
 
             CultureInfo culture;
 
-            culture = CultureInfo.CreateSpecificCulture("fr");
+            culture = CultureInfo.CreateSpecificCulture("en");
 
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;

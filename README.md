@@ -1,6 +1,6 @@
 <h1 align="center">Windows® File & Registry Cleaner Software</h1>
 <p align="center"><a href="https://www.frontlinecleaner.com">Frontline Registry Cleaner 2.1</a> is a desktop software tool designed to remove bloat from Windows.</p>
-<p align="center">Released in 2011, it has been updated to accomodate GUI, QoL and OS updates: -</p>
+<p align="center">Released in 2011, it has been upgraded to accomodate GUI, QoL and OS updates: -</p>
 
 <p><img src="Readme/screenshot_0.png" alt="Frontline Registry Cleaner 2.1"></p>
 
@@ -15,7 +15,7 @@
 
 <p align="center">--</p>
 
-The latest version is targeted at [.NET 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0) and has an updated user interface.
+The latest version is targeted at [.NET 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) and has an updated user interface.
 
 After bringing development in-house in 2012, we released it open source in 2015 with the intention of continuing to develop it. We still use it and have been implementing fixes to make it compatible with the latest software.
 
@@ -34,12 +34,13 @@ If you have any questions, you're welcome to [raise an issue](issues) or [send u
 #### ⚠️ Runtime Requirements
 
 1. [VC++ Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) (x86 ≥ 2015)
-2. [.NET Framework](https://dotnet.microsoft.com/en-us/download/dotnet-framework) (4.8+ runtime installer)
+2. [.NET Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) (Download from `.NET Desktop Runtime` section)
 
 ---
 
 #### 🚦 Changelog
 
+- [x] (13/02/2026) Upgraded to .NET 10.0
 - [x] (04/02/2025) Upgraded to .NET 9.0
 - [x] (02/04/2023) Upgraded to .NET 7.0 and changed interface
 - [x] (25/01/2022) Upgraded UI to HD

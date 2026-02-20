@@ -181,7 +181,7 @@
     <value>Général</value>
   </data>
   <data name="SettingsBackupTab" xml:space="preserve">
-    <value>Sauvegarde</value>
+    <value>Sauvegardes</value>
   </data>
   <data name="AboutTitle" xml:space="preserve">
     <value>À Propos</value>
@@ -190,7 +190,7 @@
     <value>Plus d'informations sur l'application et sur notre entreprise.</value>
   </data>
   <data name="AboutFLText" xml:space="preserve">
-    <value>a été créée en 2009 pour distribuer des solutions logicielles aux consommateurs du monde entier. L'entreprise a connu une période de développement de 2014 à 2025, ce qui a conduit à la réédition de ce produit.</value>
+    <value>a été fondée en 2009 afin de concevoir et distribuer des solutions logicielles aux consommateurs du monde entier. Nous sommes une entreprise basée au Royaume-Uni, spécialisée dans les implémentations de haut niveau pour les PME. </value>
   </data>
   <data name="AboutFlatIconText" xml:space="preserve">
     <value>Icônes réalisées par Hopstarter et Dinosoftlabs à partir de</value>
@@ -200,5 +200,29 @@
   </data>
   <data name="ScanSelected" xml:space="preserve">
     <value>Sélectionné</value>
+  </data>
+  <data name="AboutTradeMarkText" xml:space="preserve">
+    <value>Marques commerciales appartenant à leurs propriétaires respectifs.</value>
+  </data>
+  <data name="AboutPrivacy" xml:space="preserve">
+    <value>Confidentialité des Données</value>
+  </data>
+  <data name="AboutDataProtection" xml:space="preserve">
+    <value>Protection des Données</value>
+  </data>
+  <data name="AboutLicensing" xml:space="preserve">
+    <value>Licences</value>
+  </data>
+  <data name="AboutTradingAddress" xml:space="preserve">
+    <value>Adresse Commerciale</value>
+  </data>
+  <data name="AboutWarranty" xml:space="preserve">
+    <value>Fourni « tel quel » sans garantie.</value>
+  </data>
+  <data name="AboutRegNumber" xml:space="preserve">
+    <value>Numéro d'Enregistrement</value>
+  </data>
+  <data name="AboutVATNumber" xml:space="preserve">
+    <value>Numéro de TVA</value>
   </data>
 </root>

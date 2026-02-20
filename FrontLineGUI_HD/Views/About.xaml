@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:FrontLineGUI"
       xmlns:lang="clr-namespace:FrontLineGUI.Resources.Localization"
       xmlns:properties="clr-namespace:FrontLineGUI.Properties"
+      xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
       mc:Ignorable="d" 
       d:DesignHeight="820" d:DesignWidth="771"
      >
@@ -28,6 +29,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="1*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
         <!-- General -->
@@ -39,21 +41,60 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.AboutPreInfo }" TextAlignment="Center" FontSize="12" />
             </StackPanel>
 
-            <!-- Content -->
+            <!-- Separator -->
+            <Separator Opacity="0.25" Height="1" Margin="10,10,10,5" />
+
+            <!-- Intro Area -->
             <!-- ListView used because it gives us the ability to design everything we need -->
             <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-            <DataGrid Name = "dataGrid" AlternatingRowBackground= "LightGray" AlternationCount="2" AutoGenerateColumns="False" CanUserReorderColumns="True" CanUserResizeColumns="True" Margin="15,10,15,0" ItemsSource="{Binding ScanItemsCollection}" >
+            <Grid Margin="10,0,10,0">
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header = "Name" Binding = "{Binding Name}" />
-                    <DataGridTextColumn Header = "Title" Binding = "{Binding Title}" />
-                    <DataGridCheckBoxColumn Header = "ReElected?" Binding = "{Binding WasReElected}"/>
-                    <DataGridComboBoxColumn Header = "Party" SelectedItemBinding = "{Binding Affiliation}" />
-                </DataGrid.Columns>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
                 
-            </DataGrid>
+                <!-- Logo -->
+                <!-- Ideally would want this to link to the website but would require creating a button and linking to function in the .xaml.cs file -->
+                <Image Grid.Column="0" Source="/Resources/fl.jpg" Width="38" Height="38" /> 
+                
+                <!-- Intro Text -->
+                <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="0,0,3,0" TextWrapping="Wrap" Padding="10">
+                    <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FLWeb }" RequestNavigate="ExternalLinkClick" FontWeight="Bold"><Run Text="{ x:Static lang:Strings.MainCopyrightButton }" /></Hyperlink> <Run Text="{ x:Static lang:Strings.AboutFLText }"/>
+                </TextBlock>
+
+            </Grid>
 
         </StackPanel>
+        
+        <!-- Company Info -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <!-- Made In Britain -->
+            <StackPanel Grid.Column="0" HorizontalAlignment="Left">
+                <svgc:SvgViewbox Source="/Resources/MiB_Logo_Vertical_Colour-RGB.svg" Width="80" Height="65" Stretch="Uniform"/>
+            </StackPanel>
+
+            <!-- Trading Address -->
+            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10">
+                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextDecorations="Underline" TextWrapping="Wrap" Text="{ x:Static lang:Strings.AboutTradingAddress }" />
+                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextWrapping="Wrap" Text="{ Binding Source={x:Static properties:Settings.Default}, Path=Address }" />
+            </StackPanel>
+
+            <!-- Company Registration Info -->
+            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10">
+                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextDecorations="Underline" TextWrapping="Wrap" Text="{ x:Static lang:Strings.AboutRegNumber }" />
+                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextWrapping="Wrap" Text="{ Binding Source={x:Static properties:Settings.Default}, Path=RegNumber }" />
+                <TextBlock VerticalAlignment="Center" Margin="0,2,0,0" FontSize="11" TextDecorations="Underline" TextWrapping="Wrap" Text="{ x:Static lang:Strings.AboutVATNumber }" />
+                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextWrapping="Wrap" Text="{ Binding Source={x:Static properties:Settings.Default}, Path=VATNumber }" />
+            </StackPanel>
+
+        </Grid>
 
         <!-- Bottom Row -->
         <Grid Grid.Row="2">
@@ -82,13 +123,44 @@
                 <!-- https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win#_comments -->
                 <!-- RPECK 23/03/2025 - Ref for binding - https://stackoverflow.com/a/845033 -->
                 <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10">
-                    <TextBlock VerticalAlignment="Center" Margin="0,0,3,0" TextWrapping="Wrap" Padding="0">
-                        <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FLWeb }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.MainCopyrightButton }" /></Hyperlink> <Run Text="{ x:Static lang:Strings.AboutFLText }"/>
-                    </TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Icons Attribution -->
+                        <TextBlock VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Padding="0,2,0,2" FontSize="10">
+                            <Run Text="{ x:Static lang:Strings.AboutFlatIconText }"/> <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FlatIconWeb }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutFlatIconHyperlink }"/></Hyperlink>
+                        </TextBlock>
+
+                    </Grid>
                     <Separator Opacity="0.25" Height="1" Margin="0,5,0,5" />
-                    <TextBlock VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Padding="0">
-                        <Run Text="{ x:Static lang:Strings.AboutFlatIconText }"/> <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FlatIconWeb }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutFlatIconHyperlink }"/></Hyperlink>
-                    </TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Trademark Property Information -->
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Margin="0,5,3,0" TextWrapping="Wrap" Padding="0" FontSize="10">
+                            <Run Text="{ x:Static lang:Strings.AboutTradeMarkText }"/>
+                        </TextBlock>
+
+                        <!-- Privacy / GDPR Links -->
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
+                            <TextBlock VerticalAlignment="Center" Margin="0,0,5,0" TextWrapping="NoWrap" Padding="0,2,0,2" FontSize="10">
+                                <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default}, Path=PrivacyPolicy }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutPrivacy }" /></Hyperlink>
+                            </TextBlock>
+                            <TextBlock VerticalAlignment="Center" Margin="0,0,5,0" TextWrapping="NoWrap" Padding="0,2,0,2" FontSize="10">
+                                <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default}, Path=DataPolicy }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutDataProtection }" /></Hyperlink>
+                            </TextBlock>
+                            <TextBlock VerticalAlignment="Center" Margin="0" TextWrapping="NoWrap" Padding="0,2,0,2" FontSize="10">
+                                <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default}, Path=LicensingPolicy }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutLicensing }" /></Hyperlink>
+                            </TextBlock>
+                        </StackPanel>
+
+                    </Grid>
                 </StackPanel>
 
             </Grid>

@@ -69,19 +69,5 @@ namespace FrontLineGUI
             set { debug = value; }
         }
 
-        // RPECK 25/03/2023
-        // Load Settings from JSON
-        // https://stackoverflow.com/a/54065208/1143732
-        public void LoadFromFile(string filename = "config.json")
-        {
-        }
-
-        // RPECK 25/03/2023
-        // Save Settings to JSON
-        // https://stackoverflow.com/a/54065208/1143732
-        public void SaveToFile(string filename = "config.json")
-        {
-        }
-
     }
 }
