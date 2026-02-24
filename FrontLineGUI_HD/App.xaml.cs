@@ -1,8 +1,10 @@
-﻿using System.Globalization;
+﻿using FrontLineGUI.Include.Classes.DB;
+using FrontLineGUI.Include.Services;
+using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Diagnostics;
 using System.Windows;
-using System.Threading;
+using Velopack;
+using NavigationService = FrontLineGUI.Include.Services.NavigationService;
 
 namespace FrontLineGUI
 {
@@ -13,19 +15,73 @@ namespace FrontLineGUI
     public partial class App : Application
     {
 
-        // RPECK 18/03/2023
-        // https://www.codeproject.com/Articles/524878/Localisation-made-easy-for-WPF
-        private void Application_Startup(object sender, StartupEventArgs e)
-        {
+        // RPECK 21/02/2026 - Services
+        // Used to bring in Configuration Options from global scope
 
-            // RPECK 05/02/2025 - Load up the MainWindow
-            // Used to give us the ability to invoke dynamic content whilst maintaining state
-            // Ref: https://stackoverflow.com/a/15960843
-            var window = new MainWindow() { DataContext = new MainWindowViewModel() };
+        public static IServiceProvider Services { get; private set; }
 
-            // RPECK 05/02/2025 - Show the MainWindow class
-            // Gives us the ability to manage its content/data without having other issues
-            window.Show();
+        // RPECK 22/02/2026 - VeloPack
+        // This was added to integrate the VeloPack library (used for installation / update management)
+        // --
+        // Ref: https://docs.velopack.io/getting-started/csharp?platform=wpf
+        [STAThread]
+        public static void Main(string[] args)
+        {   
+            
+            // RPECK 24/02/2026 - Services
+            // Various Globally-Scoped items which are used to provide the means to access them outside of the local scope
+            var services = new ServiceCollection();
+
+            // RPECK 24/02/2026 - Add the various services required by the app
+            // This gives us the ability to manage each of the services from within other scopes
+            services.AddSingleton<ScanService>();   // RPECK 24/02/2026 - Set up a new scan (IE when the application loads, invoke a new instance of the Scan object)
+            services.AddDbContext<AppDbContext>();  // RPECK 24/02/2026 - Set up the databsae (this requires ensuring the db file is accessible)
+
+            // RPECK 24/02/2026 - Navigation
+            // Extracted from ViewModels to provide the means to manage how each of the views should display
+            services.AddSingleton<MainWindowViewModel>();
+            services.AddSingleton<INavigationService, NavigationService>();
+
+            // Register ViewModels
+            services.AddTransient<ScanViewModel>();
+            services.AddTransient<SettingsViewModel>();
+            services.AddTransient<AboutViewModel>();
+
+            // RPECK 24/02/2026 - Services
+            // This is the main Services attribute that can be used within the application
+            Services = services.BuildServiceProvider();
+
+            // RPECK 22/02/2026 - Velopack Integration
+            // Uses the core Velopack recommended code from their samples repo
+            // --
+            // Ref: https://github.com/velopack/velopack/blob/develop/samples/CSharpWpf/App.xaml.cs
+            try
+            {
+                // It's important to Run() the VelopackApp as early as possible in app startup.
+                VelopackApp.Build().Run();
+
+                // RPECK 22/02/2026 - Set up the "App" environment (this is required to ensure that everything else works)
+                // Basically required to ensure we are running everything that we need
+                var app = new App();
+                app.InitializeComponent();
+
+                // RPECK 05/02/2025 - Load up the MainWindow
+                // Used to give us the ability to invoke dynamic content whilst maintaining state
+                // Ref: https://stackoverflow.com/a/15960843
+                var window = new MainWindow() { DataContext = App.Services.GetRequiredService<MainWindowViewModel>() };
+
+                // RPECK 05/02/2025 - Show the MainWindow class
+                // Gives us the ability to manage its content/data without having other issues
+                app.Run(window);
+
+            }
+            catch (Exception ex)
+            {
+
+                // RPECK 23/02/2026 - This was added to provide an exception in case of the application not loading properly
+                MessageBox.Show("Unhandled exception: " + ex.ToString());
+
+            }
 
         }
 

@@ -15,7 +15,7 @@
 
 <p align="center">--</p>
 
-The latest version is targeted at [.NET 10](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) and has an updated user interface.
+The latest version is targeted at .NET 10 and has an updated user interface.
 
 After bringing development in-house in 2012, we released it open source in 2015 with the intention of continuing to develop it. We still use it and have been implementing fixes to make it compatible with the latest software.
 
@@ -33,8 +33,7 @@ If you have any questions, you're welcome to [raise an issue](issues) or [send u
 
 #### ⚠️ Runtime Requirements
 
-1. [VC++ Redistributable](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) (x86 ≥ 2015)
-2. [.NET Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) (Download from `.NET Desktop Runtime` section)
+1. [.NET 10.0 Runtime](https://dotnet.microsoft.com/en-us/download/dotnet/10.0) (Download from `.NET Desktop Runtime` section)
 
 ---
 

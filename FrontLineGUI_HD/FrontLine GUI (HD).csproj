@@ -33,16 +33,25 @@
     <PackageIcon>icon.png</PackageIcon>
     <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
   </PropertyGroup>
+<ItemGroup>
+    <ApplicationDefinition Remove="App.xaml" />
+    <Page Include="App.xaml" />
+</ItemGroup>
   <ItemGroup>
     <None Remove="Resources\fl.jpg" />
     <None Remove="Resources\icon.png" />
-    <None Remove="Resources\MiB_Logo_Vertical_Colour-RGB.svg" />
+
     <None Remove="Resources\OS\windows-10.png" />
     <None Remove="Resources\OS\windows-11.png" />
     <None Remove="Resources\OS\windows-8.png" />
     <None Remove="Resources\OS\windows-95.png" />
     <None Remove="Resources\OS\windows-xp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Include\Classes\DB\Models\ScanItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\fl.jpg">
@@ -60,9 +69,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\MiB_Logo_Vertical_Colour-RGB.svg">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Resources\OS\windows-10.png" />
     <Resource Include="Resources\OS\windows-11.png" />
     <Resource Include="Resources\OS\windows-8.png" />
@@ -103,9 +109,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3" />
-    <PackageReference Include="SharpVectors.Wpf" Version="1.8.5" />
-    <PackageReference Include="squirrel.windows" Version="2.0.1" />
-    <PackageReference Include="Tomlyn.Signed" Version="0.20.0" />
+    <PackageReference Include="Velopack" Version="0.0.1298" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="OSVersionInfo">
@@ -156,8 +160,5 @@
     <Resource Include="Resources\icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Include\Classes\DataBase\Models\" />
   </ItemGroup>
 </Project>

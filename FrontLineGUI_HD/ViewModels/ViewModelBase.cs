@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace FrontLineGUI
 {
@@ -27,6 +29,17 @@ namespace FrontLineGUI
             var handler = PropertyChanged;
             if (handler != null) handler(this, e);
 
+        }
+
+        // RPECK 23/02/2026 - SetProperty
+        // Required to provide the means to change a core property of the view model
+        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string? name = null)
+        {
+            if(EqualityComparer<T>.Default.Equals(field, value)) return false;
+
+            field = value;
+            OnPropertyChanged(name);
+            return true;
         }
 
     }

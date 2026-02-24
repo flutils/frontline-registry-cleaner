@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FrontLineGUI.Include.Classes.DB.Models;
+using FrontLineGUI.Include.Services;
+using System;
 using System.Diagnostics;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -10,22 +12,30 @@ namespace FrontLineGUI
 
         // RPECK 06/02/2025 - Declarations
         // Used to give us the ability to call or modify attributes publicly
+        public Scan Scan { get; set; }
         public ScanView Model { get; private set; }
         public ScanItemsCollection _scanItemsCollection { get; set; }
         public CPUUtilization CPUInfo { get; set; }
         public OSInfo OSInformation { get; set; }
 
+        // RPECK 24/02/2026 - Scan Service
+        // Used to provide the ability to track scans that have been created by the system
+        private readonly ScanService _scanService;
+
+        public Scan CurrentScan => _scanService.currentScan;
+
+        // RPECK 23/02/2026 - Last Performed
+        // Pulls from the Scan EntityFramework model and allows us to reference the Scan that has the youngest date
+        public DateTime? lastPerformed;
+
         // RPECK 06/02/2025 - Commands
+        // These are used to provide the means to interact with the underlying system
         public ICommand SelectAllClick { get; private set; }
         public ICommand LastScanButtonClick { get; private set; }
         public ICommand MainScanButtonClick { get; private set; }
 
-        public ScanViewModel(ScanView model)
+        public ScanViewModel()
         {
-
-            // RPECK 07/02/2025 - Model
-            // Allows us to allocate the different view settings inside the ViewModel
-            Model = model;
 
             // RPECK 06/02/2025 - Title
             // Sets the public title of the ModelView (in this case, "Scan")
@@ -41,6 +51,8 @@ namespace FrontLineGUI
 
             // RPECK 26/03/2023 - Scan Items Collection
             // Presents an ObservableListCollection of "ScanItem" classes
+            // --
+            // RPECK 24/02/2026 - So, the core function of this is to provide the user with the ability to select the ScanItems they wish to use and then click on "Scan" to create a new Scan object 
             ScanItemsCollection = new ScanItemsCollection()
             {
                 new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png", "20318;20311;20319;"),
@@ -57,7 +69,7 @@ namespace FrontLineGUI
             // RPECK 06/02/2025 - Hook up Commands to associated methods
             SelectAllClick = new DelegateCommand(o => ScanItemsCollection.SelectAll());
             LastScanButtonClick = new DelegateCommand(o => LastScanClick());
-            MainScanButtonClick = new DelegateCommand(o => Debug.WriteLine("tester"));
+            MainScanButtonClick = new DelegateCommand(o => MainScanClick());
 
             // RPECK 08/02/2025 - Set up a timer to get the hardware info to update 
             // https://spacetech.dk/c-wpf-run-a-function-every-second.html
@@ -89,11 +101,26 @@ namespace FrontLineGUI
             Debug.WriteLine("test");
         }
 
+        // RPECK 08/02/2025 - LastScan Button Click
+        // Should invoke the "About" view 
+        public void MainScanClick()
+        {
+            Debug.WriteLine("test");
+        }
+
         // RPECK 08/02/2025 - Updates CPUInfo Values
         // Called by the ticker above
         public void update_cpu_values(object sender, EventArgs e)
         {
             CPUInfo.UpdateValues();
+        }
+
+        // RPECK 23/02/2026 - LastPerformed
+        // Get the latest value from the database and use it to populate the front-end
+        public string LastPerformed
+        {
+            get { return "Never"; }
+            set {}
         }
 
     }

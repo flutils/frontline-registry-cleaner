@@ -124,15 +124,6 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registration Number.
-        /// </summary>
-        public static string AboutRegNumber {
-            get {
-                return ResourceManager.GetString("AboutRegNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string AboutTitle {
@@ -142,29 +133,11 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trademarks property of their respective owners. Windows® is a registered trademark of Microsoft Corporation in the United States and other countries..
+        ///   Looks up a localized string similar to Trademarks property of their respective owners. .
         /// </summary>
         public static string AboutTradeMarkText {
             get {
                 return ResourceManager.GetString("AboutTradeMarkText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Trading Address.
-        /// </summary>
-        public static string AboutTradingAddress {
-            get {
-                return ResourceManager.GetString("AboutTradingAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to VAT Number.
-        /// </summary>
-        public static string AboutVATNumber {
-            get {
-                return ResourceManager.GetString("AboutVATNumber", resourceCulture);
             }
         }
         

@@ -123,7 +123,7 @@ namespace FrontLineGUI.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3 Dearnford Avenue, Bromborough, Wirral, CH62 6DX. United Kingdom")]
+        [global::System.Configuration.DefaultSettingValueAttribute("3 Dearnford Avenue, Bromborough, Wirral, CH62 6DX, United Kingdom")]
         public string Address {
             get {
                 return ((string)(this["Address"]));
@@ -154,6 +154,26 @@ namespace FrontLineGUI.Properties {
         public string VATNumber {
             get {
                 return ((string)(this["VATNumber"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://find-and-update.company-information.service.gov.uk/company/07037173")]
+        public string CompaniesHouse {
+            get {
+                return ((string)(this["CompaniesHouse"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://www.tax.service.gov.uk/check-vat-number/enter-vat-details")]
+        public string VATCheck {
+            get {
+                return ((string)(this["VATCheck"]));
             }
         }
     }

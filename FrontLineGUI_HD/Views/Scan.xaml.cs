@@ -1,4 +1,5 @@
-﻿using System.Runtime.Versioning;
+﻿using System.ComponentModel;
+using System.Runtime.Versioning;
 using System.Windows.Controls;
 
 namespace FrontLineGUI
@@ -10,8 +11,11 @@ namespace FrontLineGUI
 
     // RPECK 08/04/2023 - this was required to limit the application to Windows OS versions only
     [SupportedOSPlatform("windows")]
-    public partial class ScanView : UserControl
+    public partial class ScanView : UserControl, INotifyPropertyChanged
     {
+
+        // RPECK 23/02/2026 - INotifyPropertyChanged
+        public event PropertyChangedEventHandler PropertyChanged;
 
         // Public class vars
         public CPUUtilization CPUInfo { get; set; }
@@ -19,6 +23,7 @@ namespace FrontLineGUI
         public ScanView()
         {
             InitializeComponent();
+
         }
 
     }

@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:FrontLineGUI"
       xmlns:lang="clr-namespace:FrontLineGUI.Resources.Localization"
       xmlns:properties="clr-namespace:FrontLineGUI.Properties"
-      xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
       mc:Ignorable="d" 
       d:DesignHeight="820" d:DesignWidth="771"
      >
@@ -16,6 +15,41 @@
 
         <!-- Converters -->
         <local:CapitalizeFirstLetterConverter x:Key="CapitalizeFirstLetterConverter" />
+
+        <!-- FL Button Text -->
+        <!-- Used to give us the abilty to add some colour animation to the hover -->
+        <Style  TargetType="Hyperlink" x:Key="LinkHover">
+            
+            <!-- Default Foreground as SolidColorBrush -->
+            <Setter Property="Foreground" >
+                <Setter.Value>
+                    <SolidColorBrush Color="Black"/>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <!-- Animate the Foreground.Color -->
+                                <ColorAnimation 
+                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="#1976D2" Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation 
+                            Storyboard.TargetProperty="(TextBlock.Foreground).(SolidColorBrush.Color)" To="Black" Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+            </Style.Triggers>
+            
+        </Style>
 
     </UserControl.Resources>
 
@@ -44,57 +78,45 @@
             <!-- Separator -->
             <Separator Opacity="0.25" Height="1" Margin="10,10,10,5" />
 
-            <!-- Intro Area -->
-            <!-- ListView used because it gives us the ability to design everything we need -->
-            <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-            <Grid Margin="10,0,10,0">
+            <!-- Content -->
+            <TabControl Margin="25,10,25,0" x:Name="AboutTabs" Background="#EFEFEF">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                
-                <!-- Logo -->
-                <!-- Ideally would want this to link to the website but would require creating a button and linking to function in the .xaml.cs file -->
-                <Image Grid.Column="0" Source="/Resources/fl.jpg" Width="38" Height="38" /> 
-                
-                <!-- Intro Text -->
-                <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="0,0,3,0" TextWrapping="Wrap" Padding="10">
-                    <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FLWeb }" RequestNavigate="ExternalLinkClick" FontWeight="Bold"><Run Text="{ x:Static lang:Strings.MainCopyrightButton }" /></Hyperlink> <Run Text="{ x:Static lang:Strings.AboutFLText }"/>
-                </TextBlock>
+                <!-- General -->
+                <TabItem Header="{ Binding Source={ x:Static lang:Strings.SettingsGeneralTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="General" BorderThickness="0" Padding="0">
+                    <StackPanel Orientation="Vertical">
 
-            </Grid>
+                        <!-- Intro Area -->
+                        <!-- ListView used because it gives us the ability to design everything we need -->
+                        <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
+                        <Grid Margin="10,0,10,0">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Logo -->
+                            <!-- Ideally would want this to link to the website but would require creating a button and linking to function in the .xaml.cs file -->
+                            <Image Grid.Column="0" Source="/Resources/fl.jpg" Width="38" Height="38" />
+
+                            <!-- Intro Text -->
+                            <TextBlock Grid.Column="1" VerticalAlignment="Center" Margin="0,0,3,0" TextWrapping="Wrap" Padding="10">
+                                <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FLWeb }" RequestNavigate="ExternalLinkClick" FontWeight="Bold"><Run Text="{ x:Static lang:Strings.MainCopyrightButton }" /></Hyperlink> <Run Text="{ x:Static lang:Strings.AboutFLText }"/>
+                            </TextBlock>
+
+                        </Grid>
+
+                    </StackPanel>
+                </TabItem>
+
+                <!-- Backup -->
+                <TabItem Header="{ Binding Source={ x:Static lang:Strings.SettingsBackupTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="Backup">
+                    <Grid />
+                </TabItem>
+
+            </TabControl>
 
         </StackPanel>
-        
-        <!-- Company Info -->
-        <Grid Grid.Row="1" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            
-            <!-- Made In Britain -->
-            <StackPanel Grid.Column="0" HorizontalAlignment="Left">
-                <svgc:SvgViewbox Source="/Resources/MiB_Logo_Vertical_Colour-RGB.svg" Width="80" Height="65" Stretch="Uniform"/>
-            </StackPanel>
-
-            <!-- Trading Address -->
-            <StackPanel Grid.Column="1" Orientation="Vertical" Margin="10">
-                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextDecorations="Underline" TextWrapping="Wrap" Text="{ x:Static lang:Strings.AboutTradingAddress }" />
-                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextWrapping="Wrap" Text="{ Binding Source={x:Static properties:Settings.Default}, Path=Address }" />
-            </StackPanel>
-
-            <!-- Company Registration Info -->
-            <StackPanel Grid.Column="2" Orientation="Vertical" Margin="10">
-                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextDecorations="Underline" TextWrapping="Wrap" Text="{ x:Static lang:Strings.AboutRegNumber }" />
-                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextWrapping="Wrap" Text="{ Binding Source={x:Static properties:Settings.Default}, Path=RegNumber }" />
-                <TextBlock VerticalAlignment="Center" Margin="0,2,0,0" FontSize="11" TextDecorations="Underline" TextWrapping="Wrap" Text="{ x:Static lang:Strings.AboutVATNumber }" />
-                <TextBlock VerticalAlignment="Center" Margin="0" FontSize="11" TextWrapping="Wrap" Text="{ Binding Source={x:Static properties:Settings.Default}, Path=VATNumber }" />
-            </StackPanel>
-
-        </Grid>
 
         <!-- Bottom Row -->
         <Grid Grid.Row="2">
@@ -131,8 +153,26 @@
 
                         <!-- Icons Attribution -->
                         <TextBlock VerticalAlignment="Center" Margin="0" TextWrapping="Wrap" Padding="0,2,0,2" FontSize="10">
-                            <Run Text="{ x:Static lang:Strings.AboutFlatIconText }"/> <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FlatIconWeb }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutFlatIconHyperlink }"/></Hyperlink>
+                            <Run Text="{ x:Static lang:Strings.AboutFlatIconText }"/> <Hyperlink Style="{StaticResource LinkHover}" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=FlatIconWeb }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutFlatIconHyperlink }"/></Hyperlink>
                         </TextBlock>
+                        
+                        <!-- Company Info -->
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+
+                            <!-- Company Registration Details -->
+                            <TextBlock VerticalAlignment="Center" Margin="0" FontSize="10" TextWrapping="NoWrap">
+                                <Hyperlink Style="{StaticResource LinkHover}" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=CompaniesHouse }" RequestNavigate="ExternalLinkClick"><Run Text="{ Binding Source={x:Static properties:Settings.Default}, Path=RegNumber, Mode=OneWay }" /></Hyperlink>
+                            </TextBlock>
+
+                            <!-- Separator -->
+                            <TextBlock Margin="2,0" FontSize="10">/</TextBlock>
+
+                            <!-- VAT Number -->
+                            <TextBlock VerticalAlignment="Center" Margin="0" FontSize="10" TextWrapping="NoWrap">
+                                <Hyperlink Style="{StaticResource LinkHover}" NavigateUri="{ Binding Source={x:Static properties:Settings.Default},Path=VATCheck }" RequestNavigate="ExternalLinkClick"><Run Text="{ Binding Source={x:Static properties:Settings.Default}, Path=VATNumber, Mode=OneWay }" /></Hyperlink>
+                            </TextBlock>
+
+                        </StackPanel>
 
                     </Grid>
                     <Separator Opacity="0.25" Height="1" Margin="0,5,0,5" />
@@ -150,13 +190,13 @@
                         <!-- Privacy / GDPR Links -->
                         <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
                             <TextBlock VerticalAlignment="Center" Margin="0,0,5,0" TextWrapping="NoWrap" Padding="0,2,0,2" FontSize="10">
-                                <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default}, Path=PrivacyPolicy }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutPrivacy }" /></Hyperlink>
+                                <Hyperlink Style="{StaticResource LinkHover}" NavigateUri="{ Binding Source={x:Static properties:Settings.Default}, Path=PrivacyPolicy }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutPrivacy }" /></Hyperlink>
                             </TextBlock>
                             <TextBlock VerticalAlignment="Center" Margin="0,0,5,0" TextWrapping="NoWrap" Padding="0,2,0,2" FontSize="10">
-                                <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default}, Path=DataPolicy }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutDataProtection }" /></Hyperlink>
+                                <Hyperlink Style="{StaticResource LinkHover}" NavigateUri="{ Binding Source={x:Static properties:Settings.Default}, Path=DataPolicy }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutDataProtection }" /></Hyperlink>
                             </TextBlock>
                             <TextBlock VerticalAlignment="Center" Margin="0" TextWrapping="NoWrap" Padding="0,2,0,2" FontSize="10">
-                                <Hyperlink Foreground="Black" NavigateUri="{ Binding Source={x:Static properties:Settings.Default}, Path=LicensingPolicy }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutLicensing }" /></Hyperlink>
+                                <Hyperlink Style="{StaticResource LinkHover}" NavigateUri="{ Binding Source={x:Static properties:Settings.Default}, Path=LicensingPolicy }" RequestNavigate="ExternalLinkClick"><Run Text="{ x:Static lang:Strings.AboutLicensing }" /></Hyperlink>
                             </TextBlock>
                         </StackPanel>
 

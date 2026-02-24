@@ -33,7 +33,7 @@
       <Value Profile="(Default)">https://www.madeinbritain.org/members/frontline-utilities-ltd</Value>
     </Setting>
     <Setting Name="Address" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">3 Dearnford Avenue, Bromborough, Wirral, CH62 6DX. United Kingdom</Value>
+      <Value Profile="(Default)">3 Dearnford Avenue, Bromborough, Wirral, CH62 6DX, United Kingdom</Value>
     </Setting>
     <Setting Name="Email" Type="System.String" Scope="Application">
       <Value Profile="(Default)">support@fl.co.uk</Value>
@@ -43,6 +43,12 @@
     </Setting>
     <Setting Name="VATNumber" Type="System.String" Scope="Application">
       <Value Profile="(Default)">GB121358444</Value>
+    </Setting>
+    <Setting Name="CompaniesHouse" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://find-and-update.company-information.service.gov.uk/company/07037173</Value>
+    </Setting>
+    <Setting Name="VATCheck" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://www.tax.service.gov.uk/check-vat-number/enter-vat-details</Value>
     </Setting>
   </Settings>
 </SettingsFile>

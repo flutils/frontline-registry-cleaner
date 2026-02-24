@@ -1,9 +1,9 @@
 ﻿<Application x:Class="FrontLineGUI.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:FrontLineGUI"
-             Startup="Application_Startup">
-            <!-- RPECK 05/02/2025 - Removed StartupUri to allow us to manually invoke MainWindow as per (https://stackoverflow.com/a/15960843) -->
+             xmlns:local="clr-namespace:FrontLineGUI">
+             <!-- RPECK 22/02/2026 - Changed ApplicationStartup command to Main, as per VeloPack (https://docs.velopack.io/getting-started/csharp?platform=wpf#:~:text=Add%20a%20Main%20method%20to%20your%20App.xaml.cs%20file.%20It%20should%20look%20similar%20to%20this%3A) -->
+             <!-- RPECK 05/02/2025 - Removed StartupUri to allow us to manually invoke MainWindow as per (https://stackoverflow.com/a/15960843) -->
     <Application.Resources>
 
         <!-- RPECK 15/03/2022 -->
@@ -12,6 +12,19 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary x:Name="StylingGeneral" Source="/Include/Styles/GeneralStyling.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+
+            <!-- Data Templates -->
+            <!-- Added to give us the ability to use the ability to retain state between the different pages/views -->
+            <!-- Ref: https://stackoverflow.com/a/15960843 -->
+            <DataTemplate DataType="{x:Type local:ScanViewModel}">
+                <local:ScanView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:SettingsViewModel}">
+                <local:SettingsView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type local:AboutViewModel}">
+                <local:AboutView />
+            </DataTemplate>
         </ResourceDictionary>
         
     </Application.Resources>

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using FrontLineGUI.Include.Classes.DB.Models;
+using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace FrontLineGUI

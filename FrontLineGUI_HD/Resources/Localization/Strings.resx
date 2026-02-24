@@ -230,7 +230,7 @@
     <comment>"Selected" text value on the main scan page</comment>
   </data>
   <data name="AboutTradeMarkText" xml:space="preserve">
-    <value>Trademarks property of their respective owners. Windows® is a registered trademark of Microsoft Corporation in the United States and other countries.</value>
+    <value>Trademarks property of their respective owners. </value>
     <comment>"About"page trademark text (at bottom of page)</comment>
   </data>
   <data name="AboutPrivacy" xml:space="preserve">
@@ -245,20 +245,8 @@
     <value>Licensing</value>
     <comment>Link for licensing information</comment>
   </data>
-  <data name="AboutTradingAddress" xml:space="preserve">
-    <value>Trading Address</value>
-    <comment>"About"page trading address title</comment>
-  </data>
   <data name="AboutWarranty" xml:space="preserve">
     <value>Provided 'as-is' without implication or guarantee.</value>
     <comment>"About"page warranty information in the footer area.</comment>
-  </data>
-  <data name="AboutRegNumber" xml:space="preserve">
-    <value>Registration Number</value>
-    <comment>"About" page registration number at the bottom of the main content area</comment>
-  </data>
-  <data name="AboutVATNumber" xml:space="preserve">
-    <value>VAT Number</value>
-    <comment>"About" page VAT number title</comment>
   </data>
 </root>
