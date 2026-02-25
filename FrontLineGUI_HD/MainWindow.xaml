@@ -41,25 +41,68 @@
         <!-- https://stackoverflow.com/a/13858357/1143732 -->
         <!-- https://www.youtube.com/watch?v=aFGDs3z7zpM&ab_channel=tips%27ntricks -->
         <!-- RPECK 07/02/2025 - Had to list here otherwise the navigation list would not recognise it! -->
-        <Style TargetType="{x:Type Button}" x:Key="SettingsLink" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="Opacity" Value="0.45" />
+        <Style x:Key="SettingsLink" TargetType="TextBlock">
+
+            <!-- Base appearance -->
+            <Setter Property="Foreground" Value="#FF3A2600" />
+            <Setter Property="FontStyle" Value="Italic" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontFamily" Value="Calibri" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0"/>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+
+        <!-- ScanItems ListBox -->
+        <Style TargetType="{x:Type ListBox}" x:Key="NavigationListBox">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="Background" Value="{x:Null}" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+
+        <!-- ScanItems ListBox Items -->
+        <!-- ControlTemplate was required due to .NET 4.5 removing the ability to change system brushes - https://stackoverflow.com/a/18945651/1143732 -->
+        <Style TargetType="{x:Type ListBoxItem}" x:Key="NavigationListItemStyle">
+
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Padding" Value="3,0,0,0" />
+            <Setter Property="HorizontalContentAlignment" Value="Right" />
+            <Setter Property="Opacity" Value="0.45"/>
+
             <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
+                    <ControlTemplate TargetType="ListBoxItem">
 
-                        <TextBlock x:Name="SettingsText" Text="{TemplateBinding Content}" Foreground="#FF3A2600" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0" FontFamily="Calibri">
-                            <TextBlock.Effect>
-                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
-                            </TextBlock.Effect>
-                        </TextBlock>
-
+                        <Border Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="contentPresenter" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/>
+                        </Border>
+                        
+                        <!-- Triggers -->
                         <ControlTemplate.Triggers>
+                            
+                            <!-- Selected -->
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Opacity" Value="1.0" />
+                                <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
+                            </Trigger>
+                            
+                            <!-- Hover -->
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsEnabled" Value="True" />
                                     <Condition Property="IsMouseOver" Value="True" />
                                 </MultiTrigger.Conditions>
-                                <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
+                                <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
                                 <MultiTrigger.EnterActions>
                                     <BeginStoryboard>
                                         <Storyboard>
@@ -75,53 +118,9 @@
                                     </BeginStoryboard>
                                 </MultiTrigger.ExitActions>
                             </MultiTrigger>
-                            <MultiTrigger>
-                                <MultiTrigger.Conditions>
-                                    <Condition Property="IsEnabled" Value="True" />
-                                    <Condition Property="IsPressed" Value="True" />
-                                </MultiTrigger.Conditions>
-                                <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
-                            </MultiTrigger>
-                            <Trigger Property="IsEnabled" Value="False">
-                                <Setter Property="Opacity" Value="1.0" />
-                                <Setter TargetName="SettingsText" Property="TextDecorations" Value="Underline" />
-                            </Trigger>
+                            
                         </ControlTemplate.Triggers>
 
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <!-- ScanItems ListBox -->
-        <Style TargetType="{x:Type ListBox}" x:Key="NavigationListBox">
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
-            <Setter Property="Background" Value="{x:Null}" />
-            <Setter Property="Padding" Value="0" />
-        </Style>
-
-        <!-- ScanItems ListBox Items -->
-        <!-- ControlTemplate was required due to .NET 4.5 removing the ability to change system brushes - https://stackoverflow.com/a/18945651/1143732 -->
-        <Style TargetType="{x:Type ListBoxItem}" x:Key="NavigationListItemStyle">
-
-            <!-- Triggers -->
-            <Style.Triggers>
-                <Trigger Property="IsSelected" Value="True" >
-                    <Setter Property="IsEnabled" Value="False" />
-                </Trigger>
-            </Style.Triggers>
-            
-            <!-- Styling -->
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Background" Value="{x:Null}" />
-            <Setter Property="Padding" Value="0" />
-
-            <!-- RPECK 07/02/2025 - Added to get rid of default system styling -->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                        <Button Name="NavigationButton" Content="{ Binding Name }" Command="{Binding DataContext.NavigationButtonClick, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" Style="{StaticResource SettingsLink}" CommandParameter="{Binding}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" />
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -313,7 +312,7 @@
                             RPECK 06/02/2025 - Dynamically add the buttons based on which ViewModels we have in the system 
                             Ref: https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/
                         -->
-                        <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}"  Style="{StaticResource NavigationListBox}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" SelectedItem="{Binding CurrentViewModel}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
+                        <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}"  Style="{StaticResource NavigationListBox}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
 
                             <!-- Panel -->
                             <ListView.ItemsPanel>
@@ -321,6 +320,12 @@
                                     <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </ListView.ItemsPanel>
+
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}" Style="{StaticResource SettingsLink}" TextDecorations="{Binding Path=(TextBlock.TextDecorations), RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
 
                         </ListView>
 

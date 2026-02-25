@@ -8,15 +8,14 @@ namespace FrontLineGUI.Include.Services
 {
     public class NavigationService : INavigationService
     {
-        private readonly IServiceProvider _provider;
-        private Action<ViewModelBase> _setCurrentViewModel;
+        private readonly IServiceProvider _serviceProvider;
+        private Action<ViewModelBase>? _setCurrentViewModel;
 
-        public NavigationService(IServiceProvider provider)
+        public NavigationService(IServiceProvider serviceProvider)
         {
-            _provider = provider;
+            _serviceProvider = serviceProvider;
         }
 
-        // Called once after MainWindowViewModel is created
         public void Configure(Action<ViewModelBase> setCurrentViewModel)
         {
             _setCurrentViewModel = setCurrentViewModel;
@@ -24,7 +23,13 @@ namespace FrontLineGUI.Include.Services
 
         public void NavigateTo<TViewModel>() where TViewModel : ViewModelBase
         {
-            var vm = _provider.GetRequiredService<TViewModel>();
+            var vm = _serviceProvider.GetRequiredService<TViewModel>();
+            _setCurrentViewModel?.Invoke(vm);
+        }
+
+        public void NavigateTo(Type viewModelType)
+        {
+            var vm = (ViewModelBase)_serviceProvider.GetRequiredService(viewModelType);
             _setCurrentViewModel?.Invoke(vm);
         }
     }

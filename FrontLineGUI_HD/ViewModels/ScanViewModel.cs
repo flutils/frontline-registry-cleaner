@@ -18,9 +18,11 @@ namespace FrontLineGUI
         public CPUUtilization CPUInfo { get; set; }
         public OSInfo OSInformation { get; set; }
 
-        // RPECK 24/02/2026 - Scan Service
-        // Used to provide the ability to track scans that have been created by the system
+        // RPECK 24/02/2026 - Services
+        // Used to provide the means to interfaec with a variety of services that are invoked in the main application
         private readonly ScanService _scanService;
+
+        private readonly INavigationService _navigation;
 
         public Scan CurrentScan => _scanService.currentScan;
 
@@ -34,12 +36,12 @@ namespace FrontLineGUI
         public ICommand LastScanButtonClick { get; private set; }
         public ICommand MainScanButtonClick { get; private set; }
 
-        public ScanViewModel()
+        public ScanViewModel(INavigationService navigation)
         {
 
-            // RPECK 06/02/2025 - Title
-            // Sets the public title of the ModelView (in this case, "Scan")
-            Title = "Scan";
+            // RPECK 06/02/2025 - Navigation
+            // Used to ensure we have the means to manage how we are able to interface with the system
+            _navigation = navigation;
 
             // RPECK 08/02/2025 - Set up the OSInfo Value
             // This invokes a new instance of the "OSInfo" class we created for the purpose
@@ -95,21 +97,23 @@ namespace FrontLineGUI
         }
 
         // RPECK 08/02/2025 - LastScan Button Click
-        // Should invoke the "About" view 
+        // Should invoke the "About" view and load up the latest "results" panel
         public void LastScanClick()
         {
-            Debug.WriteLine("test");
+            _navigation.NavigateTo<AboutViewModel>();
         }
 
-        // RPECK 08/02/2025 - LastScan Button Click
-        // Should invoke the "About" view 
+        // RPECK 08/02/2025 - Main Scan Button Click
+        // This should take the selected ScanItem objects and use them to create a new "Scan" object in the database
+        // --
+        // The "Scan" object should then run, which will chane the ViewModel to progress. The progress ViewModel should then handle the scanner function
         public void MainScanClick()
         {
-            Debug.WriteLine("test");
+            Debug.WriteLine("test22");
         }
 
         // RPECK 08/02/2025 - Updates CPUInfo Values
-        // Called by the ticker above
+        // Called by the ticker above to provide updates to the CPU/RAM/HDD/GPU values
         public void update_cpu_values(object sender, EventArgs e)
         {
             CPUInfo.UpdateValues();
