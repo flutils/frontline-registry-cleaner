@@ -35,7 +35,8 @@
         <local:NotEqualToOneBooleanConverter    x:Key="BoolConverter" />
         <local:OppositeBooleanConverter         x:Key="OppositeBooleanConverter" />
         <local:CultureISOConverter              x:Key="CultureISOConverter" />
-   
+        <local:ViewModelTypeMatchConverter      x:Key="ViewModelTypeMatchConverter" />
+
         <!-- Settings -->
         <!-- Add a decorator to the text on hover, mousedown and navigation -->
         <!-- https://stackoverflow.com/a/13858357/1143732 -->
@@ -91,11 +92,18 @@
                         <ControlTemplate.Triggers>
                             
                             <!-- Selected -->
-                            <Trigger Property="IsSelected" Value="True">
+                            <DataTrigger Value="True">
+                                <DataTrigger.Binding>
+                                    <MultiBinding Converter="{StaticResource ViewModelTypeMatchConverter}">
+                                        <Binding Path="DataContext.CurrentViewModel" RelativeSource="{RelativeSource AncestorType=Window}" />
+                                        <Binding Path="ViewModelType" />
+                                    </MultiBinding>
+                                </DataTrigger.Binding>
+
                                 <Setter Property="Opacity" Value="1.0" />
                                 <Setter Property="TextBlock.TextDecorations" Value="Underline"/>
-                            </Trigger>
-                            
+                            </DataTrigger>
+
                             <!-- Hover -->
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
@@ -106,14 +114,14 @@
                                 <MultiTrigger.EnterActions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.1" To="1.0" />
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.15" To="1.0" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </MultiTrigger.EnterActions>
                                 <MultiTrigger.ExitActions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.1" To="{x:Null}" />
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" Duration="0:0:0.15" To="{x:Null}" />
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </MultiTrigger.ExitActions>
@@ -312,7 +320,7 @@
                             RPECK 06/02/2025 - Dynamically add the buttons based on which ViewModels we have in the system 
                             Ref: https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/
                         -->
-                        <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}"  Style="{StaticResource NavigationListBox}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
+                        <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}"  Style="{StaticResource NavigationListBox}" SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
 
                             <!-- Panel -->
                             <ListView.ItemsPanel>

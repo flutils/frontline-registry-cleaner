@@ -1,9 +1,10 @@
-﻿using FrontLineGUI.Include.Services;
-using FrontLineGUI.Include.Classes;
+﻿using FrontLineGUI.Include.Classes;
+using FrontLineGUI.Include.Services;
 using System;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using System.Diagnostics;
+using System.Linq;
+using System.Windows.Input;
 
 namespace FrontLineGUI
 {
@@ -40,15 +41,6 @@ namespace FrontLineGUI
         public MainWindowViewModel(INavigationService navigation)
         {
 
-            // RPECK 06/02/2025 - Hook up Commands to associated methods
-            _navigation = navigation;
-
-            // RPECK 24/02/2026 - Set the "Current" view to the default one
-            _navigation.Configure(vm => CurrentViewModel = vm);
-
-            // Set starting page
-            _navigation.NavigateTo<ScanViewModel>();
-
             // RPECK 24/02/2026 - Navigation Items
             // Used by the nav bar at the top to provide a simple way to manage how they are displayed and interact
             _viewModels = new ObservableCollection<NavigationItem>
@@ -58,22 +50,27 @@ namespace FrontLineGUI
                 new NavigationItem("About", typeof(AboutViewModel))
             };
 
+            // RPECK 06/02/2025 - Hook up Commands to associated methods
+            _navigation = navigation;
+
+            // RPECK 24/02/2026 - Set the "Current" view to the default one
+            _navigation.Configure(vm =>
+            {
+                // 1. Update the actual view
+                CurrentViewModel = vm;
+
+                // 2. Synchronize the ListView selection
+                // This finds the menu item that matches the new ViewModel type
+                SelectedNavigationItem = _viewModels.FirstOrDefault(x => x.ViewModelType == vm.GetType());
+
+            });
+
+            // Set starting page
+            _navigation.NavigateTo<ScanViewModel>();
+            
         }
 
         #region Methods
-
-        private NavigationItem _selectedNavigationItem;
-        public NavigationItem SelectedNavigationItem
-        {
-            get => _selectedNavigationItem;
-            set
-            {
-                _selectedNavigationItem = value;
-                OnPropertyChanged("Navigation");
-                if (value != null)
-                    _navigation.NavigateTo(value.ViewModelType);
-            }
-        }
 
         // RPECK 24/02/2026 - ViewModels
         // Used to populate the navigation area at the top of the main window
@@ -85,6 +82,26 @@ namespace FrontLineGUI
                     _viewModels = new ObservableCollection<NavigationItem>();
 
                 return _viewModels;
+            }
+        }
+
+        private NavigationItem? _selectedNavigationItem;
+        public NavigationItem? SelectedNavigationItem
+        {
+            get => _selectedNavigationItem;
+            set
+            {
+                if (_selectedNavigationItem == value) return;
+
+                _selectedNavigationItem = value;
+                OnPropertyChanged(nameof(SelectedNavigationItem));
+
+                // RPECK - When the user selects a new item in the list, 
+                // tell the service to update the "CurrentViewModel"
+                if (_selectedNavigationItem != null)
+                {
+                    _navigation.NavigateTo(_selectedNavigationItem.ViewModelType);
+                }
             }
         }
 
