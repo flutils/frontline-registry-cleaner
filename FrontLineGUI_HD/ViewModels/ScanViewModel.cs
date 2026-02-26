@@ -24,7 +24,7 @@ namespace FrontLineGUI
 
         private readonly INavigationService _navigation;
 
-        public Scan CurrentScan => _scanService.currentScan;
+        //public Scan CurrentScan => _scanService.currentScan;
 
         // RPECK 23/02/2026 - Last Performed
         // Pulls from the Scan EntityFramework model and allows us to reference the Scan that has the youngest date
@@ -36,8 +36,11 @@ namespace FrontLineGUI
         public ICommand LastScanButtonClick { get; private set; }
         public ICommand MainScanButtonClick { get; private set; }
 
-        public ScanViewModel(INavigationService navigation)
+        public ScanViewModel(INavigationService navigation, ScanService scanService)
         {
+
+            // RPECK 26/02/2026 - Scan Service
+            // Used to ensure we are able to manage scanner behaviour
 
             // RPECK 06/02/2025 - Navigation
             // Used to ensure we have the means to manage how we are able to interface with the system

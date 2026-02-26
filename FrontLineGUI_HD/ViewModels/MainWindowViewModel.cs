@@ -17,8 +17,12 @@ namespace FrontLineGUI
         private ViewModelBase _currentViewModel;
         private ObservableCollection<NavigationItem> _viewModels;
 
+        // RPECK 26/02/2026 - Navigation object
+        // Used to inherit the navigation state from the global scope, and then populate as required
         private readonly INavigationService _navigation;
 
+        // RPECK 26/20/2026 - CurrentViewModel
+        // Used for managing the navigation so that we're able to determine which viewmodel should be displayed
         public ViewModelBase CurrentViewModel
         {
             get => _currentViewModel;
@@ -85,6 +89,8 @@ namespace FrontLineGUI
             }
         }
 
+        // RPECK 26/02/2026 - Navigation
+        // Used to provide the means to traverse the navigation system 
         private NavigationItem? _selectedNavigationItem;
         public NavigationItem? SelectedNavigationItem
         {

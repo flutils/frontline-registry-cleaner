@@ -14,9 +14,10 @@
     <UserControl.Resources>
         
         <!-- Converters -->
-        <local:NotEqualToOneBooleanConverter x:Key="NotEqualToOneBooleanConverter" />
-        <local:ListNotfullConverter x:Key="ListNotFullConverter" /> <!-- RPECK 30/12/2023 - Added to allow us to make the Select All button disabled if the list is not full -->
+        <local:NotEqualToOneBooleanConverter  x:Key="NotEqualToOneBooleanConverter" />
+        <local:ListNotfullConverter           x:Key="ListNotFullConverter" />           <!-- RPECK 30/12/2023 - Added to allow us to make the Select All button disabled if the list is not full -->
         <local:CapitalizeFirstLetterConverter x:Key="CapitalizeFirstLetterConverter" /> <!-- RPECK 23/03/2025 - Added for various text elements which need capitalized first letters -->
+        <local:EnumToVisibilityConverter      x:Key="EnumToVis" />                      <!-- RPECK 26/02/2026 - Added to provide the means to manage which StackPanel is displayed -->
 
         <!-- Scan Button -->
         <Style TargetType="{x:Type Button}" x:Key="MainScanButton">
@@ -238,7 +239,7 @@
     </UserControl.Resources>
 
     <!-- Main -->
-    <Grid x:Name="MainGrid">
+    <Grid x:Name="MainGrid" Background="White">
 
         <!-- Grid Definition -->
         <Grid.ColumnDefinitions>
@@ -248,20 +249,20 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
 
-        <!-- Main Scanning Grid -->
-        <Grid Background="White">
+        <!-- Ready -->
+        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Ready}" x:Name="ReadyPanel">
 
-            <!-- Grid Definition -->
+            <!-- Full Height Content -->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!-- Title -->
-            <StackPanel HorizontalAlignment="stretch" VerticalAlignment="Top">
+            <StackPanel Grid.Row="0" HorizontalAlignment="stretch" VerticalAlignment="Top">
 
                 <!-- Title -->
                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ Binding Source={ x:Static lang:Strings.ScanTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
@@ -310,7 +311,7 @@
             </StackPanel>
 
             <!-- Bottom Row -->
-            <Grid Grid.Row="2">
+            <Grid Grid.Row="1">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -348,7 +349,7 @@
                     <StackPanel Orientation="Horizontal"  Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch">
                         <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="AllSelected" Command="{ Binding SelectAllClick }" />
                     </StackPanel>
-                    
+
                 </Grid>
 
                 <!-- Bottom Info -->
@@ -360,21 +361,21 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                        
+
                     <!-- Border -->
                     <Border BorderBrush="#c5c5c5" BorderThickness="0,1,0,0" Grid.ColumnSpan="2" />
 
                     <!-- OS Info -->
                     <!-- https://www.codeproject.com/Articles/73000/Getting-Operating-System-Version-Info-Even-for-Win#_comments -->
                     <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
-                        <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="{DynamicResource Str_ScanYourSystem}" ContentStringFormat="{}{0}:" Padding="0" />
+                        <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="{ Binding Source={ x:Static lang:Strings.ScanYourSystem }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" ContentStringFormat="{}{0}:" Padding="0" />
                         <StackPanel Orientation="Horizontal">
                             <Image Source="{Binding OSInformation.OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Name="OSName" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12">
                                     <Run Text="{Binding OSInformation.OSName, Mode=OneTime}" />
                                     <Run Text="{Binding OSInformation.OSArchitecture, Mode=OneTime, StringFormat={}({0}) }" />
-                                </TextBlock> 
+                                </TextBlock>
                                 <TextBlock Name="OSEdition" VerticalAlignment="Center" FontSize="10" LineStackingStrategy="BlockLineHeight" LineHeight="11" Text="{Binding OSInformation.OSVersion, Mode=OneTime}" />
                             </StackPanel>
                         </StackPanel>
@@ -404,6 +405,16 @@
 
             </Grid>
 
+        </Grid>
+
+        <!-- Scanning -->
+        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Scanning}" x:Name="ScanningPanel">
+            <ProgressBar Value="50" Minimum="0" Maximum="100" Height="20"/>
+        </Grid>
+
+        <!-- Finished -->
+        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Completed}" x:Name="CompletedPanel">
+            <TextBlock Text="Scan Complete!" Foreground="Green" FontWeight="Bold"/>
         </Grid>
 
     </Grid>

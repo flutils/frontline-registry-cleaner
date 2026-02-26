@@ -11,22 +11,25 @@ namespace FrontLineGUI.Include.Services
     // Used to provide the means to manage the effectve scan of the system (IE when the application loads, invoke the scanner and create a new instance)
     public class ScanService
     {
+        public Scan CurrentScan { get; private set; }
 
-        // RPECK 24/02/2026 - Set the currentScan attribute as a means to track the scan that's presently under way (this is created by the "ScanViewModel" on initiatialisation)
-        public Scan currentScan { get; private set; }
+        // Notify the UI when a scan starts or finishes
+        public event Action<Scan>? ScanStarted;
+        public event Action? ScanCleared;
 
-        // RPECK 24/02/2026 - Create a new Scan
-        // This requires a list of ScanItems and will then populate the "Scan" object in the database
         public Scan CreateNewScan(List<ScanItem> defaultTypes)
         {
-            currentScan = new Scan();
+            CurrentScan = new Scan();
+            // logic to actually START the scanning process would go here
 
-            return currentScan;
+            ScanStarted?.Invoke(CurrentScan);
+            return CurrentScan;
         }
 
         public void Clear()
         {
-            currentScan = null;
+            CurrentScan = null;
+            ScanCleared?.Invoke();
         }
     }
 
