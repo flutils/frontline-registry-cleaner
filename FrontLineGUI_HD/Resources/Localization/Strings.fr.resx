@@ -216,4 +216,7 @@
   <data name="AboutWarranty" xml:space="preserve">
     <value>Fourni « tel quel » sans garantie.</value>
   </data>
+  <data name="ScanLastPerformedNever" xml:space="preserve">
+    <value>Jamais</value>
+  </data>
 </root>

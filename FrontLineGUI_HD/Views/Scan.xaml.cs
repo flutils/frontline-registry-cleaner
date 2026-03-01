@@ -18,8 +18,6 @@ namespace FrontLineGUI
         public event PropertyChangedEventHandler PropertyChanged;
 
         // Public class vars
-        public CPUUtilization CPUInfo { get; set; }
-
         public ScanView()
         {
             InitializeComponent();

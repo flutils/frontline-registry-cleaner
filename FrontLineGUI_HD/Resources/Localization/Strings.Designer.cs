@@ -232,6 +232,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Never.
+        /// </summary>
+        public static string ScanLastPerformedNever {
+            get {
+                return ResourceManager.GetString("ScanLastPerformedNever", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start Scan.
         /// </summary>
         public static string ScanMainButton {

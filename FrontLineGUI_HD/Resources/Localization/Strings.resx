@@ -249,4 +249,8 @@
     <value>Provided 'as-is' without implication or guarantee.</value>
     <comment>"About"page warranty information in the footer area.</comment>
   </data>
+  <data name="ScanLastPerformedNever" xml:space="preserve">
+    <value>Never</value>
+    <comment>"Never" on the scan page - used for translation</comment>
+  </data>
 </root>

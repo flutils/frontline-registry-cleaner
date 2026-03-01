@@ -3,6 +3,7 @@ using FrontLineGUI.Include.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
 
@@ -20,6 +21,7 @@ namespace FrontLineGUI
         // RPECK 26/02/2026 - Navigation object
         // Used to inherit the navigation state from the global scope, and then populate as required
         private readonly INavigationService _navigation;
+        private readonly IAppConfig _config;
 
         // RPECK 26/20/2026 - CurrentViewModel
         // Used for managing the navigation so that we're able to determine which viewmodel should be displayed
@@ -42,8 +44,21 @@ namespace FrontLineGUI
 
         #endregion
 
-        public MainWindowViewModel(INavigationService navigation)
+        public MainWindowViewModel(INavigationService navigation, IAppConfig config)
         {
+
+            // RPECK 06/02/2025 - Populate Core Variables
+            _navigation = navigation;
+            _config     = config;
+
+            var cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures)
+                          .OrderBy(c => c.DisplayName)
+                          .ToList();
+
+            foreach (var culture in cultures)
+            {
+                Debug.WriteLine($"{culture.Name} - {culture.DisplayName}");
+            }
 
             // RPECK 24/02/2026 - Navigation Items
             // Used by the nav bar at the top to provide a simple way to manage how they are displayed and interact
@@ -53,9 +68,6 @@ namespace FrontLineGUI
                 new NavigationItem("Settings", typeof(SettingsViewModel)),
                 new NavigationItem("About", typeof(AboutViewModel))
             };
-
-            // RPECK 06/02/2025 - Hook up Commands to associated methods
-            _navigation = navigation;
 
             // RPECK 24/02/2026 - Set the "Current" view to the default one
             _navigation.Configure(vm =>
@@ -110,6 +122,10 @@ namespace FrontLineGUI
                 }
             }
         }
+
+        // RPECK 01/03/2026 - CurrentLanguage
+        // Populates the flag so we are able to manage how it's displayed
+
 
         // RPECK 06/02/2025 - Current Year
         // Used in the footer area (next to company name)

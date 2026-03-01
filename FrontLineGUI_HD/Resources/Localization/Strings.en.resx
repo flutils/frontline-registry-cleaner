@@ -216,4 +216,7 @@
   <data name="AboutWarranty" xml:space="preserve">
     <value>Provided 'as-is' without warranty.</value>
   </data>
+  <data name="ScanLastPerformedNever" xml:space="preserve">
+    <value>Never</value>
+  </data>
 </root>

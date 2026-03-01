@@ -2,111 +2,93 @@
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.Versioning;
+using System.Windows.Threading;
 
-namespace FrontLineGUI
+namespace FrontLineGUI.Include.Services
 {
-
-    // RPECK 26/03/2023
-    // This is used to give us the means to dynamically manage the CPU performance for the 4 parts of the system
-
-    // RPECK 08/04/2023 - this was required to limit the application to Windows OS versions only
     [SupportedOSPlatform("windows")]
-    public class CPUUtilization : PropertyChangedBase
+    public class HardwareService : PropertyChangedBase
     {
-
-        // Vars
-        private int cpu_power = 0;
-        private int gpu_power = 0;
-        private int ram_power = 0;
-        private int hdd_space = 0;
-
-        // HDD Specific
-        private long total_hdd = 0;
-        private long available_hdd = 0;
-
-        // PerformanceContainers
-        PerformanceCounter cpuCounter;
-        PerformanceCounter ramCounter;
-
-        // CPUID
+        // SDK Instance
         public static CPUIDSDK pSDK;
 
-        // Constructor
-        public CPUUtilization()
-        {
-            // CPU & RAM (use PerformanceCounter)
-            cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-            ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
+        // Fallback Counters
+        private PerformanceCounter _cpuCounter;
+        private PerformanceCounter _ramCounter;
 
+        // Observable Properties for UI
+        private int _cpuPower;
+        private int _gpuPower;
+        private int _ramPower;
+        private int _hddSpace;
+
+        public event Action HardwareUpdated;
+
+        public HardwareService()
+        {
+            // 1. Initialize Fallbacks
+            _cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
+            _ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
+
+            // 2. Initialize CPUID SDK
+            //Init_CPUID();
+
+            // 3. Start Global Timer
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += (s, e) => UpdateValues();
+            timer.Start();
         }
 
-        // Methods
         public void UpdateValues()
         {
-            CPUPower = Convert.ToInt32(cpuCounter.NextValue());
-            RAMPower = Convert.ToInt32(ramCounter.NextValue());
-            HDDSpace = Convert.ToInt32(getDriveSpace());
+            // Update CPU & RAM via Performance Counters (or SDK if you prefer)
+            CPUPower = Convert.ToInt32(_cpuCounter.NextValue());
+            RAMPower = Convert.ToInt32(_ramCounter.NextValue());
+
+            // Update HDD
+            HDDSpace = GetDriveSpace();
+
+            // Update GPU via CPUID SDK
+            //UpdateGPUFromSDK();
+
+            // Notify any listening ViewModels
+            HardwareUpdated?.Invoke();
         }
 
-        // Properties
-        public int CPUPower
+        private void UpdateGPUFromSDK()
         {
-            get { return cpu_power; }
-            set
+            if (pSDK != null)
             {
-                cpu_power = value;
-                OnPropertyChanged("CPUPower");
-            }
-        }
-        public int GPUPower
-        {
-            get { return gpu_power; }
-            set
-            {
-                gpu_power = value;
-                OnPropertyChanged("GPUPower");
-            }
-        }
-
-        public int RAMPower
-        {
-            get { return ram_power; }
-            set
-            {
-                ram_power = value;
-                OnPropertyChanged("RAMPower");
+                pSDK.RefreshInformation();
+                // Note: You'll need to use the SDK's GetSensorValue or equivalent 
+                // to find the GPU utilization index.
+                // GPUPower = ... 
             }
         }
 
-        public int HDDSpace
+        #region Properties
+        public int CPUPower { get => _cpuPower; set { _cpuPower = value; OnPropertyChanged(nameof(CPUPower)); } }
+        public int GPUPower { get => _gpuPower; set { _gpuPower = value; OnPropertyChanged(nameof(GPUPower)); } }
+        public int RAMPower { get => _ramPower; set { _ramPower = value; OnPropertyChanged(nameof(RAMPower)); } }
+        public int HDDSpace { get => _hddSpace; set { _hddSpace = value; OnPropertyChanged(nameof(HDDSpace)); } }
+        #endregion
+
+        private int GetDriveSpace()
         {
-            get { return hdd_space; }
-            set
-            {
-                hdd_space = value;
-                OnPropertyChanged("HDDSpace");
-            }
-        }
-
-        // Private Methods
-
-        // RPECK 08/04/2023
-        // Get drive space (this is used in multiple instances)
-        private int getDriveSpace()
-        {
-            DriveInfo[] allDrives = DriveInfo.GetDrives();
-
-            // get the correct hard drive
-            foreach (DriveInfo drive in allDrives)
+            long totalHdd = 0;
+            long availableHdd = 0;
+            foreach (DriveInfo drive in DriveInfo.GetDrives())
             {
                 if (drive.IsReady)
                 {
-                    available_hdd += drive.AvailableFreeSpace;
-                    total_hdd += drive.TotalSize;
+                    availableHdd += drive.AvailableFreeSpace;
+                    totalHdd += drive.TotalSize;
                 }
             }
-
-            return (available_hdd > 0 && total_hdd > 0) ? Convert.ToInt32((100 - (available_hdd / (float)total_hdd) * 100)) : 0;
+            return (availableHdd > 0 && totalHdd > 0)
+                ? Convert.ToInt32(100 - (availableHdd / (float)totalHdd * 100))
+                : 0;
         }
 
         // RPECK 25/03/2023
@@ -180,7 +162,5 @@ namespace FrontLineGUI
             }
 
         }
-
     }
-
 }

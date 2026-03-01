@@ -2,6 +2,8 @@
 using FrontLineGUI.Include.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Globalization;
+using System.Linq;
 using System.Windows;
 using Velopack;
 using NavigationService = FrontLineGUI.Include.Services.NavigationService;
@@ -34,8 +36,11 @@ namespace FrontLineGUI
 
             // RPECK 24/02/2026 - Add the various services required by the app
             // This gives us the ability to manage each of the services from within other scopes
-            services.AddSingleton<ScanService>();   // RPECK 24/02/2026 - Set up a new scan (IE when the application loads, invoke a new instance of the Scan object)
-            services.AddDbContext<AppDbContext>();  // RPECK 24/02/2026 - Set up the databsae (this requires ensuring the db file is accessible)
+            services.AddSingleton<ScanService>();     // RPECK 24/02/2026 - Set up a new scan (IE when the application loads, invoke a new instance of the Scan object)
+            services.AddDbContext<AppDbContext>();    // RPECK 24/02/2026 - Set up the databsae (this requires ensuring the db file is accessible)
+            services.AddSingleton<HardwareService>(); // RPECK 01/03/2026 - Set up RAM/CPU/HDD management
+            services.AddSingleton<IAppConfig, AppConfig>();
+
 
             // RPECK 24/02/2026 - Navigation
             // Extracted from ViewModels to provide the means to manage how each of the views should display
@@ -50,6 +55,19 @@ namespace FrontLineGUI
             // RPECK 24/02/2026 - Services
             // This is the main Services attribute that can be used within the application
             Services = services.BuildServiceProvider();
+
+            // RPECK 01/03/2026 - Default Language
+            // Required to ensure we are only supporting English or French (can expand later)
+            var config = Services.GetRequiredService<IAppConfig>();
+
+            // If the user's OS is Spanish, but we only support EN/FR:
+            if(!config.SupportedLanguages.Contains(config.CurrentLanguage)) config.CurrentLanguage = "en-GB";
+
+            // RPECK 01/03/2026 - Set the initial culture (text) of the application
+            // Required to ensure we are defaulting to either English or French
+            var culture = new CultureInfo(config.CurrentLanguage);
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
 
             // RPECK 22/02/2026 - Velopack Integration
             // Uses the core Velopack recommended code from their samples repo

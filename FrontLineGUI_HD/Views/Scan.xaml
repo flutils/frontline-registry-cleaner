@@ -271,7 +271,7 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.ScanPreInfo }" TextAlignment="Center" FontSize="12" />
 
                 <!-- Scan Now Button -->
-                <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" Command="{Binding LastScanButtonClick}" />
+                <Button Style="{StaticResource MainScanButton}" IsEnabled="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource NotEqualToOneBooleanConverter}}" Command="{Binding MainScanButtonClick}" />
 
                 <!-- Last Scan -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -385,19 +385,19 @@
                     <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="CPUInformation">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                             <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding CPUInfo.CPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Hardware.CPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding CPUInfo.RAMPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Hardware.RAMPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding CPUInfo.HDDSpace, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Hardware.HDDSpace, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding CPUInfo.GPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Hardware.GPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                     </StackPanel>
 
@@ -408,8 +408,21 @@
         </Grid>
 
         <!-- Scanning -->
-        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Scanning}" x:Name="ScanningPanel">
-            <ProgressBar Value="50" Minimum="0" Maximum="100" Height="20"/>
+        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Scanning}" x:Name="ScanningPanel" Margin="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Progress Bar -->
+            <ProgressBar Grid.Column="0" Value="{ Binding Progress }" Minimum="0" Maximum="100" Height="20"/>
+            
+            <!-- -->
+            
+            
         </Grid>
 
         <!-- Finished -->

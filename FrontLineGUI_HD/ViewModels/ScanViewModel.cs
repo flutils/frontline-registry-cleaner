@@ -1,63 +1,57 @@
-﻿using FrontLineGUI.Include.Classes.DB.Models;
+﻿using FrontLineGUI.Include.Classes.DB;
+using FrontLineGUI.Include.Classes.DB.Models;
 using FrontLineGUI.Include.Services;
-using System;
-using System.Diagnostics;
+using FrontLineGUI.Resources.Localization;
+using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace FrontLineGUI
 {
     public class ScanViewModel : ViewModelBase
     {
+        // RPECK 24/02/2026 - Services
+        private readonly ScanService        _scanService;
+        private readonly INavigationService _navigation;
+        private readonly HardwareService    _hardwareService;
+        private readonly IAppConfig         _config;
+        private readonly AppDbContext       _db;
 
-        // RPECK 06/02/2025 - Declarations
-        // Used to give us the ability to call or modify attributes publicly
-        public Scan Scan { get; set; }
-        public ScanView Model { get; private set; }
-        public ScanItemsCollection _scanItemsCollection { get; set; }
-        public CPUUtilization CPUInfo { get; set; }
+        // RPECK 06/02/2025 - Hardware Info Classes
         public OSInfo OSInformation { get; set; }
 
-        // RPECK 24/02/2026 - Services
-        // Used to provide the means to interfaec with a variety of services that are invoked in the main application
-        private readonly ScanService _scanService;
+        // RPECK 27/02/2026 - Scan Options
+        // Various datapoints required to manage how the scan should transpire
+        private ScanItemsCollection _scanItemsCollection;
+        private ScanProcessState _currentState;
+        private double _progress;
+        private string _lastPerformed = Strings.ScanLastPerformedNever;
 
-        private readonly INavigationService _navigation;
-
-        //public Scan CurrentScan => _scanService.currentScan;
-
-        // RPECK 23/02/2026 - Last Performed
-        // Pulls from the Scan EntityFramework model and allows us to reference the Scan that has the youngest date
-        public DateTime? lastPerformed;
+        // RPECK 27/02/2026 - CPU/RAM Information
+        // This is a service that allows us to manage how the CPU/RAM/HDD information is displayed
+        public HardwareService Hardware => _hardwareService;
 
         // RPECK 06/02/2025 - Commands
-        // These are used to provide the means to interact with the underlying system
         public ICommand SelectAllClick { get; private set; }
         public ICommand LastScanButtonClick { get; private set; }
         public ICommand MainScanButtonClick { get; private set; }
+        public ICommand ResetCommand { get; private set; }
 
-        public ScanViewModel(INavigationService navigation, ScanService scanService)
+        public ScanViewModel(INavigationService navigation, ScanService scanService, HardwareService hardwareService, AppDbContext db, IAppConfig config)
         {
 
-            // RPECK 26/02/2026 - Scan Service
-            // Used to ensure we are able to manage scanner behaviour
+            // RPECK 27/02/2026 - Services
+            // These provide an interface between the main application (global) scope and this local scope
+            _navigation      = navigation;
+            _scanService     = scanService;
+            _hardwareService = hardwareService;
+            _db              = db;
+            _config          = config;
 
-            // RPECK 06/02/2025 - Navigation
-            // Used to ensure we have the means to manage how we are able to interface with the system
-            _navigation = navigation;
-
-            // RPECK 08/02/2025 - Set up the OSInfo Value
-            // This invokes a new instance of the "OSInfo" class we created for the purpose
+            // Hardware Monitoring
             OSInformation = new OSInfo();
 
-            // RPECK 08/02/2025 - CPUInfo
-            // Used to populate the CPU/RAM/HDD/GPU values on the scanning screen
-            CPUInfo = new CPUUtilization();
-
-            // RPECK 26/03/2023 - Scan Items Collection
-            // Presents an ObservableListCollection of "ScanItem" classes
-            // --
-            // RPECK 24/02/2026 - So, the core function of this is to provide the user with the ability to select the ScanItems they wish to use and then click on "Scan" to create a new Scan object 
+            // Initialize the Scan Items
             ScanItemsCollection = new ScanItemsCollection()
             {
                 new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png", "20318;20311;20319;"),
@@ -71,65 +65,98 @@ namespace FrontLineGUI
                 new ScanItem("Internet Cache", "Clear privacy data from browser caches.", true, "/Resources/Scan/internet_cache.png", "20314;20317;20403;20404;20501;")
             };
 
-            // RPECK 06/02/2025 - Hook up Commands to associated methods
-            SelectAllClick = new DelegateCommand(o => ScanItemsCollection.SelectAll());
+            // Commands
+            SelectAllClick      = new DelegateCommand(o => ScanItemsCollection.SelectAll());
             LastScanButtonClick = new DelegateCommand(o => LastScanClick());
             MainScanButtonClick = new DelegateCommand(o => MainScanClick());
+            ResetCommand        = new DelegateCommand(o => _scanService.Clear());
 
-            // RPECK 08/02/2025 - Set up a timer to get the hardware info to update 
-            // https://spacetech.dk/c-wpf-run-a-function-every-second.html
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(update_cpu_values);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Start();
+            // Sync with Service State (In case we navigated back to an ongoing scan)
+            CurrentState = _scanService.CurrentState;
+            Progress = _scanService.CurrentProgress;
+
+            // Subscribe to Service Events
+            _scanService.ProgressChanged     += OnScanProgressChanged;
+            _scanService.StateChanged        += OnScanStateChanged;
+            _hardwareService.HardwareUpdated += OnHardwareUpdated;
 
         }
 
-        // RPECK 07/02/2025 - Manage the ScanItems held in memory by the view
-        // Allows us to ensure we are working with the correct data by scoping it to this view only
+        #region Observables (UI Bindings)
+
+        public ScanProcessState CurrentState
+        {
+            get => _currentState;
+            set { _currentState = value; OnPropertyChanged(nameof(CurrentState)); }
+        }
+
+        public double Progress
+        {
+            get => _progress;
+            set { _progress = value; OnPropertyChanged(nameof(Progress)); }
+        }
+
         public ScanItemsCollection ScanItemsCollection
         {
-
-            get { return _scanItemsCollection; }
-            set
-            {
-                _scanItemsCollection = value;
-                OnPropertyChanged("ScanItemsCollection");
-            }
-
-        }
-
-        // RPECK 08/02/2025 - LastScan Button Click
-        // Should invoke the "About" view and load up the latest "results" panel
-        public void LastScanClick()
-        {
-            _navigation.NavigateTo<AboutViewModel>();
-        }
-
-        // RPECK 08/02/2025 - Main Scan Button Click
-        // This should take the selected ScanItem objects and use them to create a new "Scan" object in the database
-        // --
-        // The "Scan" object should then run, which will chane the ViewModel to progress. The progress ViewModel should then handle the scanner function
-        public void MainScanClick()
-        {
-            Debug.WriteLine("test22");
-        }
-
-        // RPECK 08/02/2025 - Updates CPUInfo Values
-        // Called by the ticker above to provide updates to the CPU/RAM/HDD/GPU values
-        public void update_cpu_values(object sender, EventArgs e)
-        {
-            CPUInfo.UpdateValues();
+            get => _scanItemsCollection;
+            set { _scanItemsCollection = value; OnPropertyChanged(nameof(ScanItemsCollection)); }
         }
 
         // RPECK 23/02/2026 - LastPerformed
         // Get the latest value from the database and use it to populate the front-end
         public string LastPerformed
         {
-            get { return "Never"; }
-            set {}
+            get => _lastPerformed;
+            set { _lastPerformed = value; OnPropertyChanged(nameof(LastPerformed)); }
         }
 
+        #endregion
+
+        #region Logic Methods
+
+        private void MainScanClick()
+        {
+            // Convert Collection to List for the Service
+            var selectedItems = new List<ScanItem>(ScanItemsCollection);
+            _scanService.StartScan(selectedItems);
+        }
+
+        private void LastScanClick()
+        {
+            _navigation.NavigateTo<AboutViewModel>();
+        }
+
+        // --- Service Event Callbacks ---
+
+        private void OnScanProgressChanged(double newProgress)
+        {
+            Application.Current.Dispatcher.Invoke(() => Progress = newProgress);
+        }
+
+        private void OnScanStateChanged(ScanProcessState newState)
+        {
+            Application.Current.Dispatcher.Invoke(() => CurrentState = newState);
+        }
+
+        // RPECK 27/02/2026 - Update hardware value per tick
+        private void OnHardwareUpdated()
+        {
+            // Because the service updates on a background timer, 
+            // we must marshal the property change back to the UI thread.
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                // This tells the XAML that "Hardware" properties have new values
+                OnPropertyChanged(nameof(Hardware));
+            });
+        }
+
+        // Clean up the event subscription when the view is destroyed
+        // (Optional but good practice)
+        public void Dispose()
+        {
+            _hardwareService.HardwareUpdated -= OnHardwareUpdated;
+        }
     }
 
+        #endregion
 }

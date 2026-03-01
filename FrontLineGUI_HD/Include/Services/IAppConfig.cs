@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace FrontLineGUI.Include.Services
 {
     public interface IAppConfig
     {
-        string Debug { get; }
+        string CurrentLanguage { get; set; }
+        IReadOnlyList<string> SupportedLanguages { get; }
 
-        void Reload();
+        void Load();
+        void Save();
     }
-
 }
