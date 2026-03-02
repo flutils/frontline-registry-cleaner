@@ -1,8 +1,8 @@
 ﻿using FrontLineGUI.Include.Classes.DB;
 using FrontLineGUI.Include.Classes.DB.Models;
 using FrontLineGUI.Include.Services;
+using FrontLineGUI.Include.Interfaces;
 using FrontLineGUI.Resources.Localization;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
@@ -47,9 +47,6 @@ namespace FrontLineGUI
             _hardwareService = hardwareService;
             _db              = db;
             _config          = config;
-
-            // Hardware Monitoring
-            OSInformation = new OSInfo();
 
             // Initialize the Scan Items
             ScanItemsCollection = new ScanItemsCollection()
@@ -114,11 +111,17 @@ namespace FrontLineGUI
 
         #region Logic Methods
 
+        // RPECK 02/03/2026 - Enable the scan by clicking the "MainScanClick" button
         private void MainScanClick()
         {
-            // Convert Collection to List for the Service
-            var selectedItems = new List<ScanItem>(ScanItemsCollection);
-            _scanService.StartScan(selectedItems);
+
+            // 1. Create the parent Scan entity
+            var newScan = new Scan();
+
+            // 2. Add to DB and Save to generate the ID
+            _db.Scans.Add(newScan);
+            _db.SaveChanges();
+
         }
 
         private void LastScanClick()

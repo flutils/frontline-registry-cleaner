@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using FrontLineGUI.Include.Interfaces;
 
 namespace FrontLineGUI.Include.Classes.DB.Models
 {
-    public class Scan
+    public class Scan : ITrackable
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -20,6 +21,7 @@ namespace FrontLineGUI.Include.Classes.DB.Models
         // Relations
         public ICollection<ScanItem> ScanItems { get; set; }
         public ICollection<ScanResult> Results { get; set; }
+        public Backup? Backup { get; set; }
 
     }
 

@@ -1,5 +1,6 @@
 ﻿using FrontLineGUI.Include.Classes.DB;
 using FrontLineGUI.Include.Services;
+using FrontLineGUI.Include.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Globalization;
@@ -56,6 +57,10 @@ namespace FrontLineGUI
             // This is the main Services attribute that can be used within the application
             Services = services.BuildServiceProvider();
 
+            // RPECK 02/03/2026 - Initialize Database
+            // This is done to ensure we have the required settings set up 
+            InitializeDatabase(Services);
+
             // RPECK 01/03/2026 - Default Language
             // Required to ensure we are only supporting English or French (can expand later)
             var config = Services.GetRequiredService<IAppConfig>();
@@ -101,6 +106,21 @@ namespace FrontLineGUI
 
             }
 
+        }
+
+        // RPECK 02/03/2026 - Initiaze SQLite Database
+        // This isn't strictly necessary but felt that it would add some value as regards ensuring we had
+        private static void InitializeDatabase(IServiceProvider serviceProvider)
+        {
+            using (var scope = serviceProvider.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+                // 1. Check if the DB exists and create it if not
+                // This will also apply your EF models to the SQLite file
+                db.Database.EnsureCreated();
+
+            }
         }
 
     }

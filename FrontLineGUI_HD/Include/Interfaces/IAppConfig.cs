@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FrontLineGUI.Include.Services
+namespace FrontLineGUI.Include.Interfaces
 {
     public interface IAppConfig
     {

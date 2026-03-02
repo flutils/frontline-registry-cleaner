@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace FrontLineGUI.Include.Services
+namespace FrontLineGUI.Include.Interfaces
 {
     public interface INavigationService
     {

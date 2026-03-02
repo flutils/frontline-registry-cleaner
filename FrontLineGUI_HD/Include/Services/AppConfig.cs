@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using FrontLineGUI.Include.Interfaces;
 
 namespace FrontLineGUI.Include.Services
 {
@@ -17,7 +18,7 @@ namespace FrontLineGUI.Include.Services
         public AppConfig()
         {
             // Store config in %AppData%\Frontline\config.json
-            string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "FLCleaner-2.0");
+            string folder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "FLCleaner 2.1");
 
             if (!Directory.Exists(folder))
                 Directory.CreateDirectory(folder);

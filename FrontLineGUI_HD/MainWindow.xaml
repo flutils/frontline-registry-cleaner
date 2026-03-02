@@ -251,7 +251,7 @@
 
                 <!-- Localization Flag -->
                 <Button Name="LocalizationButton" MaxHeight="25" Margin="0,0,5,0" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainLocalizationButtonTooltip}">
-                    <cf:CountryFlag CountryCode="{ Binding Source={x:Static glob:CultureInfo.CurrentCulture}, Path=Name, Converter={ StaticResource CultureISOConverter } }" Width="60" />
+                    <cf:CountryFlag CountryCode="{ Binding Source={x:Static glob:CultureInfo.CurrentCulture}, Path=Name, Converter={ StaticResource CultureISOConverter } }" Width="60" Margin="0" />
                 </Button>
 
                 <!-- Minimize -->

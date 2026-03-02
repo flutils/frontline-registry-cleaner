@@ -370,13 +370,13 @@
                     <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="10,0,0,0">
                         <Label FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,3,0" Content="{ Binding Source={ x:Static lang:Strings.ScanYourSystem }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" ContentStringFormat="{}{0}:" Padding="0" />
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="{Binding OSInformation.OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
+                            <Image Source="{Binding Hardware.OSInformation.OSIcon, Mode=OneTime}" Margin="0,0,1,0" MaxWidth="30" RenderOptions.BitmapScalingMode="HighQuality" />
                             <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
                                 <TextBlock Name="OSName" VerticalAlignment="Center" FontWeight="Bold" LineStackingStrategy="BlockLineHeight" LineHeight="12">
-                                    <Run Text="{Binding OSInformation.OSName, Mode=OneTime}" />
-                                    <Run Text="{Binding OSInformation.OSArchitecture, Mode=OneTime, StringFormat={}({0}) }" />
+                                    <Run Text="{Binding Hardware.OSInformation.OSName, Mode=OneTime}" />
+                                    <Run Text="{Binding Hardware.OSInformation.OSArchitecture, Mode=OneTime, StringFormat={}({0}) }" />
                                 </TextBlock>
-                                <TextBlock Name="OSEdition" VerticalAlignment="Center" FontSize="10" LineStackingStrategy="BlockLineHeight" LineHeight="11" Text="{Binding OSInformation.OSVersion, Mode=OneTime}" />
+                                <TextBlock Name="OSEdition" VerticalAlignment="Center" FontSize="10" LineStackingStrategy="BlockLineHeight" LineHeight="11" Text="{Binding Hardware.OSInformation.OSVersion, Mode=OneTime}" />
                             </StackPanel>
                         </StackPanel>
                     </StackPanel>
@@ -408,19 +408,56 @@
         </Grid>
 
         <!-- Scanning -->
-        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Scanning}" x:Name="ScanningPanel" Margin="10">
+        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Scanning}" x:Name="ScanningPanel">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!-- Progress Bar -->
-            <ProgressBar Grid.Column="0" Value="{ Binding Progress }" Minimum="0" Maximum="100" Height="20"/>
-            
-            <!-- -->
+            <StackPanel Grid.Row="0" HorizontalAlignment="stretch" VerticalAlignment="Top" Margin="10">
+                <ProgressBar Grid.Column="0" Value="{ Binding Progress }" Minimum="0" Maximum="100" Height="20"/>
+            </StackPanel>
+
+            <!-- Bottom Row -->
+            <Grid Grid.Row="1">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Action Buttons -->
+                <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10">
+                    <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Pause" />
+                    <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Stop" />
+                </StackPanel>
+
+                <!-- Bottom Info -->
+                <Grid Grid.Row="1" Background="#f9f9f9">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="0.35*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Border -->
+                    <Border BorderBrush="#c5c5c5" BorderThickness="0,1,0,0" Grid.ColumnSpan="2" />
+
+                    <!-- Scan Items -->
+
+                </Grid>
+
+            </Grid>
             
             
         </Grid>

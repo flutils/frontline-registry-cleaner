@@ -12,6 +12,9 @@ namespace FrontLineGUI.Include.Services
         // SDK Instance
         public static CPUIDSDK pSDK;
 
+        // Static System Info (Calculated once)
+        public OSInfo OSInformation { get; }
+
         // Fallback Counters
         private PerformanceCounter _cpuCounter;
         private PerformanceCounter _ramCounter;
@@ -26,6 +29,10 @@ namespace FrontLineGUI.Include.Services
 
         public HardwareService()
         {
+
+            // Initialize the static OS info
+            OSInformation = new OSInfo();
+
             // 1. Initialize Fallbacks
             _cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
             _ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");

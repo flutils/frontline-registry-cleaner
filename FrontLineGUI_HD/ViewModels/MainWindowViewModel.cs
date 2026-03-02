@@ -1,9 +1,8 @@
 ﻿using FrontLineGUI.Include.Classes;
 using FrontLineGUI.Include.Services;
+using FrontLineGUI.Include.Interfaces;
 using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
 
@@ -50,15 +49,6 @@ namespace FrontLineGUI
             // RPECK 06/02/2025 - Populate Core Variables
             _navigation = navigation;
             _config     = config;
-
-            var cultures = CultureInfo.GetCultures(CultureTypes.SpecificCultures)
-                          .OrderBy(c => c.DisplayName)
-                          .ToList();
-
-            foreach (var culture in cultures)
-            {
-                Debug.WriteLine($"{culture.Name} - {culture.DisplayName}");
-            }
 
             // RPECK 24/02/2026 - Navigation Items
             // Used by the nav bar at the top to provide a simple way to manage how they are displayed and interact
@@ -122,10 +112,6 @@ namespace FrontLineGUI
                 }
             }
         }
-
-        // RPECK 01/03/2026 - CurrentLanguage
-        // Populates the flag so we are able to manage how it's displayed
-
 
         // RPECK 06/02/2025 - Current Year
         // Used in the footer area (next to company name)
