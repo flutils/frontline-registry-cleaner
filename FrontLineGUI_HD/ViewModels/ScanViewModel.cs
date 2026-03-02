@@ -116,7 +116,9 @@ namespace FrontLineGUI
         {
 
             // 1. Create the parent Scan entity
-            var newScan = new Scan();
+            var newScan = new Scan{
+                Status = ScanStatus.Scanning
+            };
 
             // 2. Add to DB and Save to generate the ID
             _db.Scans.Add(newScan);

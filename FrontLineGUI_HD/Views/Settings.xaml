@@ -110,7 +110,7 @@
                         <StackPanel Orientation="Vertical">
                             
                             <!-- Debug -->
-                            <CheckBox x:Name="Debug" IsChecked="{Binding Debug, Mode=TwoWay}" />
+                            <CheckBox x:Name="Debug" IsChecked="False" />
                             <Label Content="Debug" Target="{Binding ElementName=Debug}"/>
 
                             <!-- Localization -->
