@@ -125,7 +125,7 @@ namespace FrontLineGUI
             _db.SaveChanges();
 
             // Hand off to the service to start the actual work
-            _scanService.StartScan(newScan.ScanItems);
+            _scanService.StartScan((System.Collections.Generic.List<ScanItem>)newScan.ScanItems, newScan.ScanId);
 
         }
 

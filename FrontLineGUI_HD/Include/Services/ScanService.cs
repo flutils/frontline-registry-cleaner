@@ -33,12 +33,12 @@ namespace FrontLineGUI.Include.Services
             return CurrentScan;
         }
 
-        public void StartScan(List<ScanItem> defaultTypes)
+        public void StartScan(List<ScanItem> itemsToScan, int scanId)
         {
             // Prevent starting a scan if one is already running
             if (CurrentState == ScanProcessState.Scanning) return; 
 
-            CreateNewScan(defaultTypes);
+            CreateNewScan(itemsToScan);
             UpdateState(ScanProcessState.Scanning);
             UpdateProgress(0);
 
