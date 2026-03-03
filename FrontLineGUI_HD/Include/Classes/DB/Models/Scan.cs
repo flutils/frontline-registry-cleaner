@@ -15,8 +15,6 @@ namespace FrontLineGUI.Include.Classes.DB.Models
         // Tracks the state of the scan
         [Required]
         public ScanStatus Status { get; set; } = ScanStatus.Pending;
-
-        // Nullable because it only has a value once Status == Completed
         public DateTime? CompletedAt { get; set; }
 
         [Required]
@@ -29,7 +27,6 @@ namespace FrontLineGUI.Include.Classes.DB.Models
 
         // Findings: These are the actual numerical results found during the scan.
         public ICollection<ScanResult> Results { get; set; } = new List<ScanResult>();
-        public Backup? Backup { get; set; }
 
     }
 

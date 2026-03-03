@@ -27,7 +27,7 @@ namespace FrontLineGUI.Include.Services
         public event Action<double>? ProgressChanged;
         public event Action<ScanProcessState>? StateChanged;
 
-        public Scan CreateNewScan(List<ScanItem> defaultTypes)
+        public Scan CreateNewScan(List<ScanItem> scanItems)
         {
             CurrentScan = new Scan();
             return CurrentScan;

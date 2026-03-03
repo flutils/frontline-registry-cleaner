@@ -454,6 +454,44 @@
                     <Border BorderBrush="#c5c5c5" BorderThickness="0,1,0,0" Grid.ColumnSpan="2" />
 
                     <!-- Scan Items -->
+                    <ItemsControl ItemsSource="{Binding ScanItemsCollection}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <UniformGrid Columns="3" VerticalAlignment="Top"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel x:Name="ItemRow" Orientation="Horizontal" Margin="10,5">
+                                    <Image Source="{Binding IconPath}" Width="20" Height="20" Margin="0,0,8,0"/>
+
+                                    <TextBlock x:Name="CountText" Text="{Binding DisplayValue}" 
+                           FontWeight="Bold" Margin="0,0,5,0"/>
+
+                                    <TextBlock x:Name="TitleText" Text="{Binding Title}"/>
+                                </StackPanel>
+
+                                <DataTemplate.Triggers>
+                                    <DataTrigger Binding="{Binding IsSelected}" Value="False">
+                                        <Setter TargetName="ItemRow" Property="Opacity" Value="0.2" />
+                                        <Setter TargetName="TitleText" Property="TextDecorations" Value="Strikethrough" />
+                                        <Setter TargetName="CountText" Property="Visibility" Value="Hidden" />
+                                    </DataTrigger>
+
+                                    <DataTrigger Binding="{Binding HasFindings}" Value="True">
+                                        <Setter TargetName="CountText" Property="Foreground" Value="Red" />
+                                        <Setter TargetName="TitleText" Property="Foreground" Value="Red" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding HasFindings}" Value="False">
+                                        <Setter TargetName="CountText" Property="Foreground" Value="Green" />
+                                        <Setter TargetName="TitleText" Property="Foreground" Value="Green" />
+                                    </DataTrigger>
+                                </DataTemplate.Triggers>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
 
                 </Grid>
 

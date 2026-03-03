@@ -1,9 +1,9 @@
 ﻿using FrontLineGUI.Include.Classes.DB;
 using FrontLineGUI.Include.Classes.DB.Models;
-using FrontLineGUI.Include.Services;
 using FrontLineGUI.Include.Interfaces;
+using FrontLineGUI.Include.Services;
 using FrontLineGUI.Resources.Localization;
-using System.Windows;
+using System.Linq;
 using System.Windows.Input;
 
 namespace FrontLineGUI
@@ -115,14 +115,17 @@ namespace FrontLineGUI
         private void MainScanClick()
         {
 
-            // 1. Create the parent Scan entity
-            var newScan = new Scan{
-                Status = ScanStatus.Scanning
+            var newScan = new Scan
+            {
+                Status = ScanStatus.Scanning,
+                ScanItems = ScanItemsCollection.Where(i => i.IsSelected).ToList()
             };
 
-            // 2. Add to DB and Save to generate the ID
             _db.Scans.Add(newScan);
             _db.SaveChanges();
+
+            // Hand off to the service to start the actual work
+            _scanService.StartScan(newScan.ScanItems);
 
         }
 
@@ -135,12 +138,12 @@ namespace FrontLineGUI
 
         private void OnScanProgressChanged(double newProgress)
         {
-            Application.Current.Dispatcher.Invoke(() => Progress = newProgress);
+            System.Windows.Application.Current.Dispatcher.Invoke(() => Progress = newProgress);
         }
 
         private void OnScanStateChanged(ScanProcessState newState)
         {
-            Application.Current.Dispatcher.Invoke(() => CurrentState = newState);
+            System.Windows.Application.Current.Dispatcher.Invoke(() => CurrentState = newState);
         }
 
         // RPECK 27/02/2026 - Update hardware value per tick
@@ -148,7 +151,7 @@ namespace FrontLineGUI
         {
             // Because the service updates on a background timer, 
             // we must marshal the property change back to the UI thread.
-            Application.Current.Dispatcher.Invoke(() =>
+            System.Windows.Application.Current.Dispatcher.Invoke(() =>
             {
                 // This tells the XAML that "Hardware" properties have new values
                 OnPropertyChanged(nameof(Hardware));

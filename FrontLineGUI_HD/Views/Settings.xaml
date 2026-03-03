@@ -115,6 +115,7 @@
 
                             <!-- Localization -->
                             <TextBlock Text="Localization" />
+                            <Label Content="Debug" Target="{Binding ElementName=Debug}"/>
 
                         </StackPanel>
                     </TabItem>

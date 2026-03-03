@@ -202,7 +202,7 @@
     <comment>"General" tab in the settings page</comment>
   </data>
   <data name="SettingsBackupTab" xml:space="preserve">
-    <value>Backup</value>
+    <value>Backups</value>
     <comment>"Backup" tab in the settings page</comment>
   </data>
   <data name="AboutTitle" xml:space="preserve">

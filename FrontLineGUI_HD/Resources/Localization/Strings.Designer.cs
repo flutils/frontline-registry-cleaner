@@ -331,7 +331,7 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Backup.
+        ///   Looks up a localized string similar to Backups.
         /// </summary>
         public static string SettingsBackupTab {
             get {

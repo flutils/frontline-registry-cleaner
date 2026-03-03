@@ -83,5 +83,6 @@ namespace FrontLineGUI.Include.Services
         {
             public string CurrentLanguage { get; set; }
         }
+
     }
 }

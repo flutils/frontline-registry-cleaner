@@ -24,7 +24,7 @@ namespace FrontLineGUI.Include.Classes.DB.Models
 
         public int Count { get; set; }
 
-        // This handles your "3.4GB" or "600MB" values if it's not a simple count
+        // This handles "3.4GB" or "600MB" values if it's not a simple count
         public string? SizeDisplay { get; set; }
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
