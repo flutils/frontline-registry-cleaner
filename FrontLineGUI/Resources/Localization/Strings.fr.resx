@@ -118,105 +118,132 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="MainAbout" xml:space="preserve">
-    <value>About</value>
+    <value>À Propos</value>
   </data>
   <data name="MainCopyrightAllRightsReserved" xml:space="preserve">
-    <value>All rights reserved</value>
+    <value>Tous droits réservés</value>
   </data>
   <data name="MainCopyrightButton" xml:space="preserve">
     <value>Frontline Utilities LTD</value>
   </data>
   <data name="MainCopyrightButtonTooltip" xml:space="preserve">
-    <value>View Company Website</value>
+    <value>Voir le site web de l'entreprise</value>
   </data>
   <data name="MainLocalizationTooltip" xml:space="preserve">
-    <value>Change Localization</value>
+    <value>Modifier la localisation</value>
   </data>
   <data name="MainScan" xml:space="preserve">
-    <value>Scan</value>
+    <value>Lancer</value>
   </data>
   <data name="MainSettings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Paramètres</value>
   </data>
   <data name="MainSubtitle" xml:space="preserve">
-    <value>Scan, Optimize &amp;amp; Maintain PC Performance</value>
+    <value>Scanner, Optimiser &amp; Maintenir Les Performances Du PC</value>
   </data>
   <data name="MainVersionButtonTooltip" xml:space="preserve">
-    <value>View Repository on GitHub</value>
+    <value>Voir le dépôt sur GitHub</value>
   </data>
   <data name="ScanMainButton" xml:space="preserve">
-    <value>Start Scan</value>
+    <value>Lancer l'analyse</value>
   </data>
   <data name="ScanMainButtonNoSelection" xml:space="preserve">
-    <value>Please Select Items To Scan!</value>
+    <value>Sélectionnez les articles à scanner !</value>
   </data>
   <data name="ScanMainButtonRecommended" xml:space="preserve">
-    <value>Recommended</value>
+    <value>Recommandé</value>
   </data>
   <data name="ScanMainLastPerformed" xml:space="preserve">
-    <value>Scan Last Performed</value>
+    <value>Dernier balayage effectué</value>
   </data>
   <data name="ScanMainLastPerformedToolTip" xml:space="preserve">
-    <value>View Scan Statistics</value>
+    <value>Afficher les statistiques de numérisation</value>
   </data>
   <data name="ScanPreInfo" xml:space="preserve">
-    <value>Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -</value>
+    <value>Cliquez sur le bouton d'analyse ci-dessous pour effectuer une analyse. Vous pouvez modifier les éléments à numériser sous le bouton de numérisation: -</value>
   </data>
   <data name="ScanTitle" xml:space="preserve">
-    <value>Start Scan Below</value>
+    <value>Lancer le scan ci-dessous</value>
   </data>
   <data name="ScanSelectAllButton" xml:space="preserve">
-    <value>Select All</value>
+    <value>Sélectionner tout</value>
   </data>
   <data name="ScanYourSystem" xml:space="preserve">
-    <value>Your System</value>
+    <value>Votre système</value>
   </data>
   <data name="SettingsTitle" xml:space="preserve">
-    <value>Settings</value>
+    <value>Paramètres</value>
   </data>
   <data name="SettingsPreInfo" xml:space="preserve">
-    <value>Choose the settings for the app below. These are meant to help the system run smoothly.</value>
+    <value>Choisissez les paramètres de l'application ci-dessous. Ils sont destinés à faciliter le fonctionnement du système.</value>
   </data>
   <data name="SettingsGeneralTab" xml:space="preserve">
-    <value>General</value>
+    <value>Général</value>
   </data>
   <data name="SettingsBackupTab" xml:space="preserve">
-    <value>Backups</value>
+    <value>Sauvegardes</value>
   </data>
   <data name="AboutTitle" xml:space="preserve">
-    <value>About</value>
+    <value>À Propos</value>
   </data>
   <data name="AboutPreInfo" xml:space="preserve">
-    <value>Further information about the application and our company.</value>
+    <value>Plus d'informations sur l'application et sur notre entreprise.</value>
   </data>
   <data name="AboutFLText" xml:space="preserve">
-    <value>was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are a UK-based company, specializing in high level implementations for SME's. </value>
+    <value>a été fondée en 2009 afin de concevoir et distribuer des solutions logicielles aux consommateurs du monde entier. Nous sommes une entreprise basée au Royaume-Uni, spécialisée dans les implémentations de haut niveau pour les PME. </value>
   </data>
   <data name="AboutFlatIconText" xml:space="preserve">
-    <value>Icons made by Hopstarter and Dinosoftlabs from</value>
+    <value>Icônes réalisées par Hopstarter et Dinosoftlabs à partir de</value>
   </data>
   <data name="AboutFlatIconHyperlink" xml:space="preserve">
     <value>FlatIcon.com</value>
   </data>
   <data name="ScanSelected" xml:space="preserve">
-    <value>Selected</value>
+    <value>Sélectionné</value>
   </data>
   <data name="AboutTradeMarkText" xml:space="preserve">
-    <value>Trademarks property of their respective owners.</value>
+    <value>Marques commerciales appartenant à leurs propriétaires respectifs.</value>
   </data>
   <data name="AboutPrivacy" xml:space="preserve">
-    <value>Privacy Policy</value>
+    <value>Confidentialité des Données</value>
   </data>
   <data name="AboutDataProtection" xml:space="preserve">
-    <value>Data Protection</value>
+    <value>Protection des Données</value>
   </data>
   <data name="AboutLicensing" xml:space="preserve">
-    <value>Licensing</value>
+    <value>Licences</value>
   </data>
   <data name="AboutWarranty" xml:space="preserve">
-    <value>Provided 'as-is' without warranty.</value>
+    <value>Fourni « tel quel » sans garantie.</value>
   </data>
   <data name="ScanLastPerformedNever" xml:space="preserve">
-    <value>Never</value>
+    <value>Jamais</value>
+  </data>
+  <data name="ScanPauseButton" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="ScanStopButton" xml:space="preserve">
+    <value>Arrêt</value>
+  </data>
+  <data name="ScanResumeButton" xml:space="preserve">
+    <value>Continuer</value>
+  </data>
+  <data name="ScanStatus" xml:space="preserve">
+    <value>Statut</value>
+  </data>
+  <data name="ScanningTitle" xml:space="preserve">
+    <value>Balayage</value>
+  </data>
+  <data name="ScanningPreInfo" xml:space="preserve">
+    <value>Traitement en cours des fichiers/paramètres dans votre système.</value>
+  </data>
+  <data name="ScanningErrorCount" xml:space="preserve">
+    <value>Erreurs détectées !</value>
+  </data>
+  <data name="ScanningJunkFilesFound" xml:space="preserve">
+    <value>Fichiers indésirables trouvés ! </value>
+  </data>
+  <data name="ScanCompleteTitle" xml:space="preserve">
+    <value>Scan Terminé !</value>
   </data>
 </root>

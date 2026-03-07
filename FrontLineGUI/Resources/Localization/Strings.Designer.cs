@@ -232,6 +232,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan Complete.
+        /// </summary>
+        public static string ScanCompleteTitle {
+            get {
+                return ResourceManager.GetString("ScanCompleteTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Never.
         /// </summary>
         public static string ScanLastPerformedNever {
@@ -286,11 +295,65 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Errors Found!.
+        /// </summary>
+        public static string ScanningErrorCount {
+            get {
+                return ResourceManager.GetString("ScanningErrorCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Junk Files Found!.
+        /// </summary>
+        public static string ScanningJunkFilesFound {
+            get {
+                return ResourceManager.GetString("ScanningJunkFilesFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currently processing the files / settings inside your system..
+        /// </summary>
+        public static string ScanningPreInfo {
+            get {
+                return ResourceManager.GetString("ScanningPreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scanning.
+        /// </summary>
+        public static string ScanningTitle {
+            get {
+                return ResourceManager.GetString("ScanningTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pause.
+        /// </summary>
+        public static string ScanPauseButton {
+            get {
+                return ResourceManager.GetString("ScanPauseButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -.
         /// </summary>
         public static string ScanPreInfo {
             get {
                 return ResourceManager.GetString("ScanPreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume.
+        /// </summary>
+        public static string ScanResumeButton {
+            get {
+                return ResourceManager.GetString("ScanResumeButton", resourceCulture);
             }
         }
         
@@ -309,6 +372,24 @@ namespace FrontLineGUI.Resources.Localization {
         public static string ScanSelected {
             get {
                 return ResourceManager.GetString("ScanSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string ScanStatus {
+            get {
+                return ResourceManager.GetString("ScanStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        public static string ScanStopButton {
+            get {
+                return ResourceManager.GetString("ScanStopButton", resourceCulture);
             }
         }
         

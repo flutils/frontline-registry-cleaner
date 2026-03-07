@@ -3,6 +3,7 @@ using FrontLineGUI.Include.Classes.DB.Models;
 using FrontLineGUI.Include.Interfaces;
 using FrontLineGUI.Include.Services;
 using FrontLineGUI.Resources.Localization;
+using System;
 using System.Linq;
 using System.Windows.Input;
 
@@ -27,6 +28,10 @@ namespace FrontLineGUI
         private double _progress;
         private string _lastPerformed = Strings.ScanLastPerformedNever;
 
+        // RPECK 06/03/2026 - Information about the number of errors/junk files found
+        public int ErrorCount => _scanService.CurrentErrorCount;
+        public string JunkSizeDisplay => _scanService.JunkSizeDisplay;
+
         // RPECK 27/02/2026 - CPU/RAM Information
         // This is a service that allows us to manage how the CPU/RAM/HDD information is displayed
         public HardwareService Hardware => _hardwareService;
@@ -35,7 +40,8 @@ namespace FrontLineGUI
         public ICommand SelectAllClick { get; private set; }
         public ICommand LastScanButtonClick { get; private set; }
         public ICommand MainScanButtonClick { get; private set; }
-        public ICommand ResetCommand { get; private set; }
+        public ICommand StopClick { get; private set; }
+        public ICommand PauseClick { get; private set; }
 
         public ScanViewModel(INavigationService navigation, ScanService scanService, HardwareService hardwareService, AppDbContext db, IAppConfig config)
         {
@@ -66,7 +72,8 @@ namespace FrontLineGUI
             SelectAllClick      = new DelegateCommand(o => ScanItemsCollection.SelectAll());
             LastScanButtonClick = new DelegateCommand(o => LastScanClick());
             MainScanButtonClick = new DelegateCommand(o => MainScanClick());
-            ResetCommand        = new DelegateCommand(o => _scanService.Clear());
+            StopClick           = new DelegateCommand(o => _scanService.Stop());
+            PauseClick          = new DelegateCommand(o => _scanService.Toggle());
 
             // Sync with Service State (In case we navigated back to an ongoing scan)
             CurrentState = _scanService.CurrentState;
@@ -138,7 +145,13 @@ namespace FrontLineGUI
 
         private void OnScanProgressChanged(double newProgress)
         {
-            System.Windows.Application.Current.Dispatcher.Invoke(() => Progress = newProgress);
+            System.Windows.Application.Current.Dispatcher.Invoke(() =>
+            {
+                Progress = newProgress;
+
+                OnPropertyChanged(nameof(ErrorCount));
+                OnPropertyChanged(nameof(JunkSizeDisplay));
+            });
         }
 
         private void OnScanStateChanged(ScanProcessState newState)

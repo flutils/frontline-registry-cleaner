@@ -207,10 +207,18 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <!-- "Action" Button -->
+        <Style TargetType="{x:Type Button}" x:Key="ActionButton" BasedOn="{StaticResource GeneralButton}">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value="0.35"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         
-        <!-- Select All Button -->
-        <Style TargetType="{x:Type Button}" x:Key="SelectAllButton" BasedOn="{StaticResource GeneralButton}">
-            <Setter Property="Content" Value="{ Binding Source={ x:Static lang:Strings.ScanSelectAllButton}, Converter={ StaticResource CapitalizeFirstLetterConverter }}"/>
+        <!-- Select all Button -->
+        <Style TargetType="{x:Type Button}" x:Key="SelectAllButton" BasedOn="{StaticResource ActionButton}">
             <Style.Triggers>
                 <DataTrigger Binding="{Binding SelectedItems.Count, ElementName=ScanItemsElement, Converter={StaticResource ListNotFullConverter}, ConverterParameter={x:Reference ScanItemsElement}}" Value="False">
                     <Setter Property="IsEnabled" Value="False"/>
@@ -219,6 +227,31 @@
             </Style.Triggers>
         </Style>
         
+        <!-- Pause/Stop Buttons -->
+        <Style TargetType="{x:Type Button}" x:Key="PauseStop" BasedOn="{StaticResource ActionButton}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentState}" Value="Completed">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Opacity" Value="0.35"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Pause Button -->
+        <Style TargetType="{x:Type Button}" x:Key="Pause" BasedOn="{StaticResource PauseStop}">
+            <Setter Property="Content" Value="{Binding Source={x:Static lang:Strings.ScanPauseButton}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentState}" Value="Paused">
+                    <Setter Property="Content" Value="{Binding Source={x:Static lang:Strings.ScanResumeButton}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding CurrentState}" Value="Completed">
+                    <Setter Property="IsEnabled" Value="False" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
         <!-- Input Form -->
         <Style TargetType="{x:Type Grid}" x:Key="InputFormStyle">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
@@ -262,7 +295,7 @@
             </Grid.RowDefinitions>
 
             <!-- Title -->
-            <StackPanel Grid.Row="0" HorizontalAlignment="stretch" VerticalAlignment="Top">
+            <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
                 <!-- Title -->
                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ Binding Source={ x:Static lang:Strings.ScanTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
@@ -298,7 +331,7 @@
                     <!-- Items -->
                     <!-- ListView used because it gives us the ability to design everything we need -->
                     <!-- https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.listview?redirectedfrom=MSDN&view=windowsdesktop-7.0 -->
-                    <ListView Margin="0" ItemsSource="{Binding ScanItemsCollection}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" x:Name="ScanItemsElement">
+                    <ListView Margin="0" ItemsSource="{Binding ScanItemsCollection}" Style="{StaticResource ScanItemsListBox}" SelectionMode="Multiple" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch" ItemContainerStyle="{StaticResource ScanItemsItemStyle}" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" x:Name="ScanItemsElement">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <UniformGrid Columns="3" />
@@ -347,7 +380,7 @@
 
                     <!-- Select all -->
                     <StackPanel Orientation="Horizontal"  Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Stretch">
-                        <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="AllSelected" Command="{ Binding SelectAllClick }" />
+                        <Button Style="{StaticResource SelectAllButton}" Content="{Binding Source={x:Static lang:Strings.ScanSelectAllButton}, Converter={StaticResource CapitalizeFirstLetterConverter}}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="AllSelected" Command="{ Binding SelectAllClick }" />
                     </StackPanel>
 
                 </Grid>
@@ -408,7 +441,7 @@
         </Grid>
 
         <!-- Scanning -->
-        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Scanning}" x:Name="ScanningPanel">
+        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter='Scanning,Paused'}" x:Name="ScanningPanel">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -418,9 +451,46 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <!-- Progress Bar -->
-            <StackPanel Grid.Row="0" HorizontalAlignment="stretch" VerticalAlignment="Top" Margin="10">
-                <ProgressBar Grid.Column="0" Value="{ Binding Progress }" Minimum="0" Maximum="100" Height="20"/>
+            <!-- Information -->
+            <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+
+                <!-- Title -->
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ Binding Source={ x:Static lang:Strings.ScanningTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
+
+                <!-- Intro -->
+                <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.ScanningPreInfo }" TextAlignment="Center" FontSize="12" />
+                
+                <!-- Scanning Metrics -->
+                <Border  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+
+                    <StackPanel HorizontalAlignment="Center">
+                        
+                        <!-- Errors -->
+                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="18" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="ErrorCount" />
+                                    <Binding Source="{x:Static lang:Strings.ScanningErrorCount}" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        
+                        <!-- Junk Files -->
+                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="18" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="JunkSizeDisplay" />
+                                    <Binding Source="{x:Static lang:Strings.ScanningJunkFilesFound}" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- Progress Bar -->
+                <ProgressBar Grid.Column="0" Value="{ Binding Progress }" Minimum="0" Maximum="100" Height="20" Margin="0,10,0,0"/>
+
             </StackPanel>
 
             <!-- Bottom Row -->
@@ -434,11 +504,31 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <!-- Action Buttons -->
-                <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10">
-                    <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Pause" />
-                    <Button Style="{StaticResource SelectAllButton}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Stop" />
-                </StackPanel>
+                <!-- Action Bar (Results + Buttons) -->
+                <Grid Grid.Row="0" Margin="10">
+
+                    <!-- 2 Column Layout -->
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Title -->
+                    <TextBlock Grid.Column="0" FontWeight="Bold" VerticalAlignment="Center">
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0}: {1}">
+                                <Binding Source="{x:Static lang:Strings.ScanStatus}" Converter="{StaticResource CapitalizeFirstLetterConverter}" Mode="OneTime" />
+                                <Binding Path="CurrentState" Mode="OneWay" TargetNullValue="Ready" FallbackValue="Ready" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+
+                    <!-- Action Buttons -->
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                        <Button Style="{StaticResource Pause}" Margin="0,0,1,0" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Pause" Command="{ Binding PauseClick }" />
+                        <Button Style="{StaticResource PauseStop}" Content="{ Binding Source={ x:Static lang:Strings.ScanStopButton }, Converter={ StaticResource CapitalizeFirstLetterConverter} }" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Stop" Command="{ Binding StopClick }" />
+                    </StackPanel>
+
+                </Grid>
 
                 <!-- Bottom Info -->
                 <Grid Grid.Row="1" Background="#f9f9f9">
@@ -454,10 +544,10 @@
                     <Border BorderBrush="#c5c5c5" BorderThickness="0,1,0,0" Grid.ColumnSpan="2" />
 
                     <!-- Scan Items -->
-                    <ItemsControl ItemsSource="{Binding ScanItemsCollection}">
+                    <ItemsControl ItemsSource="{Binding ScanItemsCollection}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <UniformGrid Columns="3" VerticalAlignment="Top"/>
+                                <UniformGrid Columns="3" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
 
@@ -465,9 +555,6 @@
                             <DataTemplate>
                                 <StackPanel x:Name="ItemRow" Orientation="Horizontal" Margin="10,5">
                                     <Image Source="{Binding Image}" Width="20" Height="20" Margin="0,0,8,0"/>
-
-                                    <TextBlock x:Name="CountText" Text="{Binding DisplayValue}" FontWeight="Bold" Margin="0,0,5,0"/>
-
                                     <TextBlock x:Name="TitleText" Text="{Binding Name}"/>
                                 </StackPanel>
 
@@ -475,15 +562,12 @@
                                     <DataTrigger Binding="{Binding IsSelected}" Value="False">
                                         <Setter TargetName="ItemRow" Property="Opacity" Value="0.2" />
                                         <Setter TargetName="TitleText" Property="TextDecorations" Value="Strikethrough" />
-                                        <Setter TargetName="CountText" Property="Visibility" Value="Hidden" />
                                     </DataTrigger>
 
                                     <DataTrigger Binding="{Binding HasFindings}" Value="True">
-                                        <Setter TargetName="CountText" Property="Foreground" Value="Red" />
                                         <Setter TargetName="TitleText" Property="Foreground" Value="Red" />
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding HasFindings}" Value="False">
-                                        <Setter TargetName="CountText" Property="Foreground" Value="Green" />
                                         <Setter TargetName="TitleText" Property="Foreground" Value="Green" />
                                     </DataTrigger>
                                 </DataTemplate.Triggers>
@@ -491,17 +575,23 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-
                 </Grid>
 
             </Grid>
-            
-            
+
         </Grid>
 
         <!-- Finished -->
         <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Completed}" x:Name="CompletedPanel">
-            <TextBlock Text="Scan Complete!" Foreground="Green" FontWeight="Bold"/>
+
+            <!-- Information -->
+            <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
+
+                <!-- Title -->
+                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ Binding Source={ x:Static lang:Strings.ScanCompleteTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
+
+            </StackPanel>
+
         </Grid>
 
     </Grid>

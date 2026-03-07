@@ -253,4 +253,40 @@
     <value>Never</value>
     <comment>"Never" on the scan page - used for translation</comment>
   </data>
+  <data name="ScanPauseButton" xml:space="preserve">
+    <value>Pause</value>
+    <comment>"Pause" button on the scan page</comment>
+  </data>
+  <data name="ScanStopButton" xml:space="preserve">
+    <value>Stop</value>
+    <comment>"Stop" button on the scanning page</comment>
+  </data>
+  <data name="ScanResumeButton" xml:space="preserve">
+    <value>Resume</value>
+    <comment>"Resume" button text on the scanning view</comment>
+  </data>
+  <data name="ScanStatus" xml:space="preserve">
+    <value>Status</value>
+    <comment>"Scan" status (used in the scanning page)</comment>
+  </data>
+  <data name="ScanningTitle" xml:space="preserve">
+    <value>Scanning</value>
+    <comment>"Scan" page "Scanning" title text</comment>
+  </data>
+  <data name="ScanningPreInfo" xml:space="preserve">
+    <value>Currently processing the files / settings inside your system.</value>
+    <comment>"Scan"page "Scanning" pre intro text</comment>
+  </data>
+  <data name="ScanningErrorCount" xml:space="preserve">
+    <value>Errors Found!</value>
+    <comment>"Scan" page errors found text for scanning</comment>
+  </data>
+  <data name="ScanningJunkFilesFound" xml:space="preserve">
+    <value>Junk Files Found!</value>
+    <comment>"Scan" page junk files count when scanning</comment>
+  </data>
+  <data name="ScanCompleteTitle" xml:space="preserve">
+    <value>Scan Complete</value>
+    <comment>"Scan" view when the scan has either been stopped or completed</comment>
+  </data>
 </root>
