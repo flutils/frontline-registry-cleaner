@@ -227,6 +227,16 @@
             </Style.Triggers>
         </Style>
         
+        <!-- Summary Box -->
+        <Style TargetType="{x:Type Border}" x:Key="SummaryBox">
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="Padding" Value="15,20" />
+            <Setter Property="Background" Value="#f9f9f9" />
+            <Setter Property="CornerRadius" Value="3" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="#C5C5C5" />
+        </Style>
+
         <!-- Pause/Stop Buttons -->
         <Style TargetType="{x:Type Button}" x:Key="PauseStop" BasedOn="{StaticResource ActionButton}">
             <Style.Triggers>
@@ -461,12 +471,13 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.ScanningPreInfo }" TextAlignment="Center" FontSize="12" />
                 
                 <!-- Scanning Metrics -->
-                <Border  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10">
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Style="{ StaticResource SummaryBox }">
 
+                    <!-- Stacking Container -->
                     <StackPanel HorizontalAlignment="Center">
-                        
+
                         <!-- Errors -->
-                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="18" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center">
+                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="20" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding Path="ErrorCount" />
@@ -474,9 +485,9 @@
                                 </MultiBinding>
                             </TextBlock.Text>
                         </TextBlock>
-                        
+
                         <!-- Junk Files -->
-                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="18" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center">
+                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="20" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center" Margin="0,3,0,0">
                             <TextBlock.Text>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding Path="JunkSizeDisplay" />
@@ -486,10 +497,20 @@
                         </TextBlock>
 
                     </StackPanel>
+
                 </Border>
 
                 <!-- Progress Bar -->
-                <ProgressBar Grid.Column="0" Value="{ Binding Progress }" Minimum="0" Maximum="100" Height="20" Margin="0,10,0,0"/>
+                <StackPanel Margin="0,10,0,0">
+                    <TextBlock Text="Progress:" FontWeight="Bold" />
+                    <ProgressBar Grid.Column="0" Value="{ Binding Progress }" Minimum="0" Maximum="100" Height="20" Margin="0,5,0,0"/>
+                </StackPanel>
+
+                <!-- Currently Scanning -->
+                <StackPanel Margin="0,15,0,0">
+                    <TextBlock Text="Currently Scanning:" FontWeight="Bold" />
+                    <TextBlock Text="Progress:" FontWeight="Bold" />
+                </StackPanel>
 
             </StackPanel>
 
@@ -582,13 +603,46 @@
         </Grid>
 
         <!-- Finished -->
-        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter=Completed}" x:Name="CompletedPanel">
+        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter='Stopped,Completed'}" x:Name="CompletedPanel">
 
             <!-- Information -->
             <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
 
                 <!-- Title -->
                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ Binding Source={ x:Static lang:Strings.ScanCompleteTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
+
+                <!-- Intro -->
+                <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.ScanCompletePreInfo }" TextAlignment="Center" FontSize="12" />
+
+                <!-- Scanning Metrics -->
+                <Border HorizontalAlignment="Center" VerticalAlignment="Center" Style="{ StaticResource SummaryBox }">
+
+                    <!-- Stacking Container -->
+                    <StackPanel HorizontalAlignment="Center">
+
+                        <!-- Errors -->
+                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="20" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="ErrorCount" />
+                                    <Binding Source="{x:Static lang:Strings.ScanningErrorCount}" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
+                        <!-- Junk Files -->
+                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="18" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center" Margin="0,3,0,0">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0} {1}">
+                                    <Binding Path="JunkSizeDisplay" />
+                                    <Binding Source="{x:Static lang:Strings.ScanningJunkFilesFound}" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
+                    </StackPanel>
+
+                </Border>
 
             </StackPanel>
 

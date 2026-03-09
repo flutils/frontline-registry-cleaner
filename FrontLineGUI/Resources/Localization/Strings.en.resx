@@ -246,4 +246,7 @@
   <data name="ScanCompleteTitle" xml:space="preserve">
     <value>Scan Complete!</value>
   </data>
+  <data name="ScanCompletePreInfo" xml:space="preserve">
+    <value>Please review the findings below: -</value>
+  </data>
 </root>

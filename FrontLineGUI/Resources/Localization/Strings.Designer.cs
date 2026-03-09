@@ -232,6 +232,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please review the findings below: -.
+        /// </summary>
+        public static string ScanCompletePreInfo {
+            get {
+                return ResourceManager.GetString("ScanCompletePreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scan Complete.
         /// </summary>
         public static string ScanCompleteTitle {

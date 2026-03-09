@@ -1,6 +1,11 @@
-﻿using FrontLineGUI.Include.Classes.DB.Models;
+﻿using FLCleanEngine;
+using FrontLineGUI.Include.Classes.DB.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,148 +16,206 @@ namespace FrontLineGUI.Include.Services
         Ready,
         Scanning,
         Paused,
+        Stopped,
         Completed,
         Error
     }
 
     public class ScanService
     {
-        // RPECK 06/03/2026 - Control Mechanisms
+        // Engine & Threading
+        private ManagedCleanEngine _engine;
         private CancellationTokenSource? _cts;
-        private TaskCompletionSource<bool>? _pauseTcs;
+        private int _totalScannersToRun = 0;
+        private int _scannersFinished = 0;
 
-        // RPECK 06/03/2026 - Provide Information to the view
-        public int CurrentErrorCount { get; private set; }
-        public long CurrentJunkSizeBytes { get; private set; } // Store in bytes for precision
-
-        // Formatted string for the UI (e.g., "4.0 GB")
-        public string JunkSizeDisplay => FormatBytes(CurrentJunkSizeBytes);
-
-        // RPECK 06/03/2026 - Current Scan Info
-        public Scan CurrentScan { get; private set; }
+        // Observable Properties
         public ScanProcessState CurrentState { get; private set; } = ScanProcessState.Ready;
         public double CurrentProgress { get; private set; } = 0;
+        public int CurrentErrorCount { get; private set; }
+        public long CurrentJunkSizeBytes { get; private set; }
+        public string JunkSizeDisplay => FormatBytes(CurrentJunkSizeBytes);
 
-        // Helps the ViewModel decide if the button should say "Pause" or "Resume"
-        public bool IsPaused => _pauseTcs != null;
-
-        // Events for the ViewModel to sync with the UI thread
+        // UI Notification Events
         public event Action<double>? ProgressChanged;
         public event Action<ScanProcessState>? StateChanged;
+        public event Action<string, int, int>? ItemFound; // description, itemid, scannerid
+
+        public ScanService()
+        {
+            _engine = new ManagedCleanEngine();
+            WireLegacyEvents();
+        }
+
+        private void WireLegacyEvents()
+        {
+            // Ported from: FLCleanEngine.ManagedCleanEngine.CENotifierItemFound
+            ManagedCleanEngine.CENotifierItemFound += (desc, itemid, scannerid) =>
+            {
+                CurrentErrorCount++;
+
+                if (IsFileScanner(scannerid))
+                {
+                    CurrentJunkSizeBytes += ParseFileSizeFromDescription(desc, scannerid);
+                }
+
+                ItemFound?.Invoke(desc, itemid, scannerid);
+            };
+
+            // Ported from: ScannerFinishedProcessing
+            ManagedCleanEngine.CEScanFinished += (id) =>
+            {
+                _scannersFinished++;
+                if (_totalScannersToRun > 0)
+                {
+                    double progress = ((double)_scannersFinished / _totalScannersToRun) * 100;
+                    UpdateProgress(progress);
+                }
+            };
+        }
 
         #region Control Methods
 
-        public void Toggle()
+        public async void StartScan(List<ScanItem> selectedItems)
         {
-            if (CurrentState == ScanProcessState.Paused) Resume();
-            else Pause();
-        }
+            // Efficiency: Only allow Start if we are in a 'Ready' or 'Completed' state
+            if(CurrentState != ScanProcessState.Ready) return;
 
-        public void Pause()
-        {
-            // We only pause if we are actively scanning
-            if (_pauseTcs == null && CurrentState == ScanProcessState.Scanning)
-            {
-                _pauseTcs = new TaskCompletionSource<bool>();
-                UpdateState(ScanProcessState.Paused);
-            }
-        }
+            // 1. Extract the unique IDs from the selected items
+            var allIdsToScan = selectedItems
+                    .Where(x => x.scancodes != null)
+                    .SelectMany(x => x.scancodes)
+                    .Select(code => int.Parse(code.ToString())) // Ensure it's an int
+                    .Distinct()
+                    .ToList();
 
-        public void Resume()
-        {
-            if (_pauseTcs != null)
-            {
-                _pauseTcs.TrySetResult(true);
-                _pauseTcs = null;
-                UpdateState(ScanProcessState.Scanning);
-            }
-        }
+            _totalScannersToRun = allIdsToScan.Count;
 
-        public void Stop()
-        {
-            // 1. Signal the cancellation token
-            _cts?.Cancel();
-
-            // 2. Release the pause gate so the thread can wake up and die
-            _pauseTcs?.TrySetResult(true);
-            _pauseTcs = null;
-
-            // 3. Clean up
-            _cts?.Dispose();
-            _cts = null;
-
-            UpdateState(ScanProcessState.Completed);
-        }
-
-        #endregion
-
-        public Scan CreateNewScan(List<ScanItem> scanItems)
-        {
-            CurrentScan = new Scan();
-            return CurrentScan;
-        }
-
-        public void StartScan(List<ScanItem> itemsToScan, int scanId)
-        {
-            // Prevent duplicate runs
-            if (CurrentState == ScanProcessState.Scanning) return;
-
-            _cts = new CancellationTokenSource();
-            var token = _cts.Token;
-
-            CreateNewScan(itemsToScan);
+            ResetStats();
             UpdateState(ScanProcessState.Scanning);
-            UpdateProgress(0);
+            _cts = new CancellationTokenSource();
 
-            // Move work to background thread to keep UI smooth
-            Task.Run(async () =>
+            // 2. Offload to background thread
+            await Task.Run(() =>
             {
                 try
                 {
-                    for (int i = 0; i <= 100; i += 2)
+                    // 3. Inject IDs into the engine
+                    // Note: Assuming the method is EnableScanner(int id). 
+                    // If the engine has a bulk method like SetScanners(List<int>), use that instead.
+                    foreach (var id in allIdsToScan)
                     {
-                        // Check if Stop() was called
-                        token.ThrowIfCancellationRequested();
-
-                        // Check if Pause() was called
-                        if (_pauseTcs != null)
-                        {
-                            await _pauseTcs.Task;
-                        }
-
-                        // Simulate scanning work
-                        await Task.Delay(50, token);
-
-                        UpdateProgress(i);
+                        _engine.EnableScanner(id, true);
                     }
 
-                    UpdateState(ScanProcessState.Completed);
-                }
-                catch (OperationCanceledException)
-                {
-                    // User clicked Stop
-                    UpdateState(ScanProcessState.Ready);
+                    // 4. Start the engine loop
+                    _engine.Start();
+
+
                 }
                 catch (Exception)
                 {
                     UpdateState(ScanProcessState.Error);
                 }
-            }, token);
+                finally
+                {
+                    _cts?.Dispose();
+                    _cts = null;
+                }
+            }, _cts.Token);
         }
 
-        private string FormatBytes(long bytes)
+        public void Toggle()
         {
-            string[] Suffix = { "B", "KB", "MB", "GB", "TB" };
-            int i;
-            double dblSByte = bytes;
-            for (i = 0; i < Suffix.Length && bytes >= 1024; i++, bytes /= 1024)
-            {
-                dblSByte = bytes / 1024.0;
-            }
-            return $"{dblSByte:N1} {Suffix[i]}";
+            if (CurrentState == ScanProcessState.Paused) Resume();
+            else if (CurrentState == ScanProcessState.Scanning) Pause();
         }
+
+        public void Pause()
+        {
+            if (CurrentState != ScanProcessState.Scanning) return;
+            _engine.Pause(1);
+            UpdateState(ScanProcessState.Paused);
+        }
+
+        public void Resume()
+        {
+            if (CurrentState != ScanProcessState.Paused) return;
+            _engine.Pause(0);
+            UpdateState(ScanProcessState.Scanning);
+        }
+
+        public void Stop()
+        {
+            if (CurrentState == ScanProcessState.Ready || CurrentState == ScanProcessState.Completed || CurrentState == ScanProcessState.Stopped) return;
+
+            _cts?.Cancel();
+            _engine.Stop();
+            UpdateState(ScanProcessState.Stopped);
+        }
+
+        #endregion
+
+        #region Legacy Logic Ported (Regex & Win32)
+
+        private bool IsFileScanner(int id)
+        {
+            // The specific IDs from your old system that indicate file-based junk
+            int[] fileScannerIds = { 20403, 20404, 20405, 20406, 20407, 20501, 20502, 20503, 20504, 20505, 20506, 20507 };
+            return fileScannerIds.Contains(id);
+        }
+
+        private long ParseFileSizeFromDescription(string descr, int id)
+        {
+            // File size extraction logic using Regex from old ScanningPanel
+            Regex expFile = new Regex("^file \\((.*?)\\) at directory \\((.*?)\\)$", RegexOptions.IgnoreCase);
+            if (expFile.IsMatch(descr))
+            {
+                var col = expFile.Split(descr);
+                var path = Path.Combine(col[2], col[1]);
+                try
+                {
+                    FileInfo fileInfo = new FileInfo(path);
+                    return fileInfo.Exists ? fileInfo.Length : 0;
+                }
+                catch { return 0; }
+            }
+
+            // Handle Recycle Bin specifically via Shell32
+            if (id == (int)CEScannerID.RECYCLEBIN_SCANNER_ID)
+            {
+                SHQUERYRBINFO query = new SHQUERYRBINFO();
+                query.cbSize = Marshal.SizeOf(typeof(SHQUERYRBINFO));
+                if (SHQueryRecycleBin(null, ref query) == 0)
+                {
+                    return (long)query.i64Size;
+                }
+            }
+            return 0;
+        }
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
+        public struct SHQUERYRBINFO
+        {
+            public Int32 cbSize;
+            public UInt64 i64Size;
+            public UInt64 i64NumItems;
+        }
+
+        [DllImport("shell32.dll", CharSet = CharSet.Unicode)]
+        public static extern int SHQueryRecycleBin(string pszRootPath, ref SHQUERYRBINFO pSHQueryRBInfo);
+
+        #endregion
 
         #region Helper Methods
+
+        private void ResetStats()
+        {
+            CurrentErrorCount = 0;
+            CurrentJunkSizeBytes = 0;
+            CurrentProgress = 0;
+            _scannersFinished = 0;
+        }
 
         private void UpdateState(ScanProcessState newState)
         {
@@ -162,10 +225,24 @@ namespace FrontLineGUI.Include.Services
 
         private void UpdateProgress(double progress)
         {
-            CurrentProgress = progress;
-            ProgressChanged?.Invoke(progress);
+            CurrentProgress = Math.Clamp(progress, 0, 100);
+            ProgressChanged?.Invoke(CurrentProgress);
+        }
+
+        private string FormatBytes(long bytes)
+        {
+            string[] Suffix = { "B", "KB", "MB", "GB", "TB" };
+            int i = 0;
+            double dblSByte = bytes;
+            while (dblSByte >= 1024 && i < Suffix.Length - 1)
+            {
+                i++;
+                dblSByte /= 1024;
+            }
+            return $"{dblSByte:N1}{Suffix[i]}";
         }
 
         #endregion
     }
+
 }
