@@ -249,4 +249,7 @@
   <data name="ScanCompletePreInfo" xml:space="preserve">
     <value>Please review the findings below: -</value>
   </data>
+  <data name="ScanningProgress" xml:space="preserve">
+    <value>Progress</value>
+  </data>
 </root>

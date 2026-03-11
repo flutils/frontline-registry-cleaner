@@ -228,13 +228,33 @@
         </Style>
         
         <!-- Summary Box -->
+        <LinearGradientBrush x:Key="SummaryBoxBackground" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFFFFCE2" Offset="0"/>
+            <GradientStop Color="#FFFFF4A8" Offset="1"/>
+        </LinearGradientBrush>
+        
         <Style TargetType="{x:Type Border}" x:Key="SummaryBox">
+            <Setter Property="Background" Value="{StaticResource SummaryBoxBackground}"/>
+            <Setter Property="BorderBrush" Value="#E5D98E"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Width" Value="350" />
             <Setter Property="Margin" Value="0,10,0,0" />
-            <Setter Property="Padding" Value="15,20" />
-            <Setter Property="Background" Value="#f9f9f9" />
-            <Setter Property="CornerRadius" Value="3" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="#C5C5C5" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="3" Color="#cccccc" Direction="270" ShadowDepth="1" Opacity="0.35"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SummaryText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#8B1A1A"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="LineStackingStrategy" Value="BlockLineHeight"/>
+            <Setter Property="LineHeight" Value="24"/>
         </Style>
 
         <!-- Pause/Stop Buttons -->
@@ -245,6 +265,55 @@
                     <Setter Property="Opacity" Value="0.35"/>
                 </DataTrigger>
             </Style.Triggers>
+        </Style>
+        
+        <!-- Progress Bar Gradient -->
+        <LinearGradientBrush x:Key="ProgressBarGreen" EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFD6FCAE" Offset="0"/>
+            <GradientStop Color="#FFA7E863" Offset="1"/>
+        </LinearGradientBrush>
+
+        <!-- Progress Bar -->
+        <Style x:Key="GlossyProgressBar" TargetType="ProgressBar">
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Background" Value="#E0E0E0"/>
+            <Setter Property="BorderBrush" Value="#828790"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Grid x:Name="TemplateRoot">
+                            <Border x:Name="PART_Track" 
+                                CornerRadius="12" 
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"/>
+
+                            <Decorator x:Name="PART_Indicator" HorizontalAlignment="Left">
+                                <Grid x:Name="IndicatorGrid">
+                                    <Border x:Name="IndicatorBorder" 
+                                        Background="{StaticResource ProgressBarGreen}" 
+                                        CornerRadius="12"/>
+                                    <Border CornerRadius="12">
+                                        <Border.Background>
+                                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                                <GradientStop Color="#4FFFFFFF" Offset="0"/>
+                                                <GradientStop Color="#00FFFFFF" Offset="0.5"/>
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                    </Border>
+                                </Grid>
+                            </Decorator>
+
+                            <TextBlock Text="{Binding Value, RelativeSource={RelativeSource TemplatedParent}, StringFormat={}{0:0}%}" 
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center" 
+                                   FontWeight="Bold" 
+                                   Foreground="#2D5A27"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <!-- Pause Button -->
@@ -473,37 +542,44 @@
                 <!-- Scanning Metrics -->
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Style="{ StaticResource SummaryBox }">
 
-                    <!-- Stacking Container -->
-                    <StackPanel HorizontalAlignment="Center">
+                    <!-- Inner White Border/Gradient -->
+                    <Border BorderBrush="White" BorderThickness="2" CornerRadius="23" Padding="30,15">
 
-                        <!-- Errors -->
-                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="20" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="ErrorCount" />
-                                    <Binding Source="{x:Static lang:Strings.ScanningErrorCount}" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
+                        <!-- Stacking Container -->
+                        <StackPanel HorizontalAlignment="Center">
 
-                        <!-- Junk Files -->
-                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="20" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center" Margin="0,3,0,0">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="JunkSizeDisplay" />
-                                    <Binding Source="{x:Static lang:Strings.ScanningJunkFilesFound}" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
+                            <!-- Errors -->
+                            <TextBlock Style="{ StaticResource SummaryText }" HorizontalAlignment="Center">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="ErrorCount" />
+                                        <Binding Source="{x:Static lang:Strings.ScanningErrorCount}" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
 
-                    </StackPanel>
+                            <!-- Junk Files -->
+                            <TextBlock Style="{ StaticResource SummaryText }" HorizontalAlignment="Center" Margin="0,3,0,0">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="JunkSizeDisplay" />
+                                        <Binding Source="{x:Static lang:Strings.ScanningJunkFilesFound}" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+
+                        </StackPanel>
+
+                    </Border>
 
                 </Border>
 
                 <!-- Progress Bar -->
                 <StackPanel Margin="0,10,0,0">
-                    <TextBlock Text="Progress:" FontWeight="Bold" />
-                    <ProgressBar Grid.Column="0" Value="{ Binding Progress }" Minimum="0" Maximum="100" Height="20" Margin="0,5,0,0"/>
+                    <TextBlock Text="{Binding Source={x:Static lang:Strings.ScanningProgress}, StringFormat='{}{0}:'}" FontWeight="Bold" />
+                    <Border BorderBrush="#000000" BorderThickness="1" CornerRadius="12"  Padding="1" Background="White" Margin="0,2,0,0">
+                        <ProgressBar Style="{StaticResource GlossyProgressBar}" Value="{ Binding Progress }" Minimum="0" Maximum="100" />
+                    </Border>
                 </StackPanel>
 
                 <!-- Currently Scanning -->
@@ -617,30 +693,35 @@
                 <!-- Scanning Metrics -->
                 <Border HorizontalAlignment="Center" VerticalAlignment="Center" Style="{ StaticResource SummaryBox }">
 
-                    <!-- Stacking Container -->
-                    <StackPanel HorizontalAlignment="Center">
+                    <!-- Inner White Border/Gradient -->
+                    <Border BorderBrush="White" BorderThickness="2" CornerRadius="23" Padding="30,15">
 
-                        <!-- Errors -->
-                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="20" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="ErrorCount" />
-                                    <Binding Source="{x:Static lang:Strings.ScanningErrorCount}" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
+                        <!-- Stacking Container -->
+                        <StackPanel HorizontalAlignment="Center">
 
-                        <!-- Junk Files -->
-                        <TextBlock FontSize="22" FontWeight="Bold" LineHeight="18" LineStackingStrategy="BlockLineHeight" HorizontalAlignment="Center" Margin="0,3,0,0">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0} {1}">
-                                    <Binding Path="JunkSizeDisplay" />
-                                    <Binding Source="{x:Static lang:Strings.ScanningJunkFilesFound}" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
+                            <!-- Errors -->
+                            <TextBlock Style="{ StaticResource SummaryText }" HorizontalAlignment="Center">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="ErrorCount" />
+                                        <Binding Source="{x:Static lang:Strings.ScanningErrorCount}" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
 
-                    </StackPanel>
+                            <!-- Junk Files -->
+                            <TextBlock Style="{ StaticResource SummaryText }" HorizontalAlignment="Center" Margin="0,3,0,0">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="JunkSizeDisplay" />
+                                        <Binding Source="{x:Static lang:Strings.ScanningJunkFilesFound}" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+
+                        </StackPanel>
+
+                    </Border>
 
                 </Border>
 

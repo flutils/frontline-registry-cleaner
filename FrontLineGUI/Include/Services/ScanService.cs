@@ -49,9 +49,9 @@ namespace FrontLineGUI.Include.Services
 
         private void WireLegacyEvents()
         {
-            // Ported from: FLCleanEngine.ManagedCleanEngine.CENotifierItemFound
             ManagedCleanEngine.CENotifierItemFound += (desc, itemid, scannerid) =>
             {
+                // Increment immediately for real-time counting
                 CurrentErrorCount++;
 
                 if (IsFileScanner(scannerid))
@@ -59,10 +59,10 @@ namespace FrontLineGUI.Include.Services
                     CurrentJunkSizeBytes += ParseFileSizeFromDescription(desc, scannerid);
                 }
 
+                // Trigger event so ViewModel knows to call OnPropertyChanged("ErrorCount")
                 ItemFound?.Invoke(desc, itemid, scannerid);
             };
 
-            // Ported from: ScannerFinishedProcessing
             ManagedCleanEngine.CEScanFinished += (id) =>
             {
                 _scannersFinished++;

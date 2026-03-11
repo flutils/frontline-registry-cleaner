@@ -293,4 +293,8 @@
     <value>Please review the findings below: -</value>
     <comment>"Scan" pre info text used for when the scan is either stopped or complete</comment>
   </data>
+  <data name="ScanningProgress" xml:space="preserve">
+    <value>Progress</value>
+    <comment>"Progress" label on the scanning view</comment>
+  </data>
 </root>

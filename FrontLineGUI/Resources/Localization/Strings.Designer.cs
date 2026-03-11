@@ -331,6 +331,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Progress.
+        /// </summary>
+        public static string ScanningProgress {
+            get {
+                return ResourceManager.GetString("ScanningProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scanning.
         /// </summary>
         public static string ScanningTitle {

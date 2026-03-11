@@ -6,7 +6,10 @@ namespace FrontLineGUI
 {
     public class OSInfo
     {
-        // Pre-calculated properties (Performance optimization)
+        // Cache the static info so it's only calculated ONCE for the entire app lifetime
+        private static readonly Lazy<OSInfo> _instance = new(() => new OSInfo());
+        public static OSInfo Default => _instance.Value;
+
         public string OSName { get; }
         public string OSVersion { get; }
         public string OSIcon { get; }
@@ -15,24 +18,22 @@ namespace FrontLineGUI
 
         public OSInfo()
         {
-            // 1. Get Version String
-            OSVersion = OSVersionInfo.VersionString.ToString();
+            // Cache version once to avoid multiple property lookups in JCS
+            var major = OSVersionInfo.MajorVersion;
+            var build = OSVersionInfo.BuildVersion;
 
-            // 2. Handle Windows 11 Detection 
-            // Microsoft internally identifies Win11 as Win10 Build 22000+
-            if (OSVersionInfo.MajorVersion == 10 && OSVersionInfo.BuildVersion >= 22000)
-                OSName = "Windows 11";
-            else
-                OSName = OSVersionInfo.Name;
+            OSVersion = OSVersionInfo.VersionString;
 
-            // 3. Architecture
-            string arch = Environment.Is64BitOperatingSystem ? "64bit" : "32bit";
-            OSArchitecture = arch;
+            // Windows 11 Detection 
+            OSName = (major == 10 && build >= 22000) ? "Windows 11" : OSVersionInfo.Name;
 
-            // 4. Icon Path (Consistent with your folder structure)
-            OSIcon = $"/Resources/OS/{OSName.Replace(" ", "-").ToLower()}.png";
+            // Architecture - Using RuntimeInformation is slightly faster than Environment checks
+            OSArchitecture = RuntimeInformation.OSArchitecture == Architecture.X64 ? "64bit" : "32bit";
 
-            // 5. Helper string for your UI (e.g., "Windows 11 (64bit)")
+            // Pre-format the icon path to avoid runtime string manipulation during UI binding
+            // We use Ordinal comparison for speed in the Replace call
+            OSIcon = $"/Resources/OS/{OSName.Replace(" ", "-", StringComparison.Ordinal).ToLowerInvariant()}.png";
+
             FullDisplayString = $"{OSName} ({OSArchitecture})";
         }
     }

@@ -84,6 +84,23 @@ namespace FrontLineGUI
             _scanService.StateChanged        += OnScanStateChanged;
             _hardwareService.HardwareUpdated += OnHardwareUpdated;
 
+            // Subscribe to the ItemFound event here
+            // This is what makes the counter tick up.
+            _scanService.ItemFound += (desc, id, scannerId) =>
+            {
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(() =>
+                {
+                    // This forces the UI to re-read the ErrorCount from the service
+                    OnPropertyChanged(nameof(ErrorCount));
+                    OnPropertyChanged(nameof(JunkSizeDisplay));
+                });
+            };
+
+            _scanService.ProgressChanged += (p) =>
+            {
+                System.Windows.Application.Current.Dispatcher.BeginInvoke(() => OnPropertyChanged(nameof(Progress)));
+            };
+
         }
 
         #region Observables (UI Bindings)
@@ -142,6 +159,18 @@ namespace FrontLineGUI
         }
 
         // --- Service Event Callbacks ---
+
+        private void OnItemFound(string desc, int id, int scannerId)
+        {
+            // This is triggered every time a single file/registry key is found.
+            // We MUST use the Dispatcher because the engine runs on a background thread.
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                // Notify WPF to re-read these properties from the Service
+                OnPropertyChanged(nameof(ErrorCount));
+                OnPropertyChanged(nameof(JunkSizeDisplay));
+            }));
+        }
 
         private void OnScanProgressChanged(double newProgress)
         {
