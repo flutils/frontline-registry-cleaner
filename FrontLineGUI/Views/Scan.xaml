@@ -115,13 +115,39 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
+        <!-- Title Text -->
+        <Style TargetType="{x:Type TextBlock}" x:Key="ScanningTitleText">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="TextDecorations" Value="Underline" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="Foreground" Value="#FF323232" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+            <Setter Property="Text" Value="{Binding Source={x:Static lang:Strings.ScanningTitle}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentState}" Value="Paused">
+                    <Setter Property="Text" Value="{ Binding Source={x:Static lang:Strings.ScanPausedTitle}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding CurrentState}" Value="Completed">
+                    <Setter Property="Text" Value="{ Binding Source={ x:Static lang:Strings.ScanCompleteTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding CurrentState}" Value="Stopped">
+                    <Setter Property="Text" Value="{ Binding Source={ x:Static lang:Strings.ScanStoppedTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
 
         <!-- ScanItems ListBox -->
         <Style TargetType="{x:Type ListBox}" x:Key="ScanItemsListBox">
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
         </Style>
-        
+
         <!-- ScanItems ListBox Items -->
         <!-- ControlTemplate was required due to .NET 4.5 removing the ability to change system brushes - https://stackoverflow.com/a/18945651/1143732 -->
         <Style TargetType="{x:Type ListBoxItem}" x:Key="ScanItemsItemStyle">
@@ -257,16 +283,6 @@
             <Setter Property="LineHeight" Value="24"/>
         </Style>
 
-        <!-- Pause/Stop Buttons -->
-        <Style TargetType="{x:Type Button}" x:Key="PauseStop" BasedOn="{StaticResource ActionButton}">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding CurrentState}" Value="Completed">
-                    <Setter Property="IsEnabled" Value="False"/>
-                    <Setter Property="Opacity" Value="0.35"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        
         <!-- Progress Bar Gradient -->
         <LinearGradientBrush x:Key="ProgressBarGreen" EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FFD6FCAE" Offset="0"/>
@@ -316,8 +332,35 @@
             </Setter>
         </Style>
 
+        <!-- Currently Scanning -->
+        <Style x:Key="CurrentlyScanning" TargetType="Border">
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="Margin" Value="0,2,0,0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#D0D0D0"/>
+
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#EBEBEB" Offset="0"/>
+                        <GradientStop Color="White" Offset="0.4"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ScanningPathText" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        </Style>
+
         <!-- Pause Button -->
-        <Style TargetType="{x:Type Button}" x:Key="Pause" BasedOn="{StaticResource PauseStop}">
+        <Style TargetType="{x:Type Button}" x:Key="Pause" BasedOn="{StaticResource ActionButton}">
             <Setter Property="Content" Value="{Binding Source={x:Static lang:Strings.ScanPauseButton}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
 
             <Style.Triggers>
@@ -326,7 +369,26 @@
                 </DataTrigger>
 
                 <DataTrigger Binding="{Binding CurrentState}" Value="Completed">
-                    <Setter Property="IsEnabled" Value="False" />
+                    <Setter Property="Content" Value="{Binding Source={x:Static lang:Strings.ScanPrevButton}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding CurrentState}" Value="Stopped">
+                    <Setter Property="Content" Value="{Binding Source={x:Static lang:Strings.ScanPrevButton}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Stop Button -->
+        <Style TargetType="{x:Type Button}" x:Key="Stop" BasedOn="{StaticResource ActionButton}">
+            <Setter Property="Content" Value="{Binding Source={x:Static lang:Strings.ScanStopButton}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CurrentState}" Value="Completed">
+                    <Setter Property="Content" Value="{Binding Source={x:Static lang:Strings.ScanNextButton}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding CurrentState}" Value="Stopped">
+                    <Setter Property="Content" Value="{Binding Source={x:Static lang:Strings.ScanNextButton}, Converter={StaticResource CapitalizeFirstLetterConverter}}" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -520,7 +582,7 @@
         </Grid>
 
         <!-- Scanning -->
-        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter='Scanning,Paused'}" x:Name="ScanningPanel">
+        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter='Scanning,Paused,Stopped,Completed'}" x:Name="ScanningPanel">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -534,7 +596,7 @@
             <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
 
                 <!-- Title -->
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ Binding Source={ x:Static lang:Strings.ScanningTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
+                <TextBlock Style="{ StaticResource ScanningTitleText }"/>
 
                 <!-- Intro -->
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.ScanningPreInfo }" TextAlignment="Center" FontSize="12" />
@@ -583,9 +645,11 @@
                 </StackPanel>
 
                 <!-- Currently Scanning -->
-                <StackPanel Margin="0,15,0,0">
+                <StackPanel Margin="0,10,0,0">
                     <TextBlock Text="Currently Scanning:" FontWeight="Bold" />
-                    <TextBlock Text="Progress:" FontWeight="Bold" />
+                    <Border Style="{StaticResource CurrentlyScanning}">
+                        <TextBlock Style="{StaticResource ScanningPathText}" Text="{Binding CurrentScanningPath, FallbackValue='N/A'}" />
+                    </Border>
                 </StackPanel>
 
             </StackPanel>
@@ -621,8 +685,8 @@
 
                     <!-- Action Buttons -->
                     <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center">
-                        <Button Style="{StaticResource Pause}" Margin="0,0,1,0" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Pause" Command="{ Binding PauseClick }" />
-                        <Button Style="{StaticResource PauseStop}" Content="{ Binding Source={ x:Static lang:Strings.ScanStopButton }, Converter={ StaticResource CapitalizeFirstLetterConverter} }" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Stop" Command="{ Binding StopClick }" />
+                        <Button Style="{StaticResource Pause}" Margin="0,0,1,0" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Pause" Command="{ Binding StopPauseClick }" CommandParameter="Pause" />
+                        <Button Style="{StaticResource Stop}" HorizontalAlignment="Right" VerticalAlignment="Center" Name="Stop" Command="{ Binding StopPauseClick }" CommandParameter="Stop" />
                     </StackPanel>
 
                 </Grid>
@@ -679,13 +743,13 @@
         </Grid>
 
         <!-- Finished -->
-        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter='Stopped,Completed'}" x:Name="CompletedPanel">
+        <Grid Visibility="{Binding CurrentState, Converter={StaticResource EnumToVis}, ConverterParameter='Finished'}" x:Name="FinishedPanel">
 
             <!-- Information -->
             <StackPanel Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10">
 
                 <!-- Title -->
-                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" TextDecorations="Underline" FontSize="20" Foreground="#FF323232" Margin="0,10,0,0" Text="{ Binding Source={ x:Static lang:Strings.ScanCompleteTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }}" />
+                <TextBlock Style="{ StaticResource ScanningTitleText }" />
 
                 <!-- Intro -->
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.ScanCompletePreInfo }" TextAlignment="Center" FontSize="12" />

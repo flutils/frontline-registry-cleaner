@@ -297,4 +297,20 @@
     <value>Progress</value>
     <comment>"Progress" label on the scanning view</comment>
   </data>
+  <data name="ScanPrevButton" xml:space="preserve">
+    <value>« Prev</value>
+    <comment>"Previous" button used on the scanning view for when the user has initiated a scan</comment>
+  </data>
+  <data name="ScanNextButton" xml:space="preserve">
+    <value>Next »</value>
+    <comment>"Next" button for the scanning page.</comment>
+  </data>
+  <data name="ScanStoppedTitle" xml:space="preserve">
+    <value>Scan Stopped</value>
+    <comment>"Scan" title for when the system is stopped</comment>
+  </data>
+  <data name="ScanPausedTitle" xml:space="preserve">
+    <value>Scanning Paused</value>
+    <comment>"Paused" title for the scan view</comment>
+  </data>
 </root>

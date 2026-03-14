@@ -4,6 +4,7 @@ using FrontLineGUI.Include.Interfaces;
 using FrontLineGUI.Include.Services;
 using FrontLineGUI.Resources.Localization;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 
@@ -29,8 +30,9 @@ namespace FrontLineGUI
         private string _lastPerformed = Strings.ScanLastPerformedNever;
 
         // RPECK 06/03/2026 - Information about the number of errors/junk files found
-        public int ErrorCount => _scanService.CurrentErrorCount;
-        public string JunkSizeDisplay => _scanService.JunkSizeDisplay;
+        public int ErrorCount               => _scanService.CurrentErrorCount;
+        public string JunkSizeDisplay       => _scanService.JunkSizeDisplay;
+        public string CurrentScanningPath   => _scanService.CurrentScanningPath;
 
         // RPECK 27/02/2026 - CPU/RAM Information
         // This is a service that allows us to manage how the CPU/RAM/HDD information is displayed
@@ -40,8 +42,7 @@ namespace FrontLineGUI
         public ICommand SelectAllClick { get; private set; }
         public ICommand LastScanButtonClick { get; private set; }
         public ICommand MainScanButtonClick { get; private set; }
-        public ICommand StopClick { get; private set; }
-        public ICommand PauseClick { get; private set; }
+        public ICommand StopPauseClick { get; private set; }
 
         public ScanViewModel(INavigationService navigation, ScanService scanService, HardwareService hardwareService, AppDbContext db, IAppConfig config)
         {
@@ -72,8 +73,7 @@ namespace FrontLineGUI
             SelectAllClick      = new DelegateCommand(o => ScanItemsCollection.SelectAll());
             LastScanButtonClick = new DelegateCommand(o => LastScanClick());
             MainScanButtonClick = new DelegateCommand(o => MainScanClick());
-            StopClick           = new DelegateCommand(o => _scanService.Stop());
-            PauseClick          = new DelegateCommand(o => _scanService.Toggle());
+            StopPauseClick      = new DelegateCommand(o => ToggleStopPause(o));
 
             // Sync with Service State (In case we navigated back to an ongoing scan)
             CurrentState = _scanService.CurrentState;
@@ -91,6 +91,7 @@ namespace FrontLineGUI
                 System.Windows.Application.Current.Dispatcher.BeginInvoke(() =>
                 {
                     // This forces the UI to re-read the ErrorCount from the service
+                    OnPropertyChanged(nameof(CurrentScanningPath));
                     OnPropertyChanged(nameof(ErrorCount));
                     OnPropertyChanged(nameof(JunkSizeDisplay));
                 });
@@ -133,7 +134,27 @@ namespace FrontLineGUI
 
         #endregion
 
-        #region Logic Methods
+        #region Methods
+
+        // RPECK 14/03/2026 - Added Toggle logic for pause/stop buttons (mainly used for when we need to consider prev/next)
+        private void ToggleStopPause(object parameter)
+        {
+
+            // RPECK 14/03/2026 - Vars 
+            string action = parameter?.ToString();
+
+            // RPECK 14/03/2026 - First check to see which button was clicked
+            if (action == "Stop")
+            {
+
+
+                _scanService.Stop();
+
+            } else if (action == "Pause")
+            {
+                _scanService.Toggle();
+            }
+        }
 
         // RPECK 02/03/2026 - Enable the scan by clicking the "MainScanClick" button
         private void MainScanClick()
@@ -159,18 +180,6 @@ namespace FrontLineGUI
         }
 
         // --- Service Event Callbacks ---
-
-        private void OnItemFound(string desc, int id, int scannerId)
-        {
-            // This is triggered every time a single file/registry key is found.
-            // We MUST use the Dispatcher because the engine runs on a background thread.
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                // Notify WPF to re-read these properties from the Service
-                OnPropertyChanged(nameof(ErrorCount));
-                OnPropertyChanged(nameof(JunkSizeDisplay));
-            }));
-        }
 
         private void OnScanProgressChanged(double newProgress)
         {

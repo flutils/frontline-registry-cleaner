@@ -35,6 +35,7 @@ namespace FrontLineGUI.Include.Services
         public int CurrentErrorCount { get; private set; }
         public long CurrentJunkSizeBytes { get; private set; }
         public string JunkSizeDisplay => FormatBytes(CurrentJunkSizeBytes);
+        public string CurrentScanningPath { get; private set; }
 
         // UI Notification Events
         public event Action<double>? ProgressChanged;
@@ -49,9 +50,21 @@ namespace FrontLineGUI.Include.Services
 
         private void WireLegacyEvents()
         {
-            ManagedCleanEngine.CENotifierItemFound += (desc, itemid, scannerid) =>
+            // FIX: Static events persist for the life of the app. 
+            // We clear previous handlers to prevent double-counting.
+            ManagedCleanEngine.CENotifierItemFound -= OnEngineItemFound;
+            ManagedCleanEngine.CENotifierItemFound += OnEngineItemFound;
+
+            ManagedCleanEngine.CEScanFinished -= OnEngineScannerFinished;
+            ManagedCleanEngine.CEScanFinished += OnEngineScannerFinished;
+        }
+
+        private void OnEngineItemFound(string desc, int itemid, int scannerid)
+        {
+            // FIX: Ensure UI-bound data updates happen on the UI thread
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(() =>
             {
-                // Increment immediately for real-time counting
+                CurrentScanningPath = desc;
                 CurrentErrorCount++;
 
                 if (IsFileScanner(scannerid))
@@ -59,11 +72,13 @@ namespace FrontLineGUI.Include.Services
                     CurrentJunkSizeBytes += ParseFileSizeFromDescription(desc, scannerid);
                 }
 
-                // Trigger event so ViewModel knows to call OnPropertyChanged("ErrorCount")
                 ItemFound?.Invoke(desc, itemid, scannerid);
-            };
+            });
+        }
 
-            ManagedCleanEngine.CEScanFinished += (id) =>
+        private void OnEngineScannerFinished(int id)
+        {
+            System.Windows.Application.Current.Dispatcher.BeginInvoke(() =>
             {
                 _scannersFinished++;
                 if (_totalScannersToRun > 0)
@@ -71,59 +86,47 @@ namespace FrontLineGUI.Include.Services
                     double progress = ((double)_scannersFinished / _totalScannersToRun) * 100;
                     UpdateProgress(progress);
                 }
-            };
+            });
         }
-
-        #region Control Methods
 
         public async void StartScan(List<ScanItem> selectedItems)
         {
-            // Efficiency: Only allow Start if we are in a 'Ready' or 'Completed' state
-            if(CurrentState != ScanProcessState.Ready) return;
+            if (CurrentState == ScanProcessState.Scanning) return;
 
-            // 1. Extract the unique IDs from the selected items
             var allIdsToScan = selectedItems
                     .Where(x => x.scancodes != null)
                     .SelectMany(x => x.scancodes)
-                    .Select(code => int.Parse(code.ToString())) // Ensure it's an int
+                    .Select(code => int.Parse(code.ToString()))
                     .Distinct()
                     .ToList();
 
             _totalScannersToRun = allIdsToScan.Count;
-
             ResetStats();
             UpdateState(ScanProcessState.Scanning);
             _cts = new CancellationTokenSource();
 
-            // 2. Offload to background thread
             await Task.Run(() =>
             {
                 try
                 {
-                    // 3. Inject IDs into the engine
-                    // Note: Assuming the method is EnableScanner(int id). 
-                    // If the engine has a bulk method like SetScanners(List<int>), use that instead.
+                    _engine.EnableAllScanners(false); // Clean slate
                     foreach (var id in allIdsToScan)
                     {
                         _engine.EnableScanner(id, true);
                     }
 
-                    // 4. Start the engine loop
+                    // This call usually BLOCKS until the entire scan is done
                     _engine.Start();
-
 
                 }
                 catch (Exception)
                 {
                     UpdateState(ScanProcessState.Error);
                 }
-                finally
-                {
-                    _cts?.Dispose();
-                    _cts = null;
-                }
             }, _cts.Token);
         }
+
+        #region Methods
 
         public void Toggle()
         {
@@ -152,6 +155,22 @@ namespace FrontLineGUI.Include.Services
             _cts?.Cancel();
             _engine.Stop();
             UpdateState(ScanProcessState.Stopped);
+        }
+        public void Reset()
+        {
+            // 1. Reset the Numbers
+            CurrentErrorCount = 0;
+            CurrentJunkSizeBytes = 0;
+            CurrentProgress = 0;
+            _scannersFinished = 0;
+
+            // 3. Reset the State Machine
+            UpdateState(ScanProcessState.Ready);
+
+            // 4. Force UI Refresh
+            // Since these aren't automatically notifying PropertyChanged, 
+            // you need to trigger your events here.
+            ProgressChanged?.Invoke(0);
         }
 
         #endregion

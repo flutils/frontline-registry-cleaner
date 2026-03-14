@@ -304,6 +304,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next ».
+        /// </summary>
+        public static string ScanNextButton {
+            get {
+                return ResourceManager.GetString("ScanNextButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Errors Found!.
         /// </summary>
         public static string ScanningErrorCount {
@@ -358,11 +367,29 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scanning Paused.
+        /// </summary>
+        public static string ScanPausedTitle {
+            get {
+                return ResourceManager.GetString("ScanPausedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click on the scan button below to perform a scan. You can change the items to be scanned underneath: -.
         /// </summary>
         public static string ScanPreInfo {
             get {
                 return ResourceManager.GetString("ScanPreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to « Prev.
+        /// </summary>
+        public static string ScanPrevButton {
+            get {
+                return ResourceManager.GetString("ScanPrevButton", resourceCulture);
             }
         }
         
@@ -408,6 +435,15 @@ namespace FrontLineGUI.Resources.Localization {
         public static string ScanStopButton {
             get {
                 return ResourceManager.GetString("ScanStopButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scan Stopped.
+        /// </summary>
+        public static string ScanStoppedTitle {
+            get {
+                return ResourceManager.GetString("ScanStoppedTitle", resourceCulture);
             }
         }
         

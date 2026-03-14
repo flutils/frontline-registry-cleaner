@@ -252,4 +252,16 @@
   <data name="ScanningProgress" xml:space="preserve">
     <value>Progress</value>
   </data>
+  <data name="ScanPrevButton" xml:space="preserve">
+    <value>« Prev</value>
+  </data>
+  <data name="ScanNextButton" xml:space="preserve">
+    <value>Next »</value>
+  </data>
+  <data name="ScanStoppedTitle" xml:space="preserve">
+    <value>Scan Stopped</value>
+  </data>
+  <data name="ScanPausedTitle" xml:space="preserve">
+    <value>Scanning Paused</value>
+  </data>
 </root>
