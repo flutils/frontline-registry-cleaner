@@ -705,31 +705,44 @@
                     <Border BorderBrush="#c5c5c5" BorderThickness="0,1,0,0" Grid.ColumnSpan="2" />
 
                     <!-- Scan Items -->
-                    <ItemsControl ItemsSource="{Binding ScanItemsCollection}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10">
+                    <ItemsControl ItemsSource="{Binding Results}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <UniformGrid Columns="3" />
+                                <WrapPanel Orientation="Vertical" MaxHeight="350" ItemWidth="280"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
 
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel x:Name="ItemRow" Orientation="Horizontal" Margin="10,5">
-                                    <Image Source="{Binding Image}" Width="20" Height="20" Margin="0,0,8,0"/>
-                                    <TextBlock x:Name="TitleText" Text="{Binding Name}"/>
-                                </StackPanel>
+                                <Grid Margin="5,3" VerticalAlignment="Center">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="35"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image Grid.Column="0" Source="{Binding ScanItem.IconPath}" Width="20" Height="20" HorizontalAlignment="Left" />
+
+                                    <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5,0">
+                                        <TextBlock Text="{Binding SizeDisplay}" FontSize="10" Foreground="Red" VerticalAlignment="Bottom" Margin="0,0,3,2" />
+                                        <TextBlock x:Name="CountText" Text="{Binding Count}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
+                                    </StackPanel>
+
+                                    <TextBlock x:Name="LabelText" Grid.Column="2" Text="{Binding ScanItem.Name}" VerticalAlignment="Center" FontSize="13" Margin="8,0,0,0" />
+                                </Grid>
 
                                 <DataTemplate.Triggers>
-                                    <DataTrigger Binding="{Binding IsSelected}" Value="False">
-                                        <Setter TargetName="ItemRow" Property="Opacity" Value="0.2" />
-                                        <Setter TargetName="TitleText" Property="TextDecorations" Value="Strikethrough" />
+                                    <DataTrigger Binding="{Binding IsError}" Value="True">
+                                        <Setter TargetName="CountText" Property="Foreground" Value="#E53935" />
+                                        <Setter TargetName="LabelText" Property="Foreground" Value="#E53935" />
                                     </DataTrigger>
-
-                                    <DataTrigger Binding="{Binding HasFindings}" Value="True">
-                                        <Setter TargetName="TitleText" Property="Foreground" Value="Red" />
+                                    <DataTrigger Binding="{Binding IsError}" Value="False">
+                                        <Setter TargetName="CountText" Property="Foreground" Value="#4CAF50" />
+                                        <Setter TargetName="LabelText" Property="Foreground" Value="#4CAF50" />
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding HasFindings}" Value="False">
-                                        <Setter TargetName="TitleText" Property="Foreground" Value="Green" />
+                                    <DataTrigger Binding="{Binding ScanItem.IsEnabled}" Value="False">
+                                        <Setter Property="Opacity" Value="0.4" />
+                                        <Setter TargetName="LabelText" Property="TextDecorations" Value="Strikethrough" />
                                     </DataTrigger>
                                 </DataTemplate.Triggers>
                             </DataTemplate>

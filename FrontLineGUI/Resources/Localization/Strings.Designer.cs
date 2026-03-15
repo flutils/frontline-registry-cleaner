@@ -349,7 +349,7 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scanning.
+        ///   Looks up a localized string similar to Scanning Your System.
         /// </summary>
         public static string ScanningTitle {
             get {

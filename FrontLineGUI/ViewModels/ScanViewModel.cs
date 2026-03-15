@@ -5,6 +5,7 @@ using FrontLineGUI.Include.Services;
 using FrontLineGUI.Resources.Localization;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
@@ -30,9 +31,10 @@ namespace FrontLineGUI
         private string _lastPerformed = Strings.ScanLastPerformedNever;
 
         // RPECK 06/03/2026 - Information about the number of errors/junk files found
-        public int ErrorCount               => _scanService.CurrentErrorCount;
-        public string JunkSizeDisplay       => _scanService.JunkSizeDisplay;
-        public string CurrentScanningPath   => _scanService.CurrentScanningPath;
+        public ObservableCollection<ScanResult> Results => _scanService.ScannerResultsCollection;
+        public int ErrorCount                           => _scanService.CurrentErrorCount;
+        public string JunkSizeDisplay                   => _scanService.JunkSizeDisplay;
+        public string CurrentScanningPath               => _scanService.CurrentScanningPath;
 
         // RPECK 27/02/2026 - CPU/RAM Information
         // This is a service that allows us to manage how the CPU/RAM/HDD information is displayed
@@ -142,17 +144,28 @@ namespace FrontLineGUI
 
             // RPECK 14/03/2026 - Vars 
             string action = parameter?.ToString();
+            bool is_stopped = _scanService.CurrentState == ScanProcessState.Stopped || _scanService.CurrentState == ScanProcessState.Completed;
 
             // RPECK 14/03/2026 - First check to see which button was clicked
             if (action == "Stop")
             {
 
+                // RPECK 15/03/2026 - Check to see if the CurrentStatus is stopped / complete and, if so, set the status to Finished
+                if (is_stopped)
+                    _scanService.Stop();
+                else
+                    _scanService.Stop();
 
-                _scanService.Stop();
 
             } else if (action == "Pause")
             {
-                _scanService.Toggle();
+
+                // RPECK 15/03/2026 - Check to see if the CurrentStatus is stopped / complete and, if so, set the status to Finished
+                if (is_stopped)
+                    _scanService.Reset();
+                else
+                    _scanService.Toggle();
+
             }
         }
 
@@ -170,7 +183,7 @@ namespace FrontLineGUI
             _db.SaveChanges();
 
             // Hand off to the service to start the actual work
-            _scanService.StartScan((System.Collections.Generic.List<ScanItem>)newScan.ScanItems);
+            _scanService.StartScan((List<ScanItem>)newScan.ScanItems);
 
         }
 

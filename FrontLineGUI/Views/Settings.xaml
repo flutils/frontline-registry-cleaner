@@ -23,8 +23,10 @@
                 <Style TargetType="TabItem">
                     <Setter Property="HeaderTemplate">
                         <Setter.Value>
-                            <DataTemplate >
-                                <TextBlock  TextWrapping="Wrap" Text="{Binding}" TextAlignment="Center" FontSize="13"/>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                                    <TextBlock Text="{Binding}" VerticalAlignment="Center" FontSize="14"  FontWeight="SemiBold"/>
+                                </StackPanel>
                             </DataTemplate>
                         </Setter.Value>
                     </Setter>

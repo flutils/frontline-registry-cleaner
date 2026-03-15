@@ -1,33 +1,50 @@
-﻿using System;
+﻿using FrontLineGUI.Include.Services;
+using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 
 namespace FrontLineGUI.Include.Classes.DB.Models
 {
-    public class ScanResult
+    public class ScanResult : PropertyChangedBase
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        // Link to the parent Scan session
-        [Required]
-        public int ScanId { get; set; }
-        [ForeignKey("ScanId")]
-        public Scan Scan { get; set; }
-
-        // Link to the Category (e.g., "Invalid Typelib")
         [Required]
         public int ScanItemId { get; set; }
+
         [ForeignKey("ScanItemId")]
-        public ScanItem ScanItem { get; set; }
+        public virtual ScanItem ScanItem { get; set; }
 
-        public int Count { get; set; }
+        // --- Live Data ---
 
-        // This handles "3.4GB" or "600MB" values if it's not a simple count
-        public string? SizeDisplay { get; set; }
+        private int _count;
+        public int Count
+        {
+            get => _count;
+            set { _count = value; OnPropertyChanged(); OnPropertyChanged(nameof(IsError)); }
+        }
+
+        private long _totalBytes;
+        public long TotalBytes
+        {
+            get => _totalBytes;
+            set { _totalBytes = value; OnPropertyChanged(); OnPropertyChanged(nameof(SizeDisplay)); }
+        }
+
+        // --- UI Helpers (Not Mapped to Database) ---
+
+        [NotMapped]
+        public bool IsError => Count > 0 || TotalBytes > 0;
+
+        [NotMapped]
+        public string SizeDisplay => TotalBytes > 0 ? ScanService.FormatBytes(TotalBytes) : string.Empty;
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; }
+
     }
 }

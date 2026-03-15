@@ -232,7 +232,7 @@
     <value>Statut</value>
   </data>
   <data name="ScanningTitle" xml:space="preserve">
-    <value>Balayage</value>
+    <value>Analyse de votre système</value>
   </data>
   <data name="ScanningPreInfo" xml:space="preserve">
     <value>Traitement en cours des fichiers/paramètres dans votre système.</value>

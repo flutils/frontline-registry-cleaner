@@ -270,7 +270,7 @@
     <comment>"Scan" status (used in the scanning page)</comment>
   </data>
   <data name="ScanningTitle" xml:space="preserve">
-    <value>Scanning</value>
+    <value>Scanning Your System</value>
     <comment>"Scan" page "Scanning" title text</comment>
   </data>
   <data name="ScanningPreInfo" xml:space="preserve">

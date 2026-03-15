@@ -2,6 +2,7 @@
 using FrontLineGUI.Include.Classes.DB.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -31,9 +32,10 @@ namespace FrontLineGUI.Include.Services
 
         // Observable Properties
         public ScanProcessState CurrentState { get; private set; } = ScanProcessState.Ready;
+        public ObservableCollection<ScanResult> ScannerResultsCollection { get; set; } = new ObservableCollection<ScanResult>();
         public double CurrentProgress { get; private set; } = 0;
-        public int CurrentErrorCount { get; private set; }
-        public long CurrentJunkSizeBytes { get; private set; }
+        public int CurrentErrorCount => ScannerResultsCollection.Sum(x => x.Count);
+        public long CurrentJunkSizeBytes => ScannerResultsCollection.Sum(x => x.TotalBytes);
         public string JunkSizeDisplay => FormatBytes(CurrentJunkSizeBytes);
         public string CurrentScanningPath { get; private set; }
 
@@ -61,17 +63,30 @@ namespace FrontLineGUI.Include.Services
 
         private void OnEngineItemFound(string desc, int itemid, int scannerid)
         {
-            // FIX: Ensure UI-bound data updates happen on the UI thread
             System.Windows.Application.Current.Dispatcher.BeginInvoke(() =>
             {
-                CurrentScanningPath = desc;
-                CurrentErrorCount++;
 
-                if (IsFileScanner(scannerid))
+                // Only update if the engine actually gave us a path
+                if (!string.IsNullOrEmpty(desc)) CurrentScanningPath = desc;
+
+                // 2. Find the specific UI row (ScanResult) that matches this engine ID
+                // We look inside the ScanItem's scancodes list for the match
+                var result = ScannerResultsCollection.FirstOrDefault(r => r.ScanItem.scancodes != null &&
+                                                                          r.ScanItem.scancodes.Contains(scannerid.ToString()));
+
+                if (result != null)
                 {
-                    CurrentJunkSizeBytes += ParseFileSizeFromDescription(desc, scannerid);
+                    // 3. Increment the count for this specific category (e.g., "Recycle Bin")
+                    result.Count++;
+
+                    // 4. If it's a file scanner, calculate and add the size for this row
+                    if (IsFileScanner(scannerid))
+                    {
+                        result.TotalBytes += ParseFileSizeFromDescription(desc, scannerid);
+                    }
                 }
 
+                // 5. Keep the event trigger in case other parts of the app are listening
                 ItemFound?.Invoke(desc, itemid, scannerid);
             });
         }
@@ -92,6 +107,19 @@ namespace FrontLineGUI.Include.Services
         public async void StartScan(List<ScanItem> selectedItems)
         {
             if (CurrentState == ScanProcessState.Scanning) return;
+
+            ScannerResultsCollection.Clear();
+            foreach (var item in selectedItems)
+            {
+                // Add the row to the 3-column UI with 0 counts
+                ScannerResultsCollection.Add(new ScanResult
+                {
+                    ScanItem = item,
+                    ScanItemId = item.ScanItemId,
+                    Count = 0,
+                    TotalBytes = 0
+                });
+            }
 
             var allIdsToScan = selectedItems
                     .Where(x => x.scancodes != null)
@@ -158,19 +186,29 @@ namespace FrontLineGUI.Include.Services
         }
         public void Reset()
         {
-            // 1. Reset the Numbers
-            CurrentErrorCount = 0;
-            CurrentJunkSizeBytes = 0;
+
+            // 1. Tell the Engine to stop and clear its internal scanner list
+            _engine.Stop();
+            _engine.EnableAllScanners(false);
+
+            // 2. Clear the UI Path & Progress
             CurrentProgress = 0;
             _scannersFinished = 0;
 
-            // 3. Reset the State Machine
+            // 3. Zero out the data in your ObservableCollection
+            // This is what makes the red numbers in your screenshot turn back to 0
+            foreach (var result in ScannerResultsCollection)
+            {
+                result.Count = 0;
+                result.TotalBytes = 0;
+            }
+
+            // 4. Update the State
             UpdateState(ScanProcessState.Ready);
 
-            // 4. Force UI Refresh
-            // Since these aren't automatically notifying PropertyChanged, 
-            // you need to trigger your events here.
-            ProgressChanged?.Invoke(0);
+            // 5. Tell WPF to re-calculate the "Big Totals" at the top
+            // Without these, the "4.0GB" will stay stuck on screen
+
         }
 
         #endregion
@@ -230,8 +268,6 @@ namespace FrontLineGUI.Include.Services
 
         private void ResetStats()
         {
-            CurrentErrorCount = 0;
-            CurrentJunkSizeBytes = 0;
             CurrentProgress = 0;
             _scannersFinished = 0;
         }
@@ -248,7 +284,7 @@ namespace FrontLineGUI.Include.Services
             ProgressChanged?.Invoke(CurrentProgress);
         }
 
-        private string FormatBytes(long bytes)
+        public static string FormatBytes(long bytes)
         {
             string[] Suffix = { "B", "KB", "MB", "GB", "TB" };
             int i = 0;

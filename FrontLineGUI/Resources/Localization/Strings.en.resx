@@ -232,7 +232,7 @@
     <value>Status</value>
   </data>
   <data name="ScanningTitle" xml:space="preserve">
-    <value>Scanning</value>
+    <value>Scanning Your System</value>
   </data>
   <data name="ScanningPreInfo" xml:space="preserve">
     <value>Currently processing the files / settings inside your system.</value>
