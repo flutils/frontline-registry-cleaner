@@ -43,6 +43,7 @@
   <ItemGroup>
     <None Remove="Resources\fl.jpg" />
     <None Remove="Resources\icon.png" />
+    <None Remove="Resources\loader.gif" />
 
     <None Remove="Resources\OS\windows-10.png" />
     <None Remove="Resources\OS\windows-11.png" />
@@ -69,6 +70,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\loader.gif">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\OS\windows-10.png" />
     <Resource Include="Resources\OS\windows-11.png" />
     <Resource Include="Resources\OS\windows-8.png" />
@@ -104,11 +108,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CountryFlag.Wpf" Version="1.0.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3">
+    <PackageReference Include="LibreHardwareMonitorLib" Version="0.9.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.5" />
     <PackageReference Include="Velopack" Version="0.0.1298" />
   </ItemGroup>
   <ItemGroup>
@@ -145,12 +150,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Update="Lib\cpuidsdk.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Lib\cpuidsdk64.dll">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

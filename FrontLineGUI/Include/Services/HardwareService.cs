@@ -1,173 +1,132 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
-using System.Runtime.Versioning;
+using System.Linq;
 using System.Windows.Threading;
+using LibreHardwareMonitor.Hardware;
 
 namespace FrontLineGUI.Include.Services
 {
-    [SupportedOSPlatform("windows")]
     public class HardwareService : PropertyChangedBase
     {
-        // SDK Instance
-        public static CPUIDSDK pSDK;
+        private readonly Computer _computer;
 
-        // Static System Info (Calculated once)
-        public OSInfo OSInformation { get; }
+        // ========================
+        // Static Info
+        // ========================
+        public OSInfo OSInformation => OSInfo.Default;
+        public string CPUName { get; private set; }
+        public string GPUName { get; private set; }
+        public string RAMTotal { get; private set; }
+        public string ComputerName { get; private set; }
 
-        // Fallback Counters
-        private PerformanceCounter _cpuCounter;
-        private PerformanceCounter _ramCounter;
+        // ========================
+        // Live Metrics
+        // ========================
+        private int _cpuUsage;
+        private int _gpuUsage;
+        private int _ramUsage;
 
-        // Observable Properties for UI
-        private int _cpuPower;
-        private int _gpuPower;
-        private int _ramPower;
-        private int _hddSpace;
+        public int CPUUsage { get => _cpuUsage; set { _cpuUsage = value; OnPropertyChanged(nameof(CPUUsage)); } }
+        public int GPUUsage { get => _gpuUsage; set { _gpuUsage = value; OnPropertyChanged(nameof(GPUUsage)); } }
+        public int RAMUsage { get => _ramUsage; set { _ramUsage = value; OnPropertyChanged(nameof(RAMUsage)); } }
 
         public event Action HardwareUpdated;
 
+        // ========================
+        // Constructor
+        // ========================
         public HardwareService()
         {
+            ComputerName = Environment.MachineName;
+            Debug.WriteLine(ComputerName);
 
-            // Initialize the static OS info
-            OSInformation = new OSInfo();
+            _computer = new Computer
+            {
+                IsCpuEnabled = true,
+                IsGpuEnabled = true,
+                IsMemoryEnabled = true
+            };
 
-            // 1. Initialize Fallbacks
-            _cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total");
-            _ramCounter = new PerformanceCounter("Memory", "% Committed Bytes In Use");
+            _computer.Open();
 
-            // 2. Initialize CPUID SDK
-            //Init_CPUID();
+            InitStaticInfo();
 
-            // 3. Start Global Timer
-            DispatcherTimer timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(1);
-            timer.Tick += (s, e) => UpdateValues();
+            var timer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            timer.Tick += (s, e) => UpdateSensors();
             timer.Start();
         }
 
-        public void UpdateValues()
+        // ========================
+        // Static Info
+        // ========================
+        private void InitStaticInfo()
         {
-            // Update CPU & RAM via Performance Counters (or SDK if you prefer)
-            CPUPower = Convert.ToInt32(_cpuCounter.NextValue());
-            RAMPower = Convert.ToInt32(_ramCounter.NextValue());
+            foreach (var hw in _computer.Hardware)
+            {
+                hw.Update();
 
-            // Update HDD
-            HDDSpace = GetDriveSpace();
+                switch (hw.HardwareType)
+                {
+                    case HardwareType.Cpu:
+                        CPUName = hw.Name;
+                        break;
 
-            // Update GPU via CPUID SDK
-            //UpdateGPUFromSDK();
+                    case HardwareType.GpuNvidia:
+                    case HardwareType.GpuAmd:
+                    case HardwareType.GpuIntel:
+                        GPUName ??= hw.Name;
+                        break;
 
-            // Notify any listening ViewModels
+                    case HardwareType.Memory:
+                        var totalSensor = hw.Sensors.FirstOrDefault(s => s.Name.Contains("Memory"));
+                        if (totalSensor != null)
+                            RAMTotal = $"{Math.Round(totalSensor.Value ?? 0)} GB";
+                        break;
+                }
+            }
+
+            OnPropertyChanged(nameof(CPUName));
+            OnPropertyChanged(nameof(GPUName));
+            OnPropertyChanged(nameof(RAMTotal));
+            OnPropertyChanged(nameof(ComputerName));
+        }
+
+        // ========================
+        // Live Updates
+        // ========================
+        private void UpdateSensors()
+        {
+            foreach (var hw in _computer.Hardware)
+            {
+                hw.Update();
+
+                foreach (var sensor in hw.Sensors)
+                {
+                    switch (sensor.SensorType)
+                    {
+                        case SensorType.Load:
+                            if (hw.HardwareType == HardwareType.Cpu && sensor.Name == "CPU Total")
+                                CPUUsage = (int)Math.Round(sensor.Value ?? 0);
+
+                            if ((hw.HardwareType == HardwareType.GpuNvidia ||
+                                 hw.HardwareType == HardwareType.GpuAmd ||
+                                 hw.HardwareType == HardwareType.GpuIntel)
+                                && sensor.Name.Contains("Core"))
+                                GPUUsage = (int)Math.Round(sensor.Value ?? 0);
+                            break;
+
+                        case SensorType.Data:
+                            if (hw.HardwareType == HardwareType.Memory && sensor.Name.Contains("Used"))
+                                RAMUsage = (int)Math.Round(sensor.Value ?? 0);
+                            break;
+                    }
+                }
+            }
+
             HardwareUpdated?.Invoke();
-        }
-
-        private void UpdateGPUFromSDK()
-        {
-            if (pSDK != null)
-            {
-                pSDK.RefreshInformation();
-                // Note: You'll need to use the SDK's GetSensorValue or equivalent 
-                // to find the GPU utilization index.
-                // GPUPower = ... 
-            }
-        }
-
-        #region Properties
-        public int CPUPower { get => _cpuPower; set { _cpuPower = value; OnPropertyChanged(nameof(CPUPower)); } }
-        public int GPUPower { get => _gpuPower; set { _gpuPower = value; OnPropertyChanged(nameof(GPUPower)); } }
-        public int RAMPower { get => _ramPower; set { _ramPower = value; OnPropertyChanged(nameof(RAMPower)); } }
-        public int HDDSpace { get => _hddSpace; set { _hddSpace = value; OnPropertyChanged(nameof(HDDSpace)); } }
-        #endregion
-
-        private int GetDriveSpace()
-        {
-            long totalHdd = 0;
-            long availableHdd = 0;
-            foreach (DriveInfo drive in DriveInfo.GetDrives())
-            {
-                if (drive.IsReady)
-                {
-                    availableHdd += drive.AvailableFreeSpace;
-                    totalHdd += drive.TotalSize;
-                }
-            }
-            return (availableHdd > 0 && totalHdd > 0)
-                ? Convert.ToInt32(100 - (availableHdd / (float)totalHdd * 100))
-                : 0;
-        }
-
-        // RPECK 25/03/2023
-        // This is used to initialize the CPUID library in a separate thread
-        private void Init_CPUID()
-        {
-            // RPECK 24/03/2023
-            // CPUID
-            bool res;
-            int dll_version = 0;
-            int error_code = 0, extended_error_code = 0;
-            string error_message;
-
-            pSDK = new CPUIDSDK();
-            pSDK.CreateInstance();
-
-            res = pSDK.Init(CPUIDSDK.szDllPath,
-                            CPUIDSDK.szDllFilename,
-                            CPUIDSDK.CPUIDSDK_CONFIG_USE_EVERYTHING,
-                            ref error_code,
-                            ref extended_error_code);
-
-            if (error_code != CPUIDSDK.CPUIDSDK_ERROR_NO_ERROR)
-            {
-
-                //	Init failed, check errorcode
-                switch ((uint)error_code)
-                {
-                    case CPUIDSDK.CPUIDSDK_ERROR_EVALUATION:
-                        {
-                            switch ((uint)extended_error_code)
-                            {
-                                case CPUIDSDK.CPUIDSDK_EXT_ERROR_EVAL_1:
-                                    error_message = "You are running a trial version of the DLL SDK. In order to make it work, please run CPU-Z at the same time.";
-                                    break;
-
-                                case CPUIDSDK.CPUIDSDK_EXT_ERROR_EVAL_2:
-                                    error_message = "Evaluation version has expired.";
-                                    break;
-
-                                default:
-                                    error_message = "Eval version error " + extended_error_code;
-                                    break;
-                            }
-                        }
-                        break;
-
-                    case CPUIDSDK.CPUIDSDK_ERROR_DRIVER:
-                        error_message = "Driver error " + extended_error_code;
-                        break;
-
-                    case CPUIDSDK.CPUIDSDK_ERROR_VM_RUNNING:
-                        error_message = "Virtual machine detected.";
-                        break;
-
-                    case CPUIDSDK.CPUIDSDK_ERROR_LOCKED:
-                        error_message = "SDK mutex locked.";
-                        break;
-
-                    default:
-                        error_message = "Error code 0x%X" + error_code;
-                        break;
-                }
-                Debug.Write("CPUID Error - " + error_message);
-            }
-
-            if (res)
-            {
-                pSDK.GetDllVersion(ref dll_version);
-
-            }
-
         }
     }
 }

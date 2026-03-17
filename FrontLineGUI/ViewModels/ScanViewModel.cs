@@ -144,18 +144,12 @@ namespace FrontLineGUI
 
             // RPECK 14/03/2026 - Vars 
             string action = parameter?.ToString();
-            bool is_stopped = _scanService.CurrentState == ScanProcessState.Stopped || _scanService.CurrentState == ScanProcessState.Completed;
+            bool is_stopped = _scanService.CurrentState == ScanProcessState.Completed;
 
             // RPECK 14/03/2026 - First check to see which button was clicked
             if (action == "Stop")
             {
-
-                // RPECK 15/03/2026 - Check to see if the CurrentStatus is stopped / complete and, if so, set the status to Finished
-                if (is_stopped)
-                    _scanService.Stop();
-                else
-                    _scanService.Stop();
-
+                _scanService.Reset();
 
             } else if (action == "Pause")
             {

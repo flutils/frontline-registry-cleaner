@@ -17,7 +17,6 @@ namespace FrontLineGUI.Include.Services
         Ready,
         Scanning,
         Paused,
-        Stopped,
         Completed,
         Error
     }
@@ -176,14 +175,6 @@ namespace FrontLineGUI.Include.Services
             UpdateState(ScanProcessState.Scanning);
         }
 
-        public void Stop()
-        {
-            if (CurrentState == ScanProcessState.Ready || CurrentState == ScanProcessState.Completed || CurrentState == ScanProcessState.Stopped) return;
-
-            _cts?.Cancel();
-            _engine.Stop();
-            UpdateState(ScanProcessState.Stopped);
-        }
         public void Reset()
         {
 

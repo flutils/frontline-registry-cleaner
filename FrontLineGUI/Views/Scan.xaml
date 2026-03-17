@@ -559,19 +559,19 @@
                     <StackPanel Grid.Column="1" Margin="0,0,10,0" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Name="CPUInformation">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top">
                             <TextBlock Text="CPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding Hardware.CPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Hardware.CPUUsage, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="RAM" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding Hardware.RAMPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Hardware.RAMUsage, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="HDD" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding Hardware.HDDSpace, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Hardware.HDDUsage, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,0,0,0">
                             <TextBlock Text="GPU" HorizontalAlignment="Center" FontWeight="Bold" />
-                            <TextBlock Text="{Binding Hardware.GPUPower, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
+                            <TextBlock Text="{Binding Hardware.GPUUsage, Mode=OneWay, FallbackValue=0, StringFormat='{}{0}%'}" HorizontalAlignment="Center" />
                         </StackPanel>
                     </StackPanel>
 
@@ -705,10 +705,10 @@
                     <Border BorderBrush="#c5c5c5" BorderThickness="0,1,0,0" Grid.ColumnSpan="2" />
 
                     <!-- Scan Items -->
-                    <ItemsControl ItemsSource="{Binding Results}">
+                    <ItemsControl ItemsSource="{Binding Results}" Padding="10">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Vertical" MaxHeight="350" ItemWidth="280"/>
+                                <UniformGrid Columns="3" VerticalAlignment="Top" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
 
@@ -721,14 +721,14 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Image Grid.Column="0" Source="{Binding ScanItem.IconPath}" Width="20" Height="20" HorizontalAlignment="Left" />
+                                    <Image Grid.Column="0" Source="{Binding ScanItem.Image}" Width="20" Height="20" HorizontalAlignment="Left" />
 
                                     <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="5,0">
-                                        <TextBlock Text="{Binding SizeDisplay}" FontSize="10" Foreground="Red" VerticalAlignment="Bottom" Margin="0,0,3,2" />
-                                        <TextBlock x:Name="CountText" Text="{Binding Count}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
+                                        <TextBlock Text="{Binding SizeDisplay}" Foreground="Red" VerticalAlignment="Bottom" Margin="0,0,0,0" />
+                                        <TextBlock x:Name="CountText" Text="{Binding Count}" FontWeight="Bold" VerticalAlignment="Center" />
                                     </StackPanel>
 
-                                    <TextBlock x:Name="LabelText" Grid.Column="2" Text="{Binding ScanItem.Name}" VerticalAlignment="Center" FontSize="13" Margin="8,0,0,0" />
+                                    <TextBlock x:Name="LabelText" Grid.Column="2" Text="{Binding ScanItem.Name}" VerticalAlignment="Center" FontSize="13" Margin="0,0,0,0" />
                                 </Grid>
 
                                 <DataTemplate.Triggers>
