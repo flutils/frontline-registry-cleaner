@@ -124,6 +124,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Statistics.
+        /// </summary>
+        public static string AboutStatisticsTab {
+            get {
+                return ResourceManager.GetString("AboutStatisticsTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string AboutTitle {

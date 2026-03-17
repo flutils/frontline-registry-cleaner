@@ -264,4 +264,7 @@
   <data name="ScanPausedTitle" xml:space="preserve">
     <value>Scanning Paused</value>
   </data>
+  <data name="AboutStatisticsTab" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
 </root>

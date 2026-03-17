@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
+using System.IO;
 using System.Windows.Threading;
 using LibreHardwareMonitor.Hardware;
 
@@ -43,10 +43,12 @@ namespace FrontLineGUI.Include.Services
         private int _cpuUsage;
         private int _gpuUsage;
         private int _ramUsage;
+        private int _hddUsage;
 
         public int CPUUsage { get => _cpuUsage; set { _cpuUsage = value; OnPropertyChanged(nameof(CPUUsage)); } }
         public int GPUUsage { get => _gpuUsage; set { _gpuUsage = value; OnPropertyChanged(nameof(GPUUsage)); } }
         public int RAMUsage { get => _ramUsage; set { _ramUsage = value; OnPropertyChanged(nameof(RAMUsage)); } }
+        public int HDDUsage { get => _hddUsage; set { _hddUsage = value; OnPropertyChanged(nameof(HDDUsage)); } }
 
         public event Action HardwareUpdated;
 
@@ -58,12 +60,13 @@ namespace FrontLineGUI.Include.Services
             {
                 IsCpuEnabled = true,
                 IsGpuEnabled = true,
-                IsMemoryEnabled = true
+                IsMemoryEnabled = true,
+                IsStorageEnabled = false // ❌ Not needed anymore
             };
 
             _computer.Open();
 
-            // Run an initial update so names and totals are populated immediately
+            // Initial update
             _computer.Accept(_updateVisitor);
             InitStaticInfo();
 
@@ -71,6 +74,7 @@ namespace FrontLineGUI.Include.Services
             {
                 Interval = TimeSpan.FromSeconds(1)
             };
+
             timer.Tick += (s, e) => UpdateSensors();
             timer.Start();
         }
@@ -92,7 +96,9 @@ namespace FrontLineGUI.Include.Services
                         break;
 
                     case HardwareType.Memory:
-                        var totalSensor = hw.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Data && s.Name.Contains("Memory"));
+                        var totalSensor = hw.Sensors
+                            .FirstOrDefault(s => s.SensorType == SensorType.Data && s.Name.Contains("Memory"));
+
                         if (totalSensor != null)
                             RAMTotal = $"{Math.Round(totalSensor.Value ?? 0)} GB";
                         break;
@@ -107,42 +113,73 @@ namespace FrontLineGUI.Include.Services
 
         private void UpdateSensors()
         {
-            // The Visitor recursively updates all components
             _computer.Accept(_updateVisitor);
 
             foreach (var hw in _computer.Hardware)
             {
                 foreach (var sensor in hw.Sensors)
                 {
-                    ProcessSensorValue(hw, sensor);
+                    float value = sensor.Value ?? 0;
+
+                    switch (sensor.SensorType)
+                    {
+                        case SensorType.Load:
+
+                            // CPU
+                            if (hw.HardwareType == HardwareType.Cpu &&
+                                sensor.Name.Equals("CPU Total", StringComparison.OrdinalIgnoreCase))
+                            {
+                                CPUUsage = (int)Math.Round(value);
+                            }
+
+                            // GPU
+                            if (IsGpu(hw.HardwareType) &&
+                                sensor.Name.Contains("Core", StringComparison.OrdinalIgnoreCase))
+                            {
+                                GPUUsage = (int)Math.Round(value);
+                            }
+
+                            break;
+
+                        case SensorType.Data:
+
+                            // RAM (GB used)
+                            if (hw.HardwareType == HardwareType.Memory &&
+                                sensor.Name.Contains("Used", StringComparison.OrdinalIgnoreCase))
+                            {
+                                RAMUsage = (int)Math.Round(value);
+                            }
+
+                            break;
+                    }
                 }
             }
+
+            // ✅ Disk capacity usage (e.g. 50% full)
+            HDDUsage = GetDiskUsagePercentage();
 
             HardwareUpdated?.Invoke();
         }
 
-        private void ProcessSensorValue(IHardware hw, ISensor sensor)
+        private int GetDiskUsagePercentage()
         {
-            float value = sensor.Value ?? 0;
+            var drives = DriveInfo.GetDrives()
+                .Where(d => d.IsReady && d.DriveType == DriveType.Fixed);
 
-            switch (sensor.SensorType)
-            {
-                case SensorType.Load:
-                    if (hw.HardwareType == HardwareType.Cpu && sensor.Name == "CPU Total")
-                        CPUUsage = (int)Math.Round(value);
+            if (!drives.Any())
+                return 0;
 
-                    if (IsGpu(hw.HardwareType) && sensor.Name.Contains("Core"))
-                        GPUUsage = (int)Math.Round(value);
-                    break;
+            double total = drives.Sum(d => d.TotalSize);
+            double free = drives.Sum(d => d.AvailableFreeSpace);
 
-                case SensorType.Data:
-                    if (hw.HardwareType == HardwareType.Memory && sensor.Name.Contains("Used"))
-                        RAMUsage = (int)Math.Round(value);
-                    break;
-            }
+            double usedPercent = (total - free) / total * 100;
+
+            return (int)Math.Round(usedPercent);
         }
 
         private bool IsGpu(HardwareType type) =>
-            type == HardwareType.GpuNvidia || type == HardwareType.GpuAmd || type == HardwareType.GpuIntel;
+            type == HardwareType.GpuNvidia ||
+            type == HardwareType.GpuAmd ||
+            type == HardwareType.GpuIntel;
     }
 }

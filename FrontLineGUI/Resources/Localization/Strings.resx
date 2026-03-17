@@ -313,4 +313,8 @@
     <value>Scanning Paused</value>
     <comment>"Paused" title for the scan view</comment>
   </data>
+  <data name="AboutStatisticsTab" xml:space="preserve">
+    <value>Statistics</value>
+    <comment>"Statistics" tab shown on the about page</comment>
+  </data>
 </root>

@@ -110,7 +110,7 @@
                 </TabItem>
 
                 <!-- Backup -->
-                <TabItem Header="{ Binding Source={ x:Static lang:Strings.SettingsBackupTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="Backup">
+                <TabItem Header="{ Binding Source={ x:Static lang:Strings.AboutStatisticsTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="Backup">
                     <Grid />
                 </TabItem>
 
