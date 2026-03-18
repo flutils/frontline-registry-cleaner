@@ -30,16 +30,12 @@ namespace FrontLineGUI
             var major = OSVersionInfo.MajorVersion;
             var build = OSVersionInfo.BuildVersion;
             OSVersion = OSVersionInfo.VersionString;
-
+            
             // 2. Windows 11 Detection (Build 22000+ is the cutoff for Win11)
-            if (major == 10 && build >= 22000)
-            {
+            if(major == 10 && build >= 22000)
                 OSName = "Windows 11";
-            }
             else
-            {
                 OSName = OSVersionInfo.Name;
-            }
 
             // 3. System Identity
             ComputerName = Environment.MachineName;

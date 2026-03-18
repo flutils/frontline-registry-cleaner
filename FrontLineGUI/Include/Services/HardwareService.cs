@@ -60,8 +60,7 @@ namespace FrontLineGUI.Include.Services
             {
                 IsCpuEnabled = true,
                 IsGpuEnabled = true,
-                IsMemoryEnabled = true,
-                IsStorageEnabled = false // ❌ Not needed anymore
+                IsMemoryEnabled = true
             };
 
             _computer.Open();

@@ -88,7 +88,7 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to was established in 2009 to design &amp; distribute software solutions to consumers around the world. The business went through a period of development from 2014 until 2025, leading to the re-release of this product..
+        ///   Looks up a localized string similar to was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK..
         /// </summary>
         public static string AboutFLText {
             get {

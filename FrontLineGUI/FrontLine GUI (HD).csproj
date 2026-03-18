@@ -44,6 +44,7 @@
     <None Remove="Resources\fl.jpg" />
     <None Remove="Resources\icon.png" />
     <None Remove="Resources\loader.gif" />
+    <None Remove="Resources\MiB_Logo_Stacked_Colour-RGB.png" />
 
     <None Remove="Resources\OS\windows-10.png" />
     <None Remove="Resources\OS\windows-11.png" />
@@ -71,6 +72,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\loader.gif">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\MiB_Logo_Stacked_Colour-RGB.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\OS\windows-10.png" />

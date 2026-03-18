@@ -79,7 +79,7 @@
             <Separator Opacity="0.25" Height="1" Margin="10,10,10,5" />
 
             <!-- Content -->
-            <TabControl Margin="25,10,25,0" x:Name="AboutTabs" Background="#EFEFEF">
+            <TabControl Margin="25,10,25,0" x:Name="AboutTabs" Background="#EFEFEF" SelectedIndex="{Binding SelectedTabIndex, FallbackValue='0'}">
 
                 <!-- General -->
                 <TabItem Header="{ Binding Source={ x:Static lang:Strings.SettingsGeneralTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="General" BorderThickness="0" Padding="0">
@@ -108,6 +108,7 @@
 
                     </StackPanel>
                 </TabItem>
+
 
                 <!-- Backup -->
                 <TabItem Header="{ Binding Source={ x:Static lang:Strings.AboutStatisticsTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="Backup">

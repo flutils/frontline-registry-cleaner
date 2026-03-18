@@ -25,9 +25,12 @@ namespace FrontLineGUI.Include.Services
             _setCurrentViewModel?.Invoke(vm);
         }
 
-        public void NavigateTo(Type viewModelType)
+        public void NavigateTo(Type viewModelType, object parameter)
         {
             var vm = (ViewModelBase)_serviceProvider.GetRequiredService(viewModelType);
+
+            vm.OnNavigatedTo(parameter);
+
             _setCurrentViewModel?.Invoke(vm);
         }
     }
