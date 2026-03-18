@@ -18,7 +18,7 @@
 
         <!-- FL Button Text -->
         <!-- Used to give us the abilty to add some colour animation to the hover -->
-        <Style  TargetType="Hyperlink" x:Key="LinkHover">
+        <Style TargetType="Hyperlink" x:Key="LinkHover">
             
             <!-- Default Foreground as SolidColorBrush -->
             <Setter Property="Foreground" >
@@ -49,6 +49,49 @@
                 </Trigger>
             </Style.Triggers>
             
+        </Style>
+        
+        <!-- Made In Britain Button -->
+        <Style x:Key="OverlayImageButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="ContentGrid" Opacity="0.6" Background="Transparent" RenderTransformOrigin="0.5,0.5">
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="Opacity" To="0.6" Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" To="0.95" Duration="0:0:0.1" />
+                                            <DoubleAnimation Storyboard.TargetName="ContentGrid" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" To="0.95" Duration="0:0:0.1" />
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter RenderOptions.BitmapScalingMode="HighQuality"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
     </UserControl.Resources>
@@ -207,6 +250,11 @@
             </Grid>
 
         </Grid>
+
+        <!-- Made In Britain Logo -->
+        <Button Style="{StaticResource OverlayImageButtonStyle}" Margin="0,0,10,5" Click="MiB_Click" ToolTip="{x:Static lang:Strings.AboutMiBTooltip}">
+            <Image Source="/Resources/MiB_Logo_Stacked_Colour-RGB.png" Width="150" />
+        </Button>
 
     </Grid>
     

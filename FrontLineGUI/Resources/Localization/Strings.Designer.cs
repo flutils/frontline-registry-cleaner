@@ -106,6 +106,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Proud Member of Made in Britain.
+        /// </summary>
+        public static string AboutMiBTooltip {
+            get {
+                return ResourceManager.GetString("AboutMiBTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Further information about the application and our company..
         /// </summary>
         public static string AboutPreInfo {

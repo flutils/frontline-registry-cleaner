@@ -109,17 +109,19 @@
 
                     <!-- General -->
                     <TabItem Header="{ Binding Source={ x:Static lang:Strings.SettingsGeneralTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="General" BorderThickness="0" Padding="0">
+                        
+                        <!-- Debug -->
                         <StackPanel Orientation="Vertical">
                             
-                            <!-- Debug -->
-                            <CheckBox x:Name="Debug" IsChecked="False" />
-                            <Label Content="Debug" Target="{Binding ElementName=Debug}"/>
-
-                            <!-- Localization -->
-                            <TextBlock Text="Localization" />
+                            <!-- Input -->
+                            <CheckBox x:Name="Debug" IsChecked="{ Binding Config.IsDebug }" />
+                            
+                            <!-- Label -->
                             <Label Content="Debug" Target="{Binding ElementName=Debug}"/>
 
                         </StackPanel>
+                        
+                        
                     </TabItem>
                     
                     <!-- Backup -->

@@ -20,8 +20,6 @@ namespace FrontLineGUI
 
         // RPECK 23/03/2025 - External Link Click
         // Used to provide the means to open a URL in a web browser
-        // --
-        // Ref: 
         private void ExternalLinkClick(object sender, RequestNavigateEventArgs e)
         {
 
@@ -34,6 +32,16 @@ namespace FrontLineGUI
                 }
             );
 
+        }
+
+        private void MiB_Click(object sender, RoutedEventArgs e)
+        {
+            // Example: Open a website or show a message
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = Properties.Settings.Default.MadeInBritain,
+                UseShellExecute = true
+            });
         }
 
     }

@@ -317,4 +317,8 @@
     <value>Statistics</value>
     <comment>"Statistics" tab shown on the about page</comment>
   </data>
+  <data name="AboutMiBTooltip" xml:space="preserve">
+    <value>Proud Member of Made in Britain</value>
+    <comment>"About" page Made in Britain button tooltip</comment>
+  </data>
 </root>

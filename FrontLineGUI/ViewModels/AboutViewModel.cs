@@ -1,6 +1,7 @@
 ﻿using FrontLineGUI.Include.Classes.DB;
 using FrontLineGUI.Include.Interfaces;
 using FrontLineGUI.Include.Services;
+using System.Windows;
 
 namespace FrontLineGUI
 {

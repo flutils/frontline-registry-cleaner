@@ -267,4 +267,7 @@
   <data name="AboutStatisticsTab" xml:space="preserve">
     <value>Statistics</value>
   </data>
+  <data name="AboutMiBTooltip" xml:space="preserve">
+    <value>Proud Member of Made in Britain</value>
+  </data>
 </root>
