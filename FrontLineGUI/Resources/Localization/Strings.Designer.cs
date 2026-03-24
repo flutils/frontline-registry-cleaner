@@ -88,7 +88,7 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK and focus on solving technical challenges with world class software implementations &amp; strong aesthetic appeal..
+        ///   Looks up a localized string similar to was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK and focus on solving high level technical challenges with world class implementations &amp; strong aesthetic appeal..
         /// </summary>
         public static string AboutFLText {
             get {
@@ -201,6 +201,24 @@ namespace FrontLineGUI.Resources.Localization {
         public static string MainCopyrightButtonTooltip {
             get {
                 return ResourceManager.GetString("MainCopyrightButtonTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to exit?.
+        /// </summary>
+        public static string MainExitConfirmString {
+            get {
+                return ResourceManager.GetString("MainExitConfirmString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string MainExitConfirmTitle {
+            get {
+                return ResourceManager.GetString("MainExitConfirmTitle", resourceCulture);
             }
         }
         
@@ -502,7 +520,7 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable fixing and records events in a log file.
+        ///   Looks up a localized string similar to Disables fixing errors and ensures system can be tested.
         /// </summary>
         public static string SettingsDebugInfo {
             get {
@@ -525,6 +543,24 @@ namespace FrontLineGUI.Resources.Localization {
         public static string SettingsGeneralTab {
             get {
                 return ResourceManager.GetString("SettingsGeneralTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save events to log files.
+        /// </summary>
+        public static string SettingsLogsInfo {
+            get {
+                return ResourceManager.GetString("SettingsLogsInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logs.
+        /// </summary>
+        public static string SettingsLogsTitle {
+            get {
+                return ResourceManager.GetString("SettingsLogsTitle", resourceCulture);
             }
         }
         

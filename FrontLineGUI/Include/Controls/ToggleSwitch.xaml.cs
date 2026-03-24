@@ -10,18 +10,20 @@ namespace FrontLineGUI.Include.Controls
             InitializeComponent();
         }
 
-        // DependencyProperty to bind to ViewModel
-        public static readonly DependencyProperty IsOnProperty =
+        // 1. The Wrapper Property
+        public bool IsChecked
+        {
+            get => (bool)GetValue(IsCheckedProperty);
+            set => SetValue(IsCheckedProperty, value);
+        }
+
+        // 2. The DependencyProperty Registration
+        // MUST be public, static, and readonly.
+        public static readonly DependencyProperty IsCheckedProperty =
             DependencyProperty.Register(
-                nameof(IsEnabled),
+                nameof(IsChecked),
                 typeof(bool),
                 typeof(ToggleSwitch),
-                new PropertyMetadata(false));
-
-        public bool IsEnabled
-        {
-            get => (bool)GetValue(IsOnProperty);
-            set => SetValue(IsOnProperty, value);
-        }
+                new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
     }
 }

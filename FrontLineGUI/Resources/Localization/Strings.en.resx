@@ -190,7 +190,7 @@
     <value>Further information about the application and our company.</value>
   </data>
   <data name="AboutFLText" xml:space="preserve">
-    <value>was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK and focus on solving technical challenges with world class implementations &amp; strong aesthetic appeal.</value>
+    <value>was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK and focus on solving high level technical challenges with world class implementations &amp; strong aesthetic appeal.</value>
   </data>
   <data name="AboutFlatIconText" xml:space="preserve">
     <value>Icons made by Hopstarter and Dinosoftlabs from</value>
@@ -274,9 +274,21 @@
     <value>Debug</value>
   </data>
   <data name="SettingsDebugInfo" xml:space="preserve">
-    <value>Disable fixing &amp; records events in a log file</value>
+    <value>Disables fixing </value>
   </data>
   <data name="MainGithubTooltip" xml:space="preserve">
     <value>View Repo</value>
+  </data>
+  <data name="MainExitConfirmString" xml:space="preserve">
+    <value>Are you sure you want to exit?</value>
+  </data>
+  <data name="MainExitConfirmTitle" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="SettingsLogsTitle" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="SettingsLogsInfo" xml:space="preserve">
+    <value>Save events to log files</value>
   </data>
 </root>

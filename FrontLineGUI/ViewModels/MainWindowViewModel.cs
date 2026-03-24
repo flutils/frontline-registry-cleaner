@@ -4,6 +4,7 @@ using FrontLineGUI.Include.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
@@ -59,6 +60,7 @@ namespace FrontLineGUI
 
 
             // RPECK 24/03/2026 - Commands
+            // These were added to port away from the xaml.cs file
             CloseCommand                  = new DelegateCommand(o => ExecuteClose());
             MinimizeCommand               = new DelegateCommand(o => ExecuteMinimize());
             NavigateToLocalizationCommand = new DelegateCommand(o => _navigation.NavigateTo<SettingsViewModel>());
@@ -153,7 +155,7 @@ namespace FrontLineGUI
         private void ExecuteClose()
         {
             var result = System.Windows.Forms.MessageBox.Show(
-                "Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo);
+                "Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, (MessageBoxIcon)MessageBoxImage.Warning);
 
             if (result == DialogResult.Yes)
                 System.Windows.Application.Current.Shutdown();

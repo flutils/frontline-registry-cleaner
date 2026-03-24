@@ -34,7 +34,7 @@
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="TabItem">
-                                <Border Name="Border" BorderThickness="0" CornerRadius="5,5,0,0" Margin="0,0,2,2">
+                                <Border Name="Border" BorderThickness="0" CornerRadius="5,5,0,0" Margin="0,0,2,0">
                                     <ContentPresenter Name="Content" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="10,5" />
                                 </Border>
                                 <ControlTemplate.Triggers>
@@ -119,21 +119,45 @@
                                 <ColumnDefinition Width="1*" />
                                 <ColumnDefinition Width="1*" />
                             </Grid.ColumnDefinitions>
+                            
+                            <!-- Left Column -->
+                            <StackPanel Orientation="Vertical">
 
-                            <!-- Debug -->
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <!-- Debug -->
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
 
-                                <!-- Input -->
-                                <controls:ToggleSwitch x:Name="Debug" IsEnabled="true" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    <!-- Input -->
+                                    <controls:ToggleSwitch x:Name="Debug" IsChecked="{ Binding Config.IsDebug, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                                <!-- Info -->
-                                <StackPanel Orientation="Vertical" Margin="5,0,0,0">
+                                    <!-- Info -->
+                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
 
-                                    <!-- Title -->
-                                    <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Debug}" FontWeight="Bold" />
+                                        <!-- Title -->
+                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Debug}" FontWeight="Bold" />
 
-                                    <!-- Label -->
-                                    <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugInfo }, Mode=OneTime }" Target="{Binding ElementName=Debug}" />
+                                        <!-- Label -->
+                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugInfo }, Mode=OneTime }" Target="{Binding ElementName=Debug}" />
+
+                                    </StackPanel>
+
+                                </StackPanel>
+
+                                <!-- Logs -->
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+
+                                    <!-- Input -->
+                                    <controls:ToggleSwitch x:Name="Logs" IsChecked="{ Binding Config.IsDebug, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                                    <!-- Info -->
+                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+
+                                        <!-- Title -->
+                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Logs}" FontWeight="Bold" />
+
+                                        <!-- Label -->
+                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsInfo }, Mode=OneTime }" Target="{Binding ElementName=Logs}" />
+
+                                    </StackPanel>
 
                                 </StackPanel>
 

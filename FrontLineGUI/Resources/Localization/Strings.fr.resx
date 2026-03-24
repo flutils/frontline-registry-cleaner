@@ -190,7 +190,7 @@
     <value>Plus d'informations sur l'application et sur notre entreprise.</value>
   </data>
   <data name="AboutFLText" xml:space="preserve">
-    <value>a été fondée en 2009 dans le but de concevoir et de commercialiser des solutions logicielles destinées aux consommateurs du monde entier. Basés au Royaume-Uni, nous nous attachons à relever les défis techniques en proposant des solutions de premier ordre alliant une grande qualité technique à un design particulièrement soigné.</value>
+    <value>a été fondée en 2009 dans le but de concevoir et de commercialiser des solutions logicielles destinées aux consommateurs du monde entier. Basés au Royaume-Uni, nous nous attachons à relever des défis techniques de haut niveau grâce à des implémentations de classe mondiale et à un design particulièrement soigné.</value>
   </data>
   <data name="AboutFlatIconText" xml:space="preserve">
     <value>Icônes réalisées par Hopstarter et Dinosoftlabs à partir de</value>
@@ -274,9 +274,21 @@
     <value>Debug</value>
   </data>
   <data name="SettingsDebugInfo" xml:space="preserve">
-    <value>Désactiver l'enregistrement des événements dans un fichier journal</value>
+    <value>Désactive la fixation </value>
   </data>
   <data name="MainGithubTooltip" xml:space="preserve">
     <value>Consulter le repo</value>
+  </data>
+  <data name="MainExitConfirmString" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir quitter ?</value>
+  </data>
+  <data name="MainExitConfirmTitle" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
+  <data name="SettingsLogsTitle" xml:space="preserve">
+    <value>Journaux</value>
+  </data>
+  <data name="SettingsLogsInfo" xml:space="preserve">
+    <value>Enregistrer les événements dans des fichiers journaux</value>
   </data>
 </root>
