@@ -134,7 +134,7 @@
     <comment>Text for "Copyright" button tooltip on Main Window</comment>
   </data>
   <data name="MainLocalizationTooltip" xml:space="preserve">
-    <value>Change Localization</value>
+    <value>Change Language</value>
     <comment>Settings Localization Tooltip</comment>
   </data>
   <data name="MainScan" xml:space="preserve">
@@ -214,7 +214,7 @@
     <comment>Main subtitle for "About" screen</comment>
   </data>
   <data name="AboutFLText" xml:space="preserve">
-    <value>was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK.</value>
+    <value>was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK and focus on solving technical challenges with world class software implementations &amp; strong aesthetic appeal.</value>
     <comment>Text about Frontline Utilities LTD on the "About" page</comment>
   </data>
   <data name="AboutFlatIconText" xml:space="preserve">
@@ -320,5 +320,17 @@
   <data name="AboutMiBTooltip" xml:space="preserve">
     <value>Proud Member of Made in Britain</value>
     <comment>"About" page Made in Britain button tooltip</comment>
+  </data>
+  <data name="SettingsDebugTitle" xml:space="preserve">
+    <value>Debug</value>
+    <comment>"Settings" page debug title</comment>
+  </data>
+  <data name="SettingsDebugInfo" xml:space="preserve">
+    <value>Disable fixing and records events in a log file</value>
+    <comment>"Settings" debug information text</comment>
+  </data>
+  <data name="MainGithubTooltip" xml:space="preserve">
+    <value>View Repo</value>
+    <comment>"Main" window Github button in the footer</comment>
   </data>
 </root>

@@ -249,18 +249,18 @@
             <!-- Action Buttons -->
             <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,7,0"  Orientation="Horizontal" Grid.Column="1" Panel.ZIndex="10" Height="42">
 
-                <!-- Localization Flag -->
-                <Button Name="LocalizationButton" MaxHeight="25" Margin="0,0,5,0" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{DynamicResource Str_MainLocalizationButtonTooltip}">
-                    <cf:CountryFlag CountryCode="{ Binding Source={x:Static glob:CultureInfo.CurrentCulture}, Path=Name, Converter={ StaticResource CultureISOConverter } }" Width="60" Margin="0" />
+                <!-- Localization Flags -->
+                <Button Name="LocalizationButton" MaxHeight="25" Margin="0,0,5,0" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{ x:Static lang:Strings.MainLocalizationTooltip }" Command="{ Binding NavigateToLocalizationCommand }">
+                    <cf:CountryFlag CountryCode="{ Binding Source={x:Static glob:CultureInfo.CurrentCulture}, Path=Name, Converter={ StaticResource CultureISOConverter } }" Width="50" Margin="0" Padding="0" />
                 </Button>
 
                 <!-- Minimize -->
-                <Button ToolTip="Minimize" Name="MinimizeButton" Style="{StaticResource MainActionButton}" Click="MinimizeButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
+                <Button ToolTip="Minimize" Name="MinimizeButton" Style="{StaticResource MainActionButton}" Command="{ Binding MinimizeCommand }" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
                     <Path Data="{Binding Source={x:Static properties:Resources.MinimizeButtonPathData}, Mode=OneTime}" Fill="White"/>
                 </Button>
 
                 <!-- Close -->
-                <Button ToolTip="Close" Name="CloseButton" Style="{StaticResource MainActionButton}" Click="CloseButton_Click" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#e30c0c">
+                <Button ToolTip="Close" Name="CloseButton" Style="{StaticResource MainActionButton}" Command="{ Binding CloseCommand }" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#e30c0c">
                     <Path Data="{Binding Source={x:Static properties:Resources.CloseButtonPathData}, Mode=OneTime}" Fill="White"/>
                 </Button>
 
@@ -424,7 +424,7 @@
                         <!-- Copyright -->
                         <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock Text="©" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" VerticalAlignment="Center" Margin="0,0,2,0"/>
-                            <Button Background="{x:Null}" Click="CopyRightButton_Click" BorderBrush="{x:Null}">
+                            <Button Background="{x:Null}" Command="{ Binding OpenUrlCommand }" CommandParameter="{Binding Source={x:Static properties:Settings.Default}, Path=FLWeb, Mode=OneTime}" BorderBrush="{x:Null}">
                                 <Border Background="#00000000">
                                     <TextBlock FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{ x:Static lang:Strings.MainCopyrightButtonTooltip }" TextDecorations="Underline" Style="{StaticResource FLButtonText}">
                                         <Run Text="{ x:Static lang:Strings.MainCopyrightButton}" FontWeight="Bold" />
@@ -447,12 +447,12 @@
                         <!-- Version -->
                         <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock Text="Version:" HorizontalAlignment="Right" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" Margin="0" VerticalAlignment="Center" />
-                            <Button Background="{x:Null}" Click="VersionButton_Click" BorderBrush="{x:Null}" Margin="5,0,0,0">
+                            <Button Background="{x:Null}" Command="{ Binding OpenUrlCommand  }" CommandParameter="{Binding Source={x:Static properties:Settings.Default}, Path=Repo, Mode=OneTime}" BorderBrush="{x:Null}" Margin="5,0,0,0">
                                 <Border Background="#00000000">
                                     <TextBlock Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{ x:Static lang:Strings.MainVersionButtonTooltip }" TextDecorations="Underline" Style="{StaticResource FLButtonText}" />
                                 </Border>
                             </Button>
-                            <Button Background="{x:Null}" Click="GithubButton_Click" BorderBrush="{x:Null}" ToolTip="{DynamicResource Str_MainGithubTooltip}" Cursor="Hand" Margin="0" VerticalAlignment="Center">
+                            <Button Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="{ x:Static lang:Strings.MainGithubTooltip }" Cursor="Hand" Margin="0" VerticalAlignment="Center" Command="{Binding OpenUrlCommand}" CommandParameter="{Binding Source={x:Static properties:Settings.Default}, Path=Repo, Mode=OneTime}" >
                                 <Border Background="#00000000">
                                     <Viewbox Margin="5,0,0,0" Height="15" VerticalAlignment="Center">
                                         <Path Name="GithubIconPath" Data="{Binding Source={x:Static properties:Resources.GithubIconPathData}, Mode=OneTime}" SnapsToDevicePixels="True" Panel.ZIndex="1"  Fill="Black" />

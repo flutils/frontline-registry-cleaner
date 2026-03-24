@@ -88,7 +88,7 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK..
+        ///   Looks up a localized string similar to was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK and focus on solving technical challenges with world class software implementations &amp; strong aesthetic appeal..
         /// </summary>
         public static string AboutFLText {
             get {
@@ -205,7 +205,16 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change Localization.
+        ///   Looks up a localized string similar to View Repo.
+        /// </summary>
+        public static string MainGithubTooltip {
+            get {
+                return ResourceManager.GetString("MainGithubTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change Language.
         /// </summary>
         public static string MainLocalizationTooltip {
             get {
@@ -489,6 +498,24 @@ namespace FrontLineGUI.Resources.Localization {
         public static string SettingsBackupTab {
             get {
                 return ResourceManager.GetString("SettingsBackupTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable fixing and records events in a log file.
+        /// </summary>
+        public static string SettingsDebugInfo {
+            get {
+                return ResourceManager.GetString("SettingsDebugInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Debug.
+        /// </summary>
+        public static string SettingsDebugTitle {
+            get {
+                return ResourceManager.GetString("SettingsDebugTitle", resourceCulture);
             }
         }
         

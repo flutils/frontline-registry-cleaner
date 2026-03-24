@@ -20,6 +20,7 @@ namespace FrontLineGUI.Include.Services
 
         // RPECK 01/03/2026 - Settings to be saved
         public string CurrentLanguage { get; set; } = "en-GB";
+        public bool IsDebug { get; set; } = false;
 
         // Non-settable property for logic
         [JsonIgnore]

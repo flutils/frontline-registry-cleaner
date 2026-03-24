@@ -1,9 +1,12 @@
 ﻿using FrontLineGUI.Include.Classes;
-using FrontLineGUI.Include.Services;
 using FrontLineGUI.Include.Interfaces;
+using FrontLineGUI.Include.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Windows;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace FrontLineGUI
@@ -37,6 +40,10 @@ namespace FrontLineGUI
 
         // RPECK 06/02/2025 - Commands
         public ICommand NavigationButtonClick { get; private set; }
+        public ICommand CloseCommand { get; }
+        public ICommand MinimizeCommand { get; }
+        public ICommand NavigateToLocalizationCommand { get; }
+        public ICommand OpenUrlCommand { get; }
 
         // RPECK 21/02/2026 - Config
         public IAppConfig Config { get; }
@@ -49,6 +56,13 @@ namespace FrontLineGUI
             // RPECK 06/02/2025 - Populate Core Variables
             _navigation = navigation;
             _config     = config;
+
+
+            // RPECK 24/03/2026 - Commands
+            CloseCommand                  = new DelegateCommand(o => ExecuteClose());
+            MinimizeCommand               = new DelegateCommand(o => ExecuteMinimize());
+            NavigateToLocalizationCommand = new DelegateCommand(o => _navigation.NavigateTo<SettingsViewModel>());
+            OpenUrlCommand                = new DelegateCommand(o => ExecuteOpenUrl(o.ToString()));
 
             // RPECK 24/02/2026 - Navigation Items
             // Used by the nav bar at the top to provide a simple way to manage how they are displayed and interact
@@ -125,6 +139,31 @@ namespace FrontLineGUI
         public string Version
         {
             get { return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(); }
+        }
+
+        // RPECK 24/03/2026 - Excecute URL
+        // This was added to provide a single way to take users to different URL's (used mainly for the likes of Github etc)
+        private void ExecuteOpenUrl(string url)
+        {
+            Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
+        }
+
+        // RPECK 24/03/2026 - Close
+        // Close the application (ported from xaml.cs)
+        private void ExecuteClose()
+        {
+            var result = System.Windows.Forms.MessageBox.Show(
+                "Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+                System.Windows.Application.Current.Shutdown();
+        }
+
+        // RPECK 24/03/2026 - Minimize
+        // Ported from the xaml.cs file
+        private void ExecuteMinimize()
+        {
+            System.Windows.Application.Current.MainWindow.WindowState = WindowState.Minimized;
         }
 
         #endregion

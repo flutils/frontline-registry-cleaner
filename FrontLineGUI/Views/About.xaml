@@ -149,7 +149,14 @@
 
                         </Grid>
 
+                        <!-- Separator -->
+                        <Separator Height="20" Margin="10,0" />
+                        
+                        <!-- PC Info -->
+                        <TextBlock Text="{ Binding Hardware.ComputerName, Mode=OneWay }" />
+
                     </StackPanel>
+
                 </TabItem>
 
 

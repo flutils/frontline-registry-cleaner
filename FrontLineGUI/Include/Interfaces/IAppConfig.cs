@@ -15,6 +15,9 @@ namespace FrontLineGUI.Include.Interfaces
         string DatabasePath { get; }
         string ConfigFilePath { get; }
 
+        // RPECK 24/03/2026 - Debug
+        bool IsDebug { get; }
+
         void Load();
         void Save();
     }

@@ -130,7 +130,7 @@
     <value>View Company Website</value>
   </data>
   <data name="MainLocalizationTooltip" xml:space="preserve">
-    <value>Change Localization</value>
+    <value>Change Language</value>
   </data>
   <data name="MainScan" xml:space="preserve">
     <value>Scan</value>
@@ -190,7 +190,7 @@
     <value>Further information about the application and our company.</value>
   </data>
   <data name="AboutFLText" xml:space="preserve">
-    <value>was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK.</value>
+    <value>was established in 2009 to design &amp; distribute software solutions to consumers around the world. We are based in the UK and focus on solving technical challenges with world class implementations &amp; strong aesthetic appeal.</value>
   </data>
   <data name="AboutFlatIconText" xml:space="preserve">
     <value>Icons made by Hopstarter and Dinosoftlabs from</value>
@@ -269,5 +269,14 @@
   </data>
   <data name="AboutMiBTooltip" xml:space="preserve">
     <value>Proud Member of Made in Britain</value>
+  </data>
+  <data name="SettingsDebugTitle" xml:space="preserve">
+    <value>Debug</value>
+  </data>
+  <data name="SettingsDebugInfo" xml:space="preserve">
+    <value>Disable fixing &amp; records events in a log file</value>
+  </data>
+  <data name="MainGithubTooltip" xml:space="preserve">
+    <value>View Repo</value>
   </data>
 </root>
