@@ -271,7 +271,7 @@
     <value>Membre de Made in Britain</value>
   </data>
   <data name="SettingsDebugTitle" xml:space="preserve">
-    <value>Debug</value>
+    <value>Mode Debug</value>
   </data>
   <data name="SettingsDebugInfo" xml:space="preserve">
     <value>Désactive la fixation </value>

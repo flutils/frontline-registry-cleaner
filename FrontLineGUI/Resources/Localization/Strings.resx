@@ -322,7 +322,7 @@
     <comment>"About" page Made in Britain button tooltip</comment>
   </data>
   <data name="SettingsDebugTitle" xml:space="preserve">
-    <value>Debug</value>
+    <value>Debug Mode</value>
     <comment>"Settings" page debug title</comment>
   </data>
   <data name="SettingsDebugInfo" xml:space="preserve">

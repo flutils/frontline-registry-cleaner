@@ -36,6 +36,12 @@
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
     <RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Resources\Localization\Flags\**" />
+    <EmbeddedResource Remove="Resources\Localization\Flags\**" />
+    <None Remove="Resources\Localization\Flags\**" />
+    <Page Remove="Resources\Localization\Flags\**" />
+  </ItemGroup>
 <ItemGroup>
     <ApplicationDefinition Remove="App.xaml" />
     <Page Include="App.xaml" />
@@ -51,6 +57,8 @@
     <None Remove="Resources\OS\windows-8.png" />
     <None Remove="Resources\OS\windows-95.png" />
     <None Remove="Resources\OS\windows-xp.png" />
+    <None Remove="Resources\Scan\backup.png" />
+    <None Remove="Resources\Scan\general.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Include\Classes\DB\Models\ScanItem.cs" />
@@ -82,6 +90,12 @@
     <Resource Include="Resources\OS\windows-8.png" />
     <Resource Include="Resources\OS\windows-95.png" />
     <Resource Include="Resources\OS\windows-xp.png" />
+    <Resource Include="Resources\Scan\backup.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\Scan\general.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Scan\registry_errors.png" />
@@ -163,8 +177,5 @@
     <Resource Include="Resources\icon.ico">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\Localization\Flags\" />
   </ItemGroup>
 </Project>

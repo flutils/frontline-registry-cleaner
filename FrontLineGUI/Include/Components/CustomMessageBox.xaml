@@ -11,7 +11,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterOwner">
 
-    <Border CornerRadius="5" Background="#F5F5F5" BorderBrush="#333" BorderThickness="1" MouseDown="Window_MouseDown">
+    <Border CornerRadius="5" Background="#F5F5F5" BorderBrush="#333" BorderThickness="1" MouseDown="Window_MouseDown" SnapsToDevicePixels="True" UseLayoutRounding="True">
         
         <!-- Pop-In Animation -->
         <Border.RenderTransform>
@@ -48,8 +48,10 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock x:Name="txtTitle" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
-            <TextBlock x:Name="txtMessage" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
+                <TextBlock x:Name="txtTitle" FontWeight="Bold" FontSize="16" Margin="0,0,0,0"/>
+                <TextBlock x:Name="txtMessage" TextWrapping="Wrap" VerticalAlignment="Center"/>
+            </StackPanel>
 
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
                 <Button x:Name="btnOk" Content="OK" Margin="0" Click="BtnOk_Click" Style="{ StaticResource GeneralButton }"/>

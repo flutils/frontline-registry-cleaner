@@ -36,8 +36,7 @@ namespace FrontLineGUI.Include.Components
                 if (dimmer != null)
                 {
                     dimmer.Visibility = Visibility.Visible;
-                    // A tiny bit of Opacity makes it look better than pitch black
-                    dimmer.Opacity = 0.4;
+                    dimmer.Opacity = 0.8;
                 }
 
                 // ShowDialog blocks the code here until the user closes the message box

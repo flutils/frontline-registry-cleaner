@@ -529,7 +529,7 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Debug.
+        ///   Looks up a localized string similar to Debug Mode.
         /// </summary>
         public static string SettingsDebugTitle {
             get {
