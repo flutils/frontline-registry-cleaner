@@ -177,261 +177,265 @@
 
     </Window.Resources>
 
-    <!-- Window -->
-    <Border x:Name="MainBorder" BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15,15,0,0" SnapsToDevicePixels="True" UseLayoutRounding="True" Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}">
+    <!-- Grid -->
+    <!-- RPECK 25/03/2026 - Added to provide the means to add the "overlay" dimmer (for our CustomMessageBox component) -->
+    <Grid>
 
-        <!-- Content -->
-        <Grid x:Name="MainGrid" Margin="-1">
+        <!-- Window -->
+        <Border x:Name="MainBorder" BorderThickness="5" Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15,15,0,0" SnapsToDevicePixels="True" UseLayoutRounding="True" Background="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}" BorderBrush="{Binding Source={x:Static properties:Settings.Default}, Path=MainBackground, Mode=Default, Converter={StaticResource BrushConverter}}">
 
-            <!-- Grid Definition -->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
+            <!-- Content -->
+            <Grid x:Name="MainGrid" Margin="-1">
 
-            <!-- Header Area  -->
-            <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15,15,0,0" BorderThickness="1">
-                <Border.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#00000000" Offset="1"/>
-                        <GradientStop Color="#72FFFFFF" Offset="0"/>
-                    </LinearGradientBrush>
-                </Border.Background>
-                <Border.BorderBrush>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#99FFFFFF" />
-                        <GradientStop Color="#00000000" Offset="1"/>
-                    </LinearGradientBrush>
-                </Border.BorderBrush>
-            </Border>
-
-            <!-- Logo -->
-            <StackPanel Orientation="Horizontal">
-                <Viewbox Height="40" Margin="10,0,0,0" HorizontalAlignment="Left" Stretch="UniformToFill">
-                    <Viewbox.Effect>
-                        <DropShadowEffect Color="#FFFFD99A" BlurRadius="15" ShadowDepth="0" Opacity="1" />
-                    </Viewbox.Effect>
-                    <Path Data="{Binding Source={x:Static properties:Resources.LogoIconPathData}, Mode=OneTime}" Fill="White" />
-                </Viewbox>
-                <Viewbox Margin="10,17,0,17" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
-                    <Viewbox.RenderTransform>
-                        <TransformGroup>
-                            <TranslateTransform Y="2"/>
-                        </TransformGroup>
-                    </Viewbox.RenderTransform>
-                    <Grid>
-                        <Path Name="LogoPath" Data="{Binding Source={x:Static properties:Resources.LogoTextPathData2}, Mode=OneTime}" SnapsToDevicePixels="True" Panel.ZIndex="1">
-                            <Path.Fill>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FFFAFAFA" Offset="1"/>
-                                    <GradientStop Color="#FFADADAD" Offset="0.554"/>
-                                </LinearGradientBrush>
-                            </Path.Fill>
-                            <Path.Effect>
-                                <DropShadowEffect Color="Black" BlurRadius="0" ShadowDepth="5" Opacity="1" Direction="115" />
-                            </Path.Effect>
-                        </Path>
-                        <Rectangle Panel.ZIndex="2" Width="380" HorizontalAlignment="Left" Clip="{Binding Source={x:Static properties:Resources.LogoTextPathData2}, Mode=OneTime}" SnapsToDevicePixels="True">
-                            <Rectangle.Fill>
-                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                    <GradientStop Color="#FFFFE031" Offset="1" />
-                                    <GradientStop Color="#FFFFC35C" Offset="0.554"/>
-                                </LinearGradientBrush>
-                            </Rectangle.Fill>
-                        </Rectangle>
-                    </Grid>
-                </Viewbox>
-            </StackPanel>
-
-            <!-- Action Buttons -->
-            <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,7,0"  Orientation="Horizontal" Grid.Column="1" Panel.ZIndex="10" Height="42">
-
-                <!-- Localization Flags -->
-                <Button Name="LocalizationButton" MaxHeight="25" Margin="0,0,5,0" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{ x:Static lang:Strings.MainLocalizationTooltip }" Command="{ Binding NavigateToLocalizationCommand }">
-                    <cf:CountryFlag CountryCode="{ Binding Source={x:Static glob:CultureInfo.CurrentCulture}, Path=Name, Converter={ StaticResource CultureISOConverter } }" Width="50" Margin="0" Padding="0" />
-                </Button>
-
-                <!-- Minimize -->
-                <Button ToolTip="Minimize" Name="MinimizeButton" Style="{StaticResource MainActionButton}" Command="{ Binding MinimizeCommand }" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
-                    <Path Data="{Binding Source={x:Static properties:Resources.MinimizeButtonPathData}, Mode=OneTime}" Fill="White"/>
-                </Button>
-
-                <!-- Close -->
-                <Button ToolTip="Close" Name="CloseButton" Style="{StaticResource MainActionButton}" Command="{ Binding CloseCommand }" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#e30c0c">
-                    <Path Data="{Binding Source={x:Static properties:Resources.CloseButtonPathData}, Mode=OneTime}" Fill="White"/>
-                </Button>
-
-            </StackPanel>
-
-            <!-- Bottom Area Grid (Under Header) -->
-            <Grid Grid.Row="1" Grid.ColumnSpan="2">
-
-                <!-- Grid Definitions -->
+                <!-- Grid Definition -->
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="35px" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="1*" />
                 </Grid.RowDefinitions>
 
-                <!-- Top Border -->
-                <Border Grid.Row="0">
+                <!-- Header Area  -->
+                <Border Grid.Row="0" Grid.ColumnSpan="2" CornerRadius="15,15,0,0" BorderThickness="1">
                     <Border.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FFF3EB42" Offset="1"/>
-                            <GradientStop Color="#FFBB8F24" Offset="0"/>
+                            <GradientStop Color="#00000000" Offset="1"/>
+                            <GradientStop Color="#72FFFFFF" Offset="0"/>
                         </LinearGradientBrush>
                     </Border.Background>
-                </Border>
-
-                <!-- Inner Border Area -->
-                <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="#bb8f24">
-                    <Grid x:Name="SubTitle" Margin="2,2,2,2">
-
-                        <!-- Background -->
-                        <Grid.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FFAB771B"/>
-                                <GradientStop Color="#FFF5EE41" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Grid.Background>
-
-                        <!-- Grid Definitions -->
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*" />
-                        </Grid.RowDefinitions>
-
-                        <!-- Subtitle -->
-                        <TextBlock Foreground="#FF3A2600" Text="{ x:Static lang:Strings.MainSubtitle }" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
-                            <TextBlock.Effect>
-                                <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
-                            </TextBlock.Effect>
-                        </TextBlock>
-
-                        <!-- 
-                            RPECK 06/02/2025 - Dynamically add the buttons based on which ViewModels we have in the system 
-                            Ref: https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/
-                        -->
-                        <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}"  Style="{StaticResource NavigationListBox}" SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
-
-                            <!-- Panel -->
-                            <ListView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ListView.ItemsPanel>
-
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Title}" Style="{StaticResource SettingsLink}" TextDecorations="{Binding Path=(TextBlock.TextDecorations), RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-
-                        </ListView>
-
-                    </Grid>
-                </Border>
-
-                <!-- Main Content Border -->
-                <Border Grid.Row="1">
-                    <Border.Background>
+                    <Border.BorderBrush>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FFF2F2F2"/>
-                            <GradientStop Color="White" Offset="1"/>
+                            <GradientStop Color="#99FFFFFF" />
+                            <GradientStop Color="#00000000" Offset="1"/>
                         </LinearGradientBrush>
-                    </Border.Background>
+                    </Border.BorderBrush>
                 </Border>
 
-                <!-- Main Area -->
-                <Grid Grid.Row="1">
+                <!-- Logo -->
+                <StackPanel Orientation="Horizontal">
+                    <Viewbox Height="40" Margin="10,0,0,0" HorizontalAlignment="Left" Stretch="UniformToFill">
+                        <Viewbox.Effect>
+                            <DropShadowEffect Color="#FFFFD99A" BlurRadius="15" ShadowDepth="0" Opacity="1" />
+                        </Viewbox.Effect>
+                        <Path Data="{Binding Source={x:Static properties:Resources.LogoIconPathData}, Mode=OneTime}" Fill="White" />
+                    </Viewbox>
+                    <Viewbox Margin="10,17,0,17" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5">
+                        <Viewbox.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform Y="2"/>
+                            </TransformGroup>
+                        </Viewbox.RenderTransform>
+                        <Grid>
+                            <Path Name="LogoPath" Data="{Binding Source={x:Static properties:Resources.LogoTextPathData2}, Mode=OneTime}" SnapsToDevicePixels="True" Panel.ZIndex="1">
+                                <Path.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFFAFAFA" Offset="1"/>
+                                        <GradientStop Color="#FFADADAD" Offset="0.554"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                                <Path.Effect>
+                                    <DropShadowEffect Color="Black" BlurRadius="0" ShadowDepth="5" Opacity="1" Direction="115" />
+                                </Path.Effect>
+                            </Path>
+                            <Rectangle Panel.ZIndex="2" Width="380" HorizontalAlignment="Left" Clip="{Binding Source={x:Static properties:Resources.LogoTextPathData2}, Mode=OneTime}" SnapsToDevicePixels="True">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                        <GradientStop Color="#FFFFE031" Offset="1" />
+                                        <GradientStop Color="#FFFFC35C" Offset="0.554"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Grid>
+                    </Viewbox>
+                </StackPanel>
+
+                <!-- Action Buttons -->
+                <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,7,0"  Orientation="Horizontal" Grid.Column="1" Panel.ZIndex="10" Height="42">
+
+                    <!-- Localization Flags -->
+                    <Button Name="LocalizationButton" MaxHeight="25" Margin="0,0,5,0" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{ x:Static lang:Strings.MainLocalizationTooltip }" Command="{ Binding NavigateToLocalizationCommand }">
+                        <cf:CountryFlag CountryCode="{ Binding Source={x:Static glob:CultureInfo.CurrentCulture}, Path=Name, Converter={ StaticResource CultureISOConverter } }" Width="50" Margin="0" Padding="0" />
+                    </Button>
+
+                    <!-- Minimize -->
+                    <Button ToolTip="Minimize" Name="MinimizeButton" Style="{StaticResource MainActionButton}" Command="{ Binding MinimizeCommand }" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#0e76f6">
+                        <Path Data="{Binding Source={x:Static properties:Resources.MinimizeButtonPathData}, Mode=OneTime}" Fill="White"/>
+                    </Button>
+
+                    <!-- Close -->
+                    <Button ToolTip="Close" Name="CloseButton" Style="{StaticResource MainActionButton}" Command="{ Binding CloseCommand }" HorizontalAlignment="Right" Margin="0" VerticalAlignment="Center" Height="35" Width="35" Background="#e30c0c">
+                        <Path Data="{Binding Source={x:Static properties:Resources.CloseButtonPathData}, Mode=OneTime}" Fill="White"/>
+                    </Button>
+
+                </StackPanel>
+
+                <!-- Bottom Area Grid (Under Header) -->
+                <Grid Grid.Row="1" Grid.ColumnSpan="2">
 
                     <!-- Grid Definitions -->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="35px" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
-                    <!-- Border -->
-                    <Border BorderThickness="0,0,0,0" Grid.ColumnSpan="2" Grid.RowSpan="1" Panel.ZIndex="10" Height="5" VerticalAlignment="Top" Opacity="0.25">
+                    <!-- Top Border -->
+                    <Border Grid.Row="0">
                         <Border.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="Black"/>
-                                <GradientStop Color="White" Offset="1"/>
+                                <GradientStop Color="#FFF3EB42" Offset="1"/>
+                                <GradientStop Color="#FFBB8F24" Offset="0"/>
                             </LinearGradientBrush>
                         </Border.Background>
-                        <Border.OpacityMask>
-                            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
-                                <GradientStop Offset="0.15" Color="#00000000" />
-                                <GradientStop Offset="1" Color="#FF000000" />
-                            </LinearGradientBrush>
-                        </Border.OpacityMask>
                     </Border>
 
-                    <!-- Right Area (Left Menu Shadow) -->
-                    <!-- This is required to achieve the "fade" effect on the left menu background -->
-                    <!-- Source: https://stackoverflow.com/a/5505174/1143732 -->
-                    <Border BorderThickness="1,0,0,0" BorderBrush="#FFD9D9D9" Grid.ColumnSpan="2">
-                        <Border.OpacityMask>
-                            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
-                                <GradientStop Offset="0.15" Color="#00000000" />
-                                <GradientStop Offset="1" Color="#FF000000" />
-                            </LinearGradientBrush>
-                        </Border.OpacityMask>
+                    <!-- Inner Border Area -->
+                    <Border Grid.Row="0" BorderThickness="0 0 0 1" BorderBrush="#bb8f24">
+                        <Grid x:Name="SubTitle" Margin="2,2,2,2">
+
+                            <!-- Background -->
+                            <Grid.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFAB771B"/>
+                                    <GradientStop Color="#FFF5EE41" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Grid.Background>
+
+                            <!-- Grid Definitions -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+
+                            <!-- Subtitle -->
+                            <TextBlock Foreground="#FF3A2600" Text="{ x:Static lang:Strings.MainSubtitle }" FontStyle="Italic" FontWeight="Bold" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" FontFamily="Calibri">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect ShadowDepth="2" Direction="315" Color="White" Opacity="0.75" BlurRadius="0" />
+                                </TextBlock.Effect>
+                            </TextBlock>
+
+                            <!-- 
+                            RPECK 06/02/2025 - Dynamically add the buttons based on which ViewModels we have in the system 
+                            Ref: https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/
+                        -->
+                            <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}"  Style="{StaticResource NavigationListBox}" SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
+
+                                <!-- Panel -->
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel x:Name="SubActionButtons" HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Title}" Style="{StaticResource SettingsLink}" TextDecorations="{Binding Path=(TextBlock.TextDecorations), RelativeSource={RelativeSource AncestorType=ListBoxItem}}" />
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                            </ListView>
+
+                        </Grid>
                     </Border>
 
-                    <!-- Border -->
-                    <Border BorderThickness="0,0,0,0" Panel.ZIndex="10" Width="2" HorizontalAlignment="Left" Opacity="0.075">
+                    <!-- Main Content Border -->
+                    <Border Grid.Row="1">
                         <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" >
-                                <GradientStop Color="Black"/>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFF2F2F2"/>
                                 <GradientStop Color="White" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
-
-                        <Border.OpacityMask>
-                            <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
-                                <GradientStop Offset="0.15" Color="#00000000" />
-                                <GradientStop Offset="1" Color="#FF000000" />
-                            </LinearGradientBrush>
-                        </Border.OpacityMask>
                     </Border>
 
-                    <!-- Content Area -->
-                    <!-- This houses all of the panels (grids), which means that we're able to hide them as needed -->
-                    <!-- I have split the panels into separate CS files for the sake of brevity -->
-                    <ContentControl Style="{StaticResource MainFrameStyle}" Content="{Binding CurrentViewModel}" />
-
-                    <!-- Company & Assembly Info -->
-                    <Grid Grid.Row="1" Margin="10,2" VerticalAlignment="Center">
+                    <!-- Main Area -->
+                    <Grid Grid.Row="1">
 
                         <!-- Grid Definitions -->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                        <!-- Copyright -->
-                        <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock Text="©" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" VerticalAlignment="Center" Margin="0,0,2,0"/>
-                            <Button Background="{x:Null}" Command="{ Binding OpenUrlCommand }" CommandParameter="{Binding Source={x:Static properties:Settings.Default}, Path=FLWeb, Mode=OneTime}" BorderBrush="{x:Null}">
-                                <Border Background="#00000000">
-                                    <TextBlock FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{ x:Static lang:Strings.MainCopyrightButtonTooltip }" TextDecorations="Underline" Style="{StaticResource FLButtonText}">
+                        <!-- Border -->
+                        <Border BorderThickness="0,0,0,0" Grid.ColumnSpan="2" Grid.RowSpan="1" Panel.ZIndex="10" Height="5" VerticalAlignment="Top" Opacity="0.25">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="Black"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <Border.OpacityMask>
+                                <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
+                                    <GradientStop Offset="0.15" Color="#00000000" />
+                                    <GradientStop Offset="1" Color="#FF000000" />
+                                </LinearGradientBrush>
+                            </Border.OpacityMask>
+                        </Border>
+
+                        <!-- Right Area (Left Menu Shadow) -->
+                        <!-- This is required to achieve the "fade" effect on the left menu background -->
+                        <!-- Source: https://stackoverflow.com/a/5505174/1143732 -->
+                        <Border BorderThickness="1,0,0,0" BorderBrush="#FFD9D9D9" Grid.ColumnSpan="2">
+                            <Border.OpacityMask>
+                                <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
+                                    <GradientStop Offset="0.15" Color="#00000000" />
+                                    <GradientStop Offset="1" Color="#FF000000" />
+                                </LinearGradientBrush>
+                            </Border.OpacityMask>
+                        </Border>
+
+                        <!-- Border -->
+                        <Border BorderThickness="0,0,0,0" Panel.ZIndex="10" Width="2" HorizontalAlignment="Left" Opacity="0.075">
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0" >
+                                    <GradientStop Color="Black"/>
+                                    <GradientStop Color="White" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Border.OpacityMask>
+                                <LinearGradientBrush StartPoint="0,1" EndPoint="0,0" >
+                                    <GradientStop Offset="0.15" Color="#00000000" />
+                                    <GradientStop Offset="1" Color="#FF000000" />
+                                </LinearGradientBrush>
+                            </Border.OpacityMask>
+                        </Border>
+
+                        <!-- Content Area -->
+                        <!-- This houses all of the panels (grids), which means that we're able to hide them as needed -->
+                        <!-- I have split the panels into separate CS files for the sake of brevity -->
+                        <ContentControl Style="{StaticResource MainFrameStyle}" Content="{Binding CurrentViewModel}" />
+
+                        <!-- Company & Assembly Info -->
+                        <Grid Grid.Row="1" Margin="10,2" VerticalAlignment="Center">
+
+                            <!-- Grid Definitions -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Copyright -->
+                            <StackPanel Grid.Column="0" HorizontalAlignment="Left" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="©" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" VerticalAlignment="Center" Margin="0,0,2,0"/>
+                                <Button Background="{x:Null}" Command="{ Binding OpenUrlCommand }" CommandParameter="{Binding Source={x:Static properties:Settings.Default}, Path=FLWeb, Mode=OneTime}" BorderBrush="{x:Null}">
+                                    <Border Background="#00000000">
+                                        <TextBlock FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{ x:Static lang:Strings.MainCopyrightButtonTooltip }" TextDecorations="Underline" Style="{StaticResource FLButtonText}">
                                         <Run Text="{ x:Static lang:Strings.MainCopyrightButton}" FontWeight="Bold" />
-                                    </TextBlock>
-                                </Border>
-                            </Button>
-                            <TextBlock Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" VerticalAlignment="Center" Margin="2,0,0,0">
+                                        </TextBlock>
+                                    </Border>
+                                </Button>
+                                <TextBlock Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" VerticalAlignment="Center" Margin="2,0,0,0">
                                 <Run Text="{Binding CurrentYear, Mode=OneTime}" />
                                 <Run Text="-" />
                                 <Run Text="{ x:Static lang:Strings.MainCopyrightAllRightsReserved }" /><!--
@@ -441,31 +445,38 @@
                                     https://stackoverflow.com/a/48872968/1143732
                                 
                                 --><Run Text="." />
-                            </TextBlock>
-                        </StackPanel>
+                                </TextBlock>
+                            </StackPanel>
 
-                        <!-- Version -->
-                        <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center">
-                            <TextBlock Text="Version:" HorizontalAlignment="Right" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" Margin="0" VerticalAlignment="Center" />
-                            <Button Background="{x:Null}" Command="{ Binding OpenUrlCommand  }" CommandParameter="{Binding Source={x:Static properties:Settings.Default}, Path=Repo, Mode=OneTime}" BorderBrush="{x:Null}" Margin="5,0,0,0">
-                                <Border Background="#00000000">
-                                    <TextBlock Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{ x:Static lang:Strings.MainVersionButtonTooltip }" TextDecorations="Underline" Style="{StaticResource FLButtonText}" />
-                                </Border>
-                            </Button>
-                            <Button Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="{ x:Static lang:Strings.MainGithubTooltip }" Cursor="Hand" Margin="0" VerticalAlignment="Center" Command="{Binding OpenUrlCommand}" CommandParameter="{Binding Source={x:Static properties:Settings.Default}, Path=Repo, Mode=OneTime}" >
-                                <Border Background="#00000000">
-                                    <Viewbox Margin="5,0,0,0" Height="15" VerticalAlignment="Center">
-                                        <Path Name="GithubIconPath" Data="{Binding Source={x:Static properties:Resources.GithubIconPathData}, Mode=OneTime}" SnapsToDevicePixels="True" Panel.ZIndex="1"  Fill="Black" />
-                                    </Viewbox>
-                                </Border>
-                            </Button>
-                        </StackPanel>
-                                
+                            <!-- Version -->
+                            <StackPanel Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center">
+                                <TextBlock Text="Version:" HorizontalAlignment="Right" Foreground="Black" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" Margin="0" VerticalAlignment="Center" />
+                                <Button Background="{x:Null}" Command="{ Binding OpenUrlCommand  }" CommandParameter="{Binding Source={x:Static properties:Settings.Default}, Path=Repo, Mode=OneTime}" BorderBrush="{x:Null}" Margin="5,0,0,0">
+                                    <Border Background="#00000000">
+                                        <TextBlock Text="{Binding Version, Mode=OneTime}" FontWeight="Bold" FontSize="10" FontFamily="SergoeUI" ToolTip="{ x:Static lang:Strings.MainVersionButtonTooltip }" TextDecorations="Underline" Style="{StaticResource FLButtonText}" />
+                                    </Border>
+                                </Button>
+                                <Button Background="{x:Null}" BorderBrush="{x:Null}" ToolTip="{ x:Static lang:Strings.MainGithubTooltip }" Cursor="Hand" Margin="0" VerticalAlignment="Center" Command="{Binding OpenUrlCommand}" CommandParameter="{Binding Source={x:Static properties:Settings.Default}, Path=Repo, Mode=OneTime}" >
+                                    <Border Background="#00000000">
+                                        <Viewbox Margin="5,0,0,0" Height="15" VerticalAlignment="Center">
+                                            <Path Name="GithubIconPath" Data="{Binding Source={x:Static properties:Resources.GithubIconPathData}, Mode=OneTime}" SnapsToDevicePixels="True" Panel.ZIndex="1"  Fill="Black" />
+                                        </Viewbox>
+                                    </Border>
+                                </Button>
+                            </StackPanel>
+
+                        </Grid>
+
                     </Grid>
-
                 </Grid>
-            </Grid>
 
-        </Grid>
-    </Border>
+            </Grid>
+        </Border>
+
+        <!-- Dimmer -->
+        <!-- RPECK 25/03/2026 - Used to provide overlay effect when using custom message box (for exist and other confirmations) -->
+        <Border x:Name="OverlayDimmer" Background="Black" Opacity="0" Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+
+    </Grid>
+    
 </Window>

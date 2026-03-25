@@ -1,10 +1,9 @@
 ﻿using FrontLineGUI.Include.Classes;
 using FrontLineGUI.Include.Interfaces;
-using FrontLineGUI.Include.Services;
+using FrontLineGUI.Include.Components;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Windows;
 using System.Windows.Forms;
@@ -154,10 +153,10 @@ namespace FrontLineGUI
         // Close the application (ported from xaml.cs)
         private void ExecuteClose()
         {
-            var result = System.Windows.Forms.MessageBox.Show(
-                "Are you sure you want to exit?", "Exit", MessageBoxButtons.YesNo, (MessageBoxIcon)MessageBoxImage.Warning);
+            var result = CustomMessageBox.Show(
+                "Are you sure you want to exit?", "Exit");
 
-            if (result == DialogResult.Yes)
+            if (result == true)
                 System.Windows.Application.Current.Shutdown();
         }
 

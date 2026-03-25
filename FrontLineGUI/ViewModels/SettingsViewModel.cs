@@ -11,11 +11,13 @@ namespace FrontLineGUI
         public IAppConfig Config { get; }
 
         // RPECK24/03/2026 - Commands
-        public ICommand StopPauseClick { get; private set; }
+        public ICommand DebugClick { get; private set; }
 
         public SettingsViewModel(IAppConfig config)
         {
             _config = config;
+
+
         }
 
     }

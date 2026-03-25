@@ -13,21 +13,7 @@ namespace FrontLineGUI
         // This is where the app loads
         public MainWindow()
         {
-
-            // Init
             InitializeComponent();
-
-        }
-
-        // RPECK 07/03/2023
-        // Added to give us the means to display the current flag
-        public string LanguageFlag
-        {
-            get
-            {
-                string language = "en-GB";// App.ConfigOptions.Localization.CurrentLanguage;
-                return $"/Resources/Localization/Icons/{language}.jpg";
-            }
         }
 
         // Load

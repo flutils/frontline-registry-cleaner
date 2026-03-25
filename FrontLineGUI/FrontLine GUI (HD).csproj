@@ -164,4 +164,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Localization\Flags\" />
+  </ItemGroup>
 </Project>

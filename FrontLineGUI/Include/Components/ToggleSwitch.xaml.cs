@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace FrontLineGUI.Include.Controls
+namespace FrontLineGUI.Include.Components
 {
     public partial class ToggleSwitch : UserControl
     {
