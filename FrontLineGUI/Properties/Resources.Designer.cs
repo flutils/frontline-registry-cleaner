@@ -71,6 +71,16 @@ namespace FrontLineGUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap backup {
+            get {
+                object obj = ResourceManager.GetObject("backup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to M9.53,12.01L5.982,8.462l-3.53,3.53L0.009,9.549l3.53-3.53L-0.01,2.47,2.433,0.027,5.982,3.576,9.549,0.009l2.443,2.443L8.425,6.019l3.548,3.548Z.
         /// </summary>
         public static string CloseButtonPathData {
@@ -94,6 +104,16 @@ namespace FrontLineGUI.Properties {
         public static System.Drawing.Bitmap dll_errors {
             get {
                 object obj = ResourceManager.GetObject("dll_errors", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap general {
+            get {
+                object obj = ResourceManager.GetObject("general", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -57,8 +57,8 @@
     <None Remove="Resources\OS\windows-8.png" />
     <None Remove="Resources\OS\windows-95.png" />
     <None Remove="Resources\OS\windows-xp.png" />
-    <None Remove="Resources\Scan\backup.png" />
-    <None Remove="Resources\Scan\general.png" />
+    <None Remove="Resources\Icons\backup.png" />
+    <None Remove="Resources\Icons\general.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Include\Classes\DB\Models\ScanItem.cs" />
@@ -90,39 +90,57 @@
     <Resource Include="Resources\OS\windows-8.png" />
     <Resource Include="Resources\OS\windows-95.png" />
     <Resource Include="Resources\OS\windows-xp.png" />
-    <Resource Include="Resources\Scan\backup.png">
+    <Resource Include="Resources\Icons\backup.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Resources\Scan\general.png">
+    <Resource Include="Resources\Icons\general.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Scan\registry_errors.png" />
+    <Resource Include="Resources\Icons\registry_errors.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Scan\internet_errors.png" />
+    <Resource Include="Resources\Icons\internet_errors.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Scan\invalid_files.png" />
+    <Resource Include="Resources\Icons\invalid_files.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Scan\recycle_bin.png" />
+    <Resource Include="Resources\Icons\recycle_bin.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Scan\windows_errors.png" />
+    <Resource Include="Resources\Icons\windows_errors.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Scan\application_errors.png" />
+    <Resource Include="Resources\Icons\application_errors.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Scan\dll_errors.png" />
+    <Resource Include="Resources\Icons\dll_errors.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Scan\temp_files.png" />
+    <Resource Include="Resources\Icons\temp_files.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Scan\internet_cache.png" />
+    <Resource Include="Resources\Icons\internet_cache.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CountryFlag.Wpf" Version="1.0.0" />

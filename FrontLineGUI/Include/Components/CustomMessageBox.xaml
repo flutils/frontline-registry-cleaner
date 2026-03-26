@@ -11,7 +11,7 @@
         Background="Transparent"
         WindowStartupLocation="CenterOwner">
 
-    <Border CornerRadius="5" Background="#F5F5F5" BorderBrush="#333" BorderThickness="1" MouseDown="Window_MouseDown" SnapsToDevicePixels="True" UseLayoutRounding="True">
+    <Border CornerRadius="5" Background="#FFF" BorderBrush="#333" BorderThickness="1" MouseDown="Window_MouseDown" SnapsToDevicePixels="True" UseLayoutRounding="True">
         
         <!-- Pop-In Animation -->
         <Border.RenderTransform>
@@ -41,22 +41,26 @@
             </EventTrigger>
         </Border.Triggers>
 
-        <Grid Margin="20">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center">
+            <StackPanel Grid.Row="1" Orientation="Vertical" VerticalAlignment="Center" Margin="20,0">
                 <TextBlock x:Name="txtTitle" FontWeight="Bold" FontSize="16" Margin="0,0,0,0"/>
                 <TextBlock x:Name="txtMessage" TextWrapping="Wrap" VerticalAlignment="Center"/>
             </StackPanel>
+            
+            <!-- Border -->
+            <Border Grid.Row="2" Padding="15" Background="#f9f9f9" CornerRadius="0,0,5,5" BorderThickness="0,1,0,0" BorderBrush="#c5c5c5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="btnCancel" Content="Cancel" Margin="0" Click="BtnCancel_Click" Style="{ StaticResource GeneralButton }" Background="#e30c0c" />
+                    <Button x:Name="btnOk" Content="OK" Margin="1,0,0,0" Click="BtnOk_Click" Style="{ StaticResource GeneralButton }" Background="DodgerBlue"/>
+                </StackPanel>
+            </Border>
 
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                <Button x:Name="btnOk" Content="OK" Margin="0" Click="BtnOk_Click" Style="{ StaticResource GeneralButton }"/>
-                <Button x:Name="btnCancel" Content="Cancel" Margin="2,0,0,0" Click="BtnCancel_Click" Style="{ StaticResource GeneralButton }" />
-            </StackPanel>
         </Grid>
     </Border>
 </Window>

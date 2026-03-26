@@ -15,6 +15,17 @@
 
         <!-- Converters -->
         <local:CapitalizeFirstLetterConverter x:Key="CapitalizeFirstLetterConverter" />
+        
+        <!-- StackPanel Disabled -->
+        <Style TargetType="StackPanel">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Cursor" Value="No" />
+                    <Setter Property="Opacity" Value="0.5" />
+                    <Setter Property="IsHitTestVisible" Value="False" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
         <!-- Tab Styling -->
         <Style TargetType="{x:Type TabControl}" x:Key="TabControlStyling">
@@ -76,8 +87,7 @@
             <RowDefinition  />
         </Grid.RowDefinitions>
 
-        <!-- Main Scanning Grid -->
-
+        <!-- Main Content Grid -->
         <Grid Background="White">
 
             <!-- Grid Definition -->
@@ -96,7 +106,7 @@
                 <TextBlock TextWrapping="WrapWithOverflow" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#FF323232" Margin="10,5,10,0" Text="{ x:Static lang:Strings.SettingsPreInfo }" TextAlignment="Center" FontSize="12" />
 
                 <!-- Content -->
-                <TabControl Margin="25,10,25,0" Style="{StaticResource TabControlStyling}" x:Name="SettingsTabs" Background="#EFEFEF">
+                <TabControl Margin="25,10,25,0" Style="{StaticResource TabControlStyling}" x:Name="SettingsTabs" Background="#EFEFEF" VerticalAlignment="Stretch">
 
                     <!-- General -->
                     <TabItem Tag="General" BorderThickness="0" Padding="0">
@@ -104,64 +114,62 @@
                         <!-- Header -->
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="/Resources/Scan/general.png" Height="16" Width="16" Stretch="Uniform" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                                <Image Source="/Resources/Icons/general.png" Height="16" Width="16" Stretch="Uniform" Margin="0,0,5,0" VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding Source={x:Static lang:Strings.SettingsGeneralTab}, Converter={StaticResource CapitalizeFirstLetterConverter}, Mode=OneTime}" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="14" />
                             </StackPanel>
                         </TabItem.Header>
 
-                        <!-- Grid -->
-                        <Grid>
+                        <!-- Content -->
+                        <StackPanel Orientation="Vertical" IsEnabled="{Binding IsSettingsEnabled}">
 
-                            <!-- Columns -->
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            
-                            <!-- Left Column -->
-                            <StackPanel Orientation="Vertical">
+                            <!-- Debug -->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
 
-                                <!-- Debug -->
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                                <!-- Input -->
+                                <controls:ToggleSwitch x:Name="Debug" IsEnabled="False" IsChecked="{ Binding Config.IsDebug, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                                    <!-- Input -->
-                                    <controls:ToggleSwitch x:Name="Debug" IsChecked="{ Binding Config.IsDebug, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                <!-- Info -->
+                                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
 
-                                    <!-- Info -->
-                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                    <!-- Title -->
+                                    <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Debug}" FontWeight="Bold" />
 
-                                        <!-- Title -->
-                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Debug}" FontWeight="Bold" />
-
-                                        <!-- Label -->
-                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugInfo }, Mode=OneTime }" Target="{Binding ElementName=Debug}" />
-
-                                    </StackPanel>
-
-                                </StackPanel>
-
-                                <!-- Logs -->
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
-
-                                    <!-- Input -->
-                                    <controls:ToggleSwitch x:Name="Logs" IsChecked="{ Binding Config.IsDebug, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
-
-                                    <!-- Info -->
-                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-
-                                        <!-- Title -->
-                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Logs}" FontWeight="Bold" />
-
-                                        <!-- Label -->
-                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsInfo }, Mode=OneTime }" Target="{Binding ElementName=Logs}" />
-
-                                    </StackPanel>
+                                    <!-- Label -->
+                                    <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugInfo }, Mode=OneTime }" Target="{Binding ElementName=Debug}" />
 
                                 </StackPanel>
 
                             </StackPanel>
 
-                        </Grid>
+                            <!-- Logs -->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+
+                                <!-- Input -->
+                                <controls:ToggleSwitch x:Name="Logs" IsChecked="{ Binding Config.IsDebug, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+                                <!-- Info -->
+                                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+
+                                    <!-- Title -->
+                                    <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Logs}" FontWeight="Bold" />
+
+                                    <!-- Label -->
+                                    <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsInfo }, Mode=OneTime }" Target="{Binding ElementName=Logs}" />
+
+                                </StackPanel>
+
+                            </StackPanel>
+                            
+                            <!-- Separator -->
+                            <Separator Margin="10,0" Background="#c0c0c0"/>
+                            
+                            <!-- Action Buttons -->
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                
+                                
+                            </StackPanel>
+
+                        </StackPanel>
 
                     </TabItem>
                     
@@ -171,13 +179,12 @@
                         <!-- Header -->
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="/Resources/Scan/backup.png" Height="16" Width="16" Stretch="Uniform" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                                <Image Source="/Resources/Icons/backup.png" Height="16" Width="16" Stretch="Uniform" Margin="0,0,5,0" VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding Source={x:Static lang:Strings.SettingsBackupTab}, Converter={StaticResource CapitalizeFirstLetterConverter}, Mode=OneTime}" VerticalAlignment="Center" FontWeight="SemiBold" FontSize="14" />
                             </StackPanel>
                         </TabItem.Header>
 
                         <Grid>
-                            <Image Source="/Resources/Scan/backup.png" Height="100" Width="100" />
                         </Grid>
                     </TabItem>
 

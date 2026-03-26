@@ -3,7 +3,6 @@ using FrontLineGUI.Include.Classes.DB.Models;
 using FrontLineGUI.Include.Interfaces;
 using FrontLineGUI.Include.Services;
 using FrontLineGUI.Resources.Localization;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -60,15 +59,15 @@ namespace FrontLineGUI
             // Initialize the Scan Items
             ScanItemsCollection = new ScanItemsCollection()
             {
-                new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Scan/registry_errors.png", "20318;20311;20319;"),
-                new ScanItem("Invalid Files", "Clear invalid file errors.", true, "/Resources/Scan/invalid_files.png", "20310;20301;20313;"),
-                new ScanItem("Application Errors", "Remove old application settings.", true, "/Resources/Scan/application_errors.png", "20320;20308;20306;20312;"),
-                new ScanItem("DLL Errors", "Fix orphaned DLL entries.", true, "/Resources/Scan/dll_errors.png", "20315;"),
-                new ScanItem("Internet Errors", "Fix web browser errors.", true, "/Resources/Scan/internet_errors.png"),
-                new ScanItem("Windows Errors", "Resolve Windows registry errors.", true, "/Resources/Scan/windows_errors.png", "20307;20316;20402;20309;"),
-                new ScanItem("Temp Files", "Clear Windows temp files.", true, "/Resources/Scan/temp_files.png", "20505;20504;20506;20406;20503;20507;20407;"),
-                new ScanItem("Junk Files", "Remove Windows junk files.", true, "/Resources/Scan/recycle_bin.png", "20502;20405;"),
-                new ScanItem("Internet Cache", "Clear privacy data from browser caches.", true, "/Resources/Scan/internet_cache.png", "20314;20317;20403;20404;20501;")
+                new ScanItem("Registry Errors", "Clean registry errors.", true, "/Resources/Icons/registry_errors.png", "20318;20311;20319;"),
+                new ScanItem("Invalid Files", "Clear invalid file errors.", true, "/Resources/Icons/invalid_files.png", "20310;20301;20313;"),
+                new ScanItem("Application Errors", "Remove old application settings.", true, "/Resources/Icons/application_errors.png", "20320;20308;20306;20312;"),
+                new ScanItem("DLL Errors", "Fix orphaned DLL entries.", true, "/Resources/Icons/dll_errors.png", "20315;"),
+                new ScanItem("Internet Errors", "Fix web browser errors.", true, "/Resources/Icons/internet_errors.png"),
+                new ScanItem("Windows Errors", "Resolve Windows registry errors.", true, "/Resources/Icons/windows_errors.png", "20307;20316;20402;20309;"),
+                new ScanItem("Temp Files", "Clear Windows temp files.", true, "/Resources/Icons/temp_files.png", "20505;20504;20506;20406;20503;20507;20407;"),
+                new ScanItem("Junk Files", "Remove Windows junk files.", true, "/Resources/Icons/recycle_bin.png", "20502;20405;"),
+                new ScanItem("Internet Cache", "Clear privacy data from browser caches.", true, "/Resources/Icons/internet_cache.png", "20314;20317;20403;20404;20501;")
             };
 
             // Commands
