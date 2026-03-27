@@ -205,6 +205,24 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Debug Mode Active.
+        /// </summary>
+        public static string MainDebugLabel {
+            get {
+                return ResourceManager.GetString("MainDebugLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application is running in Debug mode!.
+        /// </summary>
+        public static string MainDebugToolTip {
+            get {
+                return ResourceManager.GetString("MainDebugToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to exit?.
         /// </summary>
         public static string MainExitConfirmString {

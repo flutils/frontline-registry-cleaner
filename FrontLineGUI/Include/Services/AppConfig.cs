@@ -1,58 +1,83 @@
-﻿using System;
+﻿using FrontLineGUI.Include.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using FrontLineGUI.Include.Interfaces;
 
 namespace FrontLineGUI.Include.Services
 {
     public class AppConfig : IAppConfig
     {
-        // RPECK 02/03/2026 - Paths 
-        // These are excluded from JSON serialization because they are calculated dynamically
+        // Paths (not serialized)
         [JsonIgnore]
         public string BaseFolder { get; }
+
         [JsonIgnore]
         public string DatabasePath => Path.Combine(BaseFolder, "data.db");
+
         [JsonIgnore]
         public string ConfigFilePath => Path.Combine(BaseFolder, "config.json");
 
-        // RPECK 01/03/2026 - Settings to be saved
-        public string CurrentLanguage { get; set; } = "en-GB";
+        // Settings (serialized)
+        public string CurrentLanguage { get; set; }
         public bool IsDebug { get; set; } = false;
+        public bool IsLogging { get; set; } = false;
 
-        // Non-settable property for logic
+        // Dynamically derived supported languages (from .resx)
         [JsonIgnore]
-        public IReadOnlyList<string> SupportedLanguages { get; } = new List<string> { "en-GB", "fr-FR" };
+        public IReadOnlyList<CultureInfo> SupportedLanguages =>
+            GetSupportedCultures()
+                .OrderBy(c => c.NativeName)
+                .ToList();
 
         public AppConfig()
         {
-            // Set up the local environment
+            // Set up local app folder
             var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             BaseFolder = Path.Combine(path, "FrontLineGUI");
 
-            if (!Directory.Exists(BaseFolder)) Directory.CreateDirectory(BaseFolder);
+            if (!Directory.Exists(BaseFolder))
+                Directory.CreateDirectory(BaseFolder);
 
-            // Load existing settings immediately
+            // Load config from disk
             Load();
+
+            // Ensure CurrentLanguage is valid
+            if (string.IsNullOrWhiteSpace(CurrentLanguage) ||
+                !SupportedLanguages.Any(c => c.Name == CurrentLanguage))
+            {
+                CurrentLanguage = SupportedLanguages.FirstOrDefault()?.Name
+                                  ?? CultureInfo.CurrentUICulture.Name;
+            }
+        }
+
+        private IEnumerable<CultureInfo> GetSupportedCultures()
+        {
+            return CultureInfo
+                .GetCultures(CultureTypes.SpecificCultures)
+                .Where(c => Properties.Resources.ResourceManager
+                    .GetResourceSet(c, true, false) != null);
         }
 
         public void Load()
         {
-            if (!File.Exists(ConfigFilePath)) return;
+            if (!File.Exists(ConfigFilePath))
+                return;
 
             try
             {
                 string json = File.ReadAllText(ConfigFilePath);
 
-                // We deserialize into a plain DTO or use a specific options set
-                // to avoid issues with read-only properties like BaseFolder
                 var loaded = JsonSerializer.Deserialize<ConfigData>(json);
 
                 if (loaded != null)
                 {
-                    this.CurrentLanguage = loaded.CurrentLanguage ?? "en-GB";
+                    CurrentLanguage = loaded.CurrentLanguage;
+                    IsDebug = loaded.IsDebug;
+                    IsLogging = loaded.IsLogging;
                 }
             }
             catch (Exception ex)
@@ -67,8 +92,12 @@ namespace FrontLineGUI.Include.Services
             {
                 var options = new JsonSerializerOptions { WriteIndented = true };
 
-                // We only want to save the user-changeable settings, not the paths
-                var dataToSave = new ConfigData { CurrentLanguage = this.CurrentLanguage };
+                var dataToSave = new ConfigData
+                {
+                    CurrentLanguage = this.CurrentLanguage,
+                    IsDebug = this.IsDebug,
+                    IsLogging = this.IsLogging
+                };
 
                 string json = JsonSerializer.Serialize(dataToSave, options);
                 File.WriteAllText(ConfigFilePath, json);
@@ -79,11 +108,12 @@ namespace FrontLineGUI.Include.Services
             }
         }
 
-        // Internal DTO to prevent JSON errors with complex types/getters
+        // DTO for serialization
         private class ConfigData
         {
             public string CurrentLanguage { get; set; }
+            public bool IsDebug { get; set; }
+            public bool IsLogging { get; set; }
         }
-
     }
 }

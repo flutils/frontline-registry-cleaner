@@ -60,6 +60,17 @@
             </Setter>
 
         </Style>
+        
+        <!-- Debug Button -->
+        <Style TargetType="{ x:Type Button }" x:Key="DebugButton">
+            <Setter Property="Visibility" Value="Collapsed" />
+
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding Config.IsDebug}" Value="True">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
 
         <!-- ScanItems ListBox -->
         <Style TargetType="{x:Type ListBox}" x:Key="NavigationListBox">
@@ -252,6 +263,9 @@
 
                 <!-- Action Buttons -->
                 <StackPanel x:Name="Action_Buttons" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,7,0"  Orientation="Horizontal" Grid.Column="1" Panel.ZIndex="10" Height="42">
+                    
+                    <!-- Debug Notification -->
+                    <Button Content="{ x:Static lang:Strings.MainDebugLabel }" ToolTip="{ x:Static lang:Strings.MainDebugToolTip }" Style="{ StaticResource DebugButton }" />
 
                     <!-- Localization Flags -->
                     <Button Name="LocalizationButton" MaxHeight="25" Margin="0,0,5,0" Background="{x:Null}" Foreground="{x:Null}" ToolTip="{ x:Static lang:Strings.MainLocalizationTooltip }" Command="{ Binding NavigateToLocalizationCommand }">
@@ -321,9 +335,9 @@
                             </TextBlock>
 
                             <!-- 
-                            RPECK 06/02/2025 - Dynamically add the buttons based on which ViewModels we have in the system 
-                            Ref: https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/
-                        -->
+                                RPECK 06/02/2025 - Dynamically add the buttons based on which ViewModels we have in the system 
+                                Ref: https://rachel53461.wordpress.com/2011/12/18/navigation-with-mvvm-2/
+                            -->
                             <ListView Margin="0, 0, 10, 0" ItemsSource="{Binding ViewModels}"  Style="{StaticResource NavigationListBox}" SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}" ItemContainerStyle="{StaticResource NavigationListItemStyle}" Grid.Column="1" SelectionMode="Single" HorizontalAlignment="Right" HorizontalContentAlignment="Right" ScrollViewer.CanContentScroll="False" x:Name="NavigationListBox">
 
                                 <!-- Panel -->
@@ -475,7 +489,7 @@
 
         <!-- Dimmer -->
         <!-- RPECK 25/03/2026 - Used to provide overlay effect when using custom message box (for exist and other confirmations) -->
-        <Border x:Name="OverlayDimmer" Background="Black" Opacity="0" Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"></Border>
+        <Border x:Name="OverlayDimmer" Background="Black" Opacity="0" Visibility="Collapsed" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CornerRadius="15,15,0,0"></Border>
 
     </Grid>
     

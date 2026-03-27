@@ -291,4 +291,10 @@
   <data name="SettingsLogsInfo" xml:space="preserve">
     <value>Enregistrer les événements dans des fichiers journaux</value>
   </data>
+  <data name="MainDebugLabel" xml:space="preserve">
+    <value>Mode Debug Activé</value>
+  </data>
+  <data name="MainDebugToolTip" xml:space="preserve">
+    <value>L'application fonctionne en mode debug !</value>
+  </data>
 </root>

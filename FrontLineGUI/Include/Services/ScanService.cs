@@ -31,6 +31,7 @@ namespace FrontLineGUI.Include.Services
 
         // Observable Properties
         public ScanProcessState CurrentState { get; private set; } = ScanProcessState.Ready;
+        public bool IsScanning => CurrentState == ScanProcessState.Scanning || CurrentState == ScanProcessState.Paused;
         public ObservableCollection<ScanResult> ScannerResultsCollection { get; set; } = new ObservableCollection<ScanResult>();
         public double CurrentProgress { get; private set; } = 0;
         public int CurrentErrorCount => ScannerResultsCollection.Sum(x => x.Count);

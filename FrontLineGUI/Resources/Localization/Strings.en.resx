@@ -291,4 +291,10 @@
   <data name="SettingsLogsInfo" xml:space="preserve">
     <value>Save events to log files</value>
   </data>
+  <data name="MainDebugLabel" xml:space="preserve">
+    <value>Debug Mode Active</value>
+  </data>
+  <data name="MainDebugToolTip" xml:space="preserve">
+    <value>Application is running in Debug mode!</value>
+  </data>
 </root>

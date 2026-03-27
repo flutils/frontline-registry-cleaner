@@ -349,4 +349,12 @@
     <value>Save events to log files</value>
     <comment>"Settings" log information</comment>
   </data>
+  <data name="MainDebugLabel" xml:space="preserve">
+    <value>Debug Mode Active</value>
+    <comment>"Debug" button at the top of the Main Window</comment>
+  </data>
+  <data name="MainDebugToolTip" xml:space="preserve">
+    <value>Application is running in Debug mode!</value>
+    <comment>"Main" debug button if debug mode is running</comment>
+  </data>
 </root>

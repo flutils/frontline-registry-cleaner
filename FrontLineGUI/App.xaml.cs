@@ -66,7 +66,8 @@ namespace FrontLineGUI
             var config = Services.GetRequiredService<IAppConfig>();
 
             // If the user's OS is Spanish, but we only support EN/FR:
-            if(!config.SupportedLanguages.Contains(config.CurrentLanguage)) config.CurrentLanguage = "en-GB";
+            if (!config.SupportedLanguages.Any(c => c.Name == config.CurrentLanguage))
+                config.CurrentLanguage = "en-GB";
 
             // RPECK 01/03/2026 - Set the initial culture (text) of the application
             // Required to ensure we are defaulting to either English or French

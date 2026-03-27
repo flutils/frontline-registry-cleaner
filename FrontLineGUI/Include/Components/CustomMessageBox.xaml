@@ -56,8 +56,8 @@
             <!-- Border -->
             <Border Grid.Row="2" Padding="15" Background="#f9f9f9" CornerRadius="0,0,5,5" BorderThickness="0,1,0,0" BorderBrush="#c5c5c5">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="btnCancel" Content="Cancel" Margin="0" Click="BtnCancel_Click" Style="{ StaticResource GeneralButton }" Background="#e30c0c" />
-                    <Button x:Name="btnOk" Content="OK" Margin="1,0,0,0" Click="BtnOk_Click" Style="{ StaticResource GeneralButton }" Background="DodgerBlue"/>
+                    <Button x:Name="btnOk" Content="OK" Margin="0" Click="BtnOk_Click" Style="{ StaticResource GeneralButton }" Background="DodgerBlue"/>
+                    <Button x:Name="btnCancel" Content="Cancel" Margin="1,0,0,0" Click="BtnCancel_Click" Style="{ StaticResource GeneralButton }" Background="#e30c0c" />
                 </StackPanel>
             </Border>
 
