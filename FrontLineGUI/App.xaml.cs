@@ -42,7 +42,6 @@ namespace FrontLineGUI
             services.AddSingleton<HardwareService>(); // RPECK 01/03/2026 - Set up RAM/CPU/HDD management
             services.AddSingleton<IAppConfig, AppConfig>();
 
-
             // RPECK 24/02/2026 - Navigation
             // Extracted from ViewModels to provide the means to manage how each of the views should display
             services.AddSingleton<MainWindowViewModel>();

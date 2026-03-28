@@ -357,4 +357,28 @@
     <value>Application is running in Debug mode!</value>
     <comment>"Main" debug button if debug mode is running</comment>
   </data>
+  <data name="SettingsBackupIntro" xml:space="preserve">
+    <value>Your backups are listed below: -</value>
+    <comment>Intro text for "backups" tab in the Settings view</comment>
+  </data>
+  <data name="ButtonOK" xml:space="preserve">
+    <value>OK</value>
+    <comment>"OK" button text</comment>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>"Cancel" button text</comment>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Save</value>
+    <comment>"Save" button text</comment>
+  </data>
+  <data name="SettingsLanguagesTitle" xml:space="preserve">
+    <value>Language</value>
+    <comment>"Languages" title in the settings area</comment>
+  </data>
+  <data name="SettingsLanguagesInfo" xml:space="preserve">
+    <value>Select your language from the list below: -</value>
+    <comment>"Languages" information on Settings view</comment>
+  </data>
 </root>

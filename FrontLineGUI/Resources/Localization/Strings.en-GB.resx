@@ -297,4 +297,22 @@
   <data name="MainDebugToolTip" xml:space="preserve">
     <value>Application is running in Debug mode!</value>
   </data>
+  <data name="SettingsBackupIntro" xml:space="preserve">
+    <value>Your backups are listed below: -</value>
+  </data>
+  <data name="ButtonOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="ButtonCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ButtonSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="SettingsLanguagesTitle" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="SettingsLanguagesInfo" xml:space="preserve">
+    <value>Select your language from the list below: -</value>
+  </data>
 </root>

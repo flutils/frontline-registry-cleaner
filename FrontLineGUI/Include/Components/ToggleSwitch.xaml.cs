@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace FrontLineGUI.Include.Components
 {
@@ -8,6 +9,9 @@ namespace FrontLineGUI.Include.Components
         public ToggleSwitch()
         {
             InitializeComponent();
+
+            // RPECK 28/03/2026 - Added to provide the ability to manage clicking on the labels
+            this.Focusable = true;
         }
 
         // 1. The Wrapper Property
@@ -25,5 +29,6 @@ namespace FrontLineGUI.Include.Components
                 typeof(bool),
                 typeof(ToggleSwitch),
                 new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
+
     }
 }

@@ -56,10 +56,20 @@ namespace FrontLineGUI.Include.Services
 
         private IEnumerable<CultureInfo> GetSupportedCultures()
         {
-            return CultureInfo
-                .GetCultures(CultureTypes.SpecificCultures)
-                .Where(c => Properties.Resources.ResourceManager
-                    .GetResourceSet(c, true, false) != null);
+            // Point this specifically to your Strings class
+            var rm = FrontLineGUI.Resources.Localization.Strings.ResourceManager;
+
+            return CultureInfo.GetCultures(CultureTypes.SpecificCultures)
+                .Where(c => {
+                    try
+                    {
+                        // Look for the resource set. 
+                        // If it finds 'Strings.fr.resx' for a French culture, it returns true.
+                        var rs = rm.GetResourceSet(c, true, false);
+                        return rs != null;
+                    }
+                    catch { return false; }
+                });
         }
 
         public void Load()

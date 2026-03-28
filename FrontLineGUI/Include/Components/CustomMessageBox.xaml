@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FrontLineGUI.Include.Components"
+        xmlns:lang="clr-namespace:FrontLineGUI.Resources.Localization"
         mc:Ignorable="d"
-        Title="Message" Height="200" Width="400"
+        Title="Message" Height="150" Width="300"
         WindowStyle="None" 
         AllowsTransparency="True" 
         Background="Transparent"
@@ -56,8 +57,8 @@
             <!-- Border -->
             <Border Grid.Row="2" Padding="15" Background="#f9f9f9" CornerRadius="0,0,5,5" BorderThickness="0,1,0,0" BorderBrush="#c5c5c5">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button x:Name="btnOk" Content="OK" Margin="0" Click="BtnOk_Click" Style="{ StaticResource GeneralButton }" Background="DodgerBlue"/>
-                    <Button x:Name="btnCancel" Content="Cancel" Margin="1,0,0,0" Click="BtnCancel_Click" Style="{ StaticResource GeneralButton }" Background="#e30c0c" />
+                    <Button x:Name="btnCancel" Content="{ Binding Source={ x:Static lang:Strings.ButtonCancel }, Mode=OneTime }" Margin="0" Click="BtnCancel_Click" Style="{ StaticResource GeneralButton }" Background="#e30c0c" />
+                    <Button x:Name="btnOk" Content="{ Binding Source={ x:Static lang:Strings.ButtonOK }, Mode=OneTime }" Margin="1,0,0,0" Click="BtnOk_Click" Style="{ StaticResource GeneralButton }" Background="DodgerBlue"/>
                 </StackPanel>
             </Border>
 

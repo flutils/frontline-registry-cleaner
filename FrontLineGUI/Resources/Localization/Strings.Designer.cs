@@ -169,6 +169,33 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ButtonCancel {
+            get {
+                return ResourceManager.GetString("ButtonCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string ButtonOK {
+            get {
+                return ResourceManager.GetString("ButtonOK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string ButtonSave {
+            get {
+                return ResourceManager.GetString("ButtonSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About.
         /// </summary>
         public static string MainAbout {
@@ -529,6 +556,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Your backups are listed below: -.
+        /// </summary>
+        public static string SettingsBackupIntro {
+            get {
+                return ResourceManager.GetString("SettingsBackupIntro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Backups.
         /// </summary>
         public static string SettingsBackupTab {
@@ -561,6 +597,24 @@ namespace FrontLineGUI.Resources.Localization {
         public static string SettingsGeneralTab {
             get {
                 return ResourceManager.GetString("SettingsGeneralTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select your language from the list below: -.
+        /// </summary>
+        public static string SettingsLanguagesInfo {
+            get {
+                return ResourceManager.GetString("SettingsLanguagesInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string SettingsLanguagesTitle {
+            get {
+                return ResourceManager.GetString("SettingsLanguagesTitle", resourceCulture);
             }
         }
         

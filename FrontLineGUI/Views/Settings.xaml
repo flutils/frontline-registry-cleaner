@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:FrontLineGUI"
       xmlns:lang="clr-namespace:FrontLineGUI.Resources.Localization"
       xmlns:controls="clr-namespace:FrontLineGUI.Include.Components"
+      xmlns:cf="clr-namespace:CountryFlag.Wpf;assembly=CountryFlag.Wpf"
       mc:Ignorable="d" 
       d:DesignHeight="820" d:DesignWidth="771"
       >
@@ -16,7 +17,26 @@
         <!-- Converters -->
         <local:CapitalizeFirstLetterConverter x:Key="CapitalizeFirstLetterConverter" />
         <local:OppositeBooleanConverter x:Key="OppositeBooleanConverter" />
+        <local:CultureISOConverter x:Key="CultureISOConverter" />
+        <local:CultureToBooleanConverter x:Key="CultureToBooleanConverter" />
         
+        <!-- Invisible Button -->
+        <Style x:Key="InvisibleClickStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!-- StackPanel Disabled -->
         <Style TargetType="StackPanel">
             <Style.Triggers>
@@ -132,16 +152,21 @@
                                     <!-- Input -->
                                     <controls:ToggleSwitch x:Name="Debug" IsChecked="{ Binding Config.IsDebug, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-                                    <!-- Info -->
-                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                    <!-- Invisible Button -->
+                                    <Button Command="{Binding ToggleSettingCommand}" CommandParameter="IsLogging" Style="{StaticResource InvisibleClickStyle}">
 
-                                        <!-- Title -->
-                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Debug}" FontWeight="Bold" />
+                                        <!-- Info -->
+                                        <StackPanel Orientation="Vertical" Margin="10,0,0,0" Cursor="Hand">
 
-                                        <!-- Label -->
-                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugInfo }, Mode=OneTime }" Target="{Binding ElementName=Debug}" />
+                                            <!-- Title -->
+                                            <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Debug}" FontWeight="Bold" />
 
-                                    </StackPanel>
+                                            <!-- Label -->
+                                            <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsDebugInfo }, Mode=OneTime }" Target="{Binding ElementName=Debug}" />
+
+                                        </StackPanel>
+
+                                    </Button>
 
                                 </StackPanel>
 
@@ -152,26 +177,66 @@
                                     <controls:ToggleSwitch x:Name="Logs" IsChecked="{ Binding Config.IsLogging, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
                                     <!-- Info -->
-                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                    <Button Command="{Binding ToggleSettingCommand}" CommandParameter="IsLogging" Style="{StaticResource InvisibleClickStyle}">
 
-                                        <!-- Title -->
-                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Logs}" FontWeight="Bold" />
+                                        <!-- Info -->
+                                        <StackPanel Orientation="Vertical" Margin="10,0,0,0">
 
-                                        <!-- Label -->
-                                        <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsInfo }, Mode=OneTime }" Target="{Binding ElementName=Logs}" />
+                                            <!-- Title -->
+                                            <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsTitle }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Target="{Binding ElementName=Logs}" FontWeight="Bold" />
 
-                                    </StackPanel>
+                                            <!-- Label -->
+                                            <Label Content="{ Binding Source={ x:Static lang:Strings.SettingsLogsInfo }, Mode=OneTime }" Target="{Binding ElementName=Logs}" />
+
+                                        </StackPanel>
+
+                                    </Button>
 
                                 </StackPanel>
 
-                            </StackPanel>
+                                <!-- Languages -->
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10">
 
-                            <!-- Action Buttons -->
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                                    <!-- Info -->
+                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
 
-                                <!-- Cancel -->
-                                <Button x:Name="btnCancel" Content="Cancel" Style="{ StaticResource GeneralButton }" />
-                                <Button x:Name="btnOk" Content="OK" Margin="1,0,0,0" Style="{ StaticResource GeneralButton }" />
+                                        <!-- Title -->
+                                        <Label Content="{Binding Source={x:Static lang:Strings.SettingsLanguagesTitle}, Converter={StaticResource CapitalizeFirstLetterConverter}, Mode=OneTime}" Target="{Binding ElementName=Language}" FontWeight="Bold" />
+
+                                        <!-- Label -->
+                                        <Label Content="{Binding Source={x:Static lang:Strings.SettingsLanguagesInfo}, Mode=OneTime}" Target="{Binding ElementName=Language}" />
+
+                                    </StackPanel>
+
+                                    <!-- Control -->
+                                    <ItemsControl ItemsSource="{Binding Config.SupportedLanguages}" x:Name="Language">
+
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <RadioButton GroupName="Language" Margin="0,0,20,10" VerticalContentAlignment="Center">
+                                                    <RadioButton.IsChecked>
+                                                        <MultiBinding Converter="{StaticResource CultureToBooleanConverter}" Mode="OneWay">
+                                                            <Binding Path="DataContext.Config.CurrentLanguage" RelativeSource="{RelativeSource AncestorType=UserControl}" />
+                                                            <Binding Path="Name" />
+                                                        </MultiBinding>
+                                                    </RadioButton.IsChecked>
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <cf:CountryFlag CountryCode="{ Binding Name, Converter={ StaticResource CultureISOConverter } }" Width="25" Margin="0" Padding="0" />
+                                                        <TextBlock Text="{Binding NativeName, Converter={ StaticResource CapitalizeFirstLetterConverter }}" VerticalAlignment="Center" />
+                                                    </StackPanel>
+                                                </RadioButton>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+
+                                    </ItemsControl>
+
+                                </StackPanel>
 
                             </StackPanel>
 
@@ -190,8 +255,15 @@
                             </StackPanel>
                         </TabItem.Header>
 
-                        <Grid>
-                        </Grid>
+                        <!-- Content -->
+                        <StackPanel Orientation="Vertical">
+                            
+                            <!-- Intro Text -->
+                            <TextBlock Text="{Binding Source={x:Static lang:Strings.SettingsBackupIntro}, Mode=OneTime}" Margin="0,10" />
+                            
+                            <!-- -->
+
+                        </StackPanel>
                     </TabItem>
 
                 </TabControl>

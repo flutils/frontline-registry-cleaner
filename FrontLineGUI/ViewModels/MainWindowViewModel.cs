@@ -153,7 +153,13 @@ namespace FrontLineGUI
         // Close the application (ported from xaml.cs)
         private void ExecuteClose()
         {
-            var result = CustomMessageBox.Show("Are you sure you want to exit?", "Exit");
+
+            // RPECK 28/03/2026 - Localization Strings
+            string title = Resources.Localization.Strings.MainExitConfirmTitle;
+            string message = Resources.Localization.Strings.MainExitConfirmString;
+
+            // RPECK 28/03/2026 - Get the result
+            var result = CustomMessageBox.Show(message, title);
 
             if (result == true)
                 System.Windows.Application.Current.Shutdown();
