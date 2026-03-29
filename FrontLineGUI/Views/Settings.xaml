@@ -19,8 +19,9 @@
         <local:OppositeBooleanConverter x:Key="OppositeBooleanConverter" />
         <local:CultureISOConverter x:Key="CultureISOConverter" />
         <local:CultureToBooleanConverter x:Key="CultureToBooleanConverter" />
+        <local:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         
-        <!-- Invisible Button -->
+        <!-- Invisible Button (Used for label target) -->
         <Style x:Key="InvisibleClickStyle" TargetType="Button">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
@@ -37,12 +38,63 @@
             </Setter>
         </Style>
 
+        <!-- Flag Radio Buttons -->
+        <Style x:Key="FlagButtonStyle" TargetType="RadioButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="Root" Background="Transparent" Opacity="0.5" Cursor="Hand">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True"/>
+                                    <Condition Property="IsChecked" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To="0.8" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+                                <MultiTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.ExitActions>
+                            </MultiTrigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To="1.0" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="Root" Storyboard.TargetProperty="Opacity" To="0.5" Duration="0:0:0.2"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!-- StackPanel Disabled -->
         <Style TargetType="StackPanel">
             <Style.Triggers>
                 <Trigger Property="IsEnabled" Value="False">
                     <Setter Property="Cursor" Value="No" />
-                    <Setter Property="Opacity" Value="0.5" />
+                    <Setter Property="Opacity" Value="0.4" />
                     <Setter Property="IsHitTestVisible" Value="False" />
                 </Trigger>
             </Style.Triggers>
@@ -141,13 +193,13 @@
                         </TabItem.Header>
 
                         <!-- Content -->
-                        <Grid IsEnabled="{Binding ScanService.IsScanning, Converter={StaticResource OppositeBooleanConverter}}" VerticalAlignment="Stretch">
+                        <Grid VerticalAlignment="Stretch" Margin="15,5">
 
                             <!-- Content -->
-                            <StackPanel Orientation="Vertical" Grid.Row="0">
+                            <StackPanel Orientation="Vertical" Grid.Row="0" IsEnabled="{Binding ScanService.IsScanning, Converter={StaticResource OppositeBooleanConverter}}" >
 
                                 <!-- Debug -->
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10">
 
                                     <!-- Input -->
                                     <controls:ToggleSwitch x:Name="Debug" IsChecked="{ Binding Config.IsDebug, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -171,7 +223,7 @@
                                 </StackPanel>
 
                                 <!-- Logs -->
-                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0">
 
                                     <!-- Input -->
                                     <controls:ToggleSwitch x:Name="Logs" IsChecked="{ Binding Config.IsLogging, Mode=TwoWay }" HorizontalAlignment="Center" VerticalAlignment="Center" />
@@ -193,12 +245,15 @@
                                     </Button>
 
                                 </StackPanel>
+                                
+                                <!-- Separator -->
+                                <Separator Background="#ccc" Margin="0,15" />
 
                                 <!-- Languages -->
-                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="10">
+                                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0">
 
                                     <!-- Info -->
-                                    <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                    <StackPanel Orientation="Vertical">
 
                                         <!-- Title -->
                                         <Label Content="{Binding Source={x:Static lang:Strings.SettingsLanguagesTitle}, Converter={StaticResource CapitalizeFirstLetterConverter}, Mode=OneTime}" Target="{Binding ElementName=Language}" FontWeight="Bold" />
@@ -209,7 +264,7 @@
                                     </StackPanel>
 
                                     <!-- Control -->
-                                    <ItemsControl ItemsSource="{Binding Config.SupportedLanguages}" x:Name="Language">
+                                    <ItemsControl ItemsSource="{Binding Config.SupportedLanguages}" x:Name="Language" Margin="0,15,0,0">
 
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
@@ -219,7 +274,7 @@
 
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
-                                                <RadioButton GroupName="Language" Margin="0,0,20,10" VerticalContentAlignment="Center">
+                                                <RadioButton GroupName="Language" VerticalContentAlignment="Center" Style="{StaticResource FlagButtonStyle}">
                                                     <RadioButton.IsChecked>
                                                         <MultiBinding Converter="{StaticResource CultureToBooleanConverter}" Mode="OneWay">
                                                             <Binding Path="DataContext.Config.CurrentLanguage" RelativeSource="{RelativeSource AncestorType=UserControl}" />
@@ -227,7 +282,7 @@
                                                         </MultiBinding>
                                                     </RadioButton.IsChecked>
                                                     <StackPanel Orientation="Horizontal">
-                                                        <cf:CountryFlag CountryCode="{ Binding Name, Converter={ StaticResource CultureISOConverter } }" Width="25" Margin="0" Padding="0" />
+                                                        <cf:CountryFlag CountryCode="{ Binding Name, Converter={ StaticResource CultureISOConverter } }" Height="35" Margin="0" Padding="0" />
                                                         <TextBlock Text="{Binding NativeName, Converter={ StaticResource CapitalizeFirstLetterConverter }}" VerticalAlignment="Center" />
                                                     </StackPanel>
                                                 </RadioButton>
@@ -238,6 +293,15 @@
 
                                 </StackPanel>
 
+                                <!-- Separator -->
+                                <Separator Background="#ccc" Margin="0,15" />
+
+                            </StackPanel>
+
+                            <!-- Disabled -->
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding ScanService.IsScanning, Converter={StaticResource BoolToVisibilityConverter}}">
+                                <Image Source="/Resources/Icons/info.png" Width="20" VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Source={x:Static lang:Strings.SettingsScanningDisabled}, Mode=OneTime}" VerticalAlignment="Center" />
                             </StackPanel>
 
                         </Grid>

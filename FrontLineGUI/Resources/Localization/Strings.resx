@@ -381,4 +381,12 @@
     <value>Select your language from the list below: -</value>
     <comment>"Languages" information on Settings view</comment>
   </data>
+  <data name="SettingsScanningDisabled" xml:space="preserve">
+    <value>Settings disabled whilst scanning</value>
+    <comment>"Disabled" text on settings page whilst scan is underway</comment>
+  </data>
+  <data name="AboutGeneralTab" xml:space="preserve">
+    <value>Company</value>
+    <comment>"About" tab for information about company</comment>
+  </data>
 </root>

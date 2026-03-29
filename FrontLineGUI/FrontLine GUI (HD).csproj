@@ -49,6 +49,7 @@
   <ItemGroup>
     <None Remove="Resources\fl.jpg" />
     <None Remove="Resources\icon.png" />
+    <None Remove="Resources\Icons\info.png" />
     <None Remove="Resources\loader.gif" />
     <None Remove="Resources\MiB_Logo_Stacked_Colour-RGB.png" />
 
@@ -79,6 +80,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Icons\info.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\loader.gif">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

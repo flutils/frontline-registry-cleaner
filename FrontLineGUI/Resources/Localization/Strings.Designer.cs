@@ -97,6 +97,15 @@ namespace FrontLineGUI.Resources.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company.
+        /// </summary>
+        public static string AboutGeneralTab {
+            get {
+                return ResourceManager.GetString("AboutGeneralTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Licensing.
         /// </summary>
         public static string AboutLicensing {
@@ -642,6 +651,15 @@ namespace FrontLineGUI.Resources.Localization {
         public static string SettingsPreInfo {
             get {
                 return ResourceManager.GetString("SettingsPreInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings disabled whilst scanning.
+        /// </summary>
+        public static string SettingsScanningDisabled {
+            get {
+                return ResourceManager.GetString("SettingsScanningDisabled", resourceCulture);
             }
         }
         

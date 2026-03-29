@@ -125,7 +125,7 @@
             <TabControl Margin="25,10,25,0" x:Name="AboutTabs" Background="#EFEFEF" SelectedIndex="{Binding SelectedTabIndex, FallbackValue='0'}">
 
                 <!-- General -->
-                <TabItem Header="{ Binding Source={ x:Static lang:Strings.SettingsGeneralTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="General" BorderThickness="0" Padding="0">
+                <TabItem Header="{ Binding Source={ x:Static lang:Strings.AboutGeneralTab }, Converter={ StaticResource CapitalizeFirstLetterConverter }, Mode=OneTime }" Tag="General" BorderThickness="0" Padding="0">
                     <StackPanel Orientation="Vertical">
 
                         <!-- Intro Area -->

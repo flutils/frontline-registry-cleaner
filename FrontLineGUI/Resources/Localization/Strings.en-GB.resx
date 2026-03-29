@@ -315,4 +315,10 @@
   <data name="SettingsLanguagesInfo" xml:space="preserve">
     <value>Select your language from the list below: -</value>
   </data>
+  <data name="SettingsScanningDisabled" xml:space="preserve">
+    <value>Settings disabled whilst scanning</value>
+  </data>
+  <data name="AboutGeneralTab" xml:space="preserve">
+    <value>Company</value>
+  </data>
 </root>

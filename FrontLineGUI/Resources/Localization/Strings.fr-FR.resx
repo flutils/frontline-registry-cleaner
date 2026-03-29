@@ -315,4 +315,10 @@
   <data name="SettingsLanguagesInfo" xml:space="preserve">
     <value>Sélectionnez votre langue dans la liste ci-dessous : -</value>
   </data>
+  <data name="SettingsScanningDisabled" xml:space="preserve">
+    <value>Paramètres désactivés pendant la numérisation</value>
+  </data>
+  <data name="AboutGeneralTab" xml:space="preserve">
+    <value>Enterprise</value>
+  </data>
 </root>
